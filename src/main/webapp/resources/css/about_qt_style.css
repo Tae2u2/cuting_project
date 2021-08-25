@@ -1,0 +1,145 @@
+@charset "UTF-8";
+*{
+	margin: 0;
+	padding: 0;
+}
+h1{
+	font-weight: 700;
+	margin-top:100px;
+	text-align: center;
+	letter-spacing: 2px;
+	line-height: 23px;
+}
+
+.about_qt-wrapper{
+	margin: auto;
+	max-width: 800px;
+}
+
+.about_qt-bar-container{
+	position: relative;
+	width: 90%;
+	margin: auto;
+	height: 100px;
+	margin-top: 59px;
+}
+.about_qt-bar-container ul{
+	padding: 0;
+	margin:0;
+	padding-top: 15px;
+	z-index: 9999;
+	position: absolute;
+	width:100%;
+	margin-top: -40px;
+}
+
+.step:before{
+	content: "";
+	display: block;
+	margin:auto;
+	width:30px;
+	height: 30px;
+	border-radius: 50%;
+	border: solid 2px #aaa;
+	transition: all ease 0.3s;
+}
+
+.step.active:before,
+.step:hover:before{
+	background: #FFE59D;
+}
+
+.step{
+	list-style:none;
+	float:left;
+	width: 33%;
+	text-align: center;
+	color:#aaa;
+	font-size:11px;
+	cursor: pointer;
+	font-weight:700;
+	transition: all ease 0.2s;
+	vertical-align: bottom;
+	height: 59px;
+	position: relative;
+}
+
+.step-inner{
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	font-size: 14px;
+}
+
+.step.active,
+.step:hover{
+	color: #FFE59D;
+}
+
+.step:after{
+	content:"";
+	display: block;
+	width:5px;
+	height: 5px;
+	background: #777;
+	margin: auto;
+	border: solid 7px white;
+	border-radius: 50%;
+	margin-top: 30px;
+	box-shadow: 0 2px 13px -1px rgba(0,0,0,0.3);
+	transition: all ease 0.2s;
+}
+.step:hover:after{
+	background: #FFE59D;
+}
+
+.step.active:after{
+	background: #FFE59D;
+}
+
+.about_qt-line{
+	width: 80%;
+	margin: auto;
+	background: #eee;
+	height: 5px;
+	position: absolute;
+	left: 10%;
+	top: 57px;
+	z-index: 1;
+	border-radius: 50px;
+	transition: all ease 0.9s;
+}
+
+/* 애니메이팅작업 보류
+.about_qt-process{
+	content: "";
+	width: 3%;
+	height: 100%;
+	background: #FFE59D;
+	background: linear-gradient(to right, #FF8F00 0%, #FFE59D 100%);
+	position: absolute;
+	z-index: 2;
+	border-radius: 50px;
+	transition: all ease 0.9s;
+}
+*/
+
+.about_qt-content-section{
+	width: 90%;
+	margin: 50px auto 200px;
+	background: #E0E0E0;
+	border-radius: 8px;
+	
+}
+
+.about_qt-content{
+	display:none;
+	padding: 30px 40px;
+	text-align: center;
+	margin-bottom: 200px;
+}
+
+
+
+
+

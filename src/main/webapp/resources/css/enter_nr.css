@@ -1,0 +1,512 @@
+@charset "UTF-8";
+
+/* @font-face {
+    font-family: 'BinggraeSamanco-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/BinggraeSamanco-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+} */
+* {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	text-decoration: none;
+}
+
+.container {
+	margin: 150px 80px;
+}
+
+.container_space {
+	margin: 0 45px;
+}
+
+.container_menu {
+	width: 80%;
+	margin: auto;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.nav-tabs {
+	display: flex;
+}
+
+.container .container_tab li {
+	font-family: 'BinggraeSamanco-Bold';
+	font-size: 30px;
+}
+
+.container .container_tab ul li:not(:last-child) {
+	margin-right: 40px;
+}
+
+.container .container_tab ul li a {
+	color: #afafaf;
+	cursor: pointer;
+	position: relative;
+	padding: 6px 0px;
+}
+
+.container .container_tab ul li:hover a, .container .container_tab ul li:active a
+	{
+	color: #000000;
+}
+
+.container .container_tab ul li a:after {
+	content: "";
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	width: 0;
+	transition: width 0.3s;
+	height: 2px;
+	background-color: red;
+}
+
+.container .container_tab ul li:hover a:after, 
+.container .container_tab ul li:active a:after{
+	width: 100%;
+}
+
+.container .tab-content div {
+	display: none;
+}
+
+.container .tab-content div.active {
+	display: block;
+}
+
+.container .search_box{
+	display:flex;
+	float:right;
+	padding:30px;	
+}
+
+.container .search_box .search_div{
+	width:370px;
+	height: 50px;
+	border:2px solid black;
+	border-top-left-radius: 30px;
+	border-bottom-left-radius: 30px;
+	border-right: none;
+	padding-left:20px;
+	line-height: 47px;
+}
+
+.container .search_box .search_div select{
+	border:transparent;
+	width:78px;
+	height: 37px;
+}
+
+.container .search_box .search_div .text_space{
+	margin-left:13px;
+	width:255px;
+	height: 33px;
+	border:transparent;
+	border-bottom: 1px solid gray;
+	font-size: 15px;
+}
+
+.container .search_box button{
+	border:2px solid black;
+	border-top-right-radius: 30px;
+	border-bottom-right-radius: 30px;
+	width:55px;
+	height: 55px;
+	background-color: blanchedalmond;
+	cursor: pointer;
+}
+
+.container .search_box .fa-search{
+	font-size:25px;
+}
+
+.add_photo{	
+	background-color: rgb(235, 174, 84);
+	border-radius: 22px;
+	margin-right: 200px;
+	float:right;
+	width:38px;
+	height: 40px;
+	border:transparent;
+	margin-top: 10px;	
+}
+
+.add_photo:hover{
+	background-color:rgb(190, 125, 27);
+	cursor: pointer;
+}
+
+.fa-plus{
+	font-size: 26px;
+	color:white;
+}
+
+/* 강아지, 고양이, 그 외 친구들 탭메뉴 구성*/
+.container .tab-content #dog,
+.container .tab-content #cat,
+.container .tab-content #friends{
+
+	height: auto;
+	margin-top: 100px;
+	
+}
+
+.container .tab-content #dog ul,
+.container .tab-content #cat ul,
+.container .tab-content #friends ul{
+	width:86%;
+	display:flex;
+	padding: 0px 83px;
+}
+
+.container .tab-content #dog ul li,
+.container .tab-content #cat ul li,
+.container .tab-content #friends ul li{
+	width:100%;
+	height: 420px;
+	position: relative;
+	text-align: center;
+}
+
+.container .tab-content #dog ul li:not(:last-child),
+.container .tab-content #cat ul li:not(:last-child),
+.container .tab-content #friends ul li:not(:last-child){
+	margin-right: 5px;
+}
+
+.container .tab-content #dog ul li .aa,
+.container .tab-content #cat ul li .aa,
+.container .tab-content #friends ul li .aa{
+	display:block;
+}
+
+.container .tab-content #dog ul li .bb,
+.container .tab-content #cat ul li .bb,
+.container .tab-content #friends ul li .bb{	
+	display:block;
+	padding:10px 77px 0 0px;	
+}
+
+/* .container .tab-content #dog ul li .bb .enter_bt{
+	border:1px solid black;
+	
+	cursor:pointer;
+	background-color:blanchedalmond;
+	width: 45px;
+	height: 36px;
+	float:right;
+	box-shadow: 0 0 3px;
+	border-radius: 5px;
+	letter-spacing: 3px;	
+} */
+
+.container .tab-content #dog ul li .bb .pad .fa-bitcoin,
+.container .tab-content #cat ul li .bb .pad .fa-bitcoin,
+.container .tab-content #friends ul li .bb .pad .fa-bitcoin{
+	color:rgb(235, 174, 84);
+	font-size:37px;
+}
+
+.container .tab-content #dog ul li .bb .pad .fa-bitcoin:hover,
+.container .tab-content #cat ul li .bb .pad .fa-bitcoin:hover,
+.container .tab-content #friends ul li .bb .pad .fa-bitcoin:hover{
+	color:rgb(190, 125, 27);
+}
+
+.container .tab-content #dog ul li .bb .pad,
+.container .tab-content #cat ul li .bb .pad,
+.container .tab-content #friends ul li .bb .pad{
+	display:block;
+	width:auto;
+	float:right;
+}
+
+.container .tab-content #dog ul li .bb button,
+.container .tab-content #cat ul li .bb button,
+.container .tab-content #friends ul li .bb button{
+	border:hidden;	
+}
+
+.container .tab-content #dog ul li .bb i,
+.container .tab-content #cat ul li .bb i,
+.container .tab-content #friends ul li .bb i{
+	background: white;
+	border:hidden;
+	color: #dddddd;
+	cursor: pointer;	
+	font-size: 35px;
+	padding-right:4px;
+}
+
+.container .tab-content #dog ul li .bb .fa-heart:hover,
+.container .tab-content #dog ul li .bb .fa-heart01.active{
+	color:red;
+}
+.container .tab-content #cat ul li .bb .fa-heart:hover,
+.container .tab-content #cat ul li .bb .fa-heart001.active{
+	color:red;
+}
+
+.container .tab-content #friends ul li .bb .fa-heart:hover,
+.container .tab-content #friends ul li .bb .fa-heart0001.active{
+	color:red;
+}
+
+
+/*빨간하트를 눌렀을때 빨개지게 하는것*/
+.container .tab-content #dog ul li .bb .fa-heart02.active,
+.container .tab-content #cat ul li .bb .fa-heart002.active,
+.container .tab-content #friends ul li .bb .fa-heart0002.active{
+	color:red;
+}
+.container .tab-content #dog ul li .bb .fa-heart03.active,
+.container .tab-content #cat ul li .bb .fa-heart003.active,
+.container .tab-content #friends ul li .bb .fa-heart0003.active{
+	color:red;
+}
+.container .tab-content #dog ul li .bb .fa-heart04.active,
+.container .tab-content #cat ul li .bb .fa-heart004.active,
+.container .tab-content #friends ul li .bb .fa-heart0004.active{
+	color:red;
+}
+.container .tab-content #dog ul li .bb .fa-heart05.active,
+.container .tab-content #cat ul li .bb .fa-heart005.active,
+.container .tab-content #friends ul li .bb .fa-heart0005.active{
+	color:red;
+}
+.container .tab-content #dog ul li .bb .fa-heart06.active,
+.container .tab-content #cat ul li .bb .fa-heart006.active,
+.container .tab-content #friends ul li .bb .fa-heart0006.active{
+	color:red;
+}
+.container .tab-content #dog ul li .bb .fa-heart07.active,
+.container .tab-content #cat ul li .bb .fa-heart007.active,
+.container .tab-content #friends ul li .bb .fa-heart0007.active{
+	color:red;
+}
+.container .tab-content #dog ul li .bb .fa-heart08.active,
+.container .tab-content #cat ul li .bb .fa-heart008.active,
+.container .tab-content #friends ul li .bb .fa-heart0008.active{
+	color:red;
+}
+.container .tab-content #dog ul li .bb .fa-heart09.active,
+.container .tab-content #cat ul li .bb .fa-heart009.active,
+.container .tab-content #friends ul li .bb .fa-heart0009.active{
+	color:red;
+}
+
+
+
+.container .tab-content #dog ul li .bb .fa-comment:hover,
+.container .tab-content #cat ul li .bb .fa-comment:hover,
+.container .tab-content #friends ul li .bb .fa-comment:hover{
+	color:blanchedalmond;	
+}
+
+
+.container .tab-content #dog ul li .aa img.image,
+.container .tab-content #cat ul li .aa img.image,
+.container .tab-content #friends ul li .aa img.image{
+	width:280px;
+	height: 280px;
+	border-radius: 10px;
+
+}
+
+.container .tab-content #dog ul li .aa img.image:hover,
+.container .tab-content #cat ul li .aa img.image:hover,
+.container .tab-content #friends ul li .aa img.image:hover{
+	opacity: 0.7;
+
+}
+
+
+.container .tab-content .pr_enter_photo{
+	width:950px;
+	height: 600px;
+	background-color: white;
+	border: 3px solid black;
+	position: fixed;
+	top:10%;
+	left:15%;
+	display: none;
+	overflow: auto;
+	border-radius: 5px;	
+}
+
+.container .tab-content .pr_enter_photo img{
+	width:600px;
+	height: 600px;
+	border-right: 1px solid #efefefc5;
+	float:left;
+}
+
+.container .tab-content .pr_enter_photo .pr_enph{
+	width:349px;
+	height:600px;
+	float:right;
+    display: table-cell;
+ 	vertical-align: middle;
+
+}
+
+/* 강아지,고양이,친구들 창*/
+.container .tab-content .pr_enter_photo .pr_enph .pr_en1-1 i{
+	font-size:30px;	
+}
+
+.container .tab-content .pr_enter_photo .pr_enph .pr_en1-1{
+	width: 309px;
+	height: 38px;
+	display: block;
+	padding:17px 20px;
+	line-height: 42px;
+	border-bottom:1px solid #efefefc5;
+}
+
+.container .tab-content .pr_enter_photo .pr_enph .pr_en1-1 .fa-crown{
+	font-size: 14px;
+}
+
+.container .tab-content .pr_enter_photo .pr_enph .pr_en1-1 span{
+	font-size: 14px;
+	padding-left:10px;
+}
+
+.container .tab-content .pr_enter_photo .pr_enph .pr_en1-1 .closeBt{	
+	background-color: transparent;
+	border:hidden;
+	float:right;
+	padding: 5px;
+}
+
+.container .tab-content .pr_enter_photo .pr_enph .pr_en1-2{
+	width:349px;
+	height: 527px;
+	display: block;
+}
+
+.container .tab-content .pr_enter_photo .pr_enph .pr_en1-2 .pr_en1-ul1{
+	
+	width: 325px !important; 
+	height: 342px !important;
+	/* background-color: green; */
+	position: absolute;
+	right: 0;
+	overflow-y:scroll;
+	padding:16px 12px !important;
+	border-bottom:1px solid #efefefc5;
+}
+
+.container .tab-content .pr_enter_photo .pr_enph .pr_en1-2 .pr_en1-ul1::-webkit-scrollbar{
+	display: none;
+}
+
+.container .tab-content .pr_enter_photo .pr_enph .pr_en1-2 .pr_eniconbox{
+
+	width:317px;
+	height: 53px;
+	display: block;
+	position: absolute;
+	top: 449px;
+	right: 0px;
+	margin-top: 4px;
+	padding: 4px 16px 0 16px;
+}
+
+.container .tab-content .pr_enter_photo .pr_enph .pr_en1-2 .pr_eniconbox .iconbox{
+	
+	display: inline-block;
+	margin-left:-6px;
+	border-bottom:1px solid #efefefc5;
+}
+
+.container .tab-content .pr_enter_photo .pr_enph .pr_en1-2 .pr_eniconbox .iconbox button{
+	
+	padding:8px;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	cursor: pointer;
+	border:none;
+	background: 0 0;
+}
+
+.container .tab-content .pr_enter_photo .pr_enph .pr_en1-2 .pr_eniconbox .iconbox button i{
+	font-size: 32px;
+	border:hidden;
+	color: #dddddd;
+	cursor: pointer;
+}
+
+.container .tab-content .pr_enter_photo .pr_enph .pr_en1-2 .pr_eniconbox .iconbox button .fa-heart:hover,
+.container .tab-content .pr_enter_photo .pr_enph .pr_en1-2 .pr_eniconbox .iconbox button .fa-heart.active{
+	color:red;
+}
+
+.container .tab-content .pr_enter_photo .pr_enph .pr_en1-2 .pr_eniconbox .iconbox button .fa-comment:hover:hover{
+	color:blanchedalmond;
+}
+
+.container .tab-content .pr_enter_photo .pr_enph .pr_en1-2 .pr_eniconbox .likecnt{
+	float:right;
+	font-size: 14px;
+	line-height: 46px;
+}
+
+.container .tab-content .pr_enter_photo .pr_enph .pr_en1-2 .textbox{
+
+	width:309px;
+	height: 84px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	display: block;
+	margin-top:10px;
+	padding: 0 20px;
+	justify-content: center;
+	line-height: 18px;
+}
+
+.container .tab-content .pr_enter_photo .pr_enph .pr_en1-2 .textbox .textform{
+	padding:10px 0px;
+	display: flex;
+	flex-direction: row;
+	width:309px;
+	height: 40px;
+	margin-top: 11px;
+	align-items: center;
+
+}
+
+.container .tab-content .pr_enter_photo .pr_enph .pr_en1-2 .textbox .textform i{
+	font-size:27px;
+	padding-right: 20px;
+}
+
+.container .tab-content .pr_enter_photo .pr_enph .pr_en1-2 .textbox .textform .tx{
+
+	background: 0 0;
+	border: 0;
+	height: 18px;
+    max-height: 80px;
+    outline: 0;
+    padding-top: 7px;
+    resize: none;
+	width:230px;
+	font-size:14px;
+}
+
+.container .tab-content .pr_enter_photo .pr_enph .pr_en1-2 .textbox .textform button{
+	opacity: 0.5;
+	border: 0;
+    color: #0095f6;
+    padding: 0;
+}
+
+

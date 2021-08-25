@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+.accordion {
+	width: 800px;
+	margin: 100px auto;
+	border-radius: 5px;
+	overflow: hidden;
+	background: #FFF59D;
+}
+
+.accordion__label{
+	padding: 20px 20px;
+}
+.accordion__a{
+	padding: 20px 20px;
+}
+
+.accordion__label{
+	display: block;
+	font-weight: 500;
+	cursor: pointer;
+	position: relative;
+	transition:background 0.1s;
+}
+
+.accordion__label:hover{
+	background:rgba(0, 0, 0, 0.1);
+}
+
+.accordion__label::after{
+	content:"▼";
+	position:absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 20px;
+	width:12px;
+	height: 6px;
+	transition: transform 0.4s;
+}
+
+.accordion__a{
+	background: white;
+	line-height: 1.6;
+	font-size: 0.85em;
+	display: none
+}
+
+.accordion__input{
+	display: none
+}
+
+.accordion__input:checked ~ .accordion__a{
+	display: block;
+}
+.accordion__input:checked ~ .accordion__a::after{
+	transform: translateY(-50%) rotate(0.5turn);
+}

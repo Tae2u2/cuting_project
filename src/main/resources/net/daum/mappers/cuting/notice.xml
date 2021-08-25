@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+  <mapper namespace="Notice">
+ <!-- mybatis쿼리문을 다루는 태그를 매퍼라 한다. -->
+ 
+  <!-- 게시판 저장 --><!--  parameterType은 전달인자 타입으로 생략가능하다. 이 속성값으로 풀 패키지 경로인 net.daum.vo.BoardVO를 지정
+   해도 된다. b는 mybatis-config.xml에서 설정해 준 NoticeVO.java의 객체 별칭명이다. -->
+   <insert id="noti_in" >
+     insert into notice (no_postnb,no_title,no_content,no_viewcnt,no_update) 
+     values(no_postnb_seq.nextval,#{no_title},#{no_content},#{no_viewcnt},sysdate)
+     <!-- #{writer}를 자바코드로 표현하면 b.getWriter()와 같다. -->
+   </insert>
+   
+   <select id="noti_count" resultType="int">
+   <!-- resultType속성은 반환 자료형 -->
+    select count(no_postnb) from notice <!-- count()함수는 총 레코드 개수를 구함. -->
+    <where>
+     <if test="find_field==''"></if><!-- 검색조건이 없는 경우 -->
+     <if test="find_field=='no_title'"><!-- 검색조건이 제목인 경우 -->
+      no_title like #{find_name}
+     </if>
+     <if test="find_field=='no_content'"><!-- 검색 조건이 내용인 경우 -->
+     no_content like #{find_name}
+     </if>
+    </where>
+   </select>
+  
+ 
+ 
+ </mapper>

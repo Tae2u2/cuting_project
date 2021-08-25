@@ -1,0 +1,200 @@
+@charset "UTF-8";
+
+
+.container{
+	/*vw vh는 반응형웹에서 쓰는 단위라고 보면 된다. 약간 퍼센트 같은 화면줄이면 줄어들고 이런거! 이걸 100으로 하는건 화면을 줄여도 내가 이 컨테이너 안에 넣은 내용이 100프로 다 보이라고 하는것과 같다*/
+	width:100vw;
+	height: 80vh;
+	display: grid;/*그리드는 화면의 레이아웃을 만들어주는거임. grid로 지정하면 여러가지 간격을 그리드함수로 지정할 수 있음.*/
+	grid-template-columns: repeat(2, 1fr);/*1fr을 두번 반복하겠다. 그리드 탬플릿 열사이즈를 두번지정하지 않고 repeat을 쓴거임 여러번 같은 지정할때 유용*/
+	/*rem 과 em 은 가변적인 사이즈를 말한다. rem을 쓰는 이유는 바디기준으로 사이즈가 변해서임.반응형웹에서 유용하게 쓰임 참고로em은 바로 위 부모 따라감*/
+	grid-gap:7rem;/*이게 그리드 안에 있는 아이템들의 간격을 설정해주는 거임 7%라고 보면되는데 이거 위에서 그리드 없었으면 따로따로 div 설정한거 클래스 이용해서 마진레프트 마진 롸이트 설정해야됨ㅠㅠ귀찮*/
+	padding: 0 2rem;
+}
+
+.dogimg{
+	display: flex;/*플렉스는 그리드랑 같은 역할이지만 자주 비교됨 그리드는 말그대로 격자처럼 아이템을 배치해줌 근데 플렉스는 내가 원하는 곳엔 어디든 가능함 그냥 배열할땐 그리드가 꿀임 우리 찜목록이나 핫백 그리고 노름 페이지도 그리드 이용하면 한번에 정렬할수 있음*/
+	justify-content: flex-end;/*이건 플렉스랑 같이 쓰는 애중에 하나인데 플렉스는 주축을 기준으로 배치하는 습성?같은게 있음. 그 주축을 어떻게 할건지 알려줘야함. 그떄 쓰는게 이 저스티파이어쩌고 이거임. flex-end니까 끝점을 기준으로 하겠다.이거임 이게 뭔소리냐면 로그인창이 있는 부분이 하나의 박스인데 그 박스가 끝나는 거기를 기준으로 도그이미지를 붙이겠다 이거임.*/
+	align-items: center;
+}
+
+.dogimg img{
+	width: 500px;
+}
+
+.login-container{
+	display: flex;
+	align-items: center;
+	text-align:center;
+}
+
+.hellogb{
+	width: 360px;
+}
+
+.chips{
+	width: 100px;
+}
+
+.hellogb h2{
+	font-size: 2.9rem;
+	text-transform: uppercase;
+	margin: 15px 0;
+	color: #606163;/*이거 강태이가 계속 쓰는 애매한 회색*/
+}
+
+.input-div{
+	position: relative;
+	display: grid;
+	grid-template-columns: 7% 93%;/*이건 그리드의 크기를 정해주는 거임 columns 가 열들 이란 뜻이기에 말그대로 다중 열의 크기를 정할 수 있음 이건 1열은 7% 2열은 93%로 하겠다는 거임*/
+	margin: 25px 0;
+	padding: 5px 0;
+	border-bottom: 2px solid #d9d9d9;
+}
+.input-div:after, .input-div:before{
+	content: '';
+	position: absolute;
+	bottom: -2px;
+	width: 0;
+	height: 2px;
+	background-color: #FFF59D;
+	transition: .3s;
+}
+.input-div:after{
+	right: 50%;
+}
+ .input-div:before{
+ 	left: 50%;
+ }
+
+
+.input-div.focus .i i{
+	color: #FFF59D;
+}
+/*이 띄어쓰기 클래스는 점찍을때 띄어쓰기하면 효과 적용 안됨*/
+.input-div.focus div h5{
+	top: -5px;
+	font-size: 15px;
+}
+
+.input-div.focus:after, .input-div.focus:before{
+	width:50%
+}
+
+
+.input-div.one{/*얘가 그리드 1열*/
+	margin-top:0;	
+}
+
+.input-div.two{/*이게 2열 그 클래스명 지정할 때 띄어쓰기 하면 css에선 이렇게 .클래스명 .띄어쓰기하고 적은 클래스명 이렇게 쓸수 있음*/
+	margin-bottom: 4px;
+}
+
+.i{
+	display: flex;
+	justify-content: center;/*주축을 가운데로 하겠다. 그니까 가운데 정렬하겠다.*/
+	align-items:center;/*아주 위아래로 깔끔하게 가운데 정렬을 하겠다.*/
+}
+
+.i i{
+	color: #d9d9d9;/*더더 라이트 그레이*/
+	transition: .3s;
+}
+
+.input-div > div{
+	position:relative; /*포지션 릴레이티브는 지가 갈 수 있는 위치를 기준으로 움직임. 이게 뭔소리냐면 위에나 옆에 누가 있으면 거길로 안간다. 친구를 가리지 않음 그래서 상대적인 친구임.*/
+	height: 45px;/*위에 누가 있으면 그친구를 기준으로 45px를 띄운 위치에 내가 있겠다*/
+}
+
+.input-div > div h5{
+	position: absolute; /*얘는 그냥 창 기준으로 위치하겠다. 친구도 가림.*/
+	left: 10px; /*뭐가 있든 내가 무조건 왼쪽에서 10px떨어진 곳에 있겠다.*/
+	top:50%;/*마찬가지로 뭐가 있든 내가 무조건 위에서 50%떨어진 그곳에 있겠다*/
+	transform: translateY(-50%);/*와이축 세로로 움직이게 하겠다*/
+	color: #999;/*라이트 그레이*/
+	font-size: 18px;
+	transition: .3s;/*움직이는 시간은 0.3초로 하겠다*/
+}
+
+.input{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left:0;
+	/*박스를 둘러싼 촌스러운 선을 없애겠다*/
+	border: none;
+	outline: none;
+	background: none;
+	padding: 0.5rem 0.7rem;
+	font-size: 1.2rem;
+	color: #555;/*차콜색*/
+}
+
+a{
+	display: block;
+	text-align: right;
+	text-decoration: none;
+	color: #606361;
+	font-size: 0.8rem;
+	transition: .3s;
+}
+
+a:hover{
+	color: #999;
+}
+
+.btn{
+	display: block;
+	width: 100%;
+	height: 50px;
+	border-radius: 25px;
+	margin: 1rem 0;
+	font-size: 1.2rem;
+	outline: none;
+	border:none;
+	background-color: #FFF59D;
+	cursor: pointer;
+	color: #606163;
+	text-transform: uppercase;
+	background-size:200%
+	transition: 0.5s;
+}
+
+.btn:hover{
+	background-color: #FFE082;
+}
+
+
+
+@media screen and (max-width: 1050px){
+	.container{
+		grid-gap: 5rem;
+	}
+}
+
+@media screen and (max-width: 1000px){
+	.hellogb{
+		width: 290px;
+	}
+	
+	.hellogb h2{
+		font-size: 2.4rem;
+		margin: 8px 0;
+	}
+	.dogimg img{
+	width: 400opx;
+	}
+}
+
+@media screen and (max-width: 900px){
+	.dogimg{
+		display: none;
+	}
+	.container{
+		grid-template-columns : 1fr;
+	}
+	.login-container{
+		justify-content: center;
+	}
+}

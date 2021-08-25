@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="Nr"><!-- 매퍼 네임스페이스명 Nr(노름의 약자) 지정 -->
+ 
+ 	<!-- 자료실 저장 -->
+   <insert id="nr_in" parameterType="nr"> <!-- parameterType속성은 전달인자 자료형이고 생략 가능하다. -->
+    insert into enter_nr (gb_postnb,gb_id,gb_title,gb_filename,gb_content,gb_update)
+    values(gb_postnb_seq.nextval,#{gb_id},#{gb_title},#{gb_filename},#{gb_content},sysdate)
+   </insert>
+   
+   
+   <!-- 검색 전 후 자료실 목록 -->
+   <select id="nr_list" resultType="net.daum.vo.Enter_nrVO">
+     select * from ( select rowNum rNum,gb_postnb,gb_cont,gb_filename,gb_likecnt,gb_viewcnt,gb_update from<!-- 답글하고 그룹번호 글번호 추가해야함 -->
+     (select * from enter_nr
+     
+     <where>
+     <if test="find_field==''"></if><!-- 검색조건이 없는 경우 -->
+     <if test="find_field=='gb_id'"><!-- 검색조건이 작성자인 경우 -->
+      gb_id like #{find_name}
+     </if>
+     <if test="find_field=='gb_title'"><!-- 검색조건이 제목인 경우 -->
+      gb_title like #{find_name}
+     </if>
+     <if test="find_field=='gb_content'"><!-- 검색 조건이 내용인 경우 -->
+     gb_content like #{find_name}
+     </if>
+    </where>
+    
+      ))<!-- order by bbs_ref desc,bbs_level asc))  -->
+   </select>
+ 
+ </mapper>

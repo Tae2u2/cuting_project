@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+h1{
+	text-align: center;
+	padding-top: 100px;
+	margin-bottom: 100px;
+	color: #616161;	
+}
+
+.qt-table{
+	margin: 25px auto;
+	font-size: 0.9em;
+	min-width: 800px;
+	margin-bottom: 200px;
+}
+
+.qt-table thead tr{
+	background-color: #FFE082;
+	color: #424242;
+	width: 80%;
+	padding: 5px 20px 5px 20px;
+	text-align: center;
+	font-weight: bold;
+	
+}
+
+.qt-table th,
+.qt-table td{
+	padding: 15px 20px;
+}
+
+.qt-table tbody tr{
+	border-bottom: 1px solid #dddddd;
+}
+.qt-table tbody tr:nth-of-type(even){
+	background-color: #f3f3f3;
+}
+
+.qt-table tbody tr:last-of-type{
+	border-bottom: 2px solid #FFF176;
+}
+
+input{
+	float: right;
+	padding: 10px 20px;
+	color: #fff;
+	border-radius: 10px;
+	border: none;
+	background: #F57C00;
+	cursor: pointer;
+}
+

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="QnA">
+ 
+   <!-- 게시판 저장 -->
+   <insert id="qna_in" parameterType="qna">
+     insert into QNA_test (qa_postnb,qa_id,qa_pw,qa_upload,qa_title,qa_content)
+      values(qa_postnb_testseq.nextval,#{qa_id},#{qa_pw},sysdate,#{qa_title},#{qa_content})
+   </insert>
+   
+   <!-- 총 레코드 개수-->
+   <select id="qna_count" resultType="int">
+     select count(*) from QNA_test
+   </select>
+   
+   <!-- 페이징이 적용된 게시판 목록 -->
+   <select id="qna_list" resultType="net.daum.vo.QnAVO" parameterType="qna">
+    select * from
+    (select rowNum rNum,qa_postnb,qa_title,qa_viewcnt,qa_upload from (select * from QNA_test order by qa_postnb desc))
+   </select>
+   
+   <!-- 조회수 증가 -->
+   <update id="qna_hit" parameterType="int">
+    update QNA_test set qa_viewcnt=qa_viewcnt+1 where qa_postnb=#{qa_postnb}
+   </update>
+   
+   <!-- 내용보기 -->
+   <select id="qna_cont" parameterType="int" resultType="qna">
+    select * from QNA_test where qa_postnb=#{qa_postnb}
+   </select>
+   
+   <!-- 수정 -->
+   <update id="qna_edit">
+    update QNA_test set qa_id=#{qa_id}, qa_title=#{qa_title}, qa_content=#{qa_content} where qa_postnb=#{qa_postnb}
+   </update>
+   
+   <!-- 삭제 -->
+   <delete id="qna_del">
+     update QNA_test set qa_delflag=1 where qa_postnb=#{qa_postnb}
+   </delete>
+   
+
+ </mapper>
+ 
