@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="../header.jsp" %>
+<%@ include file="../qt_project/header.jsp" %>
 <script src="../resources/js/jquery.js"></script>
 <link rel="stylesheet" href="../resources/css/QnA_qt_style.css">
 <meta charset="UTF-8">
@@ -39,4 +39,4 @@
   </tr>		
 	</table>
 </body>
-<%@ include file="../bottom_qt.jsp"%>
+<%@ include file="../qt_project/bottom_qt.jsp"%>
