@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <meta charset="UTF-8">
-<%@ include file="../header.jsp" %>
+<%@ include file="../qt_project/header.jsp" %>
 <link rel="stylesheet" href="css/comunity_style.css">
 <title>큐팅::함께소통하세요</title>
 </head>
@@ -77,4 +77,4 @@
 	<h3> 여기다가 쪽 나눌지 아니면 로딩되게 할지.</h3>
 	</div>
 </body>
-<%@ include file="../bottom_qt.jsp" %>
+<%@ include file="../qt_project/bottom_qt.jsp" %>
