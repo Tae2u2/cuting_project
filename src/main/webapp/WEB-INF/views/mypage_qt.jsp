@@ -29,7 +29,7 @@
  		<div class="profile tabShow">
  		<h1 class="aboutH1">회원정보</h1>
  		<h2>이름</h2>
- 		<input type="text" class="input-qt" value="김연경">
+ 		<input type="text" class="input-qt" value="김연경123123123">
  		<h2>닉네임</h2>
  		<input type="text" class="input-qt" value="배구조아">
  		<h2>생년월일</h2>
