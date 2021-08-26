@@ -20,7 +20,7 @@ import com.oreilly.servlet.MultipartRequest;
 import net.daum.service.NoticeService;
 import net.daum.vo.NoticeVO;
 
-@Controller
+@Controller //08.26 유재선 왓다감.
 public class NoticeController {
 
 	@Autowired //자동의존성 주입
