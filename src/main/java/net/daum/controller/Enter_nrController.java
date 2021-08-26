@@ -111,6 +111,6 @@ public class Enter_nrController {
 			listM.addAttribute("find_field",find_field);//find_field 속성 키이름에 검색필드를 저장
 			listM.addAttribute("find_name", find_name);//find_name 속성 키이름에 검색어를 저장
 			
-			return "enter_nr/enter_nr";
+			return "enter_nr/enter_nr";//수민최종 
 		}//bbs_list()
 }
