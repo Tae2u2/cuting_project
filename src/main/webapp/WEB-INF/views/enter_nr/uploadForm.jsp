@@ -12,7 +12,7 @@
 <body>
 <form method="post" action="uploadForm_ok" onsubmit="return uploadForm_check();" enctype="multipart/form-data">
 	<div class="forLineUp">
-	<h1>나만의 글 쓰기</h1> <%-- 테스트12121212 --%>
+	<h1>나만의 글 쓰기</h1> <%-- 테스트121212121 --%>
 	
 	
 	<div class="write-post-container">
