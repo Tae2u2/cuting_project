@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,26 +28,35 @@ public class Enter_nrController {
 	@Autowired
 	private Enter_nrService enter_nrService;
 	
+	
+	@GetMapping("dog01")
+	public String dogPage01() {
+		return "enter_nr/dogphoto01_bet";
+	}
+	
 	//오늘의 노름 폼
-	@GetMapping("/enter_nr")
+	@GetMapping("enter_nr")
 	public ModelAndView enter_nr() {
 		ModelAndView am=new ModelAndView();
 		am.setViewName("enter_nr/enter_nr");//뷰리졸브 경로=> /WEB-INF/views/enter_nr/enter_nr.jsp로 이동
 		return am;
 	}//enter_nr()
-
+	
+	
 	//자료실 글쓰기 폼
-	@GetMapping("/uploadForm")
-	public ModelAndView uploadForm() {
-		ModelAndView am=new ModelAndView();
-		am.setViewName("enter_nr/uploadForm");//뷰리졸브 경로=> /WEB-INF/views/enter_nr/uploadForm.jsp로 이동
-		return am;
+	@GetMapping("uploadForm")
+	public String uploadForm(HttpServletRequest request, Model rttr , HttpSession session, @ModelAttribute Enter_nrVO en) {
+		en.setGb_id((String) request.getSession().getAttribute("id"));
+		rttr.addAttribute("gb_id",en.getGb_id());
+		System.out.println(en.getGb_id());
+		return "enter_nr/uploadForm";
 	}//uploadForm()
 
-	
-	@PostMapping("/uploadForm_ok") //post로 접근하는 매핑주소를 처리
+
+	@PostMapping("uploadForm_ok") //post로 접근하는 매핑주소를 처리
 	public String uploadForm_ok(@ModelAttribute Enter_nrVO en, HttpServletRequest request) throws Exception{
 		
+		//System.out.println("저장성공");
 		String saveFolder=request.getRealPath("upload");//이진파일 업로드 서버 경로=>톰캣 WAS 서버에 의해서 변경된 실제 톰캣 프로젝트 경로
 		int fileSize=5*1024*1024;//이진파일 업로드 최대크기=>5M
 		MultipartRequest multi=null;//이진파일 업로드 참조변수->cos.jar로 부터 읽어들임.
@@ -95,7 +105,7 @@ public class Enter_nrController {
 	
 	
 	//오늘의 노름 폼 - 자료실 목록(검색)
-		@RequestMapping("/enter_nr")  //GET OR POST방식으로 접근하는 매핑주소를 처리,bbs_list매핑주소 등록
+		@RequestMapping("enter_nr")  //GET OR POST방식으로 접근하는 매핑주소를 처리,bbs_list매핑주소 등록
 		public String bbs_list(Model listM,HttpServletRequest request,@ModelAttribute Enter_nrVO en) throws Exception{
 			
 			//검색필드와 검색어
@@ -111,6 +121,6 @@ public class Enter_nrController {
 			listM.addAttribute("find_field",find_field);//find_field 속성 키이름에 검색필드를 저장
 			listM.addAttribute("find_name", find_name);//find_name 속성 키이름에 검색어를 저장
 			
-			return "enter_nr/enter_nr";//수민최종 
+			return "enter_nr/enter_nr";
 		}//bbs_list()
 }
