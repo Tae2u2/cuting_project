@@ -15,6 +15,8 @@ CREATE TABLE USER_INFO (
 insert into user_info (info_id, info_pw, info_name, info_bday, info_phonenumber, info_email, info_nickname, info_joindate)
 values('源�','123','�븳鍮�','970213',123123,'khb2870@naver.com','萸됱묠',sysdate)
 
+update user_info set info_id='zxc', info_name='zxc', info_bday='980817', info_nickname='asdf' where info_id='qwer';
+
 COMMENT ON COLUMN "USER_INFO"."info_id" IS '�븘�씠�뵒_PK';
 
 COMMENT ON COLUMN "USER_INFO"."info_pw" IS '鍮꾨�踰덊샇';
@@ -45,7 +47,7 @@ insert into user_info (info_id,info_pw,info_name,info_nickname,info_phonenumber,
 
 insert into user_info values ("123","123","123","123",123,"123",sysdate,sysdate,sysdate,"1234",0)
 
-select * from user_info
+select * from user_info;
 
 drop table user_info;
 

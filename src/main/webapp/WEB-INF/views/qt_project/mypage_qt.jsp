@@ -29,28 +29,30 @@
  	
  	
  	 <div class="about_qt-rightbox">
+ 	 <form name="f" method="post" action="modify">
  		<div class="profile tabShow">
  		<h1 class="aboutH1">회원정보</h1>
  		<c:if test="${!empty ulist}">
  		<c:forEach var="u" items="${ulist}">
  		<h2>이름</h2>
- 		<input type="text" class="input-qt" value="${u.info_name}">
+ 		<input type="text" class="input-qt" id="info_name" name="info_name" value="${u.info_name}">
  		<h2>닉네임</h2>
- 		<input type="text" class="input-qt" value="${u.info_nickname}">
+ 		<input type="text" class="input-qt" name="info_nickname" id="info_nickname" value="${u.info_nickname}">
  		<h2>생년월일</h2>
  		<input type="date" class="input-qt" name="birth" value="${u.info_bday}" min="1930-01-01">
- 		<label for="email"><h2>Email</h2></label>
-		<input type="email" class="input-qt" pattern="@" size="30" required>
+ 	<!-- <label for="email"><h2>Email</h2></label>
+		<input type="email" class="input-qt" pattern="@" size="30" required> -->
  		<h2>연락처</h2>
- 		<input type="tel" class="input-qt" value="${u.info_phonenumber}">
+ 		<input type="tel" class="input-qt" name="info_phonenumber" id="info_phonenumber" value="${u.info_phonenumber}">
  		<h2>아이디</h2>
- 		<input type="text" class="input-qt" value="${u.info_id}">
+ 		<input type="text" class="input-qt" name="info_id" id="info_id" value="${u.info_id}" readonly>
  		<h2>비밀번호</h2>
- 		<input type="password" class="input-qt" value="${u.info_pw}">
+ 		<input type="password" class="input-qt" name="info_pw" id="info_pw" value="${u.info_pw}">
  		</c:forEach>
   </c:if>
- 		<button class="aboutBtn">수정하기</button>
+ 		<input type="submit" value="수정하기"/>
  		</div>
+ 		</form>
  		
  		<div class="payment tabShow">
  		<h1 class="aboutH1">결제정보</h1>
