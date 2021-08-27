@@ -72,7 +72,7 @@
 							<div class="bb">
 								<button type="button" name="likeButton"><i class="fas fa-heart fa-heart01"></i></button>
 								<button type="button" name="comment-button" class="image01"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="./dogphoto01_bet.jsp">
+								<a href="dog01">
 								<!-- <button type="button" name="enter_betting" class="enter_bt">배팅</button> -->
 								<div class="pad">
 									<button type="button" name="enter_betting" value="배팅하러가기" onclick="location='dogphoto01_bet';"><i class="fab fa-bitcoin"></i></button>
