@@ -12,14 +12,14 @@
 <body>
 <form method="post" action="uploadForm_ok" onsubmit="return uploadForm_check();" enctype="multipart/form-data">
 	<div class="forLineUp">
-	<h1>나만의 글 쓰기</h1> <%-- 테스트12121212133 --%>
+	<h1>나만의 글 쓰기</h1>
 	
 	
 	<div class="write-post-container">
 		<div class="user-profile">
 			<i class="fas fa-paw"></i>
 			<div>
-				<p>${gb_id}</p>
+				<p><script>document.write('${gb_id}')</script></p>
 			</div>		
 		</div>
 		<div class="select-box-container">
