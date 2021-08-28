@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 </body>
 <link rel="stylesheet" href="../resources/css/bottom_qt_style.css">
+
 <footer>
 	<div class=lastmap>
 		<div class="row_qt">

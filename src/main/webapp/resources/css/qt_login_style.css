@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 
-.container{
+.loginContainer{
 	/*vw vh는 반응형웹에서 쓰는 단위라고 보면 된다. 약간 퍼센트 같은 화면줄이면 줄어들고 이런거! 이걸 100으로 하는건 화면을 줄여도 내가 이 컨테이너 안에 넣은 내용이 100프로 다 보이라고 하는것과 같다*/
 	width:100vw;
 	height: 80vh;
@@ -22,7 +22,7 @@
 	width: 500px;
 }
 
-.login-container{
+.loginBox{
 	display: flex;
 	align-items: center;
 	text-align:center;
@@ -144,7 +144,7 @@ a:hover{
 	color: #999;
 }
 
-.btn{
+.loginBtn{
 	display: block;
 	width: 100%;
 	height: 50px;

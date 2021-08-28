@@ -34,5 +34,11 @@ public class User_InfoServiceImpl implements User_InfoService {
 		return this.user_infoDao.getUser_InfoList(ui);
 	}
 
+	@Override
+	public void editUser_Info(User_InfoVO ui) {
+		// TODO Auto-generated method stub
+		this.user_infoDao.editUser_info(ui);
+	}
+
 
 }

@@ -65,6 +65,95 @@
 	color: #ff4321;
 }
 
+.mypageBox{
+	position: relative;
+	width: 200px;
+	height: 110px;
+	/*height: 350px;*/
+	background:#fff;
+	padding: 20px;
+	overflow: hidden;
+}
+
+.mypageBox.active{
+	height: 350px;
+}
+
+.mypageContent{
+	display: flex;
+	align-items:center;
+}
+.memberImage i{
+	position: absolute;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 100%;
+	object-fit:cover;	
+}
+.mypageContent h2{
+	margin-left:15px;
+	font-size: 1.3em;
+	color:#111;
+}
+.mypageContent h2 span{
+	font-size: 0.8em;
+	font-weight: 400;
+	color: #626262;
+	
+}
+.memberNavi{
+	position: relative;
+	top: 15px;
+	border-top: 1px solid #626262;
+	padding: 15px 0;
+}
+
+.memberNavi li{
+	list-style:none;
+	margin: 15px 0;
+}
+.memberNavi li a{
+	text-decoration: none;
+	display: flex;
+	align-items:center;
+	color: #555;
+	font-size: 1.1em;
+	transition: 0.25s;
+}
+.memberNavi li a:hover{
+	color: #E65100;
+}
+.memberNavi li a i{
+	font-size: 1.5em;
+	margin-right: 10px;
+}
+
+.memberToggle{
+	position:absolute;
+	bottom: 0;
+	right:0;
+	width: 25px;
+	height: 25px;
+	background: #E65100;
+	display: flex;
+	justify-content:center;
+	align-items:center;
+	cursor: pointer;
+	z-index:100;
+}
+
+.memberToggle i{
+	color: #fff;
+	font-size: 1.2em;
+	transition: transform ease-in-out 0.5s;
+}
+
+.mypageBox.active .memberToggle i{
+	transform: rotate(-180deg);
+}
+
+
 .welcome{
 	float: right;
 	align-items: center;

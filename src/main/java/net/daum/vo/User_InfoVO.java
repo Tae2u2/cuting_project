@@ -14,6 +14,8 @@ public class User_InfoVO {
 	private String info_deldate;//삭제날짜
 	private int info_delflag;//삭제 여부 확인
 	
+	private String session_id;
+	
 	
 	public String getInfo_id() {
 		return info_id;
@@ -80,6 +82,12 @@ public class User_InfoVO {
 	}
 	public void setInfo_delflag(int info_delflag) {
 		this.info_delflag = info_delflag;
+	}
+	public String getSession_id() {
+		return session_id;
+	}
+	public void setSession_id(String session_id) {
+		this.session_id = session_id;
 	}
 	
 }

@@ -18,4 +18,7 @@
  <select id="ui_info" parameterType="ui" resultType="ui">
  	select * from user_info where info_id = #{info_id}
  </select>
+ <update id="ui_modify" parameterType="ui">
+ 	update user_info set info_id=#{info_id}, info_nickname=#{info_nickname}, info_phonenumber=#{info_phonenumber}, info_name=#{info_name}, info_pw=#{info_pw} where info_id=#{session_id}
+ </update>
  </mapper>

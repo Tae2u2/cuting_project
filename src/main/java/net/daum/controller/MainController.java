@@ -24,7 +24,7 @@ public class MainController {
 	@Autowired
 	private User_InfoService user_infoService;
 	
-	@GetMapping("main")
+	@GetMapping("/")
 	public String mainPage() {
 		System.out.println("이건 못참지");
 		
@@ -41,7 +41,7 @@ public class MainController {
 	public String join_ok(User_InfoVO ui, RedirectAttributes rttr) {
 		this.user_infoService.insertUser_Info(ui);
 		rttr.addFlashAttribute("result","success");
-		return "redirect:/main";
+		return "redirect:/";
 		
 	}
 	
@@ -57,7 +57,7 @@ public class MainController {
 		if(i==1) {
 			request.getSession().setAttribute("id", ui.getInfo_id());
 			rttr.addAttribute("result", ui.getInfo_id());
-			return "redirect:/main";
+			return "redirect:/";
 		}
 		else {
 			return "redirect:/login";
@@ -87,6 +87,16 @@ public class MainController {
 	@RequestMapping(value="logout")
 	public String logOut(HttpSession session, HttpServletRequest request) {
 		request.getSession().invalidate();
-		return "redirect:/main";
+		return "redirect:/";
 	}
+	
+	@RequestMapping(value="modify",method=RequestMethod.POST)
+	public String modifyInfo(HttpServletRequest request, User_InfoVO ui) {
+		System.out.println("수정눌렀땅");
+		ui.setSession_id((String)request.getSession().getAttribute("id"));
+		System.out.println(ui.getSession_id());
+		this.user_infoService.editUser_Info(ui);
+		return "redirect:/myinfo";
+	}
+	
 }

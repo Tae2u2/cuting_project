@@ -1,11 +1,13 @@
 package net.daum.controller;
 
 import java.io.File;
+import java.io.PrintWriter;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,25 +47,37 @@ public class Enter_nrController {
 	
 	//자료실 글쓰기 폼
 	@GetMapping("uploadForm")
-	public String uploadForm(HttpServletRequest request, Model rttr , HttpSession session, @ModelAttribute Enter_nrVO en) {
+	public String uploadForm(HttpServletRequest request, Model model , HttpSession session, @ModelAttribute Enter_nrVO en) {
 		en.setGb_id((String) request.getSession().getAttribute("id"));
-		rttr.addAttribute("gb_id",en.getGb_id());
+		model.addAttribute("gb_id",en.getGb_id());
 		System.out.println(en.getGb_id());
 		return "enter_nr/uploadForm";
 	}//uploadForm()
 
 
 	@PostMapping("uploadForm_ok") //post로 접근하는 매핑주소를 처리
-	public String uploadForm_ok(@ModelAttribute Enter_nrVO en, HttpServletRequest request) throws Exception{
+	public String uploadForm_ok(@ModelAttribute Enter_nrVO en,HttpSession session,HttpServletResponse response, HttpServletRequest request) throws Exception{
 		
-		//System.out.println("저장성공");
+		response.setContentType("text/html;charset=UTF-8");//서버에서 사용자에게 메세지 보낼때 사용되는 언어타입 UTF-8로설정. 안했을시 한글이 깨지거나 읽어들이지 못하는 현상 발생. 
+		PrintWriter out=response.getWriter(); //개발자가 쓴 글을 jsp를따로 만들어 alert('${msg}');한다음 다시 컨트롤러로 호출시키려는 번거로움을 줄이고자 변수out에 담음
+		
 		String saveFolder=request.getRealPath("upload");//이진파일 업로드 서버 경로=>톰캣 WAS 서버에 의해서 변경된 실제 톰캣 프로젝트 경로
 		int fileSize=5*1024*1024;//이진파일 업로드 최대크기=>5M
 		MultipartRequest multi=null;//이진파일 업로드 참조변수->cos.jar로 부터 읽어들임.
 		
 		multi=new MultipartRequest(request,saveFolder,fileSize,"UTF-8");
 		
-		String gb_id=multi.getParameter("gb_id");
+		String gb_id=(String)request.getSession().getAttribute("id"); //현재 세션상 로그인된 아이디를 불러들임
+		
+		if(gb_id==null) {//만약 세션값이 없다면 즉, 로그인을 하지 않고 이용한 상태라면 다음 문장들을 실행시킴.
+			System.out.println("뒤로 ㄱㄱ");
+				out.println("<script>");
+				out.println("alert('로그인 후 이용 가능합니다!');");
+				out.println("location='login';");
+				out.println("</script>");
+		}
+			
+		String gb_title=multi.getParameter("gb_title");
 		String gb_content=multi.getParameter("gb_content");
 		
 		File upFile=multi.getFile("gb_filename");//첨부한 이진파일을 가져온다.
@@ -87,7 +101,7 @@ public class Enter_nrController {
 		    int index=fileName.lastIndexOf(".");//첨부한 파일에서 .를 맨 오른쪽 부터 찾아서 가장먼저 나오는 .의 위치번호를 맨 왼쪽첫문자를 0부터 시작해서 카운터한 위치
 		    //번호를 반환.
 		    String fileExtendsion=fileName.substring(index+1);//.이후 부터 마지막 문자까지 구함. 즉 첨부한 파일의 확장자를 구함.
-		    String refileName="Nr"+year+month+date+random+"."+fileExtendsion;//새로운 이진파일명 저장
+		    String refileName="Nr"+"-"+year+"_"+month+"_"+date+"_"+random+"."+fileExtendsion;//새로운 이진파일명 저장
 		    String fileDBName="/"+year+"-"+month+"-"+date+"/"+refileName;//데이터베이스에 저장될 레코드 값
 		    
 		    upFile.renameTo(new File(homedir+"/"+refileName));//변경된 이진파일로 새롭게 생성된 폴더에 실제 업로드
@@ -96,9 +110,11 @@ public class Enter_nrController {
 			String fileDBName="";
 			en.setGb_filename(fileDBName);
 		}
-		en.setGb_id(gb_id); en.setGb_content(gb_content);
+		en.setGb_id(gb_id); en.setGb_content(gb_content); en.setGb_title(gb_title);
 		
 		this.enter_nrService.insertNr(en);//자료실 저장
+		
+		System.out.println("저장성공");
 		
 		return "redirect:/enter_nr";//목록보기 매핑으로 이동		
 	}//uploadForm_ok()

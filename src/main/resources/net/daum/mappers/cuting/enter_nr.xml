@@ -8,7 +8,7 @@
  
  	<!-- 자료실 저장 -->
    <insert id="nr_in" parameterType="nr"> <!-- parameterType속성은 전달인자 자료형이고 생략 가능하다. -->
-    insert into enter_nr (gb_postnb,gb_id,gb_title,gb_filename,gb_content,gb_update)
+    insert into gamble (gb_postnb,gb_id,gb_title,gb_filename,gb_content,gb_update)
     values(gb_postnb_seq.nextval,#{gb_id},#{gb_title},#{gb_filename},#{gb_content},sysdate)
    </insert>
    

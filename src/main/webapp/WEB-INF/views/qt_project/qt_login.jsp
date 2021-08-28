@@ -5,15 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>큐팅: 환영합니다!</title>
-<link rel="stylesheet" type="text/css" href="./resources/css/qt_login_style.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/qt_login_style.css">
 <script src="https://kit.fontawesome.com/a81368914c.js"></script>
 </head>
 <body>
-	<div class="container">
+	<div class="loginContainer">
 		<div class="dogimg">
 			<img src="./resources/images/homeimg.png">
 		</div>
-		<div class="login-container">
+		<div class="loginBox">
 			<form class="hellogb" method="post" action="login_ok">
 				<img class="chips" src="./resources/images/logo2.png">
 				<h2>WELCOME</h2><!-- h2는 여기에만 써서 클래스 지정 안해도됨 -->
@@ -36,11 +36,11 @@
 					</div>
 				</div>
 				<a href="#">아이디 찾기</a><a href="#">비밀번호 찾기</a> 
-				<input type="submit" class="btn" value="Login"> 
+				<input type="submit" class="loginBtn" value="Login"> 
 			</form>
 		</div>
 	</div>
-	<script type="text/javascript" src="./resources/js/qt_login.js"></script>
+	<script type="text/javascript" src="../resources/js/qt_login.js"></script>
 </body>
 
 <%@ include file="bottom_qt.jsp"%>

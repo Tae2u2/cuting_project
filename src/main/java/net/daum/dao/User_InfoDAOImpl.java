@@ -32,5 +32,12 @@ public class User_InfoDAOImpl implements User_InfoDAO {
 		return this.sqlSession.selectList("ui_info",ui);
 	}
 
+	@Override
+	public void editUser_info(User_InfoVO ui) {
+		// TODO Auto-generated method stub
+		this.sqlSession.update("ui_modify",ui);
+		
+	}
+
 	
 }
