@@ -10,6 +10,7 @@ CREATE TABLE QNA (
 	qa_title	varchar(50)		NOT NULL,--제목
 	qa_content	varchar(2000)		NULL--내용
 );
+--위에 varchar타입 varchar2로 다 수정했음
 
 create sequence qa_postnb_seq
 start with 1
@@ -22,6 +23,15 @@ ALTER TABLE QNA ADD CONSTRAINT PK_QNA PRIMARY KEY (
 );
 
 select * from QNA
+
+alter table QNA modify qa_content varchar2(2000);
+
+
+insert into QNA values (qa_postnb_seq.nextval,'QNAID','1234',sysdate,sysdate,sysdate,0,0,'제목','내용');
+
+insert into QNA(qa_postnb,qa_id,qa_pw,qa_upload,qa_title,qa_content)
+      values(qa_postnb_seq.nextval,'qnaid','1234',sysdate,'질문입니다','내용입니다');
+
 
 CREATE TABLE QNA_test (
 	qa_postnb	number(20)	primary key,--QNA번호

@@ -40,6 +40,12 @@ h1 a:hover{
 	padding: 15px 20px;
 }
 
+.qt-table th a{
+	text-decoration: none;
+	
+	
+}
+
 .qt-table tbody tr{
 	border-bottom: 1px solid #dddddd;
 }

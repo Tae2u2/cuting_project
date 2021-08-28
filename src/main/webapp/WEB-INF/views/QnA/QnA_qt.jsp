@@ -7,7 +7,8 @@
 <title>큐팅::묻고답하기</title>
 </head>
 <body>
-	<h1><a href="">Q&A</a> | <a href="">신고하기</a></h1>
+	<h1><a href="QnA_qt">Q&A</a> | <a href="QnA_qt">신고하기</a></h1>
+
 	<table class="qt-table">
 		<tr>
 			<th>번호</th>

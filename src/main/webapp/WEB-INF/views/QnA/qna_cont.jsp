@@ -7,23 +7,18 @@
 <title>큐팅::묻고답하기</title>
 </head>
 <body>
-	<h1><a href="#">Q&A</a> | <a href="#">신고하기</a></h1>
+	<h1><a href="QnA_qt">Q&A</a> | <a href="QnA_qt">신고하기</a></h1>
 	
 	<table class="qt-table" border="1">
   <tr>
-   <th colspan="2">내용보기</th>
+   <th colspan="3">내용보기</th>
   </tr>
   <tr>
-   <th>제목</th> <td>${qna.qa_title}</td>
-  </tr>
+   <th colspan="0.2">제목</th> <td colspan="1.8">${qna.qa_title}</td> <td>조회수 | ${qna.qa_viewcnt}</td>
+  </tr> 
+  <th colspan="3">${qna.qa_content}</th> 
   <tr>
-   <th>내용</th> <td>${qna.qa_content}</td>
-  </tr>
-  <tr>
-   <th>조회수</th> <td>${qna.qa_viewcnt}</td>
-  </tr>  
-  <tr>
-   <th colspan="2">
+   <th colspan="3">
     <input type="button" value="수정" class="BtnforCss" onclick="location='/cuting/QnA/qna_edit?qa_postnb=${qna.qa_postnb}&page=${page}';" />
     <input type="button" value="삭제" class="BtnforCss" onclick="location='/cuting/QnA/qna_del?qa_postnb=${qna.qa_postnb}&page=${page}';" />
     <input type="button" value="목록" class="BtnforCss" onclick="location='/cuting/QnA/QnA_qt?page=${page}';" />

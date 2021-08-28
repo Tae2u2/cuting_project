@@ -9,11 +9,11 @@
 %> 
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="./resources/css/header_style.css">
+<link rel="stylesheet" href="../resources/css/header_style.css">
 <script src="https://kit.fontawesome.com/a963872baf.js" crossorigin="anonymous"></script>
 </head>
 <div class="menubar">
-		<img src="./resources/images/logo2.png" class="logo">
+		<img src="../resources/images/logo2.png" class="logo">
 		<ul>
 			<li class="active"><a href="">STORY</a>
 				<div class="sub-menu-1">

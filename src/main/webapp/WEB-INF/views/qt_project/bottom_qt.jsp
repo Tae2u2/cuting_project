@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 </body>
-<link rel="stylesheet" href="./resources/css/bottom_qt_style.css">
+<link rel="stylesheet" href="../resources/css/bottom_qt_style.css">
 <footer>
 	<div class=lastmap>
 		<div class="row_qt">
 			<div class="col_qt">
-			<img class="bottomlogo" src="./resources/images/logo2.png">
+			<img class="bottomlogo" src="../resources/images/logo2.png">
 			<p>모두가 즐거운 공간이 되도록 최선을 다하겠습니다.</p>
 			</div>
 			<div class="col_qt">

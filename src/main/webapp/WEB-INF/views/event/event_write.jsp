@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ include file="../header.jsp"%>
+<%@ include file="../qt_project/header.jsp"%>
 
 <meta charset="UTF-8">
 <title></title>
@@ -23,4 +23,4 @@
 </form>
 </div>
 </body>
-<%@ include file="../bottom_qt.jsp"%>
+<%@ include file="../qt_project/bottom_qt.jsp"%>

@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1>
-		<a href="#">Q&A</a> | <a href="#">신고하기</a>
+		<a href="QnA_qt">Q&A</a> | <a href="QnA_qt">신고하기</a>
 	</h1>
 	
 	<div class="qt-write-form">
@@ -24,7 +24,7 @@
 				
 				<input type="submit" value="수정" class="BtnforCss" /> 
 				<input type="reset" value="취소" class="BtnforCss"/>
-				<input type="button" value="목록" class="BtnforCss" onclick="location='/cuting/QnA/QnA_qt?page=${page}';" />
+				<input type="button" value="목록" class="BtnforCss" onclick="location='QnA_qt';" />
 
 		</form>
 	</div>

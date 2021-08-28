@@ -3,7 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 
   
-<%@ include file="../header.jsp"%>
+<%@ include file="../qt_project/header.jsp"%>
 <meta charset="UTF-8">
 <title>큐팅::이벤트에 참여하세요</title>
 <link rel="stylesheet" href="css/event_qt.css">
@@ -44,4 +44,4 @@
    </c:if>
 
 </body>
-<%@ include file="../bottom_qt.jsp"%>
+<%@ include file="../qt_project/bottom_qt.jsp"%>
