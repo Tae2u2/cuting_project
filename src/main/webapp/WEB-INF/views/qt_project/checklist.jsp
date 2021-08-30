@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <meta charset="UTF-8">
 <%@ include file="header.jsp"%>
-<link rel="stylesheet" type="text/css" href="css/checklist_style.css">
+<link rel="stylesheet" type="text/css" href="${path}/resources/css/checklist_style.css">
 <title>큐팅::찜목록</title>
 </head>
 <body>

@@ -24,8 +24,8 @@
 
 .menubar ul li{
 	width:150px;
-	margin:15px;
-	padding: 15px;
+	margin:7px;
+	padding: 8px;
 }
 .menubar ul li a{
 	text-decoration: none;
@@ -67,33 +67,28 @@
 
 .mypageBox{
 	position: relative;
-	width: 200px;
-	height: 110px;
+	float: right;
+	width: 190px;
+	height: 61px;
 	/*height: 350px;*/
 	background:#fff;
-	padding: 20px;
+	margin-right: 2rem;
+	margin-top: 2.3rem;
 	overflow: hidden;
+	transition: height 0.3s ease-in-out;
 }
 
 .mypageBox.active{
-	height: 350px;
+	height: 400px;
 }
 
 .mypageContent{
-	display: flex;
-	align-items:center;
+	text-align:left;
 }
-.memberImage i{
-	position: absolute;
-	top:0;
-	left:0;
-	width: 100%;
-	height: 100%;
-	object-fit:cover;	
-}
+
 .mypageContent h2{
 	margin-left:15px;
-	font-size: 1.3em;
+	font-size: 1.1em;
 	color:#111;
 }
 .mypageContent h2 span{
@@ -104,28 +99,29 @@
 }
 .memberNavi{
 	position: relative;
-	top: 15px;
-	border-top: 1px solid #626262;
-	padding: 15px 0;
+	top: 7px;
+	border-top: 1px solid #BDBDBD;
+	padding: 10px 0;
 }
 
 .memberNavi li{
 	list-style:none;
-	margin: 15px 0;
+	margin: 5px 0;
+	border-bottom: 1px solid #BDBDBD;
 }
 .memberNavi li a{
 	text-decoration: none;
 	display: flex;
 	align-items:center;
 	color: #555;
-	font-size: 1.1em;
-	transition: 0.25s;
+	font-size: 0.9em;
+	transition: color 0.25s;
 }
 .memberNavi li a:hover{
 	color: #E65100;
 }
 .memberNavi li a i{
-	font-size: 1.5em;
+	font-size: 0.9em;
 	margin-right: 10px;
 }
 
@@ -145,7 +141,7 @@
 
 .memberToggle i{
 	color: #fff;
-	font-size: 1.2em;
+	font-size: 0.9em;
 	transition: transform ease-in-out 0.5s;
 }
 

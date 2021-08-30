@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../qt_project/header.jsp" %>
 <script src="../resources/js/jquery.js"></script>
-<link rel="stylesheet" href="../resources/css/QnA_qt_style.css">
+<link rel="stylesheet" href="${path}/resources/css/QnA_qt_style.css">
 <meta charset="UTF-8">
 <title>큐팅::묻고답하기</title>
 </head>

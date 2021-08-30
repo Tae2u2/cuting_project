@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <script type="text/javascript" src="./resources/js/uploadForm.js"></script>
 <title>업로드폼</title>
-<%@ include file="header.jsp" %>
+<%@ include file="../qt_project/header.jsp"%>
 </head>
 <body>
 <form method="post" action="uploadForm_ok" " onsubmit="return upload_check()" enctype="multipart/form-data">
@@ -49,4 +49,4 @@
 	</div>
 </form>
 </body>
-<%@ include file="bottom_qt.jsp" %>
+<%@ include file="../qt_project/bottom_qt.jsp"%>

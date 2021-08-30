@@ -3,7 +3,7 @@
 <%@ include file="header.jsp"%>
 <meta charset="UTF-8">
 <title>큐팅::큐팅에대하여</title>
-<link rel="stylesheet" href="./css/about_qt_style.css">
+<link rel="stylesheet" href="${path}/css/about_qt_style.css">
 </head>
 <body>
 	<h1>ABOUT 큐팅</h1>

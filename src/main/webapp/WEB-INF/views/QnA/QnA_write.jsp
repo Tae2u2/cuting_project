@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../qt_project/header.jsp"%>
-<script src="../resources/js/jquery.js"></script>
-<link rel="stylesheet" href="../resources/css/QnA_qt_style.css">
+<script src="${path}/resources/js/jquery.js"></script>
+<link rel="stylesheet" href="${path}/resources/css/QnA_qt_style.css">
 <meta charset="UTF-8">
 <title>큐팅::묻고답하기</title>
 </head>
@@ -12,18 +12,20 @@
 	</h1>
 	<div class="qt-write-form">
 		<form method="post" action="QnA_write_ok">
+			 <h3>작성자 : <%=header %></h3><br>
+			 <p>
 				<select name="chooseQorD" id="QorD-select">
 					<option value="">--선택하세요--</option>
 					<option value="Q&A">Q&A</option>
 					<option value="declare">신고합니다</option>
 				</select>
 				<label for="qna-title">제목 : </label><input required type="text" name="qna-title" id="qna-title"/>
+			<label for="qna-pass">비밀번호 : </label><input required maxlength="4" type="password" name="qna-pass"
+					id="qna-pass" size="9" placeholder="●●●●" />
 			<p>
 			
 		
-			 <label for="qna-writer">글쓴이:</label><input required type="text" name="qna-writer" id="qna-writer"/> 
-			<label for="qna-pass">비밀번호 : </label><input required maxlength="4" type="password" name="qna-pass"
-					id="qna-pass" size="9" placeholder="●●●●" />
+			 <!--<label for="qna-writer">글쓴이:</label><input required type="text" name="qna-writer" id="qna-writer"/>-->
 			<p>
 				<label for="qna-content"></label>
 				<textarea name="qna-content" id="qna-content" ></textarea>

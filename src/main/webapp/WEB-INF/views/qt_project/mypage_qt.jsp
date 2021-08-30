@@ -3,7 +3,7 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <meta charset="UTF-8">
 <%@ include file="header.jsp" %>
-<link rel="stylesheet" href="../resources/css/mypage_qt_style.css">
+<link rel="stylesheet" href="${path}/resources/css/mypage_qt_style.css">
 <script src="https://kit.fontawesome.com/a963872baf.js" crossorigin="anonymous"></script>
 <title>큐팅::MyPage</title>
 </head>
@@ -82,5 +82,5 @@
  	</div>
  </div>
 </body>
-<script type="text/javascript" src="../resources/js/mypage_js.js"></script>
+<script type="text/javascript" src="./resources/js/mypage_js.js"></script>
 <%@ include file="bottom_qt.jsp" %>

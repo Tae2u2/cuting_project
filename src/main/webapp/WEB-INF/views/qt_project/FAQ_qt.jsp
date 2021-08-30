@@ -2,7 +2,7 @@
 <%@ include file="header.jsp"%>
 <title>큐팅::자주묻는질문</title>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="./css/FAQ_style.css">
+<link rel="stylesheet" href="${path}/resources/css/FAQ_style.css">
 </head>
 <body>
 <!-- main content -->

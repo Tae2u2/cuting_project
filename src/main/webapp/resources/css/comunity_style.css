@@ -3,11 +3,43 @@
 	margin: 0;
 	padding: 0;
 }
+
+.qt_aside{
+	width: 230px;
+	height: 800px;
+	top: 340px;
+	left: 80px;
+	position:absolute;
+	background-color:#FFE59D;
+	border-radius: 2px;
+}
+.qt_aside ul{
+	text-align: left;
+	margin-left: 10px;
+}
+.qt_aside ul li{
+	list-style: none;
+	padding: 10px 0;
+	border-bottom: 1px solid #BDBDBD;
+	width: 80%;
+}
+.qt_aside ul li a{
+	text-decoration: none;
+	color:#111;
+}
+.qt_aside ul li a:hover{
+	color: #1976D2;
+	font-weight: 500;
+}
 .forLineUp{
 	display: flex;
 	flex-flow: column nowrap;
-	align-items: center;/*사이드바 추가하면 위치 옮길거임*/
+	align-items: flex-end;
 	margin-top: 100px;
+	margin-right: 80px;
+}
+.forLineUp h1{
+	padding-right: 500px;
 }
 
 .write-post-container{

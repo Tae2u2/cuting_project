@@ -1,20 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
+    <script src="${path}/resources/js/jquery.js"></script>
 ​<%
 	Object obj_header=session.getAttribute("header");
 	String header=(String)obj_header;
 %> 
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../resources/css/header_style.css">
+<link rel="stylesheet" href="${path}/resources/css/header_style.css">
 <script src="https://kit.fontawesome.com/a963872baf.js" crossorigin="anonymous"></script>
+
 </head>
 <div class="menubar">
-		<a href="/controller/"><img src="../resources/images/logo2.png" class="logo"></a>
+		<a href="/controller/"><img src="${path}/resources/images/logo2.png" class="logo"></a>
 
 		<ul>
 			<li class="active"><a href="">STORY</a>
@@ -55,9 +57,6 @@
 		<% if(header!=null){ %>
 		<div class="mypageBox">
 			<div class="mypageContent">
-				<div class="memberImage">
-					<i class="fas fa-user"></i>
-				</div>
 				<h2>{닉네임}님!<br><span>환영합니다!</span></h2>
 			</div>
 			<ul class="memberNavi">
@@ -79,4 +78,4 @@
 		
 		
 		</div>
-<script type="text/javascript" src="../resources/js/header.js"></script>
+<script type="text/javascript" src="${path}/resources/js/header.js"></script>

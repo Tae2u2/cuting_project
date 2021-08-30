@@ -3,14 +3,14 @@
 <%@ include file="header.jsp"%>
 <meta charset="UTF-8">
 <title>큐팅: 환영합니다!</title>
-<link rel="stylesheet" type="text/css" href="../resources/css/join_qt_style.css">
+<link rel="stylesheet" type="text/css" href="${path}/resources/css/join_qt_style.css">
 <script src="https://kit.fontawesome.com/a81368914c.js"></script>
 <script src="../resource/js/jquery.js"></script>
 </head>
 <body>
-	<div class="container">
-		<div class="dogimg">
-			<img src="../resources/images/cat.png">
+	<div class="joinContainer">
+		<div class="joinDogImg">
+			<img src="${path}/resources/images/cat.png">
 		</div>
 		<div class="join-container">
 			<form name="f" method="post" action="join_ok"
@@ -76,6 +76,6 @@
 			</form>
 		</div>
 	</div>
-		<script type="text/javascript" src="../resources/js/join_qt.js"></script>
+		<script type="text/javascript" src="${path}/resources/js/join_qt.js"></script>
 </body>
 <%@ include file="bottom_qt.jsp"%>

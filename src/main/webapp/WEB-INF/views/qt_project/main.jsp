@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="header.jsp" %>
 <meta charset="UTF-8">
 <title>큐팅메인페이지</title>
-
+<link rel="stylesheet" href="${path}/resources/css/style.css">
 <script src="https://kit.fontawesome.com/a963872baf.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="../resources/css/style.css">
-<%@ include file="header.jsp" %>
+
 <% String result =  request.getParameter("result");
 	if(result!=null){
 		session.setAttribute("header", result);
@@ -20,8 +20,8 @@
 			<br><br><br><br><br><br><br><br><br><br><br><br><br>
 		</div>	
 		<div class="homeImg">
-			<img src="../resources/images/bgbg.png" class="back-img">
-			<img src="../resources/images/homeimg.png" class="main-img">
+			<img src="${path}/resources/images/bgbg.png" class="back-img">
+			<img src="${path}/resources/images/homeimg.png" class="main-img">
 		</div>
 		<script>
 		if (self.name != 'reload') {

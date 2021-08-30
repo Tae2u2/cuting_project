@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../qt_project/header.jsp" %>
-<script src="../resources/js/jquery.js"></script>
-<link rel="stylesheet" href="../resources/css/QnA_qt_style.css">
+<script src="${path}/resources/js/jquery.js"></script>
+<link rel="stylesheet" href="${path}/resources/css/QnA_qt_style.css">
 <meta charset="UTF-8">
 <title>큐팅::묻고답하기</title>
 </head>
@@ -15,6 +15,7 @@
 			<th>제목</th>
 			<th>글쓴이</th>
 			<th>조회수</th>
+			<th>게시날짜</th>
 		</tr>
 		<tr>
 			<c:if test="${!empty qnalist}">

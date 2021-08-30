@@ -3,7 +3,7 @@
 <%@ include file="header.jsp" %>
 <meta charset="UTF-8">
 <title>큐팅::포인트를 충전하세요</title>
-<link rel="stylesheet" href="./css/pricing_qt_style.css">
+<link rel="stylesheet" href="${path}/resources/css/pricing_qt_style.css">
 </head>
 <body>
 <div class="pr_plan-container">
