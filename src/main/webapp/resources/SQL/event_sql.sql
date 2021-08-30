@@ -1,4 +1,4 @@
-	create table EVENT(
+create table EVENT(
 	ev_postnb	number(20)	NOT NULL
 	,ev_filename varchar2(100)
 	,ev_update	date	NOT NULL

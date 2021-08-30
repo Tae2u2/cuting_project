@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,10 +26,18 @@ public class MainController {
 	private User_InfoService user_infoService;
 	
 	@GetMapping("/")
-	public String mainPage() {
+	public String mainPage(HttpServletRequest request,Model rttr, User_InfoVO ui) {
 		System.out.println("이건 못참지");
-		
-		return "qt_project/main";
+		if(request.getSession().getAttribute("id")!=null) {
+			ui.setInfo_id((String) request.getSession().getAttribute("id"));
+			System.out.println(ui.getInfo_id());
+			rttr.addAttribute("result", ui.getInfo_id());
+			return "qt_project/main";
+		}
+		else {
+			System.out.print("세션 어디감?");
+			return "qt_project/main";
+		}
 	}
 
 	

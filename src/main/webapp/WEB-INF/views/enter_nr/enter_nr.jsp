@@ -85,7 +85,7 @@
 					<!-- 2번째사진 -->
 					<li>
 						<div class="aa">
-							<img src="./resources/images/photo_dog02.png" alt="dog02 Image" class="image image02">
+							<img src="./resources/upload/2021-8-30/Nr-2021_8_30_53055522.jpg" alt="dog02 Image" class="image image02">
 
 							<div class="bb">
 								<button type="button" name="likeButton"><i class="fas fa-heart fa-heart02"></i></button>

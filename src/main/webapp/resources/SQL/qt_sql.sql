@@ -1,5 +1,5 @@
 CREATE TABLE USER_INFO (
-	info_id		varchar2(20)		NOT NULL,
+	info_id		varchar2(20)		NOT NULL primary key,
 	info_pw		varchar2(20)		NOT NULL,
 	info_name	varchar2(20)		NOT NULL,
 	info_bday	varchar2(20)		NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE USER_INFO (
 );
 
 insert into user_info (info_id, info_pw, info_name, info_bday, info_phonenumber, info_email, info_nickname, info_joindate)
-values('源�','123','�븳鍮�','970213',123123,'khb2870@naver.com','萸됱묠',sysdate)
+values('asdf','asdf','asdf','970213',123123,'khb2870@naver.com','asdf',sysdate)
 
 update user_info set info_id='zxc', info_name='zxc', info_bday='980817', info_nickname='asdf' where info_id='qwer';
 
@@ -39,11 +39,11 @@ COMMENT ON COLUMN "USER_INFO"."info_deldate" IS '�궘�젣�궇吏�';
 
 COMMENT ON COLUMN "USER_INFO"."info_delflag" IS '�궘�젣�뿬遺��솗�씤';
 
-ALTER TABLE "USER_INFO" ADD CONSTRAINT "PK_USER_INFO" PRIMARY KEY (
-	"info_id"
+ALTER TABLE USER_INFO ADD CONSTRAINT PK_USER_INFO PRIMARY KEY (
+	info_id
 );
 
-insert into user_info (info_id,info_pw,info_name,info_nickname,info_phonenumber,info_email,info_joindate,info_bday,info_delflag) values ("123","123","123","123",123,"123",sysdate,"1234",1)
+insert into user_info (info_id,info_pw,info_name,info_nickname,info_phonenumber,info_email,info_joindate,info_bday,info_delflag) values ('123','123','123','123',123,'123',sysdate,'1234',1)
 
 insert into user_info values ("123","123","123","123",123,"123",sysdate,sysdate,sysdate,"1234",0)
 
