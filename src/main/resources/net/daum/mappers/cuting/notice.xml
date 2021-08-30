@@ -7,17 +7,17 @@
   <mapper namespace="Notice">
  <!-- mybatis쿼리문을 다루는 태그를 매퍼라 한다. -->
  
-  <!-- 게시판 저장 --><!--  parameterType은 전달인자 타입으로 생략가능하다. 이 속성값으로 풀 패키지 경로인 net.daum.vo.BoardVO를 지정
+ <!-- 게시판 저장 --><!--  parameterType은 전달인자 타입으로 생략가능하다. 이 속성값으로 풀 패키지 경로인 net.daum.vo.BoardVO를 지정
    해도 된다. b는 mybatis-config.xml에서 설정해 준 NoticeVO.java의 객체 별칭명이다. -->
    <insert id="noti_in" >
-     insert into notice (no_postnb,no_title,no_content,no_viewcnt,no_update) 
-     values(no_postnb_seq.nextval,#{no_title},#{no_content},#{no_viewcnt},sysdate)
+     insert into notice (no_postnb,no_title,  no_content,no_viewcnt,no_update) 
+     values(no_postnb_seq.nextval,#{no_title}, #{no_content},#{no_viewcnt},sysdate)
      <!-- #{writer}를 자바코드로 표현하면 b.getWriter()와 같다. -->
    </insert>
-   
-   <select id="noti_count" resultType="int">
-   <!-- resultType속성은 반환 자료형 -->
-    select count(no_postnb) from notice <!-- count()함수는 총 레코드 개수를 구함. -->
+  
+<!-- 검색전은 총레코드 개수, 검색이후는 검색한 레코드 개수  -->
+   <select id="noti_count" resultType="int">   <!-- resultType속성은 반환 자료형 -->
+    select count(no_postnb) from notice 	   <!-- count()함수는 총 레코드 개수를 구함. -->
     <where>
      <if test="find_field==''"></if><!-- 검색조건이 없는 경우 -->
      <if test="find_field=='no_title'"><!-- 검색조건이 제목인 경우 -->
@@ -29,6 +29,39 @@
     </where>
    </select>
   
+  <!-- 검색 전 후 자료실 목록 -->
+   <select id="noti_list" resultType="net.daum.vo.NoticeVO">
+     select * from ( select rowNum rNum,no_postnb,no_filename,no_update,no_viewcnt,no_title,no_content from
+     (select * from notice
+     <where>
+     <if test="find_field==''"></if><!-- 검색조건이 없는 경우 -->
+     <if test="find_field=='no_title'"><!-- 검색조건이 제목인 경우 -->
+      no_title like #{find_name}
+     </if>
+     <if test="find_field=='no_content'"><!-- 검색 조건이 내용인 경우 -->
+     no_content like #{find_name}
+     </if>
+    </where>
+    order by no_postnb desc))
+      where rNum &gt;= #{startrow} and rNum &lt;= #{endrow} 
+      <!--  &gt;= 은 >=이고, &lt;= 은 <= 를 뜻함 -->
+   </select>
+ 
+ <update id="noti_hit">  	<!-- 조회수증가 -->
+ 	update notice set no_viewcnt=no_viewcnt+1 where no_postnb=#{no_postnb} 
+ </update>
+ 
+ <select id="noti_cont" resultType="net.daum.vo.NoticeVO"> 					<!-- 내용보기 -->
+ 	select  *<!-- no_title, no_update, no_viewcnt, no_content -->  from notice where no_postnb=#{no_postnb}  
+ </select>
  
  
  </mapper>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
