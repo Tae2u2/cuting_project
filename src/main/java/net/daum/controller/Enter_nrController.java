@@ -61,7 +61,7 @@ public class Enter_nrController {
 		response.setContentType("text/html;charset=UTF-8");//서버에서 사용자에게 메세지 보낼때 사용되는 언어타입 UTF-8로설정. 안했을시 한글이 깨지거나 읽어들이지 못하는 현상 발생. 
 		PrintWriter out=response.getWriter(); //개발자가 쓴 글을 jsp를따로 만들어 alert('${msg}');한다음 다시 컨트롤러로 호출시키려는 번거로움을 줄이고자 변수out에 담음
 		
-	//	String saveFolder=request.getRealPath("upload");//이진파일 업로드 서버 경로=>톰캣 WAS 서버에 의해서 변경된 실제 톰캣 프로젝트 경로
+		//String saveFolder=request.getRealPath("upload");//이진파일 업로드 서버 경로=>톰캣 WAS 서버에 의해서 변경된 실제 톰캣 프로젝트 경로
 		String saveFolder="C:\\Users\\BIN\\git\\cuting_project\\src\\main\\webapp\\resources\\upload";
 		System.out.println(saveFolder);
 		int fileSize=5*1024*1024;//이진파일 업로드 최대크기=>5M
@@ -134,7 +134,7 @@ public class Enter_nrController {
 			en.setFind_name("%"+find_name+"%");//%는 검색에서 하나이상의 임의의 모르는 문자와 매핑 대응한다.
 			
 			List<Enter_nrVO> gblist=this.enter_nrService.getNrList(en);//목록
-				
+			
 			listM.addAttribute("gblist",gblist);//gblist키이름에 목록저장
 			listM.addAttribute("find_field",find_field);//find_field 속성 키이름에 검색필드를 저장
 			listM.addAttribute("find_name", find_name);//find_name 속성 키이름에 검색어를 저장
