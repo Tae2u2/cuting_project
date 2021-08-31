@@ -17,10 +17,10 @@
 			<input type="hidden" name="bno" value="${eqna.qa_postnb}" />
 			<input type="hidden" name="page" value="${page}" />
 			<p>
-			<label for="qna-title">제목 : </label><input required type="text" name="qna-title" id="qna-title" value="${eqna.qa_title}"/>
+			<label for="qq_title">제목 : </label><input required type="text" name="qa_title" id="qa_title" value="${eqna.qa_title}"/>
 			<p>
-				<label for="qna-content"></label>
-				<textarea name="qna-content" id="qna-content">${eqna.qa_content}</textarea>
+				<label for="qa_content"></label>
+				<textarea name="qa_content" id="qa_content">${eqna.qa_content}</textarea>
 				
 				<input type="submit" value="수정" class="BtnforCss" /> 
 				<input type="reset" value="취소" class="BtnforCss"/>

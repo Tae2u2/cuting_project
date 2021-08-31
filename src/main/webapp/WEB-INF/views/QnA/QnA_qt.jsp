@@ -23,7 +23,7 @@
 	    <tr>
     	 <th>${qna.qa_postnb}</th>
      	 <th><a href="/cuting/QnA/qna_cont?qa_postnb=${qna.qa_postnb}&page=${page}">${qna.qa_title}</a>&nbsp;&nbsp;</th>
-     	 <th>글쓴이</th>
+     	 <th>${qna.qa_id}</th>
      	 <th>${qna.qa_viewcnt}</th>
      	 <th>${qna.qa_upload}</th>
     	</tr>
@@ -36,9 +36,12 @@
    				</tr></c:if>
 
   <tr>
+   <% if(header != null){ %>
    <th colspan="5" >
-   <input id="writeBtn" type="button" value="글쓰기"/></th>
-  </tr>		
+   <input id="writeBtn" type="button" value="글쓰기" onclick="location='QnA_write';"/></th>
+  	<%} %>
+  </tr>
+  
 	</table>
 </body>
 <%@ include file="../qt_project/bottom_qt.jsp"%>

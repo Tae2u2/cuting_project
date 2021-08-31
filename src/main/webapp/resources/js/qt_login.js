@@ -2,7 +2,7 @@
  * 
  */
 
-const inputs = document.querySelectorAll('.input');
+const inputs = document.querySelectorAll('.inputLog');
 
 
 function focusFunc(){
@@ -19,7 +19,7 @@ function blurFunc(){
 }
 	
 
-inputs.forEach(input => {
-	input.addEventListener('focus', focusFunc);
-	input.addEventListener('blur', blurFunc);
+inputs.forEach(inputLog => {
+	inputLog.addEventListener('focus', focusFunc);
+	inputLog.addEventListener('blur', blurFunc);
 });

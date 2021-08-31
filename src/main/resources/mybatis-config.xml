@@ -16,6 +16,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
          <typeAlias type="net.daum.vo.NoticeVO" alias="n" />
 
       <typeAlias type="net.daum.vo.QnAVO" alias="qna" />
+      
+      <typeAlias type="net.daum.vo.ComunityVO" alias="cp" />
 
    </typeAliases>
 </configuration>
