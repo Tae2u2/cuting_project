@@ -6,36 +6,21 @@
  
  <mapper namespace="Event">
  
- <insert id="insert_ev">
+ <insert id="in_e" parameterType="net.daum.vo.EventVO">
  insert into EVENT(ev_postnb,ev_filename,ev_update,ev_exdate,ev_mddate,ev_delflag,ev_title,ev_content)
- 	values(postnb_seq.nextval,#{ev_filename},#{ev_update},#{ev_exdate}," ",0,#{ev_title},#{ev_content})
+ values(postnb_seq.nextval,#{ev_filename},#{ev_update},#{ev_exdate},#{ev_mddate, jdbcType=DATE},0,#{ev_title},#{ev_content})
  </insert>
  
-<select id="e_list" resultType="net.daum.vo.EventVO">
-select * from
-(select rowNum rNum,ev_postnb,ev_filename,ev_update,ev_exdate,ev_delflag,ev_title,ev_content from(select * from EVENT order by ev_postnb))
-</select>
- 
- <select id="e_cont" resultType="e">
- select * from EVENT where ev_postnb=#{ev_postnb}
+ <select id="sel_li" resultType="net.daum.vo.EventVO">
+   select * from
+    (select rowNum rNum,ev_postnb,ev_filename,ev_update,ev_exdate,ev_mddate,ev_delflag,ev_title,ev_content from (select * from EVENT order by ev_postnb desc))
+    <!-- rowNum컬럼은 오라클에서 테이블 생성시 추가되는 기본컬럼으로 레코드 저장시 일련번호값을 저장한다. -->
+    where rNum &gt;= #{startrow} and rNum &lt;= #{endrow} 
  </select>
  
- <update id="upd_ev">
- update EVENT set ev_filename=#{ev_filename},ev_update=#{ev_update},ev_exdate=#{ev_exdate},ev_mddate=sysdate,ev_title=#{ev_title},ev_content=#{ev_content}
-	where ev_postnb=#{ev_postnb}
+ <select id="sel_one" resultType="int">
+  select count(*) from EVENT
+ </select>
 
- </update>
- 
- <delete id="del_ev">
- 	delete from EVENT where ev_postnb=#{ev_postnb} 
- </delete>
- 
- <update id="up_del">
- 	update EVENT set ev_delflag=1 where ev_postnb=#{ev_postnb}
- </update>
- 
- <select id="sel_low" resultType="int">
- select count(ev_postnb) from EVENT
- </select>
  
  </mapper>
