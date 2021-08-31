@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
-<%@ include file="header.jsp"%>
+<%@ include file="../qt_project/header.jsp"%>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="./resources/css/board_qt_style.css">
 <title>큐팅::공지사항</title>
@@ -154,7 +154,7 @@
 		</tr> --%>
 
 
-<%@ include file="bottom_qt.jsp"%>
+<%@ include file="../qt_project/bottom_qt.jsp"%>
 		
 		
 		

@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="./resources/css/notice_cont_style.css">
-<%@ include file="header.jsp"%>
+<%@ include file="../qt_project/header.jsp"%>
 <title>공시사항::내용</title>
 </head>
 <body>
@@ -33,5 +33,5 @@
 	<input type="submit" value="목록"> 
 	</form>
 </body>
-<%@ include file="bottom_qt.jsp"%>
+<%@ include file="../qt_project/bottom_qt.jsp"%>
 </html>

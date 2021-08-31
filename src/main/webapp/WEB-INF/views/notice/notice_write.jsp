@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="./resources/css/notice_write_style.css">
-<%@ include file="header.jsp"%>
+<%@ include file="../qt_project/header.jsp"%>
 <title>스프링 MVC 게시판 글쓰기</title>
 <script src="./resources/js/jquery.js"></script>
 <script src="./resources/js/notice.js"></script>
@@ -52,5 +52,5 @@
   </form>
  </div>
 </body>
-<%@ include file="bottom_qt.jsp"%>
+<%@ include file="../qt_project/bottom_qt.jsp"%>
 </html>
