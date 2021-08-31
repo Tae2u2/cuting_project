@@ -30,6 +30,16 @@ public class NoticeDAOImpl implements NoticeDAO {
 	public List<NoticeVO> getNoticeList(NoticeVO b) {
 		return this.sqlSession.selectList("noti_list",b);
 	}
-
+	
+	//8.30일수정본
+	@Override	//공지사항 내용보기 클릭시 조회수 증가.
+	public void updateHit(int no_postnb) {
+		this.sqlSession.update("noti_hit", no_postnb);
+	}
+	
+	@Override 	//공지사항 내용보기
+	public NoticeVO getNoticeCont(int no_postnb) {
+		return this.sqlSession.selectOne("noti_cont",no_postnb);
+	}
 
 }

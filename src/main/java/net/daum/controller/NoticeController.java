@@ -94,28 +94,29 @@ public class NoticeController {
 		}//notice_write_ok()
 	
 		
+	//8.30일 수정본
 		//자료실 목록(페이징+검색)
 		@RequestMapping("/board_qt")  //GET OR POST방식으로 접근하는 매핑주소를 처리,bbs_list매핑주소 등록
-		public String board_qt(Model listM,HttpServletRequest request,@ModelAttribute NoticeVO b) throws Exception{
-			/*int page=1;
+		public String board_qt(Model listM,HttpServletRequest request,@ModelAttribute NoticeVO n) throws Exception{
+			int page=1;
 			int limit=10;//한페이지에 보여지는 목록개수
 			if(request.getParameter("page") != null) {//get으로 전달된 쪽번호가 있는 경우
 				page=Integer.parseInt(request.getParameter("page"));//쪽번호를 정수 숫자로 변경해서 저장
 			}
-			
+		
 			//검색필드와 검색어
 			String find_field=request.getParameter("find_field");
 			String find_name=request.getParameter("find_name");
 					
-			b.setFind_field(find_field);
-			b.setFind_name("%"+find_name+"%");//%는 검색에서 하나이상의 임의의 모르는 문자와 매핑 대응한다.
+			n.setFind_field(find_field);
+			n.setFind_name("%"+find_name+"%");//%는 검색에서 하나이상의 임의의 모르는 문자와 매핑 대응한다.
 			
-			int totalCount=this.noticeService.getTotalCount(b);//검색 전은 총레코드 개수,검색 이후에는 검색한 레코드개수
+			int totalCount=this.noticeService.getTotalCount(n);//검색 전은 총레코드 개수,검색 이후에는 검색한 레코드개수
 			
-			b.setStartrow((page-1)*10+1);//시작행번호
-			b.setEndrow(b.getStartrow()+limit-1);//끝행번호
+			n.setStartrow((page-1)*10+1);//시작행번호
+			n.setEndrow(n.getStartrow()+limit-1);//끝행번호
 			
-			List<NoticeVO> blist=this.noticeService.getNoticeList(b);//목록
+			List<NoticeVO> nlist=this.noticeService.getNoticeList(n);//목록
 			
 			//총페이지수
 			int maxpage=(int)((double)totalCount/limit+0.95);
@@ -125,7 +126,7 @@ public class NoticeController {
 			int endpage=maxpage;
 			if(endpage>startpage+10-1) endpage=startpage+10-1;
 			
-			listM.addAttribute("blist",blist);//blist키이름에 목록저장
+			listM.addAttribute("nlist",nlist);//nlist키이름에 목록저장
 			listM.addAttribute("page",page);//page키이름에 쪽번호 저장
 			listM.addAttribute("startpage",startpage);
 			listM.addAttribute("endpage",endpage);
@@ -133,8 +134,46 @@ public class NoticeController {
 			listM.addAttribute("totalCount",totalCount);//totalCount키이름에 총 레코드 개수 저장
 			listM.addAttribute("find_field",find_field);//find_field 속성 키이름에 검색필드를 저장
 			listM.addAttribute("find_name", find_name);//find_name 속성 키이름에 검색어를 저장
-			*/
+			
 			return "notice/board_qt";//뷰페이지 경로=> /WEB-INF/views/notice/board_qt.jsp
-		}//bbs_list()
+		}//board_qt()
+		
+		
+		//자료실 내용보기+답변폼+수정폼+삭제폼->한개의 매핑주소로 4개의 뷰화면이 실행됨.
+		@RequestMapping("/notice_cont")
+		public ModelAndView notice_cont(@RequestParam("no_postnb") int no_postnb, int page, String state, NoticeVO b) {
+			//@RequestParam("no_postnb")는 request.getParameter("no_postnb") 와 같다.
+			
+			if(state.equals("cont")) {//내용보기 일때만 조회수 증가(aop를 통한 트랜잭션 적용)
+				b=this.noticeService.getNoticeCont(no_postnb);
+			} 
+				/*
+				 * else {//답변폼,수정폼,삭제폼일때는 조회수 증가 안함.->트랜잭션 적용 안함.
+				 * b=this.noticeService.getNO_content2(no_postnb); }
+				 */
+			
+			String no_content=b.getNo_content().replace("\n","<br/>");//textarea에서 엔터키 친부분을 줄바꿈
+			
+			ModelAndView cm=new ModelAndView();
+			cm.addObject("b",b);
+			cm.addObject("no_content",no_content);
+			cm.addObject("page",page);
+			
+			if(state.equals("cont")) {//내용보기
+				cm.setViewName("notice/notice_cont");//뷰페이지 경로=>/WEB-INF/views/notice/no_content.jsp
+			} 
+				/*
+				 * else if(state.equals("reply")) {//답변폼 cm.setViewName("bbs/bbs_reply"); }
+				 */
+			
+				/*
+				 * else if(state.equals("edit")) {//수정폼 cm.setViewName("notice/no_edit"); }
+				 */
+				/*
+				 * else if(state.equals("del")) {//삭제폼 cm.setViewName("bbs/bbs_del"); }
+				 */
+			return cm;
+		}//notice_cont()
+		
 		
 }

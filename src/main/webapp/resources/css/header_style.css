@@ -72,14 +72,14 @@
 	height: 61px;
 	/*height: 350px;*/
 	background:#fff;
-	margin-right: 2rem;
-	margin-top: 2.3rem;
+	margin-right: 2.3rem;
+	margin-top: 1rem;
 	overflow: hidden;
 	transition: height 0.3s ease-in-out;
 }
 
 .mypageBox.active{
-	height: 400px;
+	height: 265px;
 }
 
 .mypageContent{
@@ -131,7 +131,7 @@
 	right:0;
 	width: 25px;
 	height: 25px;
-	background: #E65100;
+	background: #555;
 	display: flex;
 	justify-content:center;
 	align-items:center;

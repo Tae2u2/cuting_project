@@ -29,6 +29,11 @@ public class NoticeServiceImpl implements NoticeService {
 	public List<NoticeVO> getNoticeList(NoticeVO b) {
 		return this.NoticeDao.getNoticeList(b);
 	}
-
+	//8.30일 수정본
+	@Override
+	public NoticeVO getNoticeCont(int no_postnb) {//내용보기를 클릭: 조회수1증가 + 내용보여주기
+			   this.NoticeDao.updateHit(no_postnb); 
+		return this.NoticeDao.getNoticeCont(no_postnb);
+	}
 
 }
