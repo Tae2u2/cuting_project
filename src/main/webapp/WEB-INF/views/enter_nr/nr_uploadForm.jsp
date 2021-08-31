@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +14,7 @@
 <%@ include file="../qt_project/header.jsp"%>
 </head>
 <body>
-<form method="post" action="uploadForm_ok" " onsubmit="return upload_check()" enctype="multipart/form-data">
+<form method="post" action="uploadForm_ok" enctype="multipart/form-data">
 	<div class="forLineUp">
 	<h1>나만의 글 쓰기</h1>
 	
@@ -24,18 +27,18 @@
 			</div>		
 		</div>
 		<div class="select-box-container">
-		 카테고리 선택: <select>
-		  <option>강아지</option>
-		  <option>고양이</option>
-		  <option>친구들</option>
+		 카테고리 선택: <select name="gb_category">
+		  <option value="1" >강아지</option>
+		  <option value="2" >고양이</option>
+		  <option value="3" >친구들</option>
 		 </select>
 		</div>
 		<div class="title_box">
-		 글제목 : <input type="text" class="title_area" name="gb_title">
+		 글제목 : <input type="text" id="title_area" name="gb_title" required="required">
 		</div>
 		<!-- 글쓰는 폼 -->
 		<div class="post-input-container">
-			<textarea rows="3" class="textbox" name="gb_content" placeholder="당신의 귀여운 이야기를 자랑해주세요!"></textarea>
+			<textarea rows="3" id="textbox" name="gb_content" placeholder="당신의 귀여운 이야기를 자랑해주세요!" required="required"></textarea>
 			<div class="add-post-links">
 				<a href="#"><i class="far fa-smile-wink"></i>오늘어때요?</a>
 				<a href="#"><i class="fas fa-image"></i>사진첨부</a>

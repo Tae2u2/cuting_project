@@ -23,6 +23,7 @@ create table gamble(
 	,gb_content varchar2(4000) not null --湲��궡�슜
 	,gb_title varchar2(50) not null--湲��젣紐�
 	,gb_delflag int default 0 --�궘�젣�뵆�옒洹� �솢�꽦�솕 0 , 鍮꾪솢�꽦�솕 1	
+	,gb_category varchar2(50) not null
 );
 
 select * from gamble order by gb_postnb desc;

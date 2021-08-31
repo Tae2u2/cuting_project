@@ -36,22 +36,13 @@ public class Enter_nrController {
 		return "enter_nr/dogphoto01_bet";
 	}
 	
-	//오늘의 노름 폼
-	@GetMapping("enter_nr")
-	public ModelAndView enter_nr() {
-		ModelAndView am=new ModelAndView();
-		am.setViewName("enter_nr/enter_nr");//뷰리졸브 경로=> /WEB-INF/views/enter_nr/enter_nr.jsp로 이동
-		return am;
-	}//enter_nr()
-	
-	
 	//자료실 글쓰기 폼
 	@GetMapping("uploadForm")
 	public String uploadForm(HttpServletRequest request, Model model , HttpSession session, @ModelAttribute Enter_nrVO en) {
 		en.setGb_id((String) request.getSession().getAttribute("id"));
 		model.addAttribute("gb_id",en.getGb_id());
 		System.out.println(en.getGb_id());
-		return "enter_nr/uploadForm";
+		return "enter_nr/nr_uploadForm";
 	}//uploadForm()
 
 
@@ -59,13 +50,15 @@ public class Enter_nrController {
 	public String uploadForm_ok(@ModelAttribute Enter_nrVO en,HttpSession session,HttpServletResponse response, HttpServletRequest request) throws Exception{
 		
 		response.setContentType("text/html;charset=UTF-8");//서버에서 사용자에게 메세지 보낼때 사용되는 언어타입 UTF-8로설정. 안했을시 한글이 깨지거나 읽어들이지 못하는 현상 발생. 
-		PrintWriter out=response.getWriter(); //개발자가 쓴 글을 jsp를따로 만들어 alert('${msg}');한다음 다시 컨트롤러로 호출시키려는 번거로움을 줄이고자 변수out에 담음
+		PrintWriter out=response.getWriter(); //개발자가 쓴 글을 jsp를따로 만들어 alert('${msg}');한다음 다시 컨트롤러로 호출시키려는 번거로움을 줄이고자 변수out에 담음		
 		
-		String saveFolder=request.getRealPath("upload");//이진파일 업로드 서버 경로=>톰캣 WAS 서버에 의해서 변경된 실제 톰캣 프로젝트 경로
+		String saveFolder=request.getRealPath("resources/upload");//이진파일 업로드 서버 경로=>톰캣 WAS 서버에 의해서 변경된 실제 톰캣 프로젝트 경로
+				
 		int fileSize=5*1024*1024;//이진파일 업로드 최대크기=>5M
 		MultipartRequest multi=null;//이진파일 업로드 참조변수->cos.jar로 부터 읽어들임.
 		
 		multi=new MultipartRequest(request,saveFolder,fileSize,"UTF-8");
+		
 		
 		String gb_id=(String)request.getSession().getAttribute("id"); //현재 세션상 로그인된 아이디를 불러들임
 		
@@ -76,11 +69,16 @@ public class Enter_nrController {
 				out.println("location='login';");
 				out.println("</script>");
 		}
-			
+		
+		
+		String gb_category=multi.getParameter("gb_category");
 		String gb_title=multi.getParameter("gb_title");
 		String gb_content=multi.getParameter("gb_content");
 		
+		System.out.println(gb_category);
+		
 		File upFile=multi.getFile("gb_filename");//첨부한 이진파일을 가져온다.
+		
 		
 		if(upFile != null) {//첨부한 이진파일이 있는 경우
 			String fileName=upFile.getName();//첨부한 이진파일명
@@ -107,33 +105,42 @@ public class Enter_nrController {
 		    upFile.renameTo(new File(homedir+"/"+refileName));//변경된 이진파일로 새롭게 생성된 폴더에 실제 업로드
 		    en.setGb_filename(fileDBName);//오라클에 저장될 레코드 값
 		}else {//파일을 첨부하지 않았을때
-			String fileDBName="";
-			en.setGb_filename(fileDBName);
+			out.println("<script>");
+			out.println("location='uploadForm';");
+			out.println("alert('파일을 첨부해야만 합니다.');");
+			out.println("</script>");
 		}
-		en.setGb_id(gb_id); en.setGb_content(gb_content); en.setGb_title(gb_title);
+		en.setGb_id(gb_id); en.setGb_content(gb_content); en.setGb_title(gb_title); en.setGb_category(gb_category);
 		
 		this.enter_nrService.insertNr(en);//자료실 저장
 		
 		System.out.println("저장성공");
-		
+		System.out.println(saveFolder);
 		return "redirect:/enter_nr";//목록보기 매핑으로 이동		
 	}//uploadForm_ok()
 	
 	
 	//오늘의 노름 폼 - 자료실 목록(검색)
 		@RequestMapping("enter_nr")  //GET OR POST방식으로 접근하는 매핑주소를 처리,bbs_list매핑주소 등록
-		public String bbs_list(Model listM,HttpServletRequest request,@ModelAttribute Enter_nrVO en) throws Exception{
+		public String nr_list(Model listM,HttpServletRequest request,@ModelAttribute Enter_nrVO en) throws Exception{
 			
 			//검색필드와 검색어
 			String find_field=request.getParameter("find_field");
 			String find_name=request.getParameter("find_name");
-					
+			String gb_filename=request.getParameter("gb_filename");
+			String gb_category= request.getParameter("gb_category");
+		
+			
 			en.setFind_field(find_field);
 			en.setFind_name("%"+find_name+"%");//%는 검색에서 하나이상의 임의의 모르는 문자와 매핑 대응한다.
+			en.setGb_filename(gb_filename);
+			en.setGb_category(gb_category);			
 			
 			List<Enter_nrVO> gblist=this.enter_nrService.getNrList(en);//목록
-				
+			
+			listM.addAttribute("gb_category",gb_category);
 			listM.addAttribute("gblist",gblist);//gblist키이름에 목록저장
+			listM.addAttribute("gb_filename",gb_filename);
 			listM.addAttribute("find_field",find_field);//find_field 속성 키이름에 검색필드를 저장
 			listM.addAttribute("find_name", find_name);//find_name 속성 키이름에 검색어를 저장
 			

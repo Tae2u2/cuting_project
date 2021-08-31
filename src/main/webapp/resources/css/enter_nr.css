@@ -71,6 +71,10 @@
 	width: 100%;
 }
 
+.container .tab-content{
+	margin: 0 80px 80px 150px;
+}
+
 .container .tab-content div {
 	display: none;
 }
@@ -147,63 +151,47 @@
 }
 
 /* 강아지, 고양이, 그 외 친구들 탭메뉴 구성*/
-.container .tab-content #dog,
-.container .tab-content #cat,
-.container .tab-content #friends{
+.container .tab-content #dog{
 
-	height: auto;
-	margin-top: 100px;
-	
+    margin:100px 50px;
+    position: relative;
 }
 
-.container .tab-content #dog ul,
-.container .tab-content #cat ul,
-.container .tab-content #friends ul{
-	width:86%;
-	display:flex;
-	padding: 0px 83px;
+.container .tab-content #dog ul{
+    padding:0px 10px;
 }
 
-.container .tab-content #dog ul li,
-.container .tab-content #cat ul li,
-.container .tab-content #friends ul li{
-	width:100%;
-	height: 420px;
-	position: relative;
-	text-align: center;
+.container .tab-content #dog ul li{
+    display:inline-block;
+    margin: 0 16px 65px 16px;
+    vertical-align: top;
+    width: 29.26%;
+    position: relative;
+}
+.container .tab-content #dog ul li .aa{
+    display: block;
+    text-align: center;
 }
 
-.container .tab-content #dog ul li:not(:last-child),
-.container .tab-content #cat ul li:not(:last-child),
-.container .tab-content #friends ul li:not(:last-child){
-	margin-right: 5px;
+.container .tab-content #dog ul li .aa .image{
+    width: 90%;
+    height: 250px;
+    border-radius: 10px;
 }
 
-.container .tab-content #dog ul li .aa,
-.container .tab-content #cat ul li .aa,
-.container .tab-content #friends ul li .aa{
-	display:block;
+.container .tab-content #dog ul li .bb{
+    width: 100%;
+    display:flex;
+    margin:0 60px;
+    position: relative;
+    padding-top:10px;
 }
 
-.container .tab-content #dog ul li .bb,
-.container .tab-content #cat ul li .bb,
-.container .tab-content #friends ul li .bb{	
-	display:block;
-	padding:10px 77px 0 0px;	
+.container .tab-content #dog ul li .bb .pad{
+    display: block;
+    position: absolute;
+    right: 120px;
 }
-
-/* .container .tab-content #dog ul li .bb .enter_bt{
-	border:1px solid black;
-	
-	cursor:pointer;
-	background-color:blanchedalmond;
-	width: 45px;
-	height: 36px;
-	float:right;
-	box-shadow: 0 0 3px;
-	border-radius: 5px;
-	letter-spacing: 3px;	
-} */
 
 .container .tab-content #dog ul li .bb .pad .fa-bitcoin,
 .container .tab-content #cat ul li .bb .pad .fa-bitcoin,
@@ -218,13 +206,7 @@
 	color:rgb(190, 125, 27);
 }
 
-.container .tab-content #dog ul li .bb .pad,
-.container .tab-content #cat ul li .bb .pad,
-.container .tab-content #friends ul li .bb .pad{
-	display:block;
-	width:auto;
-	float:right;
-}
+
 
 .container .tab-content #dog ul li .bb button,
 .container .tab-content #cat ul li .bb button,
@@ -243,6 +225,7 @@
 	padding-right:4px;
 }
 
+/*빨간하트를 눌렀을때 빨개지게 하는것*/
 .container .tab-content #dog ul li .bb .fa-heart:hover,
 .container .tab-content #dog ul li .bb .fa-heart01.active{
 	color:red;
@@ -258,64 +241,10 @@
 }
 
 
-/*빨간하트를 눌렀을때 빨개지게 하는것*/
-.container .tab-content #dog ul li .bb .fa-heart02.active,
-.container .tab-content #cat ul li .bb .fa-heart002.active,
-.container .tab-content #friends ul li .bb .fa-heart0002.active{
-	color:red;
-}
-.container .tab-content #dog ul li .bb .fa-heart03.active,
-.container .tab-content #cat ul li .bb .fa-heart003.active,
-.container .tab-content #friends ul li .bb .fa-heart0003.active{
-	color:red;
-}
-.container .tab-content #dog ul li .bb .fa-heart04.active,
-.container .tab-content #cat ul li .bb .fa-heart004.active,
-.container .tab-content #friends ul li .bb .fa-heart0004.active{
-	color:red;
-}
-.container .tab-content #dog ul li .bb .fa-heart05.active,
-.container .tab-content #cat ul li .bb .fa-heart005.active,
-.container .tab-content #friends ul li .bb .fa-heart0005.active{
-	color:red;
-}
-.container .tab-content #dog ul li .bb .fa-heart06.active,
-.container .tab-content #cat ul li .bb .fa-heart006.active,
-.container .tab-content #friends ul li .bb .fa-heart0006.active{
-	color:red;
-}
-.container .tab-content #dog ul li .bb .fa-heart07.active,
-.container .tab-content #cat ul li .bb .fa-heart007.active,
-.container .tab-content #friends ul li .bb .fa-heart0007.active{
-	color:red;
-}
-.container .tab-content #dog ul li .bb .fa-heart08.active,
-.container .tab-content #cat ul li .bb .fa-heart008.active,
-.container .tab-content #friends ul li .bb .fa-heart0008.active{
-	color:red;
-}
-.container .tab-content #dog ul li .bb .fa-heart09.active,
-.container .tab-content #cat ul li .bb .fa-heart009.active,
-.container .tab-content #friends ul li .bb .fa-heart0009.active{
-	color:red;
-}
-
-
-
 .container .tab-content #dog ul li .bb .fa-comment:hover,
 .container .tab-content #cat ul li .bb .fa-comment:hover,
 .container .tab-content #friends ul li .bb .fa-comment:hover{
 	color:blanchedalmond;	
-}
-
-
-.container .tab-content #dog ul li .aa img.image,
-.container .tab-content #cat ul li .aa img.image,
-.container .tab-content #friends ul li .aa img.image{
-	width:280px;
-	height: 280px;
-	border-radius: 10px;
-
 }
 
 .container .tab-content #dog ul li .aa img.image:hover,
@@ -326,34 +255,15 @@
 }
 
 
-.container .tab-content .pr_enter_photo{
-	width:950px;
-	height: 600px;
-	background-color: white;
-	border: 3px solid black;
-	position: fixed;
-	top:10%;
-	left:15%;
-	display: none;
-	overflow: auto;
-	border-radius: 5px;	
-}
 
-.container .tab-content .pr_enter_photo img{
-	width:600px;
-	height: 600px;
-	border-right: 1px solid #efefefc5;
-	float:left;
-}
 
-.container .tab-content .pr_enter_photo .pr_enph{
-	width:349px;
-	height:600px;
-	float:right;
-    display: table-cell;
- 	vertical-align: middle;
 
-}
+
+
+
+
+
+
 
 /* 강아지,고양이,친구들 창*/
 .container .tab-content .pr_enter_photo .pr_enph .pr_en1-1 i{

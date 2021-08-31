@@ -56,11 +56,15 @@
  		
  		<div class="payment tabShow">
  		<h1 class="aboutH1">결제정보</h1>
- 		<h2>잔여 포인트</h2>
- 		<h4>단순 포인트 출력</h4>
+ 		<c:if test="${!empty plist}">
+ 		<c:forEach var="p" items="${plist}">
+ 		<h2>현재 잔액</h2>
+ 		<h4>${p.pay_balance}원</h4>
  		<h2>결제내역</h2>
  		<!-- 테이블로 넣어야지 -->
  		<table> 		</table>
+ 		</c:forEach>
+ 		</c:if>
  		<button class="aboutBtn">충전하러 가기</button>
  		</div>
  		

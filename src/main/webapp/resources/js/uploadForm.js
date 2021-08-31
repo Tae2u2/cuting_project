@@ -1,17 +1,15 @@
-
-function uploadForm_check(){
+ function upload_check(){
  
- 	if($.trim($('.title_area').val()) == ''){
-      alert('글내용을 입력하세요!');
-      $('.title_area').val('').focus();
+ 	if($.trim($('#title_area').val()) == ''){
+      alert('글제목을 입력하세요!');
+      $('#title_area').val('').focus();
       return false;
     } 
  
-    if($.trim($('.textbox').val()) == ''){
+    if($.trim($('#textbox').val()) == ''){
       alert('글내용을 입력하세요!');
-      $('.textbox').val('').focus();
+      $('#textbox').val('').focus();
       return false;
     } 
     
-    
- }
+}   
