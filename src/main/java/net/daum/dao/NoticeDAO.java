@@ -2,15 +2,24 @@ package net.daum.dao;
 
 import java.util.List;
 
-import net.daum.vo.NoticeVO;
+import net.daum.vo.EventVO;
 
-public interface NoticeDAO {
+public interface EventDAO {
 
-	void insertNotice(NoticeVO b);
-	List<NoticeVO> getNoticeList(NoticeVO b);
-	int getTotalCount(NoticeVO b);
-	//8.30일 수정본
-	void updateHit(int no_postnb);
-	NoticeVO getNoticeCont(int no_postnb);
+	void insertEvent(EventVO e);
+
+	List<EventVO> getEventList(EventVO e);
+
+	EventVO getBoardCont2(int ev_postnb);
+
+	void editEvent(EventVO eb);
+
+	void delEvent(int ev_postnb);
+
+	void updateDel(int ev_postnb);
+
+	int getListCount(EventVO e);
+
+	
 
 }
