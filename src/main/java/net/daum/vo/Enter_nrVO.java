@@ -15,6 +15,7 @@ public class Enter_nrVO {
 	private String gb_content;
 	private String gb_title;
 	private int gb_delflag;
+	private String gb_category;
 	
 	//검색관련기능->검색필드와 검색어 관련 변수
 	private String find_field;//검색 필드

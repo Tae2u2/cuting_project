@@ -57,334 +57,71 @@
 
 		<div class="clear"></div>
 		
-		<a href="#"><button type="button" onclick="location='uploadForm';" class="add_photo"><i class="fas fa-plus"></i></button></a>
+		<a href="uploadForm"><button type="button" class="add_photo"><i class="fas fa-plus"></i></button></a>
 
 		<div class="tab-content">
 		
 		<!-- 강아지 탭메뉴공간입니다. ul 줄이라 생각하면되고 li는 한 줄안에 3개씩들어가는 구성품입니다. -->
 			<div class="tab-pane fade show active" id="dog">
 				<ul>
+					
 					<!-- 1번째사진 -->
 					<li>
 						<div class="aa">
-							<img src="./resources/images/photo_dog01.png" alt="dog01 Image" class="image image01">
-
-							<div class="bb">
-								<button type="button" name="likeButton"><i class="fas fa-heart fa-heart01"></i></button>
-								<button type="button" name="comment-button" class="image01"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="dog01">
-								<!-- <button type="button" name="enter_betting" class="enter_bt">배팅</button> -->
-								<div class="pad">
-									<button type="button" name="enter_betting" value="배팅하러가기" onclick="location='dogphoto01_bet';"><i class="fab fa-bitcoin"></i></button>
-								</div>		
-								</a>					
-							</div>
+							<img src="./resources/images/photo_dog01.png" class="image">
 						</div>
-					</li>
-
-					<!-- 2번째사진 -->
-					<li>
-						<div class="aa">
-							<img src="./resources/images/photo_dog02.png" alt="dog02 Image" class="image image02">
-
-							<div class="bb">
-								<button type="button" name="likeButton"><i class="fas fa-heart fa-heart02"></i></button>
-								<button type="button" name="comment-button" class="image02"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="#dogphoto02_bet">
+						<div class="bb">
+							<button type="button" name="likeButton"><i class="fas fa-heart fa-heart01"></i></button>
+								<button type="button" name="comment-button" class="image01"><i class="fas fa-comment fa-flip-horizontal"></i></button>
+								<a href="nr_dogphoto01_bet">
 								<div class="pad">
-									<button type="button" name="enter_betting"><i class="fab fa-bitcoin"></i></button>
-								</div>		
-								</a>					
-							</div>
+									<button type="button" name="enter_betting" value="배팅하러가기"><i class="fab fa-bitcoin"></i></button>
+								</div></a>
 						</div>
 					</li>
 					
-					<!-- 3번째사진 -->
+										
+					<c:forEach items="${gblist}" var="en">
+					
 					<li>
 						<div class="aa">
-							<img src="./resources/images/photo_dog03.png" alt="dog03 Image" class="image image03">
-
-							<div class="bb">
-								<button type="button" name="likeButton"><i class="fas fa-heart fa-heart03"></i></button>
-								<button type="button" name="comment-button" class="image03"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="#dogphoto03_bet">
-								<div class="pad">
-									<button type="button" name="enter_betting"><i class="fab fa-bitcoin"></i></button>
-								</div>		
-								</a>					
-							</div>
+							<img src="./resources/upload${en.gb_filename}" class="image" alt="그림아보여라."/>
 						</div>
-					</li>
+						<div class="bb">
+							<button type="button" name="likeButton"><i class="fas fa-heart fa-heart01"></i></button>
+								<button type="button" name="comment-button" class="image01"><i class="fas fa-comment fa-flip-horizontal"></i></button>
+								<a href="./dogphoto01_bet.jsp">
+								<div class="pad">
+									<button type="button" name="enter_betting" value="배팅하러가기"><i class="fab fa-bitcoin"></i></button>
+								</div></a>
+						</div>
+					</li>	
+					</c:forEach>
 				</ul>
-
-				<ul>
-					<!-- 4번째사진 -->
-					<li>
-						<div class="aa">
-							<img src="./resources/images/photo_dog04.jpg" alt="dog04 Image" class="image image04">
-
-							<div class="bb">
-								<button type="button" name="likeButton"><i class="fas fa-heart fa-heart04"></i></button>							
-								<button type="button" name="comment-button" class="image04"><i class="fas fa-comment fa-flip-horizontal"></i></button>							
-								<a href="#dogphoto04_bet">
-								<div class="pad">
-									<button type="button" name="enter_betting"><i class="fab fa-bitcoin"></i></button>
-								</div>		
-								</a>					
-							</div>
-						</div>
-					</li>
-
-					<!-- 5번째사진 -->
-					<li>
-						<div class="aa">
-							<img src="./resources/images/photo_dog05.JPG" alt="dog05 Image" class="image image05">
-
-							<div class="bb">
-								<button type="button" name="likeButton"><i class="fas fa-heart fa-heart05"></i></button>
-								<button type="button" name="comment-button" class="image05"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="#dogphoto05_bet">
-								<div class="pad">
-									<button type="button" name="enter_betting"><i class="fab fa-bitcoin"></i></button>
-								</div>		
-								</a>					
-							</div>
-						</div>
-					</li>
-
-					<!-- 6번째사진 -->
-					<li>
-						<div class="aa">
-							<img src="./resources/images/photo_dog06.JPG" alt="dog06 Image" class="image image06">
-
-							<div class="bb">
-								<button type="button" name="likeButton"><i class="fas fa-heart fa-heart06"></i></button>
-								<button type="button" name="comment-button" class="image06"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="#dogphoto06_bet">
-								<div class="pad">
-									<button type="button" name="enter_betting"><i class="fab fa-bitcoin"></i></button>
-								</div>		
-								</a>					
-							</div>
-						</div>
-					</li>
-				</ul>
-			
-				<ul>
-					<!-- 7번째사진 -->
-					<li>
-						<div class="aa">
-							<img src="./resources/images/photo_dog07.png" alt="dog07 Image" class="image image07">
-
-							<div class="bb">
-								<button type="button" name="likeButton"><i class="fas fa-heart fa-heart07"></i></button>
-								<button type="button" name="comment-button" class="image07"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="#dogphoto07_bet">
-								<div class="pad">
-									<button type="button" name="enter_betting"><i class="fab fa-bitcoin"></i></button>
-								</div>		
-								</a>					
-							</div>
-						</div>
-					</li>
-
-					<!-- 8번째사진 -->
-					<li>
-						<div class="aa">
-							<img src="./resources/images/woong11.jpg" alt="dog08 Image" class="image image08">
-
-							<div class="bb">
-								<button type="button" name="likeButton"><i class="fas fa-heart fa-heart08"></i></button>
-								<button type="button" name="comment-button" class="image08"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="#dogphoto08_bet">
-								<div class="pad">
-									<button type="button" name="enter_betting"><i class="fab fa-bitcoin"></i></button>
-								</div>		
-								</a>					
-							</div>
-						</div>
-					</li>
-
-					<!-- 9번째사진 -->
-					<li>
-						<div class="aa">
-							<img src="./resources/images/woong36.jpg" alt="dog09 Image" class="image image09">
-
-							<div class="bb">
-								<button type="button" name="likeButton"><i class="fas fa-heart fa-heart09"></i></button>
-								<button type="button" name="comment-button" class="image09"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="#dogphoto09_bet">
-								<div class="pad">
-									<button type="button" name="enter_betting"><i class="fab fa-bitcoin"></i></button>
-								</div>		
-								</a>					
-							</div>
-						</div>
-					</li>
-
-				</ul>
+				
 			</div>
 
 		<!-- 고양이 탭메뉴공간입니다. ul 줄이라 생각하면되고 li는 한 줄안에 3개씩들어가는 구성품입니다. -->
 			<div class="tab-pane fade" id="cat">
 				<ul>
-					<!-- 1번째사진 -->
+					<c:forEach items="${gblist}" var="en">
+								
 					<li>
 						<div class="aa">
-							<img src="images/photo_cat001.jpg" alt="cat001 Image" class="image image001">
-
-							<div class="bb">
-								<button type="button" name="likeButton"><i class="fas fa-heart fa-heart001"></i></button>
-								<button type="button" name="comment-button" class="image001"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="#catphoto001_bet">
-								<!-- <button type="button" name="enter_betting" class="enter_bt">배팅</button> -->
+							<img src="./resources/upload${cn.gb_filename}" class="image"/>
+						</div>
+						<div class="bb">
+							<button type="button" name="likeButton"><i class="fas fa-heart fa-heart01"></i></button>
+								<button type="button" name="comment-button" class="image01"><i class="fas fa-comment fa-flip-horizontal"></i></button>
+								<a href="#">
 								<div class="pad">
 									<button type="button" name="enter_betting" value="배팅하러가기"><i class="fab fa-bitcoin"></i></button>
-								</div>		
-								</a>					
-							</div>
+								</div></a>
 						</div>
 					</li>
-
-					<!-- 2번째사진 -->
-					<li>
-						<div class="aa">
-							<img src="images/photo_cat002.jpg" alt="cat002 Image" class="image image002">
-
-							<div class="bb">
-								<button type="button" name="likeButton"><i class="fas fa-heart fa-heart002"></i></button>
-								<button type="button" name="comment-button" class="image002"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="#catphoto002_bet">
-								<div class="pad">
-									<button type="button" name="enter_betting" value="배팅하러가기"><i class="fab fa-bitcoin"></i></button>
-								</div>		
-								</a>					
-							</div>
-						</div>
-					</li>
-
-					<!-- 3번째사진 -->
-					<li>
-						<div class="aa">
-							<img src="images/photo_cat003.jpg" alt="cat002 Image" class="image image003">
-
-							<div class="bb">
-								<button type="button" name="likeButton"><i class="fas fa-heart fa-heart003"></i></button>
-								<button type="button" name="comment-button" class="image003"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="#catphoto003_bet">
-								<div class="pad">
-									<button type="button" name="enter_betting" value="배팅하러가기"><i class="fab fa-bitcoin"></i></button>
-								</div>		
-								</a>					
-							</div>
-						</div>
-					</li>
-				</ul>
-
-				<ul>
-					<!-- 4번째사진 -->
-					<li>
-						<div class="aa">
-							<img src="images/photo_cat004.jpg" alt="cat004 Image" class="image image004">
-
-							<div class="bb">
-								<button type="button" name="likeButton"><i class="fas fa-heart fa-heart004"></i></button>
-								<button type="button" name="comment-button" class="image004"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="#catphoto004_bet">
-								<div class="pad">
-									<button type="button" name="enter_betting" value="배팅하러가기"><i class="fab fa-bitcoin"></i></button>
-								</div>		
-								</a>					
-							</div>
-						</div>
-					</li>
-
-					<!-- 5번째사진 -->
-					<li>
-						<div class="aa">
-							<img src="images/photo_cat005.png" alt="cat005 Image" class="image image005">
-
-							<div class="bb">
-								<button type="button" name="likeButton"><i class="fas fa-heart fa-heart005"></i></button>
-								<button type="button" name="comment-button" class="image005"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="#catphoto005_bet">
-								<div class="pad">
-									<button type="button" name="enter_betting" value="배팅하러가기"><i class="fab fa-bitcoin"></i></button>
-								</div>		
-								</a>					
-							</div>
-						</div>
-					</li>
-
-					<!-- 6번째사진 -->
-					<li>
-						<div class="aa">
-							<img src="images/photo_cat006.png" alt="cat006 Image" class="image image006">
-
-							<div class="bb">
-								<button type="button" name="likeButton"><i class="fas fa-heart fa-heart006"></i></button>
-								<button type="button" name="comment-button" class="image006"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="#catphoto006_bet">
-								<div class="pad">
-									<button type="button" name="enter_betting" value="배팅하러가기"><i class="fab fa-bitcoin"></i></button>
-								</div>		
-								</a>					
-							</div>
-						</div>
-					</li>
-				</ul>
-
-				<ul>
-					<!-- 7번째사진 -->
-					<li>
-						<div class="aa">
-							<img src="images/photo_cat007.jpg" alt="cat007 Image" class="image image007">
-
-							<div class="bb">
-								<button type="button" name="likeButton"><i class="fas fa-heart fa-heart007"></i></button>
-								<button type="button" name="comment-button" class="image007"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="#catphoto007_bet">
-								<div class="pad">
-									<button type="button" name="enter_betting" value="배팅하러가기"><i class="fab fa-bitcoin"></i></button>
-								</div>		
-								</a>					
-							</div>
-						</div>
-					</li>
-
-					<!-- 8번째사진 -->
-					<li>
-						<div class="aa">
-							<img src="images/photo_cat008.jpg" alt="cat008 Image" class="image image008">
-
-							<div class="bb">
-								<button type="button" name="likeButton"><i class="fas fa-heart fa-heart008"></i></button>
-								<button type="button" name="comment-button" class="image008"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="#catphoto008_bet">
-								<div class="pad">
-									<button type="button" name="enter_betting" value="배팅하러가기"><i class="fab fa-bitcoin"></i></button>
-								</div>		
-								</a>					
-							</div>
-						</div>
-					</li>
-
-					<!-- 9번째사진 -->
-					<li>
-						<div class="aa">
-							<img src="images/photo_cat009.png" alt="cat009 Image" class="image image009">
-
-							<div class="bb">
-								<button type="button" name="likeButton"><i class="fas fa-heart fa-heart009"></i></button>
-								<button type="button" name="comment-button" class="image009"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="#catphoto009_bet">
-								<div class="pad">
-									<button type="button" name="enter_betting" value="배팅하러가기"><i class="fab fa-bitcoin"></i></button>
-								</div>		
-								</a>					
-							</div>
-						</div>
-					</li>
+					
+					</c:forEach>
+					
 				</ul>
 				
 			</div>
@@ -392,122 +129,30 @@
 		<!-- 다른 동물 친구들 탭메뉴공간입니다. ul 줄이라 생각하면되고 li는 한 줄안에 3개씩들어가는 구성품입니다. -->	
 			<div class="tab-pane fade" id="friends">
 				<ul>
-					<!-- 1번째사진 -->
+					
+					
+					<c:forEach items="${gblist}" var="en">
 					<li>
 						<div class="aa">
-							<img src="images/photo_friend0001.jpg" alt="friends0001 Image" class="image image0001">
-
-							<div class="bb">
-								<button type="button" name="likeButton"><i class="fas fa-heart fa-heart0001"></i></button>
-								<button type="button" name="comment-button" class="image0001"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="#friendsphoto0001_bet">
-								<!-- <button type="button" name="enter_betting" class="enter_bt">배팅</button> -->
+							<img src="./resources/upload${en.gb_filename}" class="image"/>
+						</div>
+						<div class="bb">
+							<button type="button" name="likeButton"><i class="fas fa-heart fa-heart01"></i></button>
+								<button type="button" name="comment-button" class="image01"><i class="fas fa-comment fa-flip-horizontal"></i></button>
+								<a href="./dogphoto01_bet.jsp">
 								<div class="pad">
 									<button type="button" name="enter_betting" value="배팅하러가기"><i class="fab fa-bitcoin"></i></button>
-								</div>		
-								</a>					
-							</div>
+								</div></a>
 						</div>
 					</li>
-
-					<!-- 2번째사진 -->
-					<li>
-						<div class="aa">
-							<img src="images/photo_friend0002.jpg" alt="friends0002 Image" class="image image0002">
-
-							<div class="bb">
-								<button type="button" name="likeButton"><i class="fas fa-heart fa-heart0002"></i></button>
-								<button type="button" name="comment-button" class="image0002"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="#friendsphoto0002_bet">
-								<!-- <button type="button" name="enter_betting" class="enter_bt">배팅</button> -->
-								<div class="pad">
-									<button type="button" name="enter_betting" value="배팅하러가기"><i class="fab fa-bitcoin"></i></button>
-								</div>		
-								</a>					
-							</div>
-						</div>
-					</li>
-
-					<!-- 3번째사진 -->
-					<li>
-						<div class="aa">
-							<img src="images/photo_friend0003.jpg" alt="friends0003 Image" class="image image0003">
-
-							<div class="bb">
-								<button type="button" name="likeButton"><i class="fas fa-heart fa-heart0003"></i></button>
-								<button type="button" name="comment-button" class="image0003"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="#friendsphoto0003_bet">
-								<!-- <button type="button" name="enter_betting" class="enter_bt">배팅</button> -->
-								<div class="pad">
-									<button type="button" name="enter_betting" value="배팅하러가기"><i class="fab fa-bitcoin"></i></button>
-								</div>		
-								</a>					
-							</div>
-						</div>
-					</li>
-				</ul>
-				
-				<ul>
-					<!-- 4번째사진 -->
-					<li>
-						<div class="aa">
-							<img src="images/photo_friend0004.jpg" alt="friends0004 Image" class="image image0004">
-
-							<div class="bb">
-								<button type="button" name="likeButton"><i class="fas fa-heart fa-heart0004"></i></button>
-								<button type="button" name="comment-button" class="image0004"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="#friendsphoto0004_bet">
-								<!-- <button type="button" name="enter_betting" class="enter_bt">배팅</button> -->
-								<div class="pad">
-									<button type="button" name="enter_betting" value="배팅하러가기"><i class="fab fa-bitcoin"></i></button>
-								</div>		
-								</a>					
-							</div>
-						</div>
-					</li>
-
-					<!-- 5번째사진 -->
-					<li>
-						<div class="aa">
-							<img src="images/photo_friend0005.jpg" alt="friends0005 Image" class="image image0005">
-
-							<div class="bb">
-								<button type="button" name="likeButton"><i class="fas fa-heart fa-heart0005"></i></button>
-								<button type="button" name="comment-button" class="image0005"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="#friendsphoto0005_bet">
-								<!-- <button type="button" name="enter_betting" class="enter_bt">배팅</button> -->
-								<div class="pad">
-									<button type="button" name="enter_betting" value="배팅하러가기"><i class="fab fa-bitcoin"></i></button>
-								</div>		
-								</a>					
-							</div>
-						</div>
-					</li>
-
-					<!-- 6번째사진 -->
-					<li>
-						<div class="aa">
-							<img src="images/photo_friend0006.JPG" alt="friends0006 Image" class="image image0006">
-
-							<div class="bb">
-								<button type="button" name="likeButton"><i class="fas fa-heart fa-heart0006"></i></button>
-								<button type="button" name="comment-button" class="image0006"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="#friendsphoto0006_bet">
-								<!-- <button type="button" name="enter_betting" class="enter_bt">배팅</button> -->
-								<div class="pad">
-									<button type="button" name="enter_betting" value="배팅하러가기"><i class="fab fa-bitcoin"></i></button>
-								</div>		
-								</a>					
-							</div>
-						</div>
-					</li>
+					</c:forEach>
+					
 				</ul>
 			</div>
 			
 			<!-- 강아지 포토1번 -->
 			<div class="pr_enter_photo enter_photo01">
-
-				<img src="./images/photo_dog01.png" alt="dog01 Image">
+				<img src="./resources/upload/${en.gb_filename}" alt="dog01 Image">
 				<div class="pr_enph enph01">
 
 					<div class="pr_en1-1 enph01-01">
@@ -1661,6 +1306,6 @@
 			</div>
 
 		</div>
-	
+	</div>
 </body>
 <%@ include file="../qt_project/bottom_qt.jsp"%>

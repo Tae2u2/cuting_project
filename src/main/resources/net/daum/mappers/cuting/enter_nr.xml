@@ -8,15 +8,15 @@
  
  	<!-- 자료실 저장 -->
    <insert id="nr_in" parameterType="nr"> <!-- parameterType속성은 전달인자 자료형이고 생략 가능하다. -->
-    insert into gamble (gb_postnb,gb_id,gb_title,gb_filename,gb_content,gb_update)
-    values(gb_postnb_seq.nextval,#{gb_id},#{gb_title},#{gb_filename},#{gb_content},sysdate)
+    insert into gamble (gb_postnb,gb_id,gb_category,gb_title,gb_filename,gb_content,gb_update)
+    values(gb_postnb_seq.nextval,#{gb_id},#{gb_category},#{gb_title},#{gb_filename},#{gb_content},sysdate)
    </insert>
    
    
    <!-- 검색 전 후 자료실 목록 -->
-   <select id="nr_list" resultType="net.daum.vo.Enter_nrVO">
-     select * from ( select rowNum rNum,gb_postnb,gb_cont,gb_filename,gb_likecnt,gb_viewcnt,gb_update from<!-- 답글하고 그룹번호 글번호 추가해야함 -->
-     (select * from enter_nr
+   <select id="nr_list" parameterType="nr" resultType="net.daum.vo.Enter_nrVO">
+     select * from ( select rowNum rNum,gb_postnb,gb_category,gb_content,gb_filename,gb_likecnt,gb_viewcnt,gb_update from<!-- 답글하고 그룹번호 글번호 추가해야함 -->
+     (select * from gamble
      
      <where>
      <if test="find_field==''"></if><!-- 검색조건이 없는 경우 -->
@@ -29,6 +29,15 @@
      <if test="find_field=='gb_content'"><!-- 검색 조건이 내용인 경우 -->
      gb_content like #{find_name}
      </if>
+     <if test="gb_category=='1'">
+     gb_category='1'
+     </if>
+     <if test="gb_category=='2'">
+     gb_category='2'
+     </if>
+     <if test="gb_category=='3'">
+     gb_category='3'
+     </if>    
     </where>
     
       ))<!-- order by bbs_ref desc,bbs_level asc))  -->

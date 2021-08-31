@@ -40,7 +40,7 @@ select{
 	font-size: 13px;
 }
 
-.write-post-container .title_box .title_area{
+.write-post-container .title_box #title_area{
 	border:transparent;
 	width:40%;
 	border-bottom: 1px solid #ccc;
