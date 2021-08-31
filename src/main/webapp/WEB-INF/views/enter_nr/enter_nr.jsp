@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -65,6 +66,8 @@
 			<div class="tab-pane fade show active" id="dog">
 				<ul>
 					
+
+
 					<!-- 1번째사진 -->
 					<li>
 						<div class="aa">
@@ -73,14 +76,15 @@
 						<div class="bb">
 							<button type="button" name="likeButton"><i class="fas fa-heart fa-heart01"></i></button>
 								<button type="button" name="comment-button" class="image01"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="nr_dogphoto01_bet">
+								<a href="./dogphoto01_bet.jsp">
 								<div class="pad">
 									<button type="button" name="enter_betting" value="배팅하러가기"><i class="fab fa-bitcoin"></i></button>
 								</div></a>
 						</div>
 					</li>
 					
-										
+					
+					
 					<c:forEach items="${gblist}" var="en">
 					
 					<li>

@@ -43,7 +43,7 @@
 						<li><a href='#'>EVENT</a></li>
 					</ul>
 				</div></li>
-			<li><a href="">마이페이지<%=header %></a>
+			<li><a href="">마이페이지</a>
 				<!--<div class="sub-menu-1">
 					<ul>
 						<li><a href='myinfo'>나의 정보</a></li>
@@ -57,17 +57,17 @@
 		<% if(header!=null){ %>
 		<div class="mypageBox">
 			<div class="mypageContent">
-				<h2>{닉네임}님!<br><span>환영합니다!</span></h2>
+				<h2><%=header %>님!<br><span>환영합니다!</span></h2>
 			</div>
 			<ul class="memberNavi">
 				<li><a href='myinfo'><i class="fas fa-user"></i>회원정보</a></li>
 				<li><a href="#"><i class="fas fa-heart"></i>찜목록</a></li>
 				<li><a href="#"><i class="far fa-credit-card"></i>결제페이지</a></li>
 				<li><a href="#"><i class="far fa-list-alt"></i>나의노름관리</a></li>
-				<li><a href="#"><i class="fa-solid fa-right-from-bracket"></i>로그아웃</a></li>
+				<li><a href="#"><i class="fas fa-sign-out-alt"></i>로그아웃</a></li>
 			</ul>
 			<div class="memberToggle">
-				<i class="fa-solid fa-caret-down"></i>
+				<i class="fas fa-caret-down"></i>
 			</div>
 		</div>
 		<%}else{ %>

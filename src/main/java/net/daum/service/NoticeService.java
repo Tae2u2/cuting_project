@@ -9,5 +9,6 @@ public interface NoticeService {
 	void insertNotice(NoticeVO b);
 	int getTotalCount(NoticeVO b);
 	List<NoticeVO> getNoticeList(NoticeVO b);
+	NoticeVO getNoticeCont(int no_postnb); //하나 수정
 
 }
