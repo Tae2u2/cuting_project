@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import net.daum.service.PaymentService;
 import net.daum.service.User_InfoService;
+import net.daum.vo.PaymentVO;
 import net.daum.vo.User_InfoVO;
 
 @Controller
@@ -24,6 +25,9 @@ public class MainController {
 	
 	@Autowired
 	private User_InfoService user_infoService;
+	
+	@Autowired
+	private PaymentService paymentService;
 	
 	@GetMapping("/")
 	public String mainPage(HttpServletRequest request,Model rttr, User_InfoVO ui) {
@@ -76,15 +80,19 @@ public class MainController {
 	
 	
 	@RequestMapping(value="myinfo")
-	public ModelAndView myinfoPage(HttpServletRequest request, HttpSession session, @ModelAttribute User_InfoVO ui) {
+	public ModelAndView myinfoPage(HttpServletRequest request, HttpSession session, @ModelAttribute User_InfoVO ui, @ModelAttribute PaymentVO pa) {
 		ModelAndView listM;
 		
 		if(request.getSession().getAttribute("id")!=null) {
 		ui.setInfo_id((String) request.getSession().getAttribute("id"));
+		pa.setPay_id((String) request.getSession().getAttribute("id"));
 		System.out.println(ui.getInfo_id());
+		System.out.println(pa.getPay_id());
+		List<PaymentVO> plist = this.paymentService.getPayment(pa);
 		List<User_InfoVO> ulist = this.user_infoService.getUser_InfoList(ui);
 		listM=new ModelAndView("/qt_project/mypage_qt");
 		listM.addObject("ulist",ulist);
+		listM.addObject("plist", plist);
 		return listM;
 		}
 		else {
