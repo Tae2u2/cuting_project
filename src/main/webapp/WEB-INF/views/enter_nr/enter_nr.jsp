@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>오늘의 노름</title>
 <%@ include file="../qt_project/header.jsp"%>
-<link rel="stylesheet" href="./resources/css/enter_nr.css">
+<link rel="stylesheet" href="${path}/resources/css/enter_nr.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

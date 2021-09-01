@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>dogphoto01</title>
 <%@ include file="../qt_project/header.jsp"%>
-<link rel="stylesheet" href="./resources/css/dogphoto01_bet_style.css">
+<link rel="stylesheet" href="${path}/resources/css/dogphoto01_bet_style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
