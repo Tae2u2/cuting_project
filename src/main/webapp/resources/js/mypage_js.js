@@ -16,4 +16,11 @@ tabs(0);
 
 $(".tab").click(function() {
 			$(this).addClass("active").siblings().removeClass("active");
-		})
+		});
+		
+		
+
+$('#charge').click(function(){
+	alert('클릭했네?');
+	});
+	
