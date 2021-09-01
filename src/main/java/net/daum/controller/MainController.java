@@ -239,7 +239,7 @@ public class MainController {
 			String b[] = a.split(",");
 			
 			for(int i = 0 ; i<b.length ; i++) {
-				model.addAttribute("attr"+i, b[i]);
+				model.addAttribute("attr"+i, b[i].replace("\"", ""));
 			}
 			model.addAttribute("id",ui.getInfo_id());
 			
