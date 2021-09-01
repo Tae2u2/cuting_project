@@ -20,7 +20,20 @@ $(".tab").click(function() {
 		
 		
 
-$('#charge').click(function(){
+$(function(){
+	$('#charge').click(function(){
 	alert('클릭했네?');
+	$.ajax({
+		url:'kakaopay' ,
+		dataType:'json',
+		success:function(data){
+			var box = data.next_redirect_pc_url;
+			window.open(box);
+		},
+		error:function(error){
+		alert(error);
+		}
+		});
 	});
+});
 	
