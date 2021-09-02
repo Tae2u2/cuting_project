@@ -196,6 +196,7 @@ public class MainController {
 		ui.setInfo_id((String) request.getSession().getAttribute("id") );
 		
 		System.out.println(ui.getInfo_id());
+		System.out.println(tid);
 	
 		
 		try {
