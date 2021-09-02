@@ -29,7 +29,32 @@ public class EventDAOImpl implements EventDAO {
 	public void insertEvent(EventVO e) {
 		this.sqlsession.insert("in_e", e);
 	}
-	
+
+	@Override
+	public EventVO getEventCont(int no) {
+		
+		return this.sqlsession.selectOne("sel_cont", no);
+	}
+
+	@Override
+	public void editEvent(EventVO e) {
+		this.sqlsession.update("edit_ev", e);
+		
+	}
+
+	@Override
+	public void delEvent(int no) {
+		this.sqlsession.update("del_ev", no);
+		
+	}
+
+	@Override
+	public void getEventDelLi(int no) {
+			this.sqlsession.selectList("sel_de", no);
+			
+	}
+
+
 	
 
 

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 
 import net.daum.dao.EventDAO;
 import net.daum.vo.EventVO;
@@ -34,7 +34,26 @@ public class EventServiceImpl implements EventService {
 		this.eventDao.insertEvent(e);
 		
 	}
-	
+
+	@Override
+	public EventVO getEventCont(int no) {
+		
+		return this.eventDao.getEventCont(no);
+	}
+
+	@Override
+	public void editEvent(EventVO e) {
+		this.eventDao.editEvent(e);
+		
+	}
+	@Transactional
+	@Override
+	public void delEvent(int no) {
+		this.eventDao.delEvent(no);
+		this.eventDao.getEventDelLi(no);
+	}
+
+
 
 
 }

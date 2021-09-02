@@ -21,6 +21,29 @@
  <select id="sel_one" resultType="int">
   select count(*) from EVENT
  </select>
+ 
+ <select id="sel_cont" resultType="net.daum.vo.EventVO">
+   select * from EVENT where ev_postnb=#{no}
+ </select>
+ 
+ <update id="edit_ev" parameterType="net.daum.vo.EventVO">
+ 	update EVENT set ev_filename=#{ev_filename},ev_update=#{ev_update},ev_exdate=#{ev_exdate},ev_mddate=sysdate,ev_delflag=0,ev_title=#{ev_title},ev_content=#{ev_content}
+ 	where ev_postnb=#{ev_postnb}
+ </update>
+ 
+ <update id="del_ev">
+ 		update EVENT set ev_delflag=1
+ 	where ev_postnb=#{no}
+ </update>
+ 
+ <select id="sel_de">
+   select * from
+    (select rowNum rNum,ev_postnb,ev_filename,ev_update,ev_exdate,ev_mddate,ev_delflag,ev_title,ev_content from (select * from EVENT order by ev_postnb desc))
+    <!-- rowNum컬럼은 오라클에서 테이블 생성시 추가되는 기본컬럼으로 레코드 저장시 일련번호값을 저장한다. -->
+    where rNum &gt;= #{startrow} and rNum &lt;= #{endrow} and ev_delflag!=1
+ </select>
+ 
+
 
  
  </mapper>

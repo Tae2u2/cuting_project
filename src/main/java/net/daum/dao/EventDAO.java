@@ -13,6 +13,14 @@ public interface EventDAO {
 
 	void insertEvent(EventVO e);
 
+	EventVO getEventCont(int no);
+
+	void editEvent(EventVO e);
+
+	void delEvent(int no);
+
+	void getEventDelLi(int no);
+
 	
 
 }
