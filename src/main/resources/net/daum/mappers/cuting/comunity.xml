@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+  <mapper namespace="Cp">
+  
+     <insert id="cp_in" parameterType="cp"> <!-- parameterType속성은 전달인자 자료형이고 생략 가능하다. -->
+    insert into POSTING (pt_postnb,pt_id,pt_category,pt_title,pt_content,pt_update)
+    values(pt_postnb_seq.nextval,#{pt_id},#{pt_category},#{pt_title},#{pt_content},sysdate)
+   </insert>
+   
+   
+   
+   </mapper>

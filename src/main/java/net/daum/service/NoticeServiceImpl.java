@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import net.daum.dao.NoticeDAO;
 import net.daum.vo.NoticeVO;
@@ -21,19 +22,36 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 	
 	@Override
-	public int getTotalCount(NoticeVO b) {
-		return this.NoticeDao.getTotalCount(b);
+	public int getTotalCount(NoticeVO n) {
+		return this.NoticeDao.getTotalCount(n);
 	}
 	
 	@Override
 	public List<NoticeVO> getNoticeList(NoticeVO b) {
 		return this.NoticeDao.getNoticeList(b);
 	}
-	//8.30일 수정본
+	@Transactional   //aop를 통한 트랜잭션적용.
 	@Override
-	public NoticeVO getNoticeCont(int no_postnb) {//내용보기를 클릭: 조회수1증가 + 내용보여주기
-			   this.NoticeDao.updateHit(no_postnb); 
+	public NoticeVO getNoticeCont(int no_postnb) {//내용보기를 클릭했음: 조회수1증가 + 내용보여주기
+			   this.NoticeDao.updateHit(no_postnb); //
 		return this.NoticeDao.getNoticeCont(no_postnb);
 	}
+
+	@Override
+	public NoticeVO getNo_content2(int no_postnb) {	
+		return this.NoticeDao.getNoticeCont(no_postnb);
+	}//수정폼,삭제폼
+
+	@Override //수정폼.
+	public void editNotice(NoticeVO b) {
+		this.NoticeDao.editNotice(b);
+		
+	}
+
+	@Override
+	public void delNotice(int no_postnb) {
+		this.NoticeDao.delNotice(no_postnb);
+	}
+
 
 }

@@ -65,7 +65,9 @@
  		<table> 		</table>
  		</c:forEach>
  		</c:if>
- 		<button class="aboutBtn">충전하러 가기</button>
+ 		
+ 		<button class="aboutBtn" id="charge" name="charge">충전하러 가기</button>
+ 		
  		</div>
  		
  		<div class="heart tabShow">

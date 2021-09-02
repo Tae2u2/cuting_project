@@ -1,11 +1,13 @@
 package net.daum.controller;
 
 import java.io.File;
+import java.io.PrintWriter;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +24,7 @@ import com.oreilly.servlet.MultipartRequest;
 import net.daum.service.NoticeService;
 import net.daum.vo.NoticeVO;
 
-@Controller //08.26 유재선 왓다감.
+@Controller
 public class NoticeController {
 
 	@Autowired //자동의존성 주입
@@ -38,14 +40,14 @@ public class NoticeController {
 			
 			wm.addAttribute("page",page);//페이징에서 책갈피 기능을 구현		
 			return "notice/notice_write";//뷰페이지 경로=> /WEB-INF/views/notice/notice_write.jsp
-		}//notice_write()\
+		}//notice_write()
 		
 	
 		@PostMapping("/notice_write_ok") //post로 접근하는 매핑주소를 처리
 		public String notice_write_ok(@ModelAttribute NoticeVO b, HttpServletRequest request) 
 				throws Exception{
 			
-			String saveFolder=request.getRealPath("upload");
+			String saveFolder=request.getRealPath("resources/upload");
 			//이진파일 업로드 서버 경로=>톰캣 WAS 서버에 의해서 변경된 실제 톰캣 프로젝트 경로
 			int fileSize=5*1024*1024;//이진파일 업로드 최대크기=>5M
 			MultipartRequest multi=null;//이진파일 업로드 참조변수->cos.jar로 부터 읽어들임.
@@ -54,10 +56,12 @@ public class NoticeController {
 			
 			String no_title=multi.getParameter("no_title");
 			String no_content=multi.getParameter("no_content");
-					//String bbs_pwd=multi.getParameter("bbs_pwd");
-					//String bbs_name=multi.getParameter("bbs_name");
+			/*
+			 * String bbs_pwd=multi.getParameter("bbs_pwd"); String
+			 * bbs_name=multi.getParameter("bbs_name");
+			 */
 			
-			File upFile=multi.getFile("no_filename");//첨부한 이진파일을 가져온다.
+			File upFile=multi.getFile("no_filename");//첨부한 이진파일(속성명:no_filename)을 가져온다.
 			
 			if(upFile != null) {//첨부한 이진파일이 있는 경우
 				String fileName=upFile.getName();//첨부한 이진파일명
@@ -94,9 +98,10 @@ public class NoticeController {
 			
 			return "redirect:/board_qt";//목록보기 매핑으로 이동		
 		}//notice_write_ok()
-	
+		//return redirect:/ 인경우는 다시 controller가 호출되는것.(redirect오른쪽의 주소로 URL 요청을 다시 하는 것)
+		//return "뷰페이지" 이건 view페이지의 jsp를 불러오는것
 		
-	//8.30일 수정본
+		
 		//자료실 목록(페이징+검색)
 		@RequestMapping("/board_qt")  //GET OR POST방식으로 접근하는 매핑주소를 처리,bbs_list매핑주소 등록
 		public String board_qt(Model listM,HttpServletRequest request,@ModelAttribute NoticeVO n) throws Exception{
@@ -148,11 +153,9 @@ public class NoticeController {
 			
 			if(state.equals("cont")) {//내용보기 일때만 조회수 증가(aop를 통한 트랜잭션 적용)
 				b=this.noticeService.getNoticeCont(no_postnb);
-			} 
-				/*
-				 * else {//답변폼,수정폼,삭제폼일때는 조회수 증가 안함.->트랜잭션 적용 안함.
-				 * b=this.noticeService.getNO_content2(no_postnb); }
-				 */
+			}else {//답변폼,수정폼,삭제폼일때는 조회수 증가 안함.->트랜잭션 적용 안함.
+				  b=this.noticeService.getNo_content2(no_postnb); }
+				
 			
 			String no_content=b.getNo_content().replace("\n","<br/>");//textarea에서 엔터키 친부분을 줄바꿈
 			
@@ -162,20 +165,134 @@ public class NoticeController {
 			cm.addObject("page",page);
 			
 			if(state.equals("cont")) {//내용보기
-				cm.setViewName("notice/notice_cont");//뷰페이지 경로=>/WEB-INF/views/notice/no_content.jsp
-			} 
-				/*
-				 * else if(state.equals("reply")) {//답변폼 cm.setViewName("bbs/bbs_reply"); }
-				 */
-			
-				/*
-				 * else if(state.equals("edit")) {//수정폼 cm.setViewName("notice/no_edit"); }
-				 */
-				/*
-				 * else if(state.equals("del")) {//삭제폼 cm.setViewName("bbs/bbs_del"); }
-				 */
+				cm.setViewName("notice/notice_cont");//뷰페이지 경로=>/WEB-INF/views/notice/notice_cont.jsp
+			}else if(state.equals("edit")) {//수정폼
+				cm.setViewName("notice/notice_edit");
+			}else if(state.equals("del")) {//삭제폼
+				cm.setViewName("notice/notice_del");
+			}
+			/*
+			 * else if(state.equals("reply")) {//답변폼 cm.setViewName("bbs/bbs_reply"); }
+			 */
 			return cm;
 		}//notice_cont()
+		
+	//자료실 수정완료
+	@RequestMapping("/notice_edit_ok")
+	public ModelAndView notice_edit_ok(HttpServletRequest request, HttpServletResponse response,NoticeVO b)
+			throws Exception{
+		response.setContentType("text/html;charset=UTF-8");//브라우저에 출력되는 파일형식과 언어코딩 타입 지정
+		/*PrintWriter out=response.getWriter();//출력스트림 객체 생성*/		
+		String saveFolder=request.getRealPath("resources/upload");//이진파일 업로드 서버 경로=>톰캣 WAS 서버에 의해서 변경된 실제 톰캣 프로젝트 경로
+		int fileSize=5*1024*1024;//이진파일 최대 크기
+		
+		MultipartRequest multi=null;
+		multi=new MultipartRequest(request,saveFolder,fileSize,"UTF-8");//이진파일을 가져올 multi생성
+		
+		int no_postnb=Integer.parseInt(multi.getParameter("no_postnb"));//히든으로 전달된 번호값을 받아서 정수 숫자로 변경해서 저장
+		int page=1;
+		if(multi.getParameter("page") != null) {
+			page=Integer.parseInt(multi.getParameter("page"));
+		}
+		
+		/*String no_name=multi.getParameter("bbs_name");//수정할 이름,제목,내용을 받아서 각각 저장
+*/		String no_title=multi.getParameter("no_title");
+	/*	String bbs_pwd=multi.getParameter("bbs_pwd");*/
+		String no_content=multi.getParameter("no_content");
+		
+		NoticeVO db_pwd=this.noticeService.getNo_content2(no_postnb);//오라클로 부터 레코드를 가져옴.
+			/*
+			 * if(!db_pwd.getBbs_pwd().equals(bbs_pwd)) { out.println("<script>");
+			 * out.println("alert('비번이 다릅니다!');"); out.println("history.back();");
+			 * out.println("</script>"); }else {
+			 */
+		File upFile=multi.getFile("no_filename");//수정 첨부한 이진파일을 가져옴.
+			
+		if(upFile != null) {//수정첨부한 이진파일이 있는 경우
+			String fileName=upFile.getName();//수정 첨부한 파일명
+			File delFile=new File(saveFolder+db_pwd.getNo_filename());//기존 첨부된 삭제할 파일 객체를 생성
+			if(delFile.exists()) {//삭제할 파일이 있다면
+				delFile.delete();//기존 이진파일을 삭제
+			}
+			Calendar c=Calendar.getInstance();//칼렌더는 추상클래스로 new키워드로 객체 생성을 못함. 하지만 년월일 시분초 값을 반환할 수 있다.
+			int year=c.get(Calendar.YEAR);//년도
+			int month=c.get(Calendar.MONTH)+1;//월값,+1을 한 이유는 1월이 0부터 시작하기 때문이다.
+			int date=c.get(Calendar.DATE);//일값
+			
+			String homedir=saveFolder+"/"+year+"-"+month+"-"+date;
+			File path01=new File(homedir);
+			if(!(path01.exists())) {
+				path01.mkdir(); //path01이 존재 하지 않다면...폴더를 생성한다.
+			}
+			Random r=new Random();
+			int random=r.nextInt(100000000);
+			
+			//확장자를 구함
+			int index=fileName.lastIndexOf(".");//.의 위치번호를 구함
+			String fileExtendsion=fileName.substring(index+1);//첨부파일의 확장자를 구함.
+			String refileName="notice"+year+month+date+random+"."+fileExtendsion;
+			String fileDBName="/"+year+"-"+month+"-"+date+"/"+refileName;
+			upFile.renameTo(new File(homedir+"/"+refileName));
+			b.setNo_filename(fileDBName);
+		}else {//수정 파일을 첨부하지 않은 경우
+			String fileDBName="";
+			if(db_pwd.getNo_filename() != null) {//기존 첨부된 파일이 있는경우
+				b.setNo_filename(db_pwd.getNo_filename());
+			}else {
+				b.setNo_filename(fileDBName);
+			}
+		}//if else
+		
+		b.setNo_postnb(no_postnb); b.setNo_title(no_title); b.setNo_content(no_content);
+		this.noticeService.editNotice(b);
+		/* 문제) 서비스,모델 dao,mybatis 매퍼태그까지 스프링의 흐름도 따라 번호를 기준으로 
+		 * 글쓴이,제목,내용,첨부파일을 수정되게 한다. 개발자 테스트까지 완료한다.
+		 */
+		
+		ModelAndView em=new ModelAndView("redirect:/notice_cont");
+		em.addObject("no_postnb",no_postnb);
+		em.addObject("page",page);
+		em.addObject("state","cont");
+		return em;// 주소창에 노출되는 get방식으로 3개의 인자값이 전달됨. bbs_cont?bbs_no=번호&page=쪽번호&state=cont
+}//notice_edit_ok()
+		
+		
+
+	//자료실 삭제
+	@RequestMapping("/notice_del_ok")
+	public String notice_del_ok(int no_postnb,int page, HttpServletResponse response,HttpServletRequest request)
+	throws Exception{
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		String up=request.getRealPath("upload");
+		
+		NoticeVO db_pwd = this.noticeService.getNo_content2(no_postnb);
+		
+		
+		/*
+		 * if(!db_pwd.getBbs_pwd().equals(del_pwd)) { out.println("<script>");
+		 * out.println("alert('비번이 다릅니다!');"); out.println("history.go(-1);");
+		 * out.println("</script>");
+		 */
+		
+		/*
+		 * out.println("<script>"); out.println("ask('삭제하시겠습니까?');");
+		 * out.println("document.write(answer)"); out.println("</script>");
+		 */
+		
+		
+		
+			this.noticeService.delNotice(no_postnb);//자료실 삭제
+			/* 문제)번호를 기준으로 오라클로 부터 자료를 삭제되게 해 보자. 개발 테스트 까지 완료 시킨다. 
+			 */
+			
+			if(db_pwd.getNo_filename() != null) {//첨부파일이 있는 경우
+				File file=new File(up+db_pwd.getNo_filename());
+				file.delete();//upload폴더로 부터 첨부파일을 삭제
+			}
+			return "redirect:/board_qt?page="+page;
+	
+	}//notice_del_ok()	
 		
 		
 }

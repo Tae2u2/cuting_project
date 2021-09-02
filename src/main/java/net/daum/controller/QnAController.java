@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.reflection.SystemMetaObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,6 +43,7 @@ public class QnAController {
     public String qna_write_ok(QnAVO qna,RedirectAttributes rttr) {
 		this.qnaService.insertQnA(qna);
 		rttr.addFlashAttribute("result","success");
+		System.out.println(rttr);
 		return "redirect:/QnA/QnA_qt";
 	}//qna_write_ok() end
 	

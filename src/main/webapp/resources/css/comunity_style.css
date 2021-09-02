@@ -6,16 +6,17 @@
 
 .qt_aside{
 	width: 230px;
-	height: 800px;
-	top: 340px;
-	left: 80px;
+	height: 600px;
+	top: 47%;
+	left: 8%;
 	position:absolute;
 	background-color:#FFE59D;
 	border-radius: 2px;
 }
 .qt_aside ul{
 	text-align: left;
-	margin-left: 10px;
+	margin-top: 15px;
+	margin-left: 15px;
 }
 .qt_aside ul li{
 	list-style: none;
@@ -37,6 +38,7 @@
 	align-items: flex-end;
 	margin-top: 100px;
 	margin-right: 80px;
+	margin-bottom: 150px;
 }
 .forLineUp h1{
 	padding-right: 500px;
@@ -44,6 +46,7 @@
 
 .write-post-container{
 	margin-top: 100px;
+	margin-bottom: 30px;
 	position: relative;
 	width: 65%;
 	background: #fff;

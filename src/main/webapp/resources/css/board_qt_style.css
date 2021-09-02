@@ -1,46 +1,113 @@
 @charset "UTF-8";
 
+a:link{
+	text-decoration: none;
+}
+a:hover{
+	color: #F57C00;
+}
 h1{
 	text-align: center;
 	padding-top: 100px;
 	margin-bottom: 100px;
 	color: #616161;	
 }
-
-.qt-table{
+#notice-select{
+	padding: 5px 7px;
+	border: 1px solid #9E9E9E;
+	border-radius: 3px;
+}
+input#find_name{
+	padding: 5px 7px;
+	border: 1px solid #9E9E9E;
+	border-radius: 3px;
+}
+.notice_f3{
+	width:900px;
+	margin:10px auto;
+	text-align: left;
+	padding: 5px;
+}
+.notice_f3_right{
+	float: right;
+}
+.BtnNotice{
+	padding: 10px 20px;
+	color: #fff;
+	border-radius: 10px;
+	border: none;
+	background: #F57C00;
+	cursor: pointer;
+	margin-right: 10px;
+}
+.BtnNotice2{
+	padding: 5px 10px;
+	color: #fff;
+	border-radius: 5px;
+	border: none;
+	background: #F57C00;
+	cursor: pointer;
+	margin-right: 5px;
+}
+.noti-table{
 	margin: 25px auto;
 	font-size: 0.9em;
-	min-width: 800px;
-	margin-bottom: 200px;
+	min-width: 900px;
+	margin-bottom: 20px;
+	/* width:45%; */
 }
 
-.qt-table thead tr{
+.noti-table thead tr{
 	background-color: #FFE082;
 	color: #424242;
-	width: 80%;
 	padding: 5px 20px 5px 20px;
 	text-align: center;
 	font-weight: bold;
-	
+	min-width: 800px;
 }
 
-.qt-table th,
-.qt-table td{
+.noti-table th,
+.noti-table td{
 	padding: 15px 20px;
 }
-
-.qt-table tbody tr{
+.noti-table tbody td{
+	text-align: center;
+}
+/*내가수정한부분시작 */
+.noti-table .qt-notibody #notice_td{
+	text-align: left;
+	padding-left: 30px;
+}
+div.notice_pa_f3{
+	margin:25px auto;
+	min-width:900px;
+	margin-bottom: 70px;
+}
+div.nlist_paging{
+	width:900px;
+	text-align: center;
+	margin:25px auto;
+}
+div.noticeList_menu{
+	float:right;
+	display: span;
+	
+}
+/*내가수정한부분 끝 */
+.noti-table .notice-body tr{
 	border-bottom: 1px solid #dddddd;
 }
-.qt-table tbody tr:nth-of-type(even){
+.noti-table tbody tr:nth-of-type(even){
 	background-color: #f3f3f3;
 }
 
-.qt-table tbody tr:last-of-type{
+.noti-table tbody tr:last-of-type{
 	border-bottom: 2px solid #FFF176;
 }
 
-input{
+
+
+/*  input, select{
 	float: right;
 	padding: 10px 20px;
 	color: #fff;
@@ -48,5 +115,5 @@ input{
 	border: none;
 	background: #F57C00;
 	cursor: pointer;
-}
+}  */
 
