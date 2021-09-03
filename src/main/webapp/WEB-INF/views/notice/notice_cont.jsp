@@ -5,8 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="./resources/css/notice_cont_style.css">
 <%@ include file="../qt_project/header.jsp"%>
+<link rel="stylesheet" href="${path}/resources/css/notice_cont_style.css">
+
 <title>공시사항::내용</title>
 </head>
 <body>
@@ -32,7 +33,7 @@
 		<c:if test="${!empty b.no_filename}"><%--첨부 파일이 있는 경우 실행--%>
     	<tr>
      	<th>첨부파일</th> <td>
-     	<img src="./resources/upload${b.no_filename}" class="image" alt="이미지">
+     	<img src="./resources/upload${b.no_filename}" class="image" alt="이미지" width="300" height="324">
      	<%-- ${b.no_filename} --%></td>
     	</tr>
     </c:if>	  

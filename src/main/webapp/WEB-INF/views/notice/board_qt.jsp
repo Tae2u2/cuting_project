@@ -4,7 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <%@ include file="../qt_project/header.jsp"%>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="./resources/css/board_qt_style.css">
+<link rel="stylesheet" href="${path}/resources/css/board_qt_style.css">
 <title>큐팅::공지사항</title>
 </head>
 <body>
@@ -14,8 +14,7 @@
 	 <h1>
  			공&nbsp; 지&nbsp; 사&nbsp; 항&nbsp;
  												 </h1>
- 												 
-	<%-- <div class="notice_count ">글개수 : <strong>${totalCount} 개</strong></div> --%>
+
 		<%--검색 기능 --%>
 <div class="notice_f3">
   <span>글개수 : ${totalCount} 개</span>
@@ -127,51 +126,12 @@
 	</div>	
 		
 		</div>
-	<%-- 	
-	<div id="noticeList_menu">
-	검색필드와 검색어가 있는 경우 즉 검색하고 난 이후 실행
-	  <input type="button" value="글쓰기" onclick="location='notice_write?page=${page}';" class="BtnNotice"/>
-	  
-	  <c:if test="${(!empty find_field) && (!empty find_name)}">
-	    <input type="button" value="전체목록" onclick="location='board_qt?page=${page}';" class="BtnNotice"/>
-	  </c:if>
-	</div>	 --%>
-	
-<%-- 
-<div id="nFind_wrap">
-  <select name="find_field">
-    <option value="no_title" <c:if test="${find_filed == 'no_title'}">${'selected'}</c:if>>제목</option>
-    <option value="no_content" <c:if test="${find_field == 'no_content'}">${'selected'}</c:if>>내용</option>   
-  </select>
-  
-  <input name="find_name" id="find_name" size="14" value="${find_name}"/>
-  <input type="submit" value="검색"/>
-</div>	  --%>
-
-
 
 </div>
 </form>
 		</body>
-
-				
-		<%-- <tr>
-			<th colspan="5">
-				쪽번호 출력
-			</th>
-		</tr>
-		<tr>
-			<th colspan="5"><input type="button" value="글쓰기" onclick="" /></th>
-		</tr> --%>
-
-
+	
 <%@ include file="../qt_project/bottom_qt.jsp"%>
-		
-		
-		
-		
-		
-		
 		
 		
 		
