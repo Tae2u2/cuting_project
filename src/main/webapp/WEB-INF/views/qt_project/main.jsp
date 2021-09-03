@@ -13,18 +13,20 @@
 %>
 </head>
 <body>
-<div class="startPage">
+<div class="needLine">
+	<div class="startPage">
 		<h1>"당신의 귀염둥이에게<br><span>베팅</span>하세요!"</h1>
 			<p>100원으로 시작하는 합법 노름!<br>가진 게 돈 뿐인 랜선집사들 모여라!</p>
 
 			<a href="enter_nr">판벌리러가기<%=result %></a>
 			<a href="enter_nr">판벌리러가기<%=result %><script>document.write('${result}')</script></a>
 			<br><br><br><br><br><br><br><br><br><br><br><br><br>
-		</div>	
+	</div>	
 		<div class="homeImg">
 			<img src="${path}/resources/images/bgbg.png" class="back-img">
 			<img src="${path}/resources/images/homeimg.png" class="main-img">
 		</div>
+</div>
 		<script>
 		if (self.name != 'reload') {
 	         self.name = 'reload';

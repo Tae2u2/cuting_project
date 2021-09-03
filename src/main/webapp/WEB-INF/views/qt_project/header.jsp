@@ -19,10 +19,9 @@
 		<a href="/controller/"><img src="${path}/resources/images/logo2.png" class="logo"></a>
 
 		<ul>
-			<li class="active"><a href="">STORY</a>
+			<li class="active"><a href="">about큐팅</a>
 				<div class="sub-menu-1">
 					<ul>
-						<li><a href='#'>about큐팅</a></li>
 						<li><a href='#'>Hot노름</a></li>
 					</ul>
 				</div></li>
@@ -37,21 +36,20 @@
 			<li><a href="">공지사항</a>
 				<div class="sub-menu-1">
 					<ul>
-						<li><a href='#'>공지사항</a></li>
 						<li><a href='#'>FAQ</a></li>
 						<li><a href='#'>Q&A/신고</a></li>
 						<li><a href='#'>EVENT</a></li>
 					</ul>
 				</div></li>
-			<li><a href="">마이페이지</a>
-				<!--<div class="sub-menu-1">
+			<!-- <li><a href="">마이페이지</a>
+				<div class="sub-menu-1">
 					<ul>
 						<li><a href='myinfo'>나의 정보</a></li>
 						<li><a href='#'>찜목록</a></li>
 						<li><a href='#'>결제페이지</a></li>
 					</ul>
-				</div>-->
-				</li>
+				</div>
+				</li>-->
 		</ul>
 		
 		<% if(header!=null){ %>
