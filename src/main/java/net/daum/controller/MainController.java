@@ -9,25 +9,27 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
+import javax.inject.Inject;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -44,6 +46,9 @@ public class MainController {
 	
 	@Autowired
 	private PaymentService paymentService;
+	
+	@Inject
+	JavaMailSender mailSender;
 	
 	@GetMapping("/")
 	public String mainPage(HttpServletRequest request,Model rttr, User_InfoVO ui) {
@@ -294,12 +299,64 @@ public class MainController {
         
         */
 		
-        
-        
-        
-        
-		
-		
 	}
-	
+	@RequestMapping(value="emailcheck")
+	public Map<String, String> mailSending(String email) throws IOException {
+		Map<String, String> rmap = new HashMap<String, String>();
+		
+
+		  Random r = new Random();
+		  int dice = r.nextInt(4589362) + 49311; //이메일로 받는 인증코드 부분 (난수)
+        
+          String setfrom = "khb2870@gamil.com";
+          String tomail = "khb2870@naver.com"; // 받는 사람 이메일
+          System.out.println(email);
+          String title = "큐팅 인증 이메일 입니다."; // 제목
+          String content =
+          
+          System.getProperty("line.separator")+ //한줄씩 줄간격을 두기위해 작성
+          
+          System.getProperty("line.separator")+
+                  
+          "안녕하세요 회원님 저희 홈페이지를 찾아주셔서 감사합니다"
+          
+          +System.getProperty("line.separator")+
+          
+          System.getProperty("line.separator")+
+  
+          " 인증번호는 " +dice+ " 입니다. "
+          
+          +System.getProperty("line.separator")+
+          
+          System.getProperty("line.separator")+
+          
+          "받으신 인증번호를 홈페이지에 입력해 주시면 다음으로 넘어갑니다."; // 내용
+          
+          
+          try {
+              MimeMessage message = mailSender.createMimeMessage();
+              MimeMessageHelper messageHelper = new MimeMessageHelper(message,
+                      true, "UTF-8");
+  
+              messageHelper.setFrom(setfrom); // 보내는사람 생략하면 정상작동을 안함
+              System.out.println("보낸사람: "+setfrom);
+              messageHelper.setTo(tomail); // 받는사람 이메일
+              System.out.println("받는사람: "+tomail);
+              messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
+              System.out.println("제목: "+title);
+              messageHelper.setText(content); // 메일 내용
+              System.out.println(content);
+              
+              mailSender.send(message);
+              System.out.println("메시지: "+message);
+          } catch (Exception e) {
+              System.out.println(e);
+          }
+  
+          
+          rmap.put("result", "이메일이 발송되었습니다. 인증번호를 입력해주세요.");
+          rmap.put("dice", String.valueOf(dice));
+          return rmap;
+        
+    }
 }
