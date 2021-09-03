@@ -25,7 +25,6 @@
 	<context:component-scan base-package="net.daum.controller" />	
 	<!-- net.daum.controller패키지 하위에 만들어진 스프링 컨트롤러 클래스를 자동으로 찾아서(오토스캔) 스프링에서 인식하게 한다. -->	
 	
-
+	
 	
 </beans:beans>
-
