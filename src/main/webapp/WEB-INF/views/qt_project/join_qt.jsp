@@ -67,6 +67,8 @@
 						<span>Email</span><br>
 						<input class="email" type="text" name="info_email" id="info_email" placeholder="이메일을 입력하세요">
 					</div>
+					<input class="buttons" type="button" value="중복확인" onclick="idcheck()" style=width:60px;>
+             	  <input class="buttons" id="emailCheck" type="button" value="인증번호" onclick="emailSend()" style=width:60px;>
 					<br>
 					<div>
 						 <button>취소</button>
