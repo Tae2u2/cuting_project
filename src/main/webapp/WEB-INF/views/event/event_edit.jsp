@@ -24,7 +24,7 @@
 파일첨부:<input type="file" name="ev_filename" id="ev_filename"   />
 <input type="submit" value="저장">
 <input type="reset" value="취소" onclick="$('#ev_title').focus();"/>
-<input type="button" value="목록" onclick="location='cute/event/event_qt?page=${page}';"/>
+<input type="button" value="목록" onclick="location='event_qt?page=${page}';"/>
    </form>
    </div>
 </body>

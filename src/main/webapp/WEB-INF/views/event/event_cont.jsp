@@ -6,12 +6,11 @@
 <%@ include file="../qt_project/header.jsp"%>
 <meta charset="UTF-8">
 <title>큐팅::이벤트에 참여하세요</title>
-<link rel="stylesheet" href="./resources/css/event_qt.css">
+
+<link rel="stylesheet" href="${path}/resources/css/event_qt.css">
 </head>
 <body>
- <c:if test="${!empty blist}">
-    <c:forEach var="e" items="${blist}">
-	<div class="event_qt-post">
+<div class="event_qt-post">
 	<section class="event_qt-section">
 		<div class="event_qt-img">
 			<img class="event_qt-servimg" src="${path}/resources/upload${e.ev_filename}" class="image">
@@ -20,37 +19,20 @@
 			<div class="event_qt-date">
 				<span>${fn:substring(e.ev_update,0,10)}~${fn:substring(e.ev_exdate,0,10)}</span>
 			</div>
-			<h1 class="event_qt-title"><a href="event_cont?no=${e.ev_postnb}&page=${page}&state=cont">${e.ev_title}</a></h1>
+			<h1 class="event_qt-title">${e.ev_title}</h1>
 			<p class="event_qt-text">
 				${e.ev_content}
 					</p>
-			<!-- 커뮤니티로 이어지게 -->
-			<a href="#" class="event_qt-cta">참여하기</a>
+
+				<input type="button" value="목록" class="event_qt-cta" onclick="location='event_qt?page=${page}';" />
+				<input type="button" value="수정" class="event_qt-cta" onclick="location='event_cont?no=${e.ev_postnb}&page=${page}&state=edit';" />
+				<input type="button" value="삭제" class="event_qt-cta" onclick="location='event_del?no=${e.ev_postnb}&page=${page}';" />
+																				
+			
 			
 		</div>
 	</section>
 	</div>
-	</c:forEach>
-	</c:if>
-	
-	   <c:if test="${empty blist}">
-  <div class="event_qt-post">
-	<section class="event_qt-section">
-		<div class="event_qt-img">
-			<img class="event_qt-servimg" src="${path}/resources/images/picketcat.png">
-		</div>
-			<div class="event_qt-info">
-		
-			<p class="event_qt-text">
-				게시물이 존재하지 않습니다!!!!
-			</p>
-			</div>
-		
-		</section>
-		</div>
-   </c:if>
-   
-
-
 </body>
+</html>
 <%@ include file="../qt_project/bottom_qt.jsp"%>

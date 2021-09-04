@@ -22,10 +22,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.oreilly.servlet.MultipartRequest;
 
 import net.daum.service.EventService;
+
 import net.daum.vo.EventVO;
 
 @Controller //@Controller 애노테이션으로 스프링에 컨트롤러 라는 것을 인식하게 한다.
@@ -162,7 +164,7 @@ public class EventController {
 	@RequestMapping("/event_edit_ok")
 	public ModelAndView event_edit_ok(HttpServletRequest request,EventVO e) throws Exception{
 	
-		String saveFolder=request.getRealPath("upload");
+		String saveFolder=request.getRealPath("resources/upload");
 		//이진파일 업로드 서버경로
 		int fileSize=5*1024*1024;//이진파일 업로드 최대크기
 		MultipartRequest multi=null;//이진파일을 받을 참조변수
@@ -229,8 +231,27 @@ public class EventController {
 		return em;
 	}//if else
 	
+		
+	@RequestMapping("/event_del")  //GET OR POST방식으로 접근하는 매핑주소를 처리,bbs_list매핑주소 등록
+	public String event_del(int no,Model listM,HttpServletRequest request,@ModelAttribute EventVO e) throws Exception{
+		int page=1;
+		if(request.getParameter("page") != null) {//get으로 전달된 쪽번호가 있는 경우
+			page=Integer.parseInt(request.getParameter("page"));//쪽번호를 정수 숫자로 변경해서 저장
+		}
+		
+
+		this.eventService.delEvent(no);
+		List<EventVO> blist=this.eventService.getEventList(e);//목록
+		
+	
+		
+		listM.addAttribute("blist",blist);//blist키이름에 목록저장
+		listM.addAttribute("page",page);//page키이름에 쪽번호 저장
 	
 	
+		
+		return "redirect:/event_qt";
+	}//bbs_list()
 	
 	
 		

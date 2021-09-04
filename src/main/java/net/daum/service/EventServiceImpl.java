@@ -46,11 +46,13 @@ public class EventServiceImpl implements EventService {
 		this.eventDao.editEvent(e);
 		
 	}
-	@Transactional
+	
 	@Override
 	public void delEvent(int no) {
 		this.eventDao.delEvent(no);
-		this.eventDao.getEventDelLi(no);
+	
+		
+	
 	}
 
 

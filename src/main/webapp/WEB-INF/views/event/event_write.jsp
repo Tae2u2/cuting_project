@@ -3,9 +3,10 @@
 
 <meta charset="UTF-8">
 <title></title>
-<script src="../resources/js/jquery.js"></script>
+<script src="${path}/resources/js/jquery.js"></script>
 <script src="../resources/js/event.js"></script>
- <link rel="stylesheet" href="./resources/css/event_qt.css">
+ <link rel="stylesheet" href="${path}/resources/css/event_qt.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
 <body>
@@ -19,7 +20,7 @@
 파일첨부:<input type="file" name="ev_filename" id="ev_filename"/>
 <input type="submit" value="저장">
 <input type="reset" value="취소" onclick="$('#ev_title').focus();"/>
-<input type="button" value="목록" onclick="location='qut/event/event_qt?page=${page}';"/>
+<input type="button" value="목록" onclick="location='/event_qt?page=${page}';"/>
 </form>
 </div>
 </body>

@@ -48,11 +48,9 @@ public class EventDAOImpl implements EventDAO {
 		
 	}
 
-	@Override
-	public void getEventDelLi(int no) {
-			this.sqlsession.selectList("sel_de", no);
-			
-	}
+
+
+
 
 
 	

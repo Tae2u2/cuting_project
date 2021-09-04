@@ -41,6 +41,8 @@ drop table EVENT;
 
 select * from EVENT;
 
+delete from EVENT where ev_postnb=4;
+
 
 
 

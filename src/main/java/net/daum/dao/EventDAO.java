@@ -19,7 +19,9 @@ public interface EventDAO {
 
 	void delEvent(int no);
 
-	void getEventDelLi(int no);
+	
+
+	
 
 	
 
