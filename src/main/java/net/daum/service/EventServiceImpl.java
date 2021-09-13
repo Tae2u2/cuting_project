@@ -15,7 +15,7 @@ public class EventServiceImpl implements EventService {
 	@Autowired
 	private EventDAO eventDao;
 
-
+ 
 
 	@Override
 	public int getTotalCount(EventVO e) {

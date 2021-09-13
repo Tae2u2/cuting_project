@@ -14,7 +14,7 @@ public class EventDAOImpl implements EventDAO {
 	@Autowired
 	private SqlSession sqlsession;
 
-	
+	 
 	@Override
 	public int getTotalCount(EventVO e) {
 		return this.sqlsession.selectOne("sel_one", e);

@@ -19,7 +19,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<script src="${path}/resources/js/enter_photo.js"></script>
+<script src="./resources/js/enter_photo.js"></script>
 </head>
 <body>
 
@@ -112,7 +112,7 @@
 								
 					<li>
 						<div class="aa">
-							<img src="${path}/resources/upload${en.gb_filename}" class="image"/>
+							<img src="./resources/upload${cn.gb_filename}" class="image"/>
 						</div>
 						<div class="bb">
 							<button type="button" name="likeButton"><i class="fas fa-heart fa-heart01"></i></button>
@@ -138,7 +138,7 @@
 					<c:forEach items="${gblist}" var="en">
 					<li>
 						<div class="aa">
-							<img src="${path}/resources/upload${en.gb_filename}" class="image"/>
+							<img src="./resources/upload${en.gb_filename}" class="image"/>
 						</div>
 						<div class="bb">
 							<button type="button" name="likeButton"><i class="fas fa-heart fa-heart01"></i></button>

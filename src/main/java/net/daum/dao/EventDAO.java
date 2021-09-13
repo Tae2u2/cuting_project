@@ -7,7 +7,7 @@ import net.daum.vo.EventVO;
 public interface EventDAO {
 
 
-	int getTotalCount(EventVO e);
+ 	int getTotalCount(EventVO e);
 
 	List<EventVO> getEventList(EventVO e);
 

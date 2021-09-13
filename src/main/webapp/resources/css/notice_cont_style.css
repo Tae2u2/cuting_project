@@ -1,0 +1,73 @@
+@charset "UTF-8";
+a:link{
+	text-decoration: none;
+}
+a:hover{
+	color: #F57C00;
+}
+h1{
+	text-align: center;
+	padding-top: 100px;
+	margin-bottom: 100px;
+	color: #616161;	
+}
+
+.noti-table{
+	border: 1px solid #dddddd;
+	margin: 25px auto;
+	font-size: 0.9em;
+	min-width: 900px;
+	margin-bottom: 20px;
+		/* width:45%; */
+}
+
+.noti-table thead tr{
+	background-color: #FFE082;
+	color: #424242;
+	padding: 5px 20px 5px 20px;
+	text-align: center;
+	font-weight: bold;
+	min-width: 800px;
+}
+div.notice_cont_button{
+	width: 900px;
+	margin: 25px auto;
+	margin-bottom:70px;
+}
+td.notice_cont_td1{
+	text-align: center;
+}
+td.notice_cont_td2{
+	text-align: right;
+	padding:5px; 
+}
+td.notice_cont_td3{
+	text-align: center;
+}
+.BtnNotice{
+	padding: 10px 20px;
+	color: #fff;
+	border-radius: 10px;
+	border: none;
+	background: #F57C00;
+	cursor: pointer;
+	margin-right: 10px;
+}
+
+.noti-table th,
+.noti-table td{
+	padding: 15px 20px;
+}
+
+.noti-table .qt-notibody tr{
+	border-bottom: 1px solid #dddddd;
+}
+.noti-table tbody tr:nth-of-type(even){
+	background-color: #f3f3f3;
+}
+.noti-table tbody tr:nth-of-type(odd){
+	background-color: #f3f3f3;
+}
+.noti-table tbody tr:last-of-type{
+	border-bottom: 2px solid #FFF176;
+}

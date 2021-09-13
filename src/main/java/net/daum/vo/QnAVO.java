@@ -15,5 +15,6 @@ public class QnAVO {
 	private int qa_viewcnt;
 	private String qa_title;
 	private String qa_content;
+	private String qa_category;
 	
 }

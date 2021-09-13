@@ -8,7 +8,7 @@ import net.daum.vo.EventVO;
 
 public interface EventService {
 
-	
+	 
 
 	int getTotalCount(EventVO e);
 

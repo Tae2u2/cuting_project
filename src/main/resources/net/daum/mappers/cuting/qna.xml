@@ -8,8 +8,8 @@
  
    <!-- 게시판 저장 -->
    <insert id="qna_in" parameterType="qna">
-     insert into QNA(qa_postnb,qa_id,qa_pw,qa_upload,qa_title,qa_content)
-      values(qa_postnb_seq.nextval,#{qa_id},#{qa_pw},sysdate,#{qa_title},#{qa_content})
+     insert into QNA(qa_postnb,qa_category,qa_id,qa_pw,qa_upload,qa_title,qa_content)
+      values(qa_postnb_seq.nextval,#{qa_category},#{qa_id},#{qa_pw},sysdate,#{qa_title},#{qa_content})
    </insert>
    
    <!-- 총 레코드 개수-->
@@ -17,10 +17,11 @@
      select count(*) from QNA
    </select>
    
-   <!-- 페이징이 적용된 게시판 목록 -->
+   <!-- 게시판 목록 -->
    <select id="qna_list" resultType="net.daum.vo.QnAVO" parameterType="qna">
-    select * from
-    (select rowNum rNum,qa_postnb,qa_title,qa_viewcnt,qa_upload from (select * from QNA order by qa_postnb desc))
+    select * from 
+    (select rowNum rNum,qa_postnb,qa_title,qa_viewcnt,qa_upload,qa_category from (select * from QNA where qa_id=#{qa_id,  jdbcType=VARCHAR}
+    order by qa_postnb desc) where qa_delflag = 0)
    </select>
    
    <!-- 조회수 증가 -->
@@ -35,12 +36,12 @@
    
    <!-- 수정 -->
    <update id="qna_edit">
-    update QNA set qa_id=#{qa_id}, qa_title=#{qa_title}, qa_content=#{qa_content} where qa_postnb=#{qa_postnb}
+    update QNA set qa_title=#{qa_title}, qa_content=#{qa_content}, qa_mddate=sysdate where qa_postnb=#{qa_postnb}
    </update>
    
    <!-- 삭제 -->
    <delete id="qna_del">
-     update QNA set qa_delflag=1 where qa_postnb=#{qa_postnb}
+     update QNA set qa_delflag=1, qa_deldate=sysdate where qa_postnb=#{qa_postnb}
    </delete>
    
 

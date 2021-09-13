@@ -25,6 +25,7 @@
 	<context:component-scan base-package="net.daum.controller" />	
 	<!-- net.daum.controller패키지 하위에 만들어진 스프링 컨트롤러 클래스를 자동으로 찾아서(오토스캔) 스프링에서 인식하게 한다. -->	
 	
-	
+	<!-- 스프링 이진파일 업로드 API 설정=> 첨부파일을 처리하는 빈 아이디 등록 -->
+   <beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/> 
 	
 </beans:beans>

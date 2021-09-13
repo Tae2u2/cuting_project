@@ -1,12 +1,15 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title> 자료실 수정 </title>
-<script src="./resources/js/jquery.js"></script>
-<script src="./resources/js/notice.js"></script>
-<link rel="stylesheet" type="text/css" href="./resources/css/notice_edit.css" />
+<%@ include file="../qt_project/header.jsp"%>
+<script src="${path}/resources/js/jquery.js"></script>
+<script src="${path}/resources/js/notice.js"></script>
+<link rel="stylesheet" type="text/css" href="${path}/resources/css/notice_edit.css" />
+
 </head>
 <body>
  <div>
@@ -31,7 +34,8 @@
   <tr>
      <th>파일첨부</th>
      <td><input type="file" name="no_filename" class="notice_image"/><br/>
-     <img src="./resources/upload${b.no_filename}" class="notice_image" alt="이미지">
+     <c:if test="${!empty b.no_filename}">		
+     <img src="./resources/upload${b.no_filename}" class="notice_image" alt="이미지" width="300" height="324"></c:if>
      <%-- ${b.no_filename} --%></td>
   </tr>    
   
@@ -46,4 +50,5 @@
   </form>
  </div>
 </body>
+<%@ include file="../qt_project/bottom_qt.jsp"%>
 </html>

@@ -3,11 +3,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="./resources/css/notice_write_style.css">
 <%@ include file="../qt_project/header.jsp"%>
+<link rel="stylesheet" href="${path}/resources/css/notice_write_style.css">
+
 <title>스프링 MVC 게시판 글쓰기</title>
-<script src="./resources/js/jquery.js"></script>
-<script src="./resources/js/notice.js"></script>
+<script src="${path}/resources/js/jquery.js"></script>
+<script src="${path}/resources/js/notice.js"></script>
 
 </head>
 <body>

@@ -10,7 +10,7 @@ CREATE TABLE QNA (
 	qa_title	varchar2(50)		NOT NULL,--제목
 	qa_content	varchar2(2000)		NULL--내용
 );
---위에 varchar타입 varchar2로 다 수정했음
+
 
 create sequence qa_postnb_seq
 start with 1
@@ -33,12 +33,23 @@ REFERENCES USER_INFO (
 
 select * from QNA
 
+select * from QNA where qa_delflag = 0;
+
+select * from
+    (select rowNum rNum,qa_postnb,qa_title,qa_viewcnt,qa_upload from (select * from QNA order by qa_postnb desc) where qa_delflag = 0);
 
 
-insert into QNA values (qa_postnb_seq.nextval,'QNAID','1234',sysdate,sysdate,sysdate,0,0,'제목','내용');
+select QA_POSTNB from QNA where to_char(QA_UPLOAD,'MM') = to_char(sysdate,'MM');
+
+delete QNA where qa_category is null;
+
+insert into QNA values (qa_postnb_seq.nextval,'1234','1234',sysdate,sysdate,sysdate,0,0,'제목','내용','99');
 
 insert into QNA(qa_postnb,qa_id,qa_pw,qa_upload,qa_title,qa_content)
       values(qa_postnb_seq.nextval,'1234','1234',sysdate,'질문입니다','내용입니다');
+
+alter table QNA add qa_category number(10);
+alter table QNA modify (qa_category varchar2(10));
 
 
 CREATE TABLE QNA_test (
@@ -58,6 +69,30 @@ create sequence qa_postnb_testseq
 start with 1
 increment by 1
 nocache;
+
+drop sequence qa_postnb_seq;
+
+select * from QNA;
+
+select * from 
+    (select rowNum rNum,qa_postnb,qa_title,qa_viewcnt,qa_upload from (select * from QNA where qa_id='1234' AND qa_category='88' or qa_category='99' 
+   order by qa_postnb desc) where qa_delflag = 0);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -92,6 +127,13 @@ create sequence pt_postnb_seq
 start with 1
 increment by 1
 nocache;
+
+alter table POSTING add(pt_filename varchar2(100));
+
+insert into POSTING (pt_postnb,pt_id,pt_pw,pt_category,pt_title,pt_content,pt_update)
+    values(pt_postnb_seq.nextval,'1234','1234','freeCm','1234','자유게시판',sysdate);
+
+select * from POSTING;
 
 
 

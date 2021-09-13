@@ -44,7 +44,7 @@ public class EventController {
 			page=Integer.parseInt(request.getParameter("page"));
 		}
 		
-		wm.addAttribute("page",page);
+	 	wm.addAttribute("page",page);
 		return "event/event_write";
 	}//bbs_write()
 	

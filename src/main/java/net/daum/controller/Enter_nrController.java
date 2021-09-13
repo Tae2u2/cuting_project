@@ -53,7 +53,7 @@ public class Enter_nrController {
 		PrintWriter out=response.getWriter(); //개발자가 쓴 글을 jsp를따로 만들어 alert('${msg}');한다음 다시 컨트롤러로 호출시키려는 번거로움을 줄이고자 변수out에 담음		
 		
 		String saveFolder=request.getRealPath("resources/upload");//이진파일 업로드 서버 경로=>톰캣 WAS 서버에 의해서 변경된 실제 톰캣 프로젝트 경로
-		
+				
 		int fileSize=5*1024*1024;//이진파일 업로드 최대크기=>5M
 		MultipartRequest multi=null;//이진파일 업로드 참조변수->cos.jar로 부터 읽어들임.
 		

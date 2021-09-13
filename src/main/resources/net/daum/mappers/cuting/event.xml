@@ -33,7 +33,7 @@
  
  <update id="del_ev">
  		update EVENT set ev_delflag=1
- 	 where ev_postnb=#{no}
+ 	where ev_postnb=#{ev_postnb}
  </update>
  
  
