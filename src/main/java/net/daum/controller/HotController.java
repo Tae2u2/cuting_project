@@ -21,7 +21,7 @@ public class HotController {
 	private HotService hotService;
 	
 	@RequestMapping("/hot")  //GET OR POST방식으로 접근하는 매핑주소를 처리,bbs_list매핑주소 등록
-	public String hot(Model listM,HttpServletRequest request,@ModelAttribute Enter_nrVO h) throws Exception{
+	public String hot(Model listM,HttpServletRequest request,@ModelAttribute Enter_nrVO nr) throws Exception{
 		int page=1;
 		int limit=10;//한페이지에 보여지는 목록개수
 		if(request.getParameter("page") != null) {//get으로 전달된 쪽번호가 있는 경우
@@ -31,13 +31,14 @@ public class HotController {
 		
 
 		
-		List<Enter_nrVO> hlist=this.hotService.getHotList(h);
-		List<Enter_nrVO> h1list=this.hotService.getHot1List(h);
-		List<Enter_nrVO> h2list=this.hotService.getHot2List(h);
+		List<Enter_nrVO> hlist=this.hotService.getHotList(nr);
+		List<Enter_nrVO> h1list=this.hotService.getHot1List(nr);
+		List<Enter_nrVO> h2list=this.hotService.getHot2List(nr);
 		
 	
 		
 		listM.addAttribute("hlist",hlist);//blist키이름에 목록저장
+		listM.addAttribute("h1list", h1list);
 		listM.addAttribute("h2list", h2list);
 		listM.addAttribute("page", page);
 	

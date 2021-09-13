@@ -13,19 +13,19 @@ public class HotServiceImpl implements HotService {
 	private HotDAO hotDao;
  
 	@Override
-	public List<Enter_nrVO> getHotList(Enter_nrVO h) {
+	public List<Enter_nrVO> getHotList(Enter_nrVO nr) {
 		
-		return this.hotDao.getHotList(h);
+		return this.hotDao.getHotList(nr);
 	}
 
 	@Override
-	public List<Enter_nrVO> getHot2List(Enter_nrVO h) {
-		return this.hotDao.getHot2List(h);
+	public List<Enter_nrVO> getHot2List(Enter_nrVO nr) {
+		return this.hotDao.getHot2List(nr);
 	}
 
 	@Override
-	public List<Enter_nrVO> getHot1List(Enter_nrVO h) {
+	public List<Enter_nrVO> getHot1List(Enter_nrVO nr) {
 	
-		return this.hotDao.getHot1List(h);
+		return this.hotDao.getHot1List(nr);
 	}
 }
