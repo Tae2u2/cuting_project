@@ -11,7 +11,7 @@ import net.daum.vo.Enter_nrVO;
 public class HotServiceImpl implements HotService {
 
 	private HotDAO hotDao;
-
+ 
 	@Override
 	public List<Enter_nrVO> getHotList(Enter_nrVO h) {
 		

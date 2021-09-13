@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 
-  
+   
 <%@ include file="../qt_project/header.jsp"%>
 <meta charset="UTF-8">
 <title>큐팅::이벤트에 참여하세요</title>

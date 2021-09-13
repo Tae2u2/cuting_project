@@ -8,7 +8,7 @@ $(function(){
          activate: function( event, ui ) {
             //console.log("ui = ");console.log(ui);
             var tab_id = $(ui.newPanel).attr('id');//alert(tab_id);
-            
+             
             if(tab_id == "tabs-2" && slider2_initialized == false)
             {    
                 $('.basic_slider2').bxSlider({

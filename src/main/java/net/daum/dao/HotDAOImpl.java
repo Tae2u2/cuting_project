@@ -13,7 +13,7 @@ public class HotDAOImpl implements HotDAO {
 
 	@Autowired
 	private SqlSession sqlsession;
-
+ 
 	@Override
 	public List<Enter_nrVO> getHotList(Enter_nrVO h) {
 		

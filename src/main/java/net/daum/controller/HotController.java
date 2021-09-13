@@ -16,7 +16,7 @@ import net.daum.vo.Enter_nrVO;
 
 @Controller
 public class HotController {
-	
+	 
 	@Autowired
 	private HotService hotService;
 	

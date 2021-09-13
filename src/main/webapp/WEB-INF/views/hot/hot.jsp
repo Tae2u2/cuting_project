@@ -42,7 +42,7 @@
 					<p>${h.gb_update}</p>
 				</figcaption> <a href="#"></a></li>
 		
-		
+	 	
 
 
 		</ul>

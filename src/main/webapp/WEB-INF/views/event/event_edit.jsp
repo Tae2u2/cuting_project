@@ -9,7 +9,7 @@
 <script src="../resources/js/jquery.js"></script>
 <script src="../resources/js/event.js"></script>
  <link rel="stylesheet" href="./resources/css/event_qt.css">
-
+ 
 </head>
 <body>
 <div id="event_div">
