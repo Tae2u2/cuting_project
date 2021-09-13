@@ -1,3 +1,4 @@
+
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file="../qt_project/header.jsp"%>
 
@@ -6,7 +7,6 @@
 <script src="${path}/resources/js/jquery.js"></script>
 <script src="../resources/js/event.js"></script>
  <link rel="stylesheet" href="${path}/resources/css/event_qt.css">
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
 <body>
@@ -24,4 +24,5 @@
 </form>
 </div>
 </body>
+
 <%@ include file="../qt_project/bottom_qt.jsp"%>

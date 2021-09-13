@@ -50,9 +50,6 @@ public class EventDAOImpl implements EventDAO {
 
 
 
-
-
-
 	
 
 

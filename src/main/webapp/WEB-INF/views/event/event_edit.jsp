@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file="../qt_project/header.jsp"%>
 
@@ -29,4 +30,3 @@
    </div>
 </body>
 <%@ include file="../qt_project/bottom_qt.jsp"%>
-</html>

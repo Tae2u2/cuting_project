@@ -9,54 +9,96 @@
 
 <!--   <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+ 
+  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
-	<link rel="stylesheet" href="css/hot2.css">
-		<script src="js/all.min.js"></script>
-	
-	<script src="./resources/js/hot3.js"></script>
+<link rel="stylesheet" href="${path}/resources/css/hot2.css">
+<script src="${path}/resources/js/all.min.js"></script>
+<script src="../resources/js/hot3.js"></script>
 
 </head>
 <body>
 	
-	<h1>오늘의 노름</h1>
+<h1>오늘의 노름</h1>
 	<div class="best">
-	<ul class="day_week_month">
-	<li><a href="#">DAY</a></li>
-	<li><a href="#">WEEK</a></li>
-	<li><a href="#">MONTH</a></li>
+	<ul>
+	<li><a href="#tabs-1">DAY</a></li>
+	<li><a href="#tabs-2">WEEK</a></li>
+	<li><a href="#tabs-3">MONTH</a></li>
 	</ul>
-	</div>
 
-
+<c:if test="${!empty hlist}">
+    <c:forEach var="h" items="${hlist}">
+	<div id="tabs-1">
 	<div class="sliderWrap controls">
-		<ul class="basic_slider">
+		<ul class="basic_slider1">
 
-			<li><img src="woong1.jpg" alt="woong1">
+			<li><img src="${path}/resources/upload${h.gb_filename}" alt="day1">
 				<figcaption>
-					<h3>예시 제목</h3>
-					<p>예시 내용입니다</p>
-					<p>예시 등록날짜입니다</p>
+					<h3>${h.gb_title}</h3>
+					<p>${h.gb_content}</p>
+					<p>${h.gb_update}</p>
 				</figcaption> <a href="#"></a></li>
-			<!-- a href 로 바꾸는건데 잘되는지 확인위해 img넣었습니다 -->
-			<li><img src="woong2.jpg" alt="woong2">
-				<figcaption>
-						<h3>예시 제목</h3>
-					<p>예시 내용입니다</p>
-					<p>예시 등록날짜입니다</p>
-				</figcaption> <a href="#"></a></li>
-			<li><img src="woong3.jpg" alt="woong3">
-				<figcaption>
-					<h3>예시 제목</h3>
-					<p>예시 내용입니다</p>
-					<p>예시 등록날짜입니다</p>
-				</figcaption> <a href="#"></a></li>
+		
+		
 
 
 		</ul>
 	</div>
+	</div>
+	</c:forEach>
+	</c:if>
+	
+	
+	<c:if test="${!empty h1list}">
+    <c:forEach var="h1" items="${h1list}">
+	<div id="tabs-2">
+	<div class="sliderWrap controls">
+		<ul class="basic_slider2">
 
-	<section class="layered-card">
+			<li><img src="${path}/resources/upload${h.gb_filename}" alt="day1">
+				<figcaption>
+					<h3>${h1.gb_title}</h3>
+					<p>${h1.gb_content}</p>
+					<p>${h1.gb_update}</p>
+				</figcaption> <a href="#"></a></li>
+		
+		
+
+
+		</ul>
+	</div>
+	</div>
+	</c:forEach>
+	</c:if>
+
+
+	<c:if test="${!empty h2list}">
+    <c:forEach var="h2" items="${h2list}">
+	<div id="tabs-3">
+	<div class="sliderWrap controls">
+		<ul class="basic_slider3">
+
+			<li><img src="${path}/resources/upload${h2.gb_filename}" alt="woong1">
+				<figcaption>
+					<h3>${h2.gb_title}</h3>
+					<p>${h2.gb_content}</p>
+					<p>${h2.gb_title}</p>
+				</figcaption> <a href="#"></a></li>
+		
+		
+
+
+		</ul>
+	</div>
+	</div>
+	</c:forEach>
+	</c:if>
+</div>
+
+<section class="layered-card">
   			<div class="image_class">
   			<img class="hot_qt-servimg" src="images/picketcat.png">
   			</div>
@@ -70,7 +112,6 @@
   			
 		</section>
 		
-	
 
 
 </body>

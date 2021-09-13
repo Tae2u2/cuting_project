@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="Nr">
+ 
+ <select id="hot_li" resultType="net.daum.vo.Enter_nrVO">
+select * from
+   ( select gb_filename, gb_title, gb_content, gb_update, rank( ) over ( order by gb_likecnt desc ) as rank_gb_likecnt from gamble  
+where to_char(gb_update, 'DD') = to_char(sysdate, 'DD') )
+<![CDATA[where rank_gb_likecnt <=3]]>
+  
+</select>
+
+ <select id="hot_li2" resultType="net.daum.vo.Enter_nrVO">
+ select * from
+   ( select gb_filename, gb_title, gb_content, gb_update, rank( ) over ( order by gb_likecnt desc ) as rank_gb_likecnt from gamble  
+where to_char(GB_UPDATE,'MM') = to_char(sysdate,'MM') )
+<![CDATA[where rank_gb_likecnt <=3]]>
+
+</select>
+
+<select id="hot_li1" resultType="net.daum.vo.Enter_nrVO">
+ select * from
+   ( select gb_filename, gb_title, gb_content, gb_update, rank( ) over ( order by gb_likecnt desc ) as rank_gb_likecnt from gamble  
+where to_char(GB_UPDATE,'WW') = to_char(sysdate,'WW') )
+<![CDATA[where rank_gb_likecnt <=3]]>
+
+</select>
+ 
+ 
+</mapper>
