@@ -62,7 +62,7 @@
 				<li><a href="#"><i class="fas fa-heart"></i>찜목록</a></li>
 				<li><a href="#"><i class="far fa-credit-card"></i>결제페이지</a></li>
 				<li><a href="#"><i class="far fa-list-alt"></i>나의노름관리</a></li>
-				<li><a href="#"><i class="fas fa-sign-out-alt"></i>로그아웃</a></li>
+				<li><a href='logout'><i class="fas fa-sign-out-alt"></i>로그아웃</a></li>
 			</ul>
 			<div class="memberToggle">
 				<i class="fas fa-caret-down"></i>

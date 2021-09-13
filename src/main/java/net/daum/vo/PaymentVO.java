@@ -9,4 +9,5 @@ public class PaymentVO {
 	private int pay_total;
 	private int pay_balance;
 	private String pay_date;
+	private int pay_purchase;
 }

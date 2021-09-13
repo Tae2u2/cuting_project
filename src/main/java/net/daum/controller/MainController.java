@@ -14,6 +14,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import org.json.simple.*;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import javax.inject.Inject;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
@@ -71,12 +75,30 @@ public class MainController {
 		return "qt_project/join_qt";
 	}
 	
+	@RequestMapping(value="idcheck")
+	@ResponseBody
+	public Map<String,String> idCheck(String id, User_InfoVO ui) {
+		Map<String, String> result = new HashMap<String, String>();
+		System.out.println(id);
+		ui.setInfo_id(id);
+		int i = this.user_infoService.check_id(ui);
+		if(i==0) {
+			System.out.println("없다");
+			result.put("code", "사용가능한 아이디 입니다.");
+		}
+		else {
+			System.out.println("있다");
+			result.put("code", "이미 존재하는 아이디 입니다.");
+		}
+		return result;
+	}
+	
 	@RequestMapping(value="/join_ok",method=RequestMethod.POST)
 	public String join_ok(User_InfoVO ui, RedirectAttributes rttr) {
 		this.user_infoService.insertUser_Info(ui);
+		this.paymentService.insertPayment(ui.getInfo_id());
 		rttr.addFlashAttribute("result","success");
 		return "redirect:/";
-		
 	}
 	
 	@GetMapping("login")
@@ -110,10 +132,12 @@ public class MainController {
 		System.out.println(ui.getInfo_id());
 		System.out.println(pa.getPay_id());
 		List<PaymentVO> plist = this.paymentService.getPayment(pa);
+		System.out.println(pa.getPay_purchase());
 		List<User_InfoVO> ulist = this.user_infoService.getUser_InfoList(ui);
 		listM=new ModelAndView("/qt_project/mypage_qt");
+		
 		listM.addObject("ulist",ulist);
-		listM.addObject("plist", plist);
+		listM.addObject("plist",plist);
 		return listM;
 		}
 		else {
@@ -193,7 +217,7 @@ public class MainController {
 	}
 	
 	@GetMapping("/kakaoPaySuccess")
-	public String kakaoPaySuccess(@RequestParam("pg_token") String pg_token, Model model, User_InfoVO ui, HttpServletRequest request) {
+	public String kakaoPaySuccess(@RequestParam("pg_token") String pg_token, Model model, User_InfoVO ui, HttpServletRequest request) throws ParseException {
 		System.out.println(pg_token);
 		String tid = (String) request.getSession().getAttribute("tid");
 		System.out.println(tid);
@@ -241,13 +265,6 @@ public class MainController {
 			System.out.println(a);
 			
 			
-			
-			String b[] = a.split(",");
-			
-			for(int i = 0 ; i<b.length ; i++) {
-				model.addAttribute("attr"+i, b[i].replace("\"", ""));
-			}
-			model.addAttribute("id",ui.getInfo_id());
 			
 			
 		} catch (MalformedURLException e) {
@@ -301,6 +318,7 @@ public class MainController {
 		
 	}
 	@RequestMapping(value="emailcheck")
+	@ResponseBody
 	public Map<String, String> mailSending(String email) throws IOException {
 		Map<String, String> rmap = new HashMap<String, String>();
 		
@@ -309,7 +327,7 @@ public class MainController {
 		  int dice = r.nextInt(4589362) + 49311; //이메일로 받는 인증코드 부분 (난수)
         
           String setfrom = "khb2870@gamil.com";
-          String tomail = "khb2870@naver.com"; // 받는 사람 이메일
+          String tomail = email; // 받는 사람 이메일
           System.out.println(email);
           String title = "큐팅 인증 이메일 입니다."; // 제목
           String content =

@@ -8,7 +8,7 @@
  <!-- 회원가입 -->
  <insert id="ui_in" parameterType="ui">
  	insert into user_info (info_id,info_pw,info_name,info_nickname,info_phonenumber,info_email,info_joindate,info_bday,info_delflag) 
- 	values (#{info_id},#{info_pw},#{info_name},#{info_nickname},#{info_phonenumber},#{info_email},sysdate,'1234',0)
+ 	values (#{info_id},#{info_pw},#{info_name},#{info_nickname},#{info_phonenumber},#{info_email},sysdate,#{info_bday},0)
  </insert>
  
  <select id="ui_login" parameterType="ui" resultType="int">
@@ -21,4 +21,8 @@
  <update id="ui_modify" parameterType="ui">
  	update user_info set info_id=#{info_id}, info_nickname=#{info_nickname}, info_phonenumber=#{info_phonenumber}, info_name=#{info_name}, info_pw=#{info_pw} where info_id=#{session_id}
  </update>
+ 
+ <select id="ui_id_check" parameterType="ui" resultType="int">
+ 	select count(*) from user_info where info_id = #{info_id}
+ </select>
  </mapper>

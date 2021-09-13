@@ -12,6 +12,8 @@ CREATE TABLE USER_INFO (
 	info_delflag	number(5)	DEFAULT 0	NOT NULL
 );
 
+delete from USER_INFO;
+
 insert into user_info (info_id, info_pw, info_name, info_bday, info_phonenumber, info_email, info_nickname, info_joindate)
 values('asdf','asdf','asdf','970213',123123,'khb2870@naver.com','asdf',sysdate)
 

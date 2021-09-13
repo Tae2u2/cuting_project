@@ -56,13 +56,26 @@
  		
  		<div class="payment tabShow">
  		<h1 class="aboutH1">결제정보</h1>
+ 		<c:set var="purchase" value="${p.pay_purchase}"/>
  		<c:if test="${!empty plist}">
  		<c:forEach var="p" items="${plist}">
  		<h2>현재 잔액</h2>
  		<h4>${p.pay_balance}원</h4>
  		<h2>결제내역</h2>
  		<!-- 테이블로 넣어야지 -->
- 		<table> 		</table>
+ 		<c:if test="${purchase != null}" >
+ 		<table>
+ 		<tr>
+ 			<td>결제일</td><td>결제 금액</td>
+ 		</tr>
+ 		<tr>
+ 			<td>${p.pay_date}</td><td>${p.pay_purchase}</td>
+ 		</tr>
+ 		</table>
+ 		</c:if>
+ 		<c:if test="${purchase == null}" >
+ 		<h2>결제 내역이 없습니다</h2>
+ 		</c:if>
  		</c:forEach>
  		</c:if>
  		
