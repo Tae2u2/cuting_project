@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
       <typeAlias type="net.daum.vo.PayedVO" alias="pd"/>
       
       <typeAlias type="net.daum.vo.PayVO" alias="pa"/>
-
+	   <typeAlias type="net.daum.vo.ReplyVO" alias="rp" />
 
    </typeAliases>
 </configuration>
