@@ -1,0 +1,272 @@
+@charset "UTF-8";
+
+*{
+	margin:0px;
+	padding:0px;
+	list-style: none;
+	text-decoration: none;
+}
+.main{
+	margin-top:50px;
+	padding:100px 150px 150px 150px;
+	background-color: rgba(var(--b3f,250,250,250),1);
+	justify-content: normal;
+}
+
+.container{
+	width:100%;
+	margin-bottom: 16px;
+	max-width: 935px;
+	margin:0px auto;
+	border: 1px solid #dbdbdb;
+	display:flex;
+	background-color: #fff;
+	border-radius: 4px;
+}
+
+
+.container .imgbox{
+	width: 600px;
+	height: 600px;
+	border-right: 1px solid #efefefc5;
+}
+
+.container .imgbox img{
+	width: 100%;
+	height: 100%;
+}
+
+.container .sec{
+	width:349px;
+	height:600px;
+    display: table-cell;
+ 	vertical-align: middle;
+}
+
+.container .sec .sec1{
+	width: 309px;
+	height: 38px;
+	display: block;
+	padding:17px 20px;
+	line-height: 42px;
+	border-bottom:1px solid #efefefc5;
+}
+
+.container .sec .sec1 i{
+	font-size: 18px;
+}
+
+.container .sec .sec1 span{
+	font-size: 15px;
+	padding-left:13px;
+}
+
+.container .sec .sec2{
+	width:349px;
+	height: 527px; 
+}
+
+.container .sec .sec2 .reply{
+	width: 325px !important; 
+	height: 342px !important;
+	overflow-y:scroll;
+	padding:16px 12px !important;
+	border-bottom:1px solid #efefefc5;
+}
+.container .sec .sec2 .reply .writerID{
+	margin-bottom: 13px;
+
+}
+
+.container .sec .sec2 .reply .writerID .removeReply{
+	float:right;
+	padding-right: 6px;
+	border:none;
+	background-color: transparent;
+	line-height: 28px;
+	cursor: pointer;
+}
+
+.container .sec .sec2 .reply .writerID .removeReply2{
+	float:right;
+	padding-right: 18px;
+	border:none;
+	background-color: transparent;
+	line-height: 28px;
+	cursor: pointer;
+}
+
+.container .sec .sec2 .reply .writerID .removeReply i{
+	opacity: 0.3;
+}
+
+.container .sec .sec2 .reply .writerID .writerCont{
+	padding-left: 30px;
+	padding-top:6px;
+	font-weight: normal;
+	word-break:break-all;
+	padding-right: 25px;
+}
+
+.container .sec .sec2 .reply .writerID i{
+	font-size: 16px;
+}
+
+.container .sec .sec2 .reply .writerID .b{
+	padding-left:13px;
+}
+
+.container .sec .sec2 .reply .writerID li .writerCont{
+	font-size:14px;
+}
+
+
+.container .sec .sec2 .reply::-webkit-scrollbar{
+	display :none;
+}
+
+.container .sec .sec2 .sec3{
+	width:317px;
+	height: 53px;
+	margin-top: 4px;
+	padding: 4px 16px 0 16px;
+	border-bottom:1px solid #efefefc5;
+}
+
+.container .sec .sec2 .sec3 .iconbox{
+	display: inline-block;
+	margin-left:-6px;
+}
+
+.container .sec .sec2 .sec3 .iconbox button{
+	padding:8px;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	cursor: pointer;
+	border:none;
+	background: 0 0;
+}
+
+.container .sec .sec2 .sec3 .iconbox button .fa-heart:hover,
+.container .sec .sec2 .sec3 .iconbox button .fa-heart.active{
+	color:red;
+}
+
+.container .sec .sec2 .sec3 .iconbox button .fa-comment:hover{
+	color:blanchedalmond;
+}
+
+.container .sec .sec2 .sec3 .iconbox button i{
+	font-size: 32px;
+	border:hidden;
+	color: #dddddd;
+	cursor: pointer;	
+}
+
+.container .sec .sec2 .sec3 .likecnt{
+	font-size: 14px;
+	line-height: 46px;
+	float:right;
+	padding-right: 10px;
+		
+}
+
+.container .sec .sec2 .sec4{
+	width:309px;
+	height: 84px;
+	margin-top:10px;
+	padding: 0 20px;
+	justify-content: center;
+	line-height: 18px;
+}
+
+.container .sec .sec2 .sec4 .textbox{
+	padding:10px 0px;
+	display:flex;	
+	flex-direction: row;
+	width:309px;
+	height: 40px;
+	margin-top: 11px;
+	align-items: center;
+}
+
+.container .sec .sec2 .sec4 .textbox i{
+	font-size:27px;
+	padding-right: 20px;
+}
+
+.container .sec .sec2 .sec4 .textbox .tx{
+	background: 0 0;
+	border: 0;
+	height: 18px;
+    max-height: 80px;
+    outline: 0;
+    padding-top: 7px;
+    resize: none;
+	width:230px;
+	font-size:14px;
+}
+
+.container .sec .sec2 .sec4 .textbox button{
+	opacity: 0.5;
+	border: 0;
+    color: #0095f6;
+    padding: 0;
+    cursor: pointer;
+}
+
+.blank{
+	margin-top: 40px;	
+}
+
+
+
+.relativePost{
+	padding-top: 8vh;
+	border-top: 1px solid rgba(var(--b38,219,219,219),1);
+	margin: 0px auto;
+	max-width: 935px;
+	
+}
+
+.relativePost .namespace{
+	margin-bottom:20px; 
+}
+
+.relativePost .namespace .namebox{
+	font-size: 14px;
+	padding-left: 10px;
+}
+
+.relativePost .namespace .namebox strong{
+	font-size: 16px;
+}
+
+
+.relativePost .poster{
+    position: relative;
+}
+
+.relativePost .poster ul{
+    padding:0px 10px 0 0;
+}
+
+.relativePost .poster ul li{
+    display:inline-block;
+    /*margin: 0 16px 65px 16px;*/
+    vertical-align: top;
+    width: 32.9%;
+    position: relative;
+    padding-bottom: 50px;
+}
+.relativePost .poster ul li .aa{
+    text-align: center;
+}
+
+.relativePost .poster ul li .aa .image{
+    width: 95%;
+    height: 250px;
+    border-radius: 10px;
+}
+
