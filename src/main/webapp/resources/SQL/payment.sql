@@ -2,6 +2,7 @@ CREATE TABLE PAYMENT (
 	pay_id	varchar2(20)		NOT NULL,
 	pay_total	number(20)	DEFAULT 0	NOT NULL,
 	pay_balance	number(20)	DEFAULT 0	NOT NULL,
+	pay_purchase number(20) NULL,
 	pay_date	date		NULL
 );
 
@@ -31,3 +32,5 @@ insert into PAYMENT (pay_id,pay_total,pay_balance,pay_date) values ('123',10,10,
 select * from PAYMENT;
 
  select * from payment where pay_id = '123';
+ 
+ drop table payment;

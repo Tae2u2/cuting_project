@@ -20,4 +20,10 @@ public class PaymentDAOImpl implements PaymentDAO {
 		return this.sqlSession.selectList("pa_getPay",pa);
 	}
 
+	@Override
+	public void insertPayment(String info_id) {
+		// TODO Auto-generated method stub
+		this.sqlSession.insert("pa_insert", info_id);
+	}
+
 }

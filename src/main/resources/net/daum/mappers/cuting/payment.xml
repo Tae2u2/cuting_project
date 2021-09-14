@@ -8,5 +8,7 @@
   <select id="pa_getPay" parameterType="pa" resultType="pa">
   select * from payment where pay_id = #{pay_id}
   </select>
-  
+  <insert id="pa_insert">
+  insert into PAYMENT (pay_id,pay_total,pay_balance,pay_date) values (#{info_id},0,0,sysdate)
+  </insert>
   </mapper>

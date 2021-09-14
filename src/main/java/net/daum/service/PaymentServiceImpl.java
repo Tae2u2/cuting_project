@@ -21,4 +21,10 @@ public class PaymentServiceImpl implements PaymentService {
 		return this.paymentDao.getPayment(pa);
 	}
 
+	@Override
+	public void insertPayment(String info_id) {
+		// TODO Auto-generated method stub
+		this.paymentDao.insertPayment(info_id);
+	}
+
 }

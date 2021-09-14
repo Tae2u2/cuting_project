@@ -39,5 +39,11 @@ public class User_InfoDAOImpl implements User_InfoDAO {
 		
 	}
 
+	@Override
+	public int check_id(User_InfoVO ui) {
+		// TODO Auto-generated method stub
+		return this.sqlSession.selectOne("ui_id_check", ui);
+	}
+
 	
 }

@@ -6,5 +6,7 @@ import net.daum.vo.PaymentVO;
 
 public interface PaymentDAO {
 
-	List<PaymentVO> getPayment(PaymentVO pa); 
+	List<PaymentVO> getPayment(PaymentVO pa);
+
+	void insertPayment(String info_id); 
 }
