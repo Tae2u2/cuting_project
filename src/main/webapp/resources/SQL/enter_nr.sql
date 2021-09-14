@@ -25,7 +25,7 @@ create table gamble(
 	,gb_delflag int default 0 --�궘�젣�뵆�옒洹� �솢�꽦�솕 0 , 鍮꾪솢�꽦�솕 1	
 	,gb_category varchar2(50) not null
 );
-
+ 
 select * from gamble order by gb_postnb desc;
 
 --nr_no_seq �떆���뒪 �깮�꽦, �떆���뒪�뒗 踰덊샇 諛쒖깮湲�

@@ -28,12 +28,12 @@ public class HotController {
 			page=Integer.parseInt(request.getParameter("page"));//쪽번호를 정수 숫자로 변경해서 저장
 		}
 		
-		
+		 
 //한빈님에게,,
-/* 리스트를 뽑을 수 있게 해봤지만 실행이 안되더라구요. enter_nr sql가시면 제가 테이블은  예제로 ? 만들었습니다. (select * from gamble)
+/* 리스트를 뽑을 수 있게 해봤지만 실행이 안되더라구요.  저는 테이블을 만들어 테스트 해봤습니다
  * 오류는 500 뜨구, nullpointerException이 뜹니다. 
  *hlist - day 베스트 / h1list -week 베스트 / h2list - month 베스트 형식으로 짰습니다. 
- * 오류난 부분만 주석처리 하라고 말하셨는데.. 전체 다 인것같아요..^^ 
+ * 오류난 부분만 주석처리 하라고 말하셨는데.. 전체 다 인것같아요..
  */
 		
 		//List<Enter_nrVO> hlist=this.hotService.getHotList(nr);
