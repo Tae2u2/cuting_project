@@ -1,10 +1,21 @@
-CREATE TABLE PAYMENT (
-	pay_id	varchar2(20)		NOT NULL,
-	pay_total	number(20)	DEFAULT 0	NOT NULL,
-	pay_balance	number(20)	DEFAULT 0	NOT NULL,
-	pay_purchase number(20) NULL,
+CREATE TABLE PAYED (
+	payed_id	varchar2(20)		NOT NULL,
+	payed_total	number(20)	DEFAULT 0	NOT NULL,
+	payed_balance	number(20)	DEFAULT 0	NOT NULL
+);
+
+select * from payed;
+
+create table PAY (
+	pay_id varchar2(20) NOT NULL,
+	pay_purchase number(20) DEFAULT NULL,
+	pay_way varchar2(20) NULL,
+	pay_way2 varchar2(20) DEFAULT NULL,
+	pay_name varchar2(20) NULL,
 	pay_date	date		NULL
 );
+
+select * from pay;
 
 COMMENT ON COLUMN PAYMENT.pay_id IS 아이디_FK;
 
@@ -34,3 +45,4 @@ select * from PAYMENT;
  select * from payment where pay_id = '123';
  
  drop table payment;
+ drop table pay;

@@ -45,9 +45,4 @@ public class HotController {
 		
 		return "redirect:/hot";
 	}//bbs_list()
-	
-	
-	
-	
-
 }
