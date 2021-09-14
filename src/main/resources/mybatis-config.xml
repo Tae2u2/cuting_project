@@ -24,6 +24,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
       
       <typeAlias type="net.daum.vo.PayVO" alias="pa"/>
 	   <typeAlias type="net.daum.vo.ReplyVO" alias="rp" />
+	   
+	 <typeAlias type="net.daum.vo.Nr_ReplyVO" alias="n_rp" />
+	 
+     <typeAlias type="net.daum.vo.HeartVO" alias="h"/>
 
    </typeAliases>
 </configuration>
