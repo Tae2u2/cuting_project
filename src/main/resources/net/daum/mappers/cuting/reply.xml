@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+  <mapper namespace="Reply">
+ <!-- mybatis쿼리문을 다루는 태그를 매퍼라 한다. -->
+ 
+ <insert id="reply_in" parameterType="rp">
+ insert into reply
+ (   rp_id, rp_postnb,            rp_update, rp_content,    qa_postnb)
+ values
+ (#{rp_id}, rp_postnb_seq.nextval, sysdate, #{rp_content}, #{qa_postnb})
+  </insert>
+
+<select id="reply_list" resultType="rp">
+select * from reply where qa_postnb=#{qa_postnb} and rp_delflag=0
+order by rp_postnb desc
+</select>
+ 
+ <select id="reply_count" resultType="int">
+ select count(rp_postnb) from reply
+ </select>
+ 
+ <select id="reply_cont" resultType="rp">
+ select * from reply where rp_postnb=#{rp_postnb}
+ </select>
+ 
+  <!-- #{rp_content}를 자바코드로 표현하면 rp.getRp_content()와 같다. -->
+ <update id="reply_edit">
+ 	update reply set rp_content=#{rp_content}, rp_mddate=sysdate
+ 	where rp_postnb=#{rp_postnb}
+ </update>
+ 
+ <update id="reply_del">
+ 	update reply set rp_delflag=1, rp_deldate=sysdate where rp_postnb=#{rp_postnb}
+ </update>
+ </mapper>
