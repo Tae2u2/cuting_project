@@ -16,4 +16,7 @@ public class ComunityVO {
 	private String pt_title;
 	private String pt_content;
 	private String pt_category;
+	private String pt_filename;
+	
+	
 }

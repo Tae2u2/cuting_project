@@ -90,11 +90,14 @@ select * from
 
 
 
+create table comunity (
+ cm_postnb number(10) primary key
+);
+insert into comunity values(1);
+alter table comunity modify (cm_postnb number(10)) ;
+delete COMUNITY where cm_postnb=1;
 
-
-
-
-
+select * from comunity where cm_postnb='1';
 
 CREATE TABLE POSTING (
 	pt_postnb	number(20)		NOT NULL,
@@ -130,10 +133,18 @@ nocache;
 
 alter table POSTING add(pt_filename varchar2(100));
 
+alter table POSTING add(cm_postnb number(10));
+alter table posting add constraint posting_cm_postnb_fk --tbl_reply_bno_fk 외래키 제약조건 이름으로 제약조건 추가
+foreign key(cm_postnb) references comunity(cm_postnb);
+
+
 insert into POSTING (pt_postnb,pt_id,pt_pw,pt_category,pt_title,pt_content,pt_update)
     values(pt_postnb_seq.nextval,'1234','1234','freeCm','1234','자유게시판',sysdate);
 
 select * from POSTING;
 
 
+insert into POSTING (pt_postnb,pt_id,pt_pw,pt_title,pt_update,pt_content,pt_category) 
+     values(pt_postnb_seq.nextval,'123','123','123',sysdate,'테스트','88');
 
+delete posting where pt_postnb >1;
