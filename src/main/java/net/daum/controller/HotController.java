@@ -19,7 +19,7 @@ public class HotController {
 	 
 	@Autowired
 	private HotService hotService;
-	
+	 
 	@RequestMapping("/hot")  //GET OR POST방식으로 접근하는 매핑주소를 처리,bbs_list매핑주소 등록
 	public String hot(Model listM,HttpServletRequest request,@ModelAttribute Enter_nrVO nr) throws Exception{
 		int page=1;

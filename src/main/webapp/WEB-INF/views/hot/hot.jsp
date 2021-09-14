@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-
+ 
 <!--   <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   
