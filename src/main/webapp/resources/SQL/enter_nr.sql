@@ -42,3 +42,6 @@ select constraint_name, constraint_type, table_name from user_constraints where 
 delete from gamble;
 drop table gamble;
 drop sequence gb_postnb_seq;
+
+select * from gamble;
+

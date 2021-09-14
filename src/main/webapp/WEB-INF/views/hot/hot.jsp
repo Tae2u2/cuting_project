@@ -28,7 +28,7 @@
 	<li><a href="#tabs-2">WEEK</a></li>
 	<li><a href="#tabs-3">MONTH</a></li>
 	</ul>
-
+<!-- day 베스트 -->
 <c:if test="${!empty hlist}">
     <c:forEach var="h" items="${hlist}">
 	<div id="tabs-1">
@@ -51,7 +51,24 @@
 	</c:forEach>
 	</c:if>
 	
+	  <c:if test="${empty hlist}">
+ 			<div id="tabs-1">
+			<div class="sliderWrap controls">
+		<ul class="basic_slider1">
+
+			<li><img src="woong1" alt="day1">
+			<li><img src="woong2" alt="day2">
+			<li><img src="woong3" alt="day3">
+				
+	 
+
+		</ul>
+	</div>
+	</div>
+   </c:if>
+   
 	
+	<!-- week best  -->
 	<c:if test="${!empty h1list}">
     <c:forEach var="h1" items="${h1list}">
 	<div id="tabs-2">
@@ -73,8 +90,24 @@
 	</div>
 	</c:forEach>
 	</c:if>
+	
+	 <c:if test="${empty h1list}">
+ 			<div id="tabs-2">
+			<div class="sliderWrap controls">
+		<ul class="basic_slider2">
 
+			<li><img src="woong1" alt="day1">
+			<li><img src="woong2" alt="day2">
+			<li><img src="woong3" alt="day3">
+				
+	 
 
+		</ul>
+	</div>
+	</div>
+   </c:if>
+
+<!-- month best  -->
 	<c:if test="${!empty h2list}">
     <c:forEach var="h2" items="${h2list}">
 	<div id="tabs-3">
@@ -96,6 +129,22 @@
 	</div>
 	</c:forEach>
 	</c:if>
+	
+	 <c:if test="${empty h2list}">
+ 			<div id="tabs-3">
+			<div class="sliderWrap controls">
+		<ul class="basic_slider3">
+
+			<li><img src="woong1" alt="day1">
+			<li><img src="woong2" alt="day2">
+			<li><img src="woong3" alt="day3">
+				
+	 
+
+		</ul>
+	</div>
+	</div>
+   </c:if>
 </div>
 
 <section class="layered-card">
