@@ -27,7 +27,7 @@
     </delete>
       
 	<select id="cm_cont" parameterType="int" resultType="int"><!-- resultType은 반환 자료형 -->
-     select cm_postnb from POSTING where pt_postnb=#{pt_postnb}
+     select cm_postnb from POSTING where cm_postnb=#{cm_postnb}
     </select>
     
     

@@ -39,7 +39,7 @@
  		<h2>닉네임</h2>
  		<input type="text" class="input-qt" name="info_nickname" id="info_nickname" value="${u.info_nickname}">
  		<h2>생년월일</h2>
- 		<input type="date" class="input-qt" name="birth" value="${u.info_bday}" min="1930-01-01">
+ 		<input type="text" class="input-qt" name="birth" value="${u.info_bday}" >
  	<!-- <label for="email"><h2>Email</h2></label>
 		<input type="email" class="input-qt" pattern="@" size="30" required> -->
  		<h2>연락처</h2>

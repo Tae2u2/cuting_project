@@ -5,7 +5,7 @@ import java.util.List;
 
 
 import net.daum.vo.ComunityVO;
-import net.daum.vo.PostingVO;
+
 
 public interface ComunityService {
 
@@ -14,6 +14,6 @@ public interface ComunityService {
 	void remove(int pt_postnb);
 	void updateComunity(ComunityVO pt);
 
-	PostingVO getBoardCont(int cm_postnb);
+	ComunityVO getBoardCont(int cm_postnb);
 
 }

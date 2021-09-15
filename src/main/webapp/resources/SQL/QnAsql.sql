@@ -131,15 +131,17 @@ start with 1
 increment by 1
 nocache;
 
+drop * table sequence pt_postnb_seq; 
+
 alter table POSTING add(pt_filename varchar2(100));
 
 alter table POSTING add(cm_postnb number(10));
 alter table posting add constraint posting_cm_postnb_fk --tbl_reply_bno_fk 외래키 제약조건 이름으로 제약조건 추가
 foreign key(cm_postnb) references comunity(cm_postnb);
 
-
-insert into POSTING (pt_postnb,pt_id,pt_pw,pt_category,pt_title,pt_content,pt_update)
-    values(pt_postnb_seq.nextval,'1234','1234','freeCm','1234','자유게시판',sysdate);
+delete from posting where cm_postnb is null;
+insert into POSTING (pt_postnb,cm_postnb,pt_id,pt_pw,pt_category,pt_title,pt_content,pt_update)
+    values(pt_postnb_seq.nextval,1,'1234','1234','freeCm','1234','자유게시판',sysdate);
 
 select * from POSTING;
 

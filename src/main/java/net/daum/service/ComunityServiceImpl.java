@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import net.daum.dao.ComunityDAO;
 import net.daum.vo.ComunityVO;
-import net.daum.vo.PostingVO;
 
 @Service
 public class ComunityServiceImpl implements ComunityService {
@@ -20,7 +19,7 @@ public class ComunityServiceImpl implements ComunityService {
 	private ComunityDAO comunityDao;
 
 	@Override
-	public PostingVO getBoardCont(int cm_postnb) {
+	public ComunityVO getBoardCont(int cm_postnb) {
 		return this.comunityDao.getBoardCont(cm_postnb);
 	}
 	
