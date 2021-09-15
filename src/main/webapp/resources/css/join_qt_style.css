@@ -4,105 +4,66 @@
 	padding: 0;
 }
 .joinContainer{
-	width:90vw;
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	grid-gap:7rem;
-	padding: 0 1rem;
-}
-
-.joinDogImg{
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-}
-
-.joinDogImg img{
-	width: 500px;
-}
-
-.join-container{
-	display: flex;
-	align-items: center;
-	margin-bottom: 200px;
+	display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
 	border-bottom: 1px solid #626262;
 }
+
 .title{
-	width:600px;
+	width:800px;
 	margin-top:10%;
-	background-color:#FFF59D;
 	text-align:center;
-	color:#606163;
-	padding:20px 0px 20px 0px;
-	border-radius:15px 15px 0px 0px;
 }
 
 .regform{
 	background-color:#FFF;
-	width:600px;
+	width:800px;
 }
 span{
-	font-weight: 500;
+    height: 60px;
+    font-weight: 500;
 	font-size: 18px;
- 	padding-top:20px;
- 	margin-left:30px;	
+ 	padding:25px 100px 25px 50px; 	
 }
 .joinbox {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
  	padding-top:40px;
  	margin-left:30px;	 	
  }
- .id_d{
- display:inline-block;
- }
-
- input[type="text"],input[type="password"]{
- border: none;
- border-bottom: 1px solid #626262;
- outline: none;
- background: transition;
- margin-left: 170px;
- padding-top: 15px;
  
+ .joinBoxCss{
+    align-items: center;
+ width: 260px;
+ height: 50px;
+ border: 1px solid #626262;
+ font-size: 18px;
+ margin-right: 25px;
+ margin-top: 20px;
  }
+ .seloselo{
+     display: flex;
+     flex-direction: column;
+ }
+ 
 
-button{	
-	margin:30px 5px;
+.buttons{	
+	margin:25px 5px;
 	background:#EF6C00;
 	color:white;
 	font-weight: 600;
-	border-radius:15px;
-	padding:14px 23px;
+	border-radius:5px;
+	padding:15px 33px;
 	border:none;
 	cursor:pointer;
 	float: right;
 }
-button:hover{
-	border: 2px solid #EFC600;
+.buttons:hover{
+	border: 1px solid #EFC600;
 	color: #EFC600;
 	background:#fff;
-}
-
-.number1{	
-	line-height:15px;
-	width:100px;
-	height:30px;
-	border-radius:6px;
-	padding:0 22px;
-	outline:none;
-	overflow:hidden;
-}
-
-input[type="tel"]{
-	line-height:15px;
-	width:100px;
-	height:30px;
-	border-radius:6px;
-	padding:0 7px;
-	outline:none;
-	overflow:hidden;
-	border:1px solid gray;	
-}
-.phone_select{
-	margin-left: 170px;
-	padding-top: 20px;
 }

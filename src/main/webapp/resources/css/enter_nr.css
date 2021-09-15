@@ -151,35 +151,47 @@
 }
 
 /* 강아지, 고양이, 그 외 친구들 탭메뉴 구성*/
-.container .tab-content #dog{
+.container .tab-content #dog,
+.container .tab-content #cat,
+.container .tab-content #friends{
 
     margin:100px 50px;
     position: relative;
 }
 
-.container .tab-content #dog ul{
+.container .tab-content #dog ul,
+.container .tab-content #cat ul,
+.container .tab-content #friends ul{
     padding:0px 10px;
 }
 
-.container .tab-content #dog ul li{
+.container .tab-content #dog ul li,
+.container .tab-content #cat ul li,
+.container .tab-content #friends ul li{
     display:inline-block;
     margin: 0 16px 65px 16px;
     vertical-align: top;
     width: 29.26%;
     position: relative;
 }
-.container .tab-content #dog ul li .aa{
+.container .tab-content #dog ul li .aa,
+.container .tab-content #cat ul li .aa,
+.container .tab-content #friends ul li .aa{
     display: block;
     text-align: center;
 }
 
-.container .tab-content #dog ul li .aa .image{
+.container .tab-content #dog ul li .aa .image,
+.container .tab-content #cat ul li .aa .image,
+.container .tab-content #friends ul li .aa .image{
     width: 90%;
     height: 250px;
     border-radius: 10px;
 }
 
-.container .tab-content #dog ul li .bb{
+.container .tab-content #dog ul li .bb,
+.container .tab-content #cat ul li .bb,
+.container .tab-content #friends ul li .bb{
     width: 100%;
     display:flex;
     margin:0 60px;
@@ -187,7 +199,9 @@
     padding-top:10px;
 }
 
-.container .tab-content #dog ul li .bb .pad{
+.container .tab-content #dog ul li .bb .pad,
+.container .tab-content #cat ul li .bb .pad,
+.container .tab-content #friends ul li .bb .pad{
     display: block;
     position: absolute;
     right: 120px;
@@ -226,7 +240,7 @@
 }
 
 /*빨간하트를 눌렀을때 빨개지게 하는것*/
-.container .tab-content #dog ul li .bb .fa-heart:hover,
+/*.container .tab-content #dog ul li .bb .fa-heart:hover,
 .container .tab-content #dog ul li .bb .fa-heart01.active{
 	color:red;
 }
@@ -239,7 +253,7 @@
 .container .tab-content #friends ul li .bb .fa-heart0001.active{
 	color:red;
 }
-
+*/
 
 .container .tab-content #dog ul li .bb .fa-comment:hover,
 .container .tab-content #cat ul li .bb .fa-comment:hover,
@@ -256,18 +270,43 @@
 
 
 
-
-
-
-
-
-
-
-
-
 /* 강아지,고양이,친구들 창*/
+.container .tab-content .pr_enter_photo {
+	width:950px;
+	height: 600px;
+	background-color: white;
+	border: 3px solid black;
+	position: fixed;
+	top:10%;
+	left:15%;
+	display: none;
+	overflow: auto;
+	border-radius: 5px;	 
+	z-index: 1;
+}
+
+.container .tab-content .pr_enter_photo .modalBox{
+	display:block;
+}
+
+.container .tab-content .pr_enter_photo img{
+	width:600px;
+	height: 600px;
+	border-right: 1px solid #efefefc5;
+	float:left;
+}
+
+.container .tab-content .pr_enter_photo .pr_enph{
+	width:349px;
+	height:600px;
+	float:right;
+    display: table-cell;
+ 	vertical-align: middle;
+
+}
+
 .container .tab-content .pr_enter_photo .pr_enph .pr_en1-1 i{
-	font-size:30px;	
+	font-size:30px;
 }
 
 .container .tab-content .pr_enter_photo .pr_enph .pr_en1-1{
@@ -311,6 +350,15 @@
 	overflow-y:scroll;
 	padding:16px 12px !important;
 	border-bottom:1px solid #efefefc5;
+}
+
+.container .tab-content .pr_enter_photo .pr_enph .pr_en1-2 .pr_en1-ul1 .pr_en1-com1{
+	display:block;
+	margin-bottom: 10px;
+}
+
+.container .tab-content .pr_enter_photo .pr_enph .pr_en1-2 .pr_en1-ul1 .pr_en1-com1 .pr_en1-ul2 .pr_en1-com2{
+	display: block;
 }
 
 .container .tab-content .pr_enter_photo .pr_enph .pr_en1-2 .pr_en1-ul1::-webkit-scrollbar{
@@ -417,6 +465,7 @@
 	border: 0;
     color: #0095f6;
     padding: 0;
+    cursor: pointer;
 }
 
 

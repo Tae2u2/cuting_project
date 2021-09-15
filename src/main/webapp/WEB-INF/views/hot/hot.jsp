@@ -6,10 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-
+ 
 <!--   <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
- 
+  
   <script src="//code.jquery.com/jquery-1.12.4.js"></script>
   <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
@@ -28,7 +28,7 @@
 	<li><a href="#tabs-2">WEEK</a></li>
 	<li><a href="#tabs-3">MONTH</a></li>
 	</ul>
-
+<!-- day 베스트 -->
 <c:if test="${!empty hlist}">
     <c:forEach var="h" items="${hlist}">
 	<div id="tabs-1">
@@ -51,7 +51,24 @@
 	</c:forEach>
 	</c:if>
 	
+	  <c:if test="${empty hlist}">
+ 			<div id="tabs-1">
+			<div class="sliderWrap controls">
+		<ul class="basic_slider1">
+
+			<li><img src="${path}/resources/images/woong11.jpg" alt="day1">
+			<li><img src="${path}/resources/images/woong12.jpg" alt="day2">
+			<li><img src="${path}/resources/images/woong13.jpg" alt="day3">
+				
+	 
+
+		</ul>
+	</div>
+	</div>
+   </c:if>
+   
 	
+	<!-- week best  -->
 	<c:if test="${!empty h1list}">
     <c:forEach var="h1" items="${h1list}">
 	<div id="tabs-2">
@@ -73,8 +90,24 @@
 	</div>
 	</c:forEach>
 	</c:if>
+	
+	 <c:if test="${empty h1list}">
+ 			<div id="tabs-2">
+			<div class="sliderWrap controls">
+		<ul class="basic_slider2">
 
+			<li><img src="${path}/resources/images/woong11.jpg" alt="day1">
+			<li><img src="${path}/resources/images/woong12.jpg" alt="day2">
+			<li><img src="${path}/resources/images/woong13.jpg" alt="day3">
+				
+	 
 
+		</ul>
+	</div>
+	</div>
+   </c:if>
+
+<!-- month best  -->
 	<c:if test="${!empty h2list}">
     <c:forEach var="h2" items="${h2list}">
 	<div id="tabs-3">
@@ -96,11 +129,27 @@
 	</div>
 	</c:forEach>
 	</c:if>
+	
+	 <c:if test="${empty h2list}">
+ 			<div id="tabs-3">
+			<div class="sliderWrap controls">
+		<ul class="basic_slider3">
+
+			<li><img src="${path}/resources/images/woong11.jpg" alt="day1">
+			<li><img src="${path}/resources/images/woong12.jpg" alt="day2">
+			<li><img src="${path}/resources/images/woong13.jpg" alt="day3">
+				
+	 
+
+		</ul>
+	</div>
+	</div>
+   </c:if>
 </div>
 
 <section class="layered-card">
   			<div class="image_class">
-  			<img class="hot_qt-servimg" src="images/picketcat.png">
+  			<img class="hot_qt-servimg" src="${path}/resources/images/picketcat.png">
   			</div>
   			<div class="text_class">
   			<p class="explain_qt">귀여운 사진을 가지고싶다면 <br>

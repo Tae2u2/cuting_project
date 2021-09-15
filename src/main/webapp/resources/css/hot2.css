@@ -33,21 +33,15 @@ h1{
 }
 
  .basic_slider3 li img{
-	width:100%;
-	
-	height:100%;
+	width:30%
 }
 
  .basic_slider1 li img{
-	width:100%;
-	
-	height:100%;
+	width:30%
 }
 
 .basic_slider2  li img{
-	width:100%;
-	
-	height:100%;
+	width:30%
 }
 
 .best{
@@ -96,6 +90,7 @@ h1{
     /* Display under the main content */
     z-index: -1;
 }
+
 
 .hot_qt-servimg{
 	width: 100%;

@@ -70,11 +70,20 @@
 
  <!--글목록-->
     <ul id="comunityZone">
+ <c:if test="${!empty ptlist}">
+ <c:forEach var="pt" items="${ptlist}">
     <li class="comunityList">
             <div class="comunityBox">
                 <div class="userProfile">
                 <p><i class="fas fa-paw"></i>${pt.pt_id}<small>${pt.pt_update}</small></p>
-                <span>${pt.pt_category}</span>
+                <span>
+                <c:if test="${pt.pt_category eq '77'}">#자유게시판</c:if>
+                <c:if test="${pt.pt_category eq '66'}">#자랑자랑</c:if>
+                <c:if test="${pt.pt_category eq '55'}">#헬프미아임초보</c:if>
+                <c:if test="${pt.pt_category eq '44'}">#댕댕이</c:if>
+                <c:if test="${pt.pt_category eq '33'}">#고영희</c:if>
+                
+                </span>
                 </div>
                 <br>
                 <hr>
@@ -82,9 +91,12 @@
                 <button id="postEditBtn" class="forBtnCss">수정</button>
             </div>
         </li>
-    </ul>
+ </c:forEach>
+ </c:if>
     
+    </ul>
   <script>
+
   const cm_postnb=${cm.cm_postnb};
   
    getAllList();// 목록함수 호출

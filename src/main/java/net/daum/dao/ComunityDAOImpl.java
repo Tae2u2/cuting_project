@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import net.daum.vo.ComunityVO;
+import net.daum.vo.PostingVO;
 
 @Repository
 public class ComunityDAOImpl implements ComunityDAO {
@@ -25,7 +26,7 @@ public class ComunityDAOImpl implements ComunityDAO {
 	}//목록
 
 	@Override
-	public ComunityVO getBoardCont(int cm_postnb) {
+	public PostingVO getBoardCont(int cm_postnb) {
 		return this.sqlSession.selectOne("cm_cont",cm_postnb);
 	}
 

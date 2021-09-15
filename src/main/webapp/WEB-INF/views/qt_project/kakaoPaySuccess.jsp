@@ -8,22 +8,15 @@
 </head>
 <body>
 이게되네?
-
-[${attr1}]
-[${attr2}]
-[${attr3}]
-[${attr4}]
-[${attr5}]
-[${attr6}]
-[${attr7}]
-[${attr8}]
-[${attr9}]
-[${attr10}]
-[${attr11}]
-[${attr12}]
-[${attr1}]
-[${attr1}]
-[${attr1}]
-[${id}]
+결제일시:     [[${info.approved_at}]]<br/>
+주문번호:    [[${info.partner_order_id}]]<br/>
+상품명:    [[${info.item_name}]]<br/>
+상품수량:    [[${info.quantity}]]<br/>
+결제금액:    [[${info.amount.total}]]<br/>
+결제방법:    [[${info.payment_method_type}]]<br/>
+ 
+ ${id}
+ 
+<h2>[[${info}]]</h2>
 </body>
 </html>

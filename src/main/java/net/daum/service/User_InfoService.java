@@ -10,4 +10,6 @@ public interface User_InfoService {
 	int loginUser_Info(User_InfoVO ui);
 	List<User_InfoVO> getUser_InfoList(User_InfoVO ui);
 	void editUser_Info(User_InfoVO ui);
+	int check_id(User_InfoVO ui);
+	
 }

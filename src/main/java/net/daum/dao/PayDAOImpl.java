@@ -6,18 +6,23 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import net.daum.vo.PaymentVO;
+import net.daum.vo.PayVO;
 
 @Repository
-public class PaymentDAOImpl implements PaymentDAO {
+public class PayDAOImpl implements PayDAO {
 	
 	@Autowired
 	private SqlSession sqlSession;
 
 	@Override
-	public List<PaymentVO> getPayment(PaymentVO pa) {
+	public void insertPay(PayVO pa) {
 		// TODO Auto-generated method stub
-		return this.sqlSession.selectList("pa_getPay",pa);
+		this.sqlSession.insert("pa_insert",pa);
 	}
 
+	@Override
+	public List<PayVO> getPay(String info_id) {
+		// TODO Auto-generated method stub
+		return this.sqlSession.selectList("pa_getPay", info_id);
+	}
 }

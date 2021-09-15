@@ -5,7 +5,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.reflection.SystemMetaObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,13 +18,18 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import net.daum.service.QnAService;
+import net.daum.service.ReplyService;
 import net.daum.vo.QnAVO;
+import net.daum.vo.ReplyVO;
 
 @Controller
 public class QnAController {
 	
 	@Autowired
 	private QnAService qnaService;
+	
+	@Autowired
+	private ReplyService replyService;
 	
 	//글쓰기
 	@GetMapping("QnA_write")
@@ -41,15 +45,16 @@ public class QnAController {
     public String qna_write_ok(QnAVO qna,RedirectAttributes rttr) {
 		this.qnaService.insertQnA(qna);
 		rttr.addFlashAttribute("result","success");
-		System.out.println(rttr);
+		System.out.println(rttr.getFlashAttributes());
 		return "redirect:/QnA_qt";
 	}//qna_write_ok() end
 	
 	//리스트
 	@RequestMapping(value="/QnA_qt",method=RequestMethod.GET)
-	public ModelAndView QnA_qt(HttpServletRequest request, @ModelAttribute QnAVO qna) {
+	public ModelAndView QnA_qt(HttpServletRequest request,HttpSession session, @ModelAttribute QnAVO qna,@ModelAttribute ReplyVO rp) {
 			qna.setQa_id((String) request.getSession().getAttribute("id"));
 			List<QnAVO> qnalist=this.qnaService.getQnAList(qna);
+			
 			ModelAndView listQ=new ModelAndView("QnA/QnA_qt");
 			listQ.addObject("qnalist",qnalist);
 		int page=1;
@@ -62,9 +67,25 @@ public class QnAController {
 	
 	//내용보기
 	@GetMapping("qna_cont")
-	public String qna_cont(Model m,@RequestParam("qa_postnb") int qa_postnb) {
+	public String qna_cont(HttpServletRequest request, HttpSession session,Model m,@RequestParam("qa_postnb") int qa_postnb, @ModelAttribute ReplyVO rp) {
+		
+		rp.setRp_id((String)request.getSession().getAttribute("id"));
+		m.addAttribute("rp_id",rp.getRp_id());
+		int listcount=this.replyService.getListCount(rp);
+		List<ReplyVO> rlist = this.replyService.getReplyList(rp);
+		System.out.println(listcount);			//댓글 개수.
+		m.addAttribute("rlist", rlist);
+				
+		System.out.println(rp.getRp_delflag()); //얘는 항상0 이고
+		System.out.println(rp.getRp_content()); //애는 null인 상태네.
+		System.out.println(rp.getRp_id());		//아이디 제대로 나오고.
+		System.out.println(qa_postnb);			//qa_postnb 제대로 나오고
+		
 		QnAVO qna=this.qnaService.getQnACont(qa_postnb);
+		String qaContent = qna.getQa_content().replace("\n", "<br/>");
+		m.addAttribute("qaContent", qaContent);
 		m.addAttribute("qna",qna);
+		
 		return "QnA/qna_cont";
 	}//내용보기() end
 	
@@ -94,5 +115,63 @@ public class QnAController {
 		ModelAndView dm=new ModelAndView("redirect:/QnA_qt");
 		return dm;
 	}//삭제() end
+	
+	
+	
+	//여기서 부터 댓글//
+	
+	
+	//댓글등록
+	@GetMapping("/qna_reply")
+	public String qna_reply(Model m,int qa_postnb,HttpServletRequest request,HttpSession session,@ModelAttribute ReplyVO rp) {
+		rp.setRp_id((String)request.getSession().getAttribute("id"));
+		m.addAttribute("rp_id",rp.getRp_id());							//System.out.println(rp.getRp_id());
+		m.addAttribute("qa_postnb", qa_postnb);
+		return "QnA/qna_reply";
+	}
+	
+	@PostMapping("qna_reply_ok")
+	public String qna_reply_ok(HttpServletRequest request, HttpSession session,@RequestParam("qa_postnb") int qa_postnb,
+			Model m,@ModelAttribute ReplyVO rp, @ModelAttribute QnAVO qna) throws Exception{
+		
+		rp.setRp_id((String)request.getSession().getAttribute("id"));
+		m.addAttribute("rp_id",rp.getRp_id());  	
+		m.addAttribute("qa_postnb", qa_postnb); 
+		m.addAttribute("rp", rp);										//System.out.println(rp.getRp_id());
+		
+		this.replyService.replyQnA(rp);			//System.out.println(qa_postnb);
+		return "redirect:/qna_cont?qa_postnb="+qa_postnb;
+	}
+	
+	@RequestMapping("/reply_edit")
+	public String reply_edit(Model m, int rp_postnb)throws Exception{
+	
+		System.out.println(rp_postnb);
+		ReplyVO rp = this.replyService.replyCont(rp_postnb);
+		System.out.println(rp.getRp_id()+000);
+		m.addAttribute("rp", rp);
+		return "QnA/reply_edit";
+	}
+	
+	//수정확인()
+	@RequestMapping("/reply_edit_ok")
+	public String reply_edit_ok(HttpServletRequest request, HttpSession session,@ModelAttribute ReplyVO rp, Model m) {
+		rp.setRp_id((String)request.getSession().getAttribute("id"));
+		m.addAttribute("rp_id",rp.getRp_id());		
+		System.out.println(rp.getRp_id());
+		this.replyService.editReply(rp);
+		System.out.println(rp.getQa_postnb());
+		return "redirect:/qna_cont?qa_postnb="+rp.getQa_postnb();
+	}//수정확인() end
+	
+	@RequestMapping("/reply_del")
+	public ModelAndView reply_del(int rp_postnb) throws Exception{
+		System.out.println(rp_postnb);
+		ReplyVO rp = this.replyService.replyCont(rp_postnb);
+		ModelAndView dm=new ModelAndView("redirect:/qna_cont?qa_postnb="+rp.getQa_postnb());
+		this.replyService.replyDel(rp_postnb);
+		
+		return dm;
+	}
 	
 }

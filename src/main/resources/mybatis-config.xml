@@ -13,15 +13,21 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
      <typeAlias type="net.daum.vo.User_InfoVO" alias="ui"/>
 
-         <typeAlias type="net.daum.vo.NoticeVO" alias="n" />
+     <typeAlias type="net.daum.vo.NoticeVO" alias="n" />
 
       <typeAlias type="net.daum.vo.QnAVO" alias="qna" />
       
  	<typeAlias type="net.daum.vo.PostingVO" alias="cm" />
       <typeAlias type="net.daum.vo.ComunityVO" alias="pt" />
 
-      <typeAlias type="net.daum.vo.PaymentVO" alias="pa"/>
-
+      <typeAlias type="net.daum.vo.PayedVO" alias="pd"/>
+      
+      <typeAlias type="net.daum.vo.PayVO" alias="pa"/>
+	   <typeAlias type="net.daum.vo.ReplyVO" alias="rp" />
+	   
+	 <typeAlias type="net.daum.vo.Nr_ReplyVO" alias="n_rp" />
+	 
+     <typeAlias type="net.daum.vo.HeartVO" alias="h"/>
 
    </typeAliases>
 </configuration>

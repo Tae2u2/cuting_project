@@ -24,10 +24,11 @@ $(function(){
 	$('#charge').click(function(){
 	alert('클릭했네?');
 	$.ajax({
-		url:'kakaopay' ,
+		url:'kakaoPay' ,
 		dataType:'json',
 		success:function(data){
 			var box = data.next_redirect_pc_url;
+			alert(box);
 			window.open(box);
 		},
 		error:function(error){
@@ -36,4 +37,5 @@ $(function(){
 		});
 	});
 });
+
 	

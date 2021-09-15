@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+  <mapper namespace="Payed">
+  <select id="pd_getPay" parameterType="pd" resultType="pd">
+  select * from payed where payed_id = #{payed_id}
+  </select>
+  <insert id="pd_insert">
+  insert into PAYED (payed_id) values (#{ui})
+  </insert>
+  <update id="pd_update">
+  update payed set payed_total=payed_total+#{payed_purchase},  payed_balance=payed_balance+#{payed_purchase}
+  where payed_id=#{payed_id}
+  </update>
+  </mapper>

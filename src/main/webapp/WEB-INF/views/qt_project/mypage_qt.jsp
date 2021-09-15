@@ -56,17 +56,38 @@
  		
  		<div class="payment tabShow">
  		<h1 class="aboutH1">결제정보</h1>
+ 		
+ 		<c:set var="purchase" value="${pa.pay_purchase}"/>
  		<c:if test="${!empty plist}">
  		<c:forEach var="p" items="${plist}">
  		<h2>현재 잔액</h2>
- 		<h4>${p.pay_balance}원</h4>
+ 		<h4>${p.payed_balance}원</h4>
+ 		<h2>총 결제액</h2>
+ 		<h4>${p.payed_total}원</h4>
+ 		</c:forEach>
  		<h2>결제내역</h2>
- 		<!-- 테이블로 넣어야지 -->
- 		<table> 		</table>
+ 		<c:if test="${!empty palist}" >
+ 		<c:forEach var="pa" items="${palist}">
+ 		<table>
+ 		<tr class="nameOfPay">
+ 			<td>결제일</td><td>결제 금액</td><td>결제방법</td><td>카드사</td><td>결제 상품</td>
+ 		</tr>
+ 		<tr>
+ 			<td>${pa.pay_date}</td><td>${pa.pay_purchase}</td><td>${pa.pay_way}</td><td>${pa.pay_way2}</td><td>${pa.pay_name}</td>
+ 		</tr>
+ 		</table>
  		</c:forEach>
  		</c:if>
  		
+ 		<c:if test="${purchase eq null}" >
+ 		<h2>결제 내역이 없습니다123</h2>
+
+ 		</c:if>
+ 		
+ 		</c:if>
+ 		
  		<button class="aboutBtn" id="charge" name="charge">충전하러 가기</button>
+ 		
  		
  		</div>
  		

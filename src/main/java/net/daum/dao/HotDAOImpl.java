@@ -15,21 +15,21 @@ public class HotDAOImpl implements HotDAO {
 	private SqlSession sqlsession;
  
 	@Override
-	public List<Enter_nrVO> getHotList(Enter_nrVO h) {
+	public List<Enter_nrVO> getHotList(Enter_nrVO nr) {
 		
-		return this.sqlsession.selectList("hot_li", h);
+		return this.sqlsession.selectList("hot_li", nr);
 	}
 
 	@Override
-	public List<Enter_nrVO> getHot2List(Enter_nrVO h) {
+	public List<Enter_nrVO> getHot2List(Enter_nrVO nr) {
 		
-		return this.sqlsession.selectList("hot_li2", h);
+		return this.sqlsession.selectList("hot_li2", nr);
 	}
 
 	@Override
-	public List<Enter_nrVO> getHot1List(Enter_nrVO h) {
+	public List<Enter_nrVO> getHot1List(Enter_nrVO nr) {
 		
-		return this.sqlsession.selectList("hot_li1", h);
+		return this.sqlsession.selectList("hot_li1", nr);
 	}
 	
 }

@@ -15,7 +15,7 @@
    
    <!-- 검색 전 후 자료실 목록 -->
    <select id="nr_list" parameterType="nr" resultType="net.daum.vo.Enter_nrVO">
-     select * from ( select rowNum rNum,gb_postnb,gb_category,gb_content,gb_filename,gb_likecnt,gb_viewcnt,gb_update from<!-- 답글하고 그룹번호 글번호 추가해야함 -->
+     select * from ( select rowNum rNum,gb_postnb,gb_id,gb_category,gb_content,gb_filename,gb_likecnt,gb_viewcnt,gb_update,gb_delflag from<!-- 답글하고 그룹번호 글번호 추가해야함 -->
      (select * from gamble
      
      <where>
@@ -29,18 +29,56 @@
      <if test="find_field=='gb_content'"><!-- 검색 조건이 내용인 경우 -->
      gb_content like #{find_name}
      </if>
-     <if test="gb_category=='1'">
-     gb_category='1'
-     </if>
-     <if test="gb_category=='2'">
-     gb_category='2'
-     </if>
-     <if test="gb_category=='3'">
-     gb_category='3'
-     </if>    
+     and gb_delflag ='0'  <!-- 삭제플래그를 0으로 조건을 잡음으로써 delflag값이 1 즉, update로 바꾼 삭제된 게시물을 제외안 나머지 게시물이 보이게 해줌. -->
+     
     </where>
     
-      ))<!-- order by bbs_ref desc,bbs_level asc))  -->
+    ORDER BY gb_postnb desc))<!-- 오름차순 내림차순시 oreder by 컬러명  적어야함 // asc 컬럼명만적고 생략하면 자동 오름차순 1->2->3 즉, 최근에 올린 게시물은 아래에 깔리게됌. 
+    																   desc 내림차순시 반드시 기재해야함. 3->2->1 즉, 최근 올린 게시물이 가장위로 처음올린 게시물이 가장아래로 나타남.   -->
+   </select>
+   
+ 
+ 	<!-- 조회수 증가 -->
+   <update id="gb_vc">
+    update gamble set gb_viewcnt=gb_viewcnt+1 where gb_postnb=#{gb_postnb}
+   </update>
+   
+   <!-- 내용보기 -->
+   <select id="gb_co" parameterType="nr"  resultType="net.daum.vo.Enter_nrVO">
+    select * from gamble where gb_postnb=#{gb_postnb}
+   </select>
+   
+   <!-- 해당아이디에 해당되는 게시물만 가져오기 -->
+   <select id="collect_idList" parameterType="nr" resultType="net.daum.vo.Enter_nrVO">
+   	select * from gamble where gb_id=#{gb_id}
    </select>
  
+  <!-- 수정 -->
+   <update id="nr_modify">
+    update gamble set gb_category=#{gb_category}, gb_title=#{gb_title}, gb_content=#{gb_content}, gb_filename=#{gb_filename}
+    where gb_postnb=#{gb_postnb}
+   </update>
+   
+   <!-- 삭제 -->
+   <update id="nr_del">
+    <!--  delete from gamble where gb_postnb=#{gb_postnb} 레코드값삭제-->
+    update gamble set gb_delflag ='1' where gb_postnb=#{gb_postnb}  
+   </update>
+   
+   
+   <!-- 좋아요 상승 -->
+ 	<update id="h_up" parameterType="nr">
+ 		update gamble set gb_likecnt = gb_likecnt+1 where gb_postnb=#{gb_postnb}
+ 	</update>
+ 	
+ 	<!-- 좋아요 하락 -->
+ 	<update id="h_down" parameterType="nr">
+ 		update gamble set gb_likecnt = gb_likecnt-1 where gb_postnb=#{gb_postnb}
+ 	</update>
+   
+   <!-- 좋아요 추가 or 삭제시 갯수 출력 -->
+ 	<select id="h_count" parameterType="nr" resultType="net.daum.vo.Enter_nrVO">
+ 		select gb_likecnt from gamble where gb_postnb = #{gb_postnb}
+ 	</select>
+
  </mapper>

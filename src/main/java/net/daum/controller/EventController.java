@@ -29,6 +29,7 @@ import com.oreilly.servlet.MultipartRequest;
 import net.daum.service.EventService;
 
 import net.daum.vo.EventVO;
+import net.daum.vo.User_InfoVO;
 
 @Controller //@Controller 애노테이션으로 스프링에 컨트롤러 라는 것을 인식하게 한다.
 public class EventController {
@@ -38,19 +39,37 @@ public class EventController {
 
 	//자료실 글쓰기 폼
 	@GetMapping("/event_write") //get으로 접근하는 매핑주소를 처리,bbs_write 매핑주소 등록
-	public String event_write(HttpServletRequest request,Model wm) {
+	public String event_write(Model wm, HttpServletResponse response,HttpServletRequest request) throws Exception{
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		HttpSession session=request.getSession();
+
+		String info_id  = (String)session.getAttribute("id");//세션 관리자 아이디를 구함
+
+		if(info_id == null) {
+			out.println("<script>");
+			out.println("alert('로그인 하세요!');");
+			out.println("location='login';");
+			out.println("</script>");
+			
+			
+		}else {
 		int page=1;
 		if(request.getParameter("page") != null) {
 			page=Integer.parseInt(request.getParameter("page"));
 		}
 		
 	 	wm.addAttribute("page",page);
-		return "event/event_write";
-	}//bbs_write()
+	 	return "event/event_write";
+	}//if else
+		return null;
+	}
 	
 	
 	@PostMapping("/event_write_ok") //post로 접근하는 매핑주소를 처리
-	public String event_write_ok(@ModelAttribute EventVO e, HttpServletRequest request) throws Exception{
+	public String event_write_ok(@ModelAttribute EventVO e,@ModelAttribute User_InfoVO ui,HttpSession session,HttpServletResponse response, HttpServletRequest request) throws Exception{
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
 		
 		String saveFolder=request.getRealPath("resources/upload");//이진파일 업로드 서버 경로=>톰캣 WAS 서버에 의해서 변경된 실제 톰캣 프로젝트 경로
 		int fileSize=100*1024*1024;//이진파일 업로드 최대크기=>5M
@@ -58,6 +77,15 @@ public class EventController {
 		
 		multi=new MultipartRequest(request,saveFolder,fileSize,"UTF-8");
 		
+	
+		String info_id=(String)request.getSession().getAttribute("id"); 
+		if(info_id == null) {
+			out.println("<script>");
+			out.println("alert('로그인 하세요!');");
+			out.println("location='login';");
+			out.println("</script>");
+		
+		}
 		String ev_title=multi.getParameter("ev_title");
 		String ev_content=multi.getParameter("ev_content");
 		String ev_update=multi.getParameter("ev_update");
@@ -93,12 +121,14 @@ public class EventController {
 			String fileDBName="";
 			e.setEv_filename(fileDBName);
 		}
+		ui.setInfo_id(info_id);
 		e.setEv_title(ev_title); e.setEv_content(ev_content);  e.setEv_update(ev_update); e.setEv_exdate(ev_exdate);
 		
 		this.eventService.insertEvent(e);//자료실 저장
 		
 		return "redirect:/event_qt";//목록보기 매핑으로 이동		
-	}//bbs_write_ok()
+		}
+	
 	
 	
 	//자료실 목록(페이징+검색)
@@ -139,9 +169,20 @@ public class EventController {
 	
 	
 	@RequestMapping("/event_cont")
-	public ModelAndView event(int no,int page,String state,HttpServletRequest request)
+	public ModelAndView event(int no,int page,String state,HttpServletRequest request,HttpServletResponse response)
 			throws Exception{
-		
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		HttpSession session=request.getSession();
+
+		String info_id = (String)session.getAttribute("id");//세션 관리자 아이디를 구함
+
+		if(info_id == null) {
+			out.println("<script>");
+			out.println("alert('로그인 하세요!');");
+			out.println("location='login';");
+			out.println("</script>");
+		}else {
 			EventVO e=this.eventService.getEventCont(no);
 			String eve_cont=e.getEv_content().replace("\n","<br/>");//textarea 입력박스에서 엔터키 친 부분을 줄 바꿈 해준다.
 
@@ -157,13 +198,28 @@ public class EventController {
 			}
 
 			return em;
+		}
+		return null;
 	
 		
 	}
 	
 	@RequestMapping("/event_edit_ok")
-	public ModelAndView event_edit_ok(HttpServletRequest request,EventVO e) throws Exception{
+	public ModelAndView event_edit_ok(HttpServletRequest request,HttpServletResponse response,EventVO e) throws Exception{
 	
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		HttpSession session=request.getSession();
+
+		String info_id = (String)session.getAttribute("info_id");//세션 관리자 아이디를 구함
+
+		if(info_id == null) {
+			out.println("<script>");
+			out.println("alert('로그인 하세요!');");
+			out.println("location='login';");
+			out.println("</script>");
+		}
+		
 		String saveFolder=request.getRealPath("resources/upload");
 		//이진파일 업로드 서버경로
 		int fileSize=5*1024*1024;//이진파일 업로드 최대크기
@@ -230,10 +286,25 @@ public class EventController {
 		em.addObject("page", page);
 		return em;
 	}//if else
+		
 	
 		
 	@RequestMapping("/event_del")  //GET OR POST방식으로 접근하는 매핑주소를 처리,bbs_list매핑주소 등록
-	public String event_del(int no,Model listM,HttpServletRequest request,@ModelAttribute EventVO e) throws Exception{
+	public String event_del(int no,Model listM,HttpServletRequest request,HttpServletResponse response,@ModelAttribute EventVO e) throws Exception{
+		
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		HttpSession session=request.getSession();
+
+		String info_id = (String)session.getAttribute("info_id");//세션 관리자 아이디를 구함
+
+		if(info_id == null) {
+			out.println("<script>");
+			out.println("alert('로그인 하세요!');");
+			out.println("location='login';");
+			out.println("</script>");
+		}
+		
 		int page=1;
 		if(request.getParameter("page") != null) {//get으로 전달된 쪽번호가 있는 경우
 			page=Integer.parseInt(request.getParameter("page"));//쪽번호를 정수 숫자로 변경해서 저장
@@ -251,7 +322,8 @@ public class EventController {
 	
 		
 		return "redirect:/event_qt";
-	}//bbs_list()
+
+	}
 	
 	
 		

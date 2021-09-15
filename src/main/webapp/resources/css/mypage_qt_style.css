@@ -94,3 +94,26 @@ h2{
 .tabShow{
 	display: none;
 }
+
+
+table{
+    width:100%;
+    margin: 20px auto;
+    font-size:small;
+}
+
+table tr td{
+    border: 1px solid #fff;
+}
+.nameOfPay td{
+background-color: #FFE59D;
+
+}
+
+
+table td{
+    text-align: center;
+    border-radius: 3px;
+    background-color: #E0E0E0;
+    padding: 7px 3px;
+}
