@@ -1,9 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <%@ include file="../qt_project/header.jsp"%>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,43 +17,40 @@
 
 <link rel="stylesheet" href="resources/css/hot2.css">
 <script src="${path}/resources/js/all.min.js"></script>
-<script src="resources/js/hot3.js"></script>
-
+<script src="${path}/resources/js/hot3.js"></script>
 </head>
 <body>
 
+
 	<h1>오늘의 노름</h1>
-	
-		<div class="best">
+	<div class="best">
 		<ul>
 			<li><a href="#" onclick="location.href='hot'">DAY</a></li>
 			<li><a href="#" onclick="location.href='hot1'">WEEK</a></li>
 			<li><a href="#" onclick="location.href='hot2'">MONTH</a></li>
 		</ul>
-		</div>
-		<!-- day 베스트 -->
+	</div>
 
 
 	<div class="sliderWrap controls">
 		<ul class="basic_slider">
-			<c:if test="${!empty hlist}">
-				<c:forEach var="h" items="${hlist}">
 
+			<c:if test="${!empty h1list}">
+				<c:forEach var="h1" items="${h1list}">
 
-					<li><img src="${path}/resources/upload${h.gb_filename}"
+					<li><img src="${path}/resources/upload${h1.gb_filename}"
 						alt="day1">
 						<figcaption>
-							<h3>${h.gb_title}</h3>
-							<p>${h.gb_content}</p>
+							<h3>${h1.gb_title}</h3>
+							<p>${h1.gb_content}</p>
 
 						</figcaption> <a href="#"></a></li>
-
 
 
 				</c:forEach>
 			</c:if>
 			
-			 <c:if test="${empty hlist}">
+			 <c:if test="${empty h1list}">
 			 <li><img src="resources/images/picketcat.png" alt="no image"></li>
 			<li><img src="resources/images/picketcat.png" alt="no image"></li>
 			 <li><img src="resources/images/picketcat.png" alt="no image"></li>
@@ -67,8 +60,6 @@
 			 </c:if>
 		</ul>
 	</div>
-	
-	
 
 
 
@@ -88,11 +79,7 @@
 
 
 	</section>
-
-
-
+		
 </body>
 <%@ include file="../qt_project/bottom_qt.jsp"%>
 </html>
-
-		

@@ -20,7 +20,7 @@ h1{
 .controls .bx-prev, .controls .bx-next{
 	position:absolute;
 	top:50%;
-	transform:translateY(30%);
+	transform:translateY(20%);
 	font-size:3em;
 }
 
@@ -32,36 +32,32 @@ h1{
 	left:calc(100% + 40px);
 }
 
- .basic_slider3 li img{
-	width:100%;
+
+.basic_slider  li img{
+		width:100%;
 	
 	height:100%;
 }
 
- .basic_slider1 li img{
-	width:100%;
+.best ul{
+	margin-left:20%;
 	
-	height:100%;
-}
-
-.basic_slider2  li img{
-	width:100%;
-	
-	height:100%;
-}
-
-.best{
-
-	position:relative;
-	margin-bottom:3%;
 	
 }
-.best ul li{
-		
+
+
+
+ .best ul li{
+			word-spacing:5px;
 		display:inline-block;
-		margin-right:10px;
 	
 }
+.best ul li a{
+
+	color:#606163;
+}
+
+.bx-wrapper, .bx-viewport, .bx-wrapper img {height: 300px !important;}
 
 .layered-card {
    position:relative;
@@ -152,14 +148,14 @@ h1{
 
 /*안되면 ulclass로 */
 /*controls 빼보기*/
-.basic_slider3  * {
+.basic_slider  * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-transition: all 0.35s ease;
   transition: all 0.35s ease;
 }
 
-.basic_slider3  figcaption {
+.basic_slider  figcaption {
   position: absolute;
   top: calc(100%);
   width: 100%;
@@ -169,7 +165,7 @@ h1{
 }
 
 
-.basic_slider3 h3 {
+.basic_slider h3 {
   font-weight: 300;
   font-size: 1.4em;
   line-height: 1.2em;
@@ -177,7 +173,7 @@ h1{
 
 }
 
-.basic_slider3 figcaption:before {
+.basic_slider figcaption:before {
   position: absolute;
   content: '';
   z-index: 2;
@@ -190,12 +186,12 @@ h1{
 }
 
 
-.basic_slider3  p{
+.basic_slider  p{
 	 font-size: 0.9em;
   letter-spacing: 1px;
 
 }
-.basic_slider3  a {
+.basic_slider  a {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -204,122 +200,10 @@ h1{
   z-index: 2;
 }
 
-.basic_slider3 :hover figcaption,
-.basic_slider3 .hover figcaption {
+.basic_slider :hover figcaption,
+.basic_slider .hover figcaption {
   top: 50px;
 }
 
-.basic_slider1  * {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-transition: all 0.35s ease;
-  transition: all 0.35s ease;
-}
-
-.basic_slider1 figcaption {
-  position: absolute;
-  top: calc(100%);
-  width: 100%;
-  background-color: #ffffff;
-  padding: 15px 25px 65px;
-   opacity:0.8;
-}
 
 
-.basic_slider1 h3 {
-  font-weight: 300;
-  font-size: 1.4em;
-  line-height: 1.2em;
- 
-
-}
-
-.basic_slider1 figcaption:before {
-  position: absolute;
-  content: '';
-  z-index: 2;
-  bottom: 100%;
-  left: 0;
-  width: 100%;
-  height: 30px;
-  background-image: -webkit-linear-gradient(top, transparent 0%, #ffffff 100%);
-  background-image: linear-gradient(to bottom, transparent 0%, #ffffff 100%);
-}
-
-
-.basic_slider1  p{
-	 font-size: 0.9em;
-  letter-spacing: 1px;
-
-}
-
-.basic_slider1  a {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
-}
-
-.basic_slider1 :hover figcaption,
-.basic_slider1 .hover figcaption {
-  top: 50px;
-}
-
-.basic_slider2  * {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-transition: all 0.35s ease;
-  transition: all 0.35s ease;
-}
-
-.basic_slider2 figcaption {
-  position: absolute;
-  top: calc(100%);
-  width: 100%;
-  background-color: #ffffff;
-  padding: 15px 25px 65px;
-   opacity:0.8;
-}
-
-
-.basic_slider2 h3 {
-  font-weight: 300;
-  font-size: 1.4em;
-  line-height: 1.2em;
- 
-
-}
-
-.basic_slider2 figcaption:before {
-  position: absolute;
-  content: '';
-  z-index: 2;
-  bottom: 100%;
-  left: 0;
-  width: 100%;
-  height: 30px;
-  background-image: -webkit-linear-gradient(top, transparent 0%, #ffffff 100%);
-  background-image: linear-gradient(to bottom, transparent 0%, #ffffff 100%);
-}
-
-
-.basic_slider2  p{
-	 font-size: 0.9em;
-  letter-spacing: 1px;
-
-}
-.basic_slider2 a {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
-}
-
-.basic_slider2 :hover figcaption,
-.basic_slider2 .hover figcaption {
-  top: 50px;
-}

@@ -29,25 +29,57 @@ public class HotController {
 		}
 		
 		 
-//한빈님에게,,
-/* 리스트를 뽑을 수 있게 해봤지만 실행이 안되더라구요.  저는 테이블을 만들어 테스트 해봤습니다
- * 오류는 500 뜨구, nullpointerException이 뜹니다. 
- *hlist - day 베스트 / h1list -week 베스트 / h2list - month 베스트 형식으로 짰습니다. 
- * 오류난 부분만 주석처리 하라고 말하셨는데.. 전체 다 인것같아요..
- */
+
 		
-		//List<Enter_nrVO> hlist=this.hotService.getHotList(nr);
-		List<Enter_nrVO> h1list=this.hotService.getHot1List(nr);
-		List<Enter_nrVO> h2list=this.hotService.getHot2List(nr);
-		
+		List<Enter_nrVO> hlist=this.hotService.getHotList(nr);
+		listM.addAttribute("hlist",hlist);
 	
-		
-		//listM.addAttribute("hlist",hlist);
-		listM.addAttribute("h1list", h1list);
-		listM.addAttribute("h2list", h2list);
 		listM.addAttribute("page", page);
 	
 		
 		return "hot/hot";
-	}//bbs_list()
+	}//
+	
+	
+	@RequestMapping("/hot1")  //GET OR POST방식으로 접근하는 매핑주소를 처리,bbs_list매핑주소 등록
+	public String hot1(Model listM,HttpServletRequest request,@ModelAttribute Enter_nrVO nr) throws Exception{
+		int page=1;
+		int limit=10;//한페이지에 보여지는 목록개수
+		if(request.getParameter("page") != null) {//get으로 전달된 쪽번호가 있는 경우
+			page=Integer.parseInt(request.getParameter("page"));//쪽번호를 정수 숫자로 변경해서 저장
+		}
+		
+		 
+
+		
+		
+		List<Enter_nrVO> h1list=this.hotService.getHot1List(nr);
+		listM.addAttribute("h1list", h1list);
+	
+		listM.addAttribute("page", page);
+	
+		
+		return "hot/hot1";
+	}//
+	
+	@RequestMapping("/hot2")  //GET OR POST방식으로 접근하는 매핑주소를 처리,bbs_list매핑주소 등록
+	public String hot2(Model listM,HttpServletRequest request,@ModelAttribute Enter_nrVO nr) throws Exception{
+		int page=1;
+		int limit=10;//한페이지에 보여지는 목록개수
+		if(request.getParameter("page") != null) {//get으로 전달된 쪽번호가 있는 경우
+			page=Integer.parseInt(request.getParameter("page"));//쪽번호를 정수 숫자로 변경해서 저장
+		}
+		
+		 
+
+		
+		
+		List<Enter_nrVO> h2list=this.hotService.getHot2List(nr);
+		listM.addAttribute("h2list", h2list);
+	
+		listM.addAttribute("page", page);
+	
+		
+		return "hot/hot2";
+	}//
 }
