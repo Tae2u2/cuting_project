@@ -97,7 +97,7 @@
 									<i class="fas fa-comment fa-flip-horizontal"></i>
 								</button>
 							</span> 
-							<span class="likecnt${en.gb_postnb}">좋아요 ${en.gb_likecnt}개</span>
+							<span class="likecnt${en.gb_postnb}" id="likebox">좋아요  ${en.gb_likecnt}개 </span>
 	 			
 	 			</div>
 	 			<div class="sec4">

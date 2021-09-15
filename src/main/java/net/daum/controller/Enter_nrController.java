@@ -36,6 +36,7 @@ public class Enter_nrController {
 	@Autowired
 	private HeartService heartService;
 	
+	
 	//자료실 글쓰기 폼
 	@GetMapping("uploadForm")
 	public String uploadForm(HttpServletRequest request, Model model , HttpSession session, @ModelAttribute Enter_nrVO en) {
