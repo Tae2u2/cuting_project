@@ -18,11 +18,20 @@ $(document).ready(function(){
 			data : {
 				gb_postnb: gb_postnb,
 			},
-			success : function(en){
+			datatype: 'json',
+			headers:{
+			  "Content-Type" : "application/json",
+			  "X-HTTP-Method-Override":"GET"
+		 	 },
+			success : function(en,gb_likecnt){
 				//location.reload();
 				var heart = en.gb_likecnt;		
-				$('.likecnt'+gb_postnb).text(heart);
-			
+				//$('.likecnt'+gb_postnb).html(heart);
+				 $('.likecnt'+gb_postnb).html( '좋아요 '+heart +'개');
+
+				//console.log(en);
+				//onsole.log(en.gb_likecnt);
+				
 				console.log('하트추가 성공');
 				
 			},
@@ -31,13 +40,19 @@ $(document).ready(function(){
 			}
 			
 		});
+		//return heart;
+		
 		console.log('색깔있는 하트로 바껴라 얍');
-	
+		
+		
 		//색깔있는 하트로 바꾸기
 		//$(this).html('<button type="button" name="likeButton"><i style="color:red" class="fas fa-heart fa-heart02"></i></button>');
 		$('.heart_icon'+gb_postnb).html('<button type="button" name="likeButton" class="b2"><i style="color:red" class="fas fa-heart fa-heart02"></i></button>');
 		
-
+		
+			
+		
+		
 	}else if($(this).children('button').attr('class')== "b2"){
 
 		//만약 빨간하트를 클릭했다면? 
@@ -54,10 +69,16 @@ $(document).ready(function(){
 			data : {
 				gb_postnb : gb_postnb,
 			},
+			datatype: 'json',
+			headers:{
+			  "Content-Type" : "application/json",
+			  "X-HTTP-Method-Override":"GET"
+		 	 },
 			success : function(en){
 				//location.reload();
 				var heart = en.gb_likecnt;   // heart 는 좋아요 갯수 출력하는 변수로 설정
-				$('.likecnt'+gb_postnb).text(heart); // 좋아요 갯수 표시
+				//$('.likecnt'+gb_postnb).html(heart); // 좋아요 갯수 표시
+				$('.likecnt'+gb_postnb).html( '좋아요 '+heart +'개');
 				
 				console.log('하트삭제 성공');
 			},

@@ -21,7 +21,7 @@ public class HeartController {
 	
 	//빈 하트 클릭시 하트 저장
 	@ResponseBody
-	@RequestMapping(value="/saveHeart.do")
+	@RequestMapping(value="/saveHeart.do" ,produces = "application/json")
 	public Enter_nrVO save_heart(@RequestParam int gb_postnb, HttpSession session,HttpServletRequest request) {
 		
 		HeartVO h = new HeartVO();
@@ -35,7 +35,7 @@ public class HeartController {
 	
 	// 빨간하트 클릭시 하트 해제
 	@ResponseBody
-	@RequestMapping(value = "/removeHeart.do")
+	@RequestMapping(value = "/removeHeart.do", produces = "application/json")
 	public Enter_nrVO remove_heart(@RequestParam int gb_postnb, HttpSession session,HttpServletRequest request) {
 		
 		HeartVO h = new HeartVO();

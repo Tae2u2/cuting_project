@@ -129,11 +129,14 @@
 							
 								<%-- <span class="likecnt${en.gb_postnb}">좋아요 ${en.gb_likecnt}개</span>--%>
 								<%--<button type="button" name="likeButton"><i class="fas fa-heart fa-heart01"></i></button> --%>
-								<button type="button" name="comment-button" class="image01"><i class="fas fa-comment fa-flip-horizontal"></i></button>
+								<a href="nr_cont?gb_postnb=${en.gb_postnb}&state=reply">
+									<button type="button" name="comment-button" class="image01"><i class="fas fa-comment fa-flip-horizontal"></i></button>
+								</a>
 								<a href="nr_cont?gb_postnb=${en.gb_postnb}&state=content">
-								<div class="pad">
-									<button type="button" name="enter_betting" value="배팅하러가기"><i class="fab fa-bitcoin"></i></button>
-								</div></a>
+									<div class="pad">
+										<button type="button" name="enter_betting" value="배팅하러가기"><i class="fab fa-bitcoin"></i></button>
+									</div>
+								</a>
 						</div>
 					</li>
 					</c:if>

@@ -10,17 +10,20 @@ create table nr_reply(
 alter table nr_reply add constraint nr_reply_gb_postnb_fk foreign key (gb_postnb) references gamble(gb_postnb) on delete cascade;
 alter table nr_reply add constraint nr_reply_rp_id_fk foreign key (rp_id) references user_info(info_id) on delete cascade;
 
+-- 댓글번호 시퀀스설정 
+create sequence rno_seq
+start with 1
+increment by 1
+nocache;
+
+
 drop table nr_reply;
 
 select *from nr_reply order by rno desc;
 
 delete from NR_REPLY;
 
--- 댓글번호 시퀀스설정 
-create sequence rno_seq
-start with 1
-increment by 1
-nocache;
+
 
 
 drop sequence rno_seq;

@@ -164,11 +164,17 @@
 	cursor: pointer;	
 }
 
-.container .sec .sec2 .sec3 .likecnt{
+.container .sec .sec2 .sec3 #likebox{
 	font-size: 14px;
 	line-height: 46px;
 	float:right;
 	padding-right: 10px;
+		
+}
+
+.container .sec .sec2 .sec3 #likebox #totalLikecnt{
+	
+	padding:0 5px;
 		
 }
 
