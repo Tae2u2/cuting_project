@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="Nr_Rp">
+   
+   <!--  댓글 저장 -->
+ 	<insert id="nr_reply_in" parameterType="n_rp"><!-- parameterType 속성은 전달인자 타입으로 생략가능 -->
+ 	 insert into nr_reply (rno,gb_postnb,rp_id,rp_content,rp_date) values(rno_seq.nextval,#{gb_postnb},#{rp_id},#{rp_content},sysdate)
+ 	</insert>
+ 	
+ 	<!-- 댓글 목록 -->
+ 	<select id="nr_reply_list" parameterType="int" resultType="net.daum.vo.Nr_ReplyVO">
+ 	 select * from nr_reply where gb_postnb=#{gb_postnb} order by rno desc
+ 	</select>
+ 	
+ 	<!-- 댓글 수정 -->
+ 	<update id="nr_reply_edit" parameterType="n_rp">
+ 	 update nr_reply set rp_content=#{rp_content},rp_mddate= sysdate where rno=#{rno}
+ 	</update>
+ 	
+ 	<!-- 댓글 삭제 -->
+ 	<delete id="nr_reply_del">
+ 	 delete from nr_reply where rno=#{rno}
+ 	</delete>
+ 	
+ 	<!-- 댓글로부터 게시판 번호값 알아내기 -->
+ 	<select id="nr_reply_gb_postnb" parameterType="int" resultType="int">
+ 		select gb_postnb from nr_reply where rno=#{rno}
+ 	</select>
+   
+     
+ </mapper>

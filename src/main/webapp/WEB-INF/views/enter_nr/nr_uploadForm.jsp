@@ -14,7 +14,7 @@
 <%@ include file="../qt_project/header.jsp"%>
 </head>
 <body>
-<form method="post" action="uploadForm_ok" enctype="multipart/form-data">
+<form method="post" action="uploadForm_ok" onsubmit="return upload_check();" enctype="multipart/form-data">
 	<div class="forLineUp">
 	<h1>나만의 글 쓰기</h1>
 	

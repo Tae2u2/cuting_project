@@ -14,12 +14,12 @@
 <link rel="stylesheet" href="${path}/resources/css/enter_nr.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<script src="./resources/js/enter_photo.js"></script>
+<script src="${path}/resources/js/enter_photo.js"></script>
 </head>
 <body>
 
@@ -38,7 +38,6 @@
 				</div>
 				
 					<form action="enter_nr" method="get" class="search_box">
-
 						<div class="search_div">
 							<select name="find_field">
 								<option value="gb_id" <c:if test="${find_field == 'gb_id'}"> ${'selected'}</c:if>>작성자</option>
@@ -48,7 +47,7 @@
 
 							<input type="text" class="text_space" name="find_name" value="${find_name}" placeholder="검색해봐!">
 						</div>
-
+						
 						<button type="submit">
 							<i class="fas fa-search"></i>
 						</button>
@@ -65,41 +64,82 @@
 		<!-- 강아지 탭메뉴공간입니다. ul 줄이라 생각하면되고 li는 한 줄안에 3개씩들어가는 구성품입니다. -->
 			<div class="tab-pane fade show active" id="dog">
 				<ul>
+					<%-- <c:forEach var="a" items="${hlist}">
+						  하트번호: ${a.hno}<hr/>
+						  자료실 게시물번호: ${a.gb_postnb}<hr/>
+						  회원아이디: ${a.gb_id}<hr/>
+						 하트선택: ${a.likeflag }<hr/>
+						</c:forEach> --%>
 					
-
-
-					<!-- 1번째사진 -->
+					<c:forEach items="${gblist}" var="en">					
+					
+					<c:if test="${en.gb_category == '1' }">
 					<li>
 						<div class="aa">
-							<img src="./resources/images/photo_dog01.png" class="image">
+							<a href="nr_cont?gb_postnb=${en.gb_postnb}&state=reply">
+								<img src="./resources/upload${en.gb_filename}" class="image" alt="그림아보여라."/><!-- 이미지 클릭시 모달창 오픈 -->
+							</a>
 						</div>
+						
+						
+						
+						
 						<div class="bb">
-							<button type="button" name="likeButton"><i class="fas fa-heart fa-heart01"></i></button>
-								<button type="button" name="comment-button" class="image01"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="./dogphoto01_bet.jsp">
-								<div class="pad">
-									<button type="button" name="enter_betting" value="배팅하러가기"><i class="fab fa-bitcoin"></i></button>
-								</div></a>
+						
+						<%-- 하트 작업시작 --%>
+						
+						
+						<c:choose>
+						 	<%-- 로그인 상태일때  클릭되게--%>
+							<c:when test="${gb_id != null}">
+							
+								<c:choose>
+									
+									<%-- 빈하트일때 --%>
+									<c:when test="${likeflag == '0' or likeflag == null}">
+									<a idx="${en.gb_postnb}" href="javascript:" class="heart-click heart_icon${en.gb_postnb}">
+										<button type="button" name="likeButton" class="b1"><i class="fas fa-heart fa-heart01"></i></button>
+									</a>
+									</c:when>						
+								<c:otherwise>
+									
+									
+									<%-- 꽉찬 하트일때 --%>
+									
+									<a idx="${en.gb_postnb}" href="javascript:" class="heart-click heart_icon${en.gb_postnb}">
+										<button type="button" name="likeButton" class="b2"><i style="color:red" class="fas fa-heart fa-heart02"></i></button>
+									</a>
+											
+								</c:otherwise>
+							</c:choose>
+							
+						</c:when>
+						
+							<%-- 로그인 상태가아닐때 클릭안되게 --%>
+							<c:otherwise>
+								<a href="javascript:" class="heart-notlogin">
+										<button type="button" name="likeButton"><i class="fas fa-heart fa-heart03"></i></button>
+									</a>
+									
+							
+							</c:otherwise>
+						</c:choose>
+						
+						<%-- 하트 작업 끝 --%>
+							
+								<%-- <span class="likecnt${en.gb_postnb}">좋아요 ${en.gb_likecnt}개</span>--%>
+								<%--<button type="button" name="likeButton"><i class="fas fa-heart fa-heart01"></i></button> --%>
+								<a href="nr_cont?gb_postnb=${en.gb_postnb}&state=reply">
+									<button type="button" name="comment-button" class="image01"><i class="fas fa-comment fa-flip-horizontal"></i></button>
+								</a>
+								<a href="nr_cont?gb_postnb=${en.gb_postnb}&state=content">
+									<div class="pad">
+										<button type="button" name="enter_betting" value="배팅하러가기"><i class="fab fa-bitcoin"></i></button>
+									</div>
+								</a>
 						</div>
 					</li>
-					
-					
-					
-					<c:forEach items="${gblist}" var="en">
-					
-					<li>
-						<div class="aa">
-							<img src="./resources/upload${en.gb_filename}" class="image" alt="그림아보여라."/>
-						</div>
-						<div class="bb">
-							<button type="button" name="likeButton"><i class="fas fa-heart fa-heart01"></i></button>
-								<button type="button" name="comment-button" class="image01"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="./dogphoto01_bet.jsp">
-								<div class="pad">
-									<button type="button" name="enter_betting" value="배팅하러가기"><i class="fab fa-bitcoin"></i></button>
-								</div></a>
-						</div>
-					</li>	
+					</c:if>
 					</c:forEach>
 				</ul>
 				
@@ -108,24 +148,70 @@
 		<!-- 고양이 탭메뉴공간입니다. ul 줄이라 생각하면되고 li는 한 줄안에 3개씩들어가는 구성품입니다. -->
 			<div class="tab-pane fade" id="cat">
 				<ul>
-					<c:forEach items="${gblist}" var="en">
 								
+					<c:forEach items="${gblist}" var="en">					
+					
+					<c:if test="${en.gb_category == '2' }">
 					<li>
 						<div class="aa">
-							<img src="./resources/upload${cn.gb_filename}" class="image"/>
+							<a href="nr_cont?gb_postnb=${en.gb_postnb}&state=reply">
+								<img src="./resources/upload${en.gb_filename}" class="image" alt="그림아보여라."/><!-- 이미지 클릭시 모달창 오픈 -->
+							</a>
 						</div>
+									
 						<div class="bb">
-							<button type="button" name="likeButton"><i class="fas fa-heart fa-heart01"></i></button>
+						
+						
+						<%-- 하트 작업시작 --%>
+							
+						<c:choose>
+						 	<%-- 로그인 상태일때  클릭되게--%>
+							<c:when test="${gb_id != null}">
+							
+								<c:choose>
+									
+									<%-- 빈하트일때 --%>
+									<c:when test="${likeflag == '0' or likeflag == null}">
+									<a idx="${en.gb_postnb}" href="javascript:" class="heart-click heart_icon${en.gb_postnb}">
+										<button type="button" name="likeButton" class="b1"><i class="fas fa-heart fa-heart01"></i></button>
+									</a>
+									</c:when>						
+								<c:otherwise>
+									
+									
+									<%-- 꽉찬 하트일때 --%>
+									
+									<a idx="${en.gb_postnb}" href="javascript:" class="heart-click heart_icon${en.gb_postnb}">
+										<button type="button" name="likeButton" class="b2"><i style="color:red" class="fas fa-heart fa-heart02"></i></button>
+									</a>
+											
+								</c:otherwise>
+							</c:choose>
+							
+						</c:when>
+						
+							<%-- 로그인 상태가아닐때 클릭안되게 --%>
+							<c:otherwise>
+								<a href="javascript:" class="heart-notlogin">
+										<button type="button" name="likeButton"><i class="fas fa-heart fa-heart03"></i></button>
+									</a>
+					
+							</c:otherwise>
+						</c:choose>
+						
+						<%-- 하트 작업 끝 --%>
+							
+								<%-- <span class="likecnt${en.gb_postnb}">좋아요 ${en.gb_likecnt}개</span> --%>
+								<%--<button type="button" name="likeButton"><i class="fas fa-heart fa-heart01"></i></button> --%>
 								<button type="button" name="comment-button" class="image01"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="#">
+								<a href="nr_cont?gb_postnb=${en.gb_postnb}&state=content">
 								<div class="pad">
 									<button type="button" name="enter_betting" value="배팅하러가기"><i class="fab fa-bitcoin"></i></button>
 								</div></a>
 						</div>
 					</li>
-					
+					</c:if>
 					</c:forEach>
-					
 				</ul>
 				
 			</div>
@@ -133,1182 +219,74 @@
 		<!-- 다른 동물 친구들 탭메뉴공간입니다. ul 줄이라 생각하면되고 li는 한 줄안에 3개씩들어가는 구성품입니다. -->	
 			<div class="tab-pane fade" id="friends">
 				<ul>
+								
+					<c:forEach items="${gblist}" var="en">					
 					
-					
-					<c:forEach items="${gblist}" var="en">
+					<c:if test="${en.gb_category == '3' }">
 					<li>
 						<div class="aa">
-							<img src="./resources/upload${en.gb_filename}" class="image"/>
+							<a href="nr_cont?gb_postnb=${en.gb_postnb}&state=reply">
+								<img src="./resources/upload${en.gb_filename}" class="image" alt="그림아보여라."/><!-- 이미지 클릭시 모달창 오픈 -->
+							</a>
 						</div>
+									
 						<div class="bb">
-							<button type="button" name="likeButton"><i class="fas fa-heart fa-heart01"></i></button>
+						
+						
+						<%-- 하트 작업시작 --%>
+							
+						<c:choose>
+						 	<%-- 로그인 상태일때  클릭되게--%>
+							<c:when test="${gb_id != null}">
+							
+								<c:choose>
+									
+									<%-- 빈하트일때 --%>
+									<c:when test="${likeflag == '0' or likeflag == null}">
+									<a idx="${en.gb_postnb}" href="javascript:" class="heart-click heart_icon${en.gb_postnb}">
+										<button type="button" name="likeButton" class="b1"><i class="fas fa-heart fa-heart01"></i></button>
+									</a>
+									</c:when>						
+								<c:otherwise>
+									
+									
+									<%-- 꽉찬 하트일때 --%>
+									
+									<a idx="${en.gb_postnb}" href="javascript:" class="heart-click heart_icon${en.gb_postnb}">
+										<button type="button" name="likeButton" class="b2"><i style="color:red" class="fas fa-heart fa-heart02"></i></button>
+									</a>
+											
+								</c:otherwise>
+							</c:choose>
+							
+						</c:when>
+						
+							<%-- 로그인 상태가아닐때 클릭안되게 --%>
+							<c:otherwise>
+								<a href="javascript:" class="heart-notlogin">
+										<button type="button" name="likeButton"><i class="fas fa-heart fa-heart03"></i></button>
+									</a>
+					
+							</c:otherwise>
+						</c:choose>
+						
+						<%-- 하트 작업 끝 --%>
+							
+								<%-- <span class="likecnt${en.gb_postnb}">좋아요 ${en.gb_likecnt}개</span> --%>
+								<%--<button type="button" name="likeButton"><i class="fas fa-heart fa-heart01"></i></button> --%>
 								<button type="button" name="comment-button" class="image01"><i class="fas fa-comment fa-flip-horizontal"></i></button>
-								<a href="./dogphoto01_bet.jsp">
+								<a href="nr_cont?gb_postnb=${en.gb_postnb}&state=content">
 								<div class="pad">
 									<button type="button" name="enter_betting" value="배팅하러가기"><i class="fab fa-bitcoin"></i></button>
 								</div></a>
 						</div>
 					</li>
+					</c:if>
 					</c:forEach>
-					
 				</ul>
 			</div>
-			
-			<!-- 강아지 포토1번 -->
-			<div class="pr_enter_photo enter_photo01">
-				<img src="./resources/upload/${en.gb_filename}" alt="dog01 Image">
-				<div class="pr_enph enph01">
-
-					<div class="pr_en1-1 enph01-01">
-						<button type="button" value="window_close" class="closeBt" onclick="clearInput()">
-							<i class="fas fa-times"></i>
-						</button>
-						<i class="fas fa-crown"></i><span>Bulgogy(작성자닉네임이 들어갈자리)</span>
-					</div>
-					<div class="pr_en1-2 enph01-02">
-						<ul class="pr_en1-ul1 enph01_ul01">
-							<div class="pr_en1-com1 enph01_com01">글쓴이 내용1</div>
-							<ul class="pr_en1-ul2 enph01_ul02">
-								<div class="pr_en1-com2 enph01_com2">답글 1</div>
-							</ul>
-							<ul class="pr_en1-ul2 enph01_ul02">
-								<div class="pr_en1-com2 enph01_com2">답글 2</div>
-							</ul>
-						</ul>
-
-						<div class="pr_eniconbox enph01_iconbox">
-							<span class="iconbox">
-								<button type="button" name="likeButton">
-									<i class="fas fa-heart fa-heart01"></i>
-								</button>
-							</span> 
-							<span class="iconbox"> 
-								<button type="button" name="comment-button" class="comment comment01" onclick="focusEvent()">
-									<i class="fas fa-comment fa-flip-horizontal"></i>
-								</button>
-							</span> 
-							<span class="likecnt">좋아요 ${likeButton}개</span>
-						</div>
-
-						<div class="textbox">
-							<form class="textform" method="post" action="#">
-								<i class="far fa-keyboard"></i>
-								<textarea placeholder="댓글 달기..." class="tx"
-									style="height: 22px !important;"></textarea>
-								<button type="submit" value="게시">게시</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 강아지 포토2번-->
-			<div class="pr_enter_photo enter_photo02">
-
-				<img src="./images/photo_dog02.png" alt="dog02 Image">
-				<div class="pr_enph enph02">
-
-					<div class="pr_en1-1 enph02-01">
-						<button type="button" value="window_close" class="closeBt" onclick="clearInput()">
-							<i class="fas fa-times"></i>
-						</button>
-						<i class="fas fa-crown"></i><span>Taccoyakky</span>
-					</div>
-					<div class="pr_en1-2 enph02-02">
-						<ul class="pr_en1-ul1 enph02_ul01">
-							<div class="pr_en1-com1 enph02_com01">글쓴이 내용1</div>
-							<ul class="pr_en1-ul2 enph02_ul02">
-								<div class="pr_en1-com2 enph02_com2">답글 1</div>
-							</ul>
-							<ul class="pr_en1-ul2 enph02_ul02">
-								<div class="pr_en1-com2 enph02_com2">답글 2</div>
-							</ul>
-						</ul>
-
-						<div class="pr_eniconbox enph02_iconbox">
-							<span class="iconbox">
-								<button type="button" name="likeButton">
-									<i class="fas fa-heart fa-heart02"></i>
-								</button>
-							</span> 
-							<span class="iconbox"> 
-								<button type="button" name="comment-button" onclick="focusEvent()">
-										<i class="fas fa-comment fa-flip-horizontal"></i>
-								</button>
-							</span> 
-							<span class="likecnt">좋아요 ${likeButton}개</span>
-						</div>
-
-						<div class="textbox">
-							<form class="textform" method="post" action="#">
-								<i class="far fa-keyboard"></i>
-								<textarea placeholder="댓글 달기..." class="tx"
-									style="height: 22px !important;"></textarea>
-								<button type="submit" value="게시">게시</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 강아지 포토3번-->
-			<div class="pr_enter_photo enter_photo03">
-
-				<img src="./images/photo_dog03.png" alt="dog03 Image">
-				<div class="pr_enph enph03">
-
-					<div class="pr_en1-1 enph03-01">
-						<button type="button" value="window_close" class="closeBt" onclick="clearInput()">
-							<i class="fas fa-times"></i>
-						</button>
-						<i class="fas fa-crown"></i><span>Ice-ggunManDo</span>
-					</div>
-					<div class="pr_en1-2 enph03-02">
-						<ul class="pr_en1-ul1 enph03_ul01">
-							<div class="pr_en1-com1 enph03_com01">글쓴이 내용1</div>
-							<ul class="pr_en1-ul2 enph03_ul02">
-								<div class="pr_en1-com2 enph03_com2">답글 1</div>
-							</ul>
-							<ul class="pr_en1-ul2 enph03_ul02">
-								<div class="pr_en1-com2 enph03_com2">답글 2</div>
-							</ul>
-						</ul>
-
-						<div class="pr_eniconbox enph03_iconbox">
-							<span class="iconbox">
-								<button type="button" name="likeButton">
-									<i class="fas fa-heart fa-heart03"></i>
-								</button>
-							</span> 
-							<span class="iconbox"> 
-								<button type="button" name="comment-button" onclick="focusEvent()">
-									<i class="fas fa-comment fa-flip-horizontal"></i>
-								</button>
-							</span> 
-							<span class="likecnt">좋아요 ${likeButton}개</span>
-						</div>
-
-						<div class="textbox">
-							<form class="textform" method="post" action="#">
-								<i class="far fa-keyboard"></i>
-								<textarea placeholder="댓글 달기..." class="tx"
-									style="height: 22px !important;"></textarea>
-								<button type="submit" value="게시">게시</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 강아지 포토4번-->
-			<div class="pr_enter_photo enter_photo04">
-
-				<img src="./images/photo_dog04.jpg" alt="dog04 Image">
-				<div class="pr_enph enph04">
-
-					<div class="pr_en1-1 enph04-01">
-						<button type="button" value="window_close" class="closeBt" onclick="clearInput()">
-							<i class="fas fa-times"></i>
-						</button>
-						<i class="fas fa-crown"></i><span>Marushaw</span>
-					</div>
-					<div class="pr_en1-2 enph04-02">
-						<ul class="pr_en1-ul1 enph04_ul01">
-							<div class="pr_en1-com1 enph04_com01">글쓴이 내용1</div>
-							<ul class="pr_en1-ul2 enph04_ul02">
-								<div class="pr_en1-com2 enph04_com2">답글 1</div>
-							</ul>
-							<ul class="pr_en1-ul2 enph04_ul02">
-								<div class="pr_en1-com2 enph04_com2">답글 2</div>
-							</ul>
-						</ul>
-
-						<div class="pr_eniconbox enph04_iconbox">
-							<span class="iconbox">
-								<button type="button" name="likeButton">
-									<i class="fas fa-heart fa-heart04"></i>
-								</button>
-							</span> 
-							<span class="iconbox"> 
-								<button type="button" name="comment-button" onclick="focusEvent()">
-									<i class="fas fa-comment fa-flip-horizontal"></i>
-								</button>
-							</span> 
-							<span class="likecnt">좋아요 ${likeButton}개</span>
-						</div>
-
-						<div class="textbox">
-							<form class="textform" method="post" action="#">
-								<i class="far fa-keyboard"></i>
-								<textarea placeholder="댓글 달기..." class="tx"
-									style="height: 22px !important;"></textarea>
-								<button type="submit" value="게시">게시</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 강아지 포토5번-->
-			<div class="pr_enter_photo enter_photo05">
-
-				<img src="./images/photo_dog05.JPG" alt="dog05 Image">
-				<div class="pr_enph enph05">
-
-					<div class="pr_en1-1 enph05-01">
-						<button type="button" value="window_close" class="closeBt" onclick="clearInput()">
-							<i class="fas fa-times"></i>
-						</button>
-						<i class="fas fa-crown"></i><span>Ssanta:D</span>
-					</div>
-					<div class="pr_en1-2 enph05-02">
-						<ul class="pr_en1-ul1 enph05_ul01">
-							<div class="pr_en1-com1 enph05_com01">글쓴이 내용1</div>
-							<ul class="pr_en1-ul2 enph05_ul02">
-								<div class="pr_en1-com2 enph05_com2">답글 1</div>
-							</ul>
-							<ul class="pr_en1-ul2 enph05_ul02">
-								<div class="pr_en1-com2 enph05_com2">답글 2</div>
-							</ul>
-						</ul>
-
-						<div class="pr_eniconbox enph05_iconbox">
-							<span class="iconbox">
-								<button type="button" name="likeButton">
-									<i class="fas fa-heart fa-heart05"></i>
-								</button>
-							</span> 
-							<span class="iconbox"> 
-								<button type="button" name="comment-button" onclick="focusEvent()">
-									<i class="fas fa-comment fa-flip-horizontal"></i>
-								</button> 
-							</span> <span class="likecnt">좋아요 ${likeButton}개</span>
-						</div>
-
-						<div class="textbox">
-							<form class="textform" method="post" action="#">
-								<i class="far fa-keyboard"></i>
-								<textarea placeholder="댓글 달기..." class="tx"
-									style="height: 22px !important;"></textarea>
-								<button type="submit" value="게시">게시</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 강아지 포토6번-->
-			<div class="pr_enter_photo enter_photo06">
-
-				<img src="./images/photo_dog06.JPG" alt="dog06 Image">
-				<div class="pr_enph enph06">
-
-					<div class="pr_en1-1 enph06-01">
-						<button type="button" value="window_close" class="closeBt" onclick="clearInput()">
-							<i class="fas fa-times"></i>
-						</button>
-						<i class="fas fa-crown"></i><span>Ganghyeonguk</span>
-					</div>
-					<div class="pr_en1-2 enph06-02">
-						<ul class="pr_en1-ul1 enph06_ul01">
-							<div class="pr_en1-com1 enph06_com01">글쓴이 내용1</div>
-							<ul class="pr_en1-ul2 enph06_ul02">
-								<div class="pr_en1-com2 enph06_com2">답글 1</div>
-							</ul>
-							<ul class="pr_en1-ul2 enph06_ul02">
-								<div class="pr_en1-com2 enph06_com2">답글 2</div>
-							</ul>
-						</ul>
-
-						<div class="pr_eniconbox enph06_iconbox">
-							<span class="iconbox">
-								<button type="button" name="likeButton">
-									<i class="fas fa-heart fa-heart06"></i>
-								</button>
-							</span> 
-							<span class="iconbox"> 
-								<button type="button" name="comment-button" onclick="focusEvent()">
-									<i class="fas fa-comment fa-flip-horizontal"></i>
-								</button> 
-							</span> 
-							<span class="likecnt">좋아요 ${likeButton}개</span>
-						</div>
-
-						<div class="textbox">
-							<form class="textform" method="post" action="#">
-								<i class="far fa-keyboard"></i>
-								<textarea placeholder="댓글 달기..." class="tx"
-									style="height: 22px !important;"></textarea>
-								<button type="submit" value="게시">게시</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 강아지 포토7번-->
-			<div class="pr_enter_photo enter_photo07">
-
-				<img src="./images/photo_dog07.png" alt="dog07 Image">
-				<div class="pr_enph enph07">
-
-					<div class="pr_en1-1 enph07-01">
-						<button type="button" value="window_close" class="closeBt" onclick="clearInput()">
-							<i class="fas fa-times"></i>
-						</button>
-						<i class="fas fa-crown"></i><span>Elon Musk</span>
-					</div>
-					<div class="pr_en1-2 enph07-02">
-						<ul class="pr_en1-ul1 enph07_ul01">
-							<div class="pr_en1-com1 enph07_com01">글쓴이 내용1</div>
-							<ul class="pr_en1-ul2 enph07_ul02">
-								<div class="pr_en1-com2 enph07_com2">답글 1</div>
-							</ul>
-							<ul class="pr_en1-ul2 enph07_ul02">
-								<div class="pr_en1-com2 enph07_com2">답글 2</div>
-							</ul>
-						</ul>
-
-						<div class="pr_eniconbox enph07_iconbox">
-							<span class="iconbox">
-								<button type="button" name="likeButton">
-									<i class="fas fa-heart fa-heart07"></i>
-								</button>
-							</span> 
-							<span class="iconbox">
-								 <button type="button" name="comment-button" onclick="focusEvent()">
-									<i class="fas fa-comment fa-flip-horizontal"></i>
-								</button>
-							</span> 
-							<span class="likecnt">좋아요 ${likeButton}개</span>
-						</div>
-
-						<div class="textbox">
-							<form class="textform" method="post" action="#">
-								<i class="far fa-keyboard"></i>
-								<textarea placeholder="댓글 달기..." class="tx"
-									style="height: 22px !important;"></textarea>
-								<button type="submit" value="게시">게시</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 강아지 포토8번-->
-			<div class="pr_enter_photo enter_photo08">
-
-				<img src="./images/woong11.jpg" alt="dog08 Image">
-				<div class="pr_enph enph08">
-
-					<div class="pr_en1-1 enph08-01">
-						<button type="button" value="window_close" class="closeBt" onclick="clearInput()">
-							<i class="fas fa-times"></i>
-						</button>
-						<i class="fas fa-crown"></i><span>GangTae2</span>
-					</div>
-					<div class="pr_en1-2 enph08-02">
-						<ul class="pr_en1-ul1 enph08_ul01">
-							<div class="pr_en1-com1 enph08_com01">글쓴이 내용1</div>
-							<ul class="pr_en1-ul2 enph08_ul02">
-								<div class="pr_en1-com2 enph08_com2">답글 1</div>
-							</ul>
-							<ul class="pr_en1-ul2 enph08_ul02">
-								<div class="pr_en1-com2 enph08_com2">답글 2</div>
-							</ul>
-						</ul>
-
-						<div class="pr_eniconbox enph08_iconbox">
-							<span class="iconbox">
-								<button type="button" name="likeButton">
-									<i class="fas fa-heart fa-heart08"></i>
-								</button>
-							</span> 
-							<span class="iconbox"> 
-								<button type="button" name="comment-button" onclick="focusEvent()">
-									<i class="fas fa-comment fa-flip-horizontal"></i>
-								</button>
-							</span> 
-							<span class="likecnt">좋아요 ${likeButton}개</span>
-						</div>
-
-						<div class="textbox">
-							<form class="textform" method="post" action="#">
-								<i class="far fa-keyboard"></i>
-								<textarea placeholder="댓글 달기..." class="tx"
-									style="height: 22px !important;"></textarea>
-								<button type="submit" value="게시">게시</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 강아지 포토9번-->
-			<div class="pr_enter_photo enter_photo09">
-
-				<img src="./images/woong36.jpg" alt="dog09 Image">
-				<div class="pr_enph enph09">
-
-					<div class="pr_en1-1 enph09-01">
-						<button type="button" value="window_close" class="closeBt" onclick="clearInput()">
-							<i class="fas fa-times"></i>
-						</button>
-						<i class="fas fa-crown"></i><span>GangTae2</span>
-					</div>
-					<div class="pr_en1-2 enph09-02">
-						<ul class="pr_en1-ul1 enph09_ul01">
-							<div class="pr_en1-com1 enph09_com01">글쓴이 내용1</div>
-							<ul class="pr_en1-ul2 enph09_ul02">
-								<div class="pr_en1-com2 enph09_com2">답글 1</div>
-							</ul>
-							<ul class="pr_en1-ul2 enph09_ul02">
-								<div class="pr_en1-com2 enph09_com2">답글 2</div>
-							</ul>
-						</ul>
-
-						<div class="pr_eniconbox enph09_iconbox">
-							<span class="iconbox">
-								<button type="button" name="likeButton">
-									<i class="fas fa-heart fa-heart09"></i>
-								</button>
-							</span> 
-							<span class="iconbox"> 
-								<button type="button" name="comment-button" onclick="focusEvent()">
-									<i class="fas fa-comment fa-flip-horizontal"></i>
-								</button>
-							</span> 
-							<span class="likecnt">좋아요 ${likeButton}개</span>
-						</div>
-
-						<div class="textbox">
-							<form class="textform" method="post" action="#">
-								<i class="far fa-keyboard"></i>
-								<textarea placeholder="댓글 달기..." class="tx"
-									style="height: 22px !important;"></textarea>
-								<button type="submit" value="게시">게시</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-
-
-			<!-- 고양이 포토1번 -->
-			<div class="pr_enter_photo enter_photo001">
-
-				<img src="./images/photo_cat001.jpg" alt="cat001 Image">
-				<div class="pr_enph enph001">
-
-					<div class="pr_en1-1 enph001-01">
-						<button type="button" value="window_close" class="closeBt" onclick="clearInput()">
-							<i class="fas fa-times"></i>
-						</button>
-						<i class="fas fa-crown"></i><span>NangMan-GGoyang2</span>
-					</div>
-					<div class="pr_en1-2 enph001-02">
-						<ul class="pr_en1-ul1 enph001_ul01">
-							<div class="pr_en1-com1 enph001_com01">글쓴이 내용1</div>
-							<ul class="pr_en1-ul2 enph001_ul02">
-								<div class="pr_en1-com2 enph001_com2">답글 1</div>
-							</ul>
-							<ul class="pr_en1-ul2 enph001_ul02">
-								<div class="pr_en1-com2 enph001_com2">답글 2</div>
-							</ul>
-						</ul>
-
-						<div class="pr_eniconbox enph001_iconbox">
-							<span class="iconbox">
-								<button type="button" name="likeButton">
-									<i class="fas fa-heart fa-heart001"></i>
-								</button>
-							</span> 
-							<span class="iconbox"> 
-								<button type="button" name="comment-button" onclick="focusEvent()">
-									<i class="fas fa-comment fa-flip-horizontal"></i>
-								</button>
-							</span> 
-							<span class="likecnt">좋아요 ${likeButton}개</span>
-						</div>
-
-						<div class="textbox">
-							<form class="textform" method="post" action="#">
-								<i class="far fa-keyboard"></i>
-								<textarea placeholder="댓글 달기..." class="tx"
-									style="height: 22px !important;"></textarea>
-								<button type="submit" value="게시">게시</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 고양이 포토2번-->
-			<div class="pr_enter_photo enter_photo002">
-
-				<img src="./images/photo_cat002.jpg" alt="cat002 Image">
-				<div class="pr_enph enph002">
-
-					<div class="pr_en1-1 enph002-01">
-						<button type="button" value="window_close" class="closeBt" onclick="clearInput()">
-							<i class="fas fa-times"></i>
-						</button>
-						<i class="fas fa-crown"></i><span>Chloe</span>
-					</div>
-					<div class="pr_en1-2 enph002-02">
-						<ul class="pr_en1-ul1 enph002_ul01">
-							<div class="pr_en1-com1 enph002_com01">글쓴이 내용1</div>
-							<ul class="pr_en1-ul2 enph002_ul02">
-								<div class="pr_en1-com2 enph002_com2">답글 1</div>
-							</ul>
-							<ul class="pr_en1-ul2 enph002_ul02">
-								<div class="pr_en1-com2 enph002_com2">답글 2</div>
-							</ul>
-						</ul>
-
-						<div class="pr_eniconbox enph002_iconbox">
-							<span class="iconbox">
-								<button type="button" name="likeButton">
-									<i class="fas fa-heart fa-heart002"></i>
-								</button>
-							</span> 
-							<span class="iconbox"> 
-								<button type="button" name="comment-button" onclick="focusEvent()">
-									<i class="fas fa-comment fa-flip-horizontal"></i>
-								</button>
-							</span> 
-							<span class="likecnt">좋아요 ${likeButton}개</span>
-						</div>
-
-						<div class="textbox">
-							<form class="textform" method="post" action="#">
-								<i class="far fa-keyboard"></i>
-								<textarea placeholder="댓글 달기..." class="tx"
-									style="height: 22px !important;"></textarea>
-								<button type="submit" value="게시">게시</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 고양이 포토3번-->
-			<div class="pr_enter_photo enter_photo003">
-
-				<img src="./images/photo_cat003.jpg" alt="cat003 Image">
-				<div class="pr_enph enph003">
-
-					<div class="pr_en1-1 enph003-01">
-						<button type="button" value="window_close" class="closeBt" onclick="clearInput()">
-							<i class="fas fa-times"></i>
-						</button>
-						<i class="fas fa-crown"></i><span>LeeSSu</span>
-					</div>
-					<div class="pr_en1-2 enph003-02">
-						<ul class="pr_en1-ul1 enph003_ul01">
-							<div class="pr_en1-com1 enph003_com01">글쓴이 내용1</div>
-							<ul class="pr_en1-ul2 enph003_ul02">
-								<div class="pr_en1-com2 enph003_com2">답글 1</div>
-							</ul>
-							<ul class="pr_en1-ul2 enph003_ul02">
-								<div class="pr_en1-com2 enph003_com2">답글 2</div>
-							</ul>
-						</ul>
-
-						<div class="pr_eniconbox enph003_iconbox">
-							<span class="iconbox">
-								<button type="button" name="likeButton">
-									<i class="fas fa-heart fa-heart003"></i>
-								</button>
-							</span> 
-							<span class="iconbox"> 
-								<button type="button" name="comment-button" onclick="focusEvent()">
-									<i class="fas fa-comment fa-flip-horizontal"></i>
-								</button>
-							</span> 
-							<span class="likecnt">좋아요 ${likeButton}개</span>
-						</div>
-
-						<div class="textbox">
-							<form class="textform" method="post" action="#">
-								<i class="far fa-keyboard"></i>
-								<textarea placeholder="댓글 달기..." class="tx"
-									style="height: 22px !important;"></textarea>
-								<button type="submit" value="게시">게시</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 고양이 포토4번-->
-			<div class="pr_enter_photo enter_photo004">
-
-				<img src="./images/photo_cat004.jpg" alt="cat004 Image">
-				<div class="pr_enph enph004">
-
-					<div class="pr_en1-1 enph004-01">
-						<button type="button" value="window_close" class="closeBt" onclick="clearInput()">
-							<i class="fas fa-times"></i>
-						</button>
-						<i class="fas fa-crown"></i><span>Cellas</span>
-					</div>
-					<div class="pr_en1-2 enph004-02">
-						<ul class="pr_en1-ul1 enph004_ul01">
-							<div class="pr_en1-com1 enph004_com01">글쓴이 내용1</div>
-							<ul class="pr_en1-ul2 enph004_ul02">
-								<div class="pr_en1-com2 enph004_com2">답글 1</div>
-							</ul>
-							<ul class="pr_en1-ul2 enph004_ul02">
-								<div class="pr_en1-com2 enph004_com2">답글 2</div>
-							</ul>
-						</ul>
-
-						<div class="pr_eniconbox enph004_iconbox">
-							<span class="iconbox">
-								<button type="button" name="likeButton">
-									<i class="fas fa-heart fa-heart004"></i>
-								</button>
-							</span> 
-							<span class="iconbox"> 
-								<button type="button" name="comment-button" onclick="focusEvent()">
-									<i class="fas fa-comment fa-flip-horizontal"></i>
-								</button>
-							</span> 
-							<span class="likecnt">좋아요 ${likeButton}개</span>
-						</div>
-
-						<div class="textbox">
-							<form class="textform" method="post" action="#">
-								<i class="far fa-keyboard"></i>
-								<textarea placeholder="댓글 달기..." class="tx"
-									style="height: 22px !important;"></textarea>
-								<button type="submit" value="게시">게시</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 고양이 포토5번-->
-			<div class="pr_enter_photo enter_photo005">
-
-				<img src="./images/photo_cat005.png" alt="cat005 Image">
-				<div class="pr_enph enph005">
-
-					<div class="pr_en1-1 enph005-01">
-						<button type="button" value="window_close" class="closeBt" onclick="clearInput()">
-							<i class="fas fa-times"></i>
-						</button>
-						<i class="fas fa-crown"></i><span>Steeve</span>
-					</div>
-					<div class="pr_en1-2 enph005-02">
-						<ul class="pr_en1-ul1 enph005_ul01">
-							<div class="pr_en1-com1 enph005_com01">글쓴이 내용1</div>
-							<ul class="pr_en1-ul2 enph005_ul02">
-								<div class="pr_en1-com2 enph005_com2">답글 1</div>
-							</ul>
-							<ul class="pr_en1-ul2 enph005_ul02">
-								<div class="pr_en1-com2 enph005_com2">답글 2</div>
-							</ul>
-						</ul>
-
-						<div class="pr_eniconbox enph005_iconbox">
-							<span class="iconbox">
-								<button type="button" name="likeButton">
-									<i class="fas fa-heart fa-heart005"></i>
-								</button>
-							</span> 
-							<span class="iconbox">
-								<button type="button" name="comment-button" onclick="focusEvent()">
-									<i class="fas fa-comment fa-flip-horizontal"></i>
-								</button>
-							</span> 
-							<span class="likecnt">좋아요 ${likeButton}개</span>
-						</div>
-
-						<div class="textbox">
-							<form class="textform" method="post" action="#">
-								<i class="far fa-keyboard"></i>
-								<textarea placeholder="댓글 달기..." class="tx"
-									style="height: 22px !important;"></textarea>
-								<button type="submit" value="게시">게시</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 고양이 포토6번-->
-			<div class="pr_enter_photo enter_photo006">
-
-				<img src="./images/photo_cat006.png" alt="cat006 Image">
-				<div class="pr_enph enph006">
-
-					<div class="pr_en1-1 enph006-01">
-						<button type="button" value="window_close" class="closeBt" onclick="clearInput()">
-							<i class="fas fa-times"></i>
-						</button>
-						<i class="fas fa-crown"></i><span>Akaps</span>
-					</div>
-					<div class="pr_en1-2 enph006-02">
-						<ul class="pr_en1-ul1 enph006_ul01">
-							<div class="pr_en1-com1 enph006_com01">글쓴이 내용1</div>
-							<ul class="pr_en1-ul2 enph006_ul02">
-								<div class="pr_en1-com2 enph006_com2">답글 1</div>
-							</ul>
-							<ul class="pr_en1-ul2 enph006_ul02">
-								<div class="pr_en1-com2 enph006_com2">답글 2</div>
-							</ul>
-						</ul>
-
-						<div class="pr_eniconbox enph006_iconbox">
-							<span class="iconbox">
-								<button type="button" name="likeButton">
-									<i class="fas fa-heart fa-heart006"></i>
-								</button>
-							</span> 
-							<span class="iconbox"> 
-								<button type="button" name="comment-button" onclick="focusEvent()">
-									<i class="fas fa-comment fa-flip-horizontal"></i>
-								</button>
-							</span> 
-							<span class="likecnt">좋아요 ${likeButton}개</span>
-						</div>
-
-						<div class="textbox">
-							<form class="textform" method="post" action="#">
-								<i class="far fa-keyboard"></i>
-								<textarea placeholder="댓글 달기..." class="tx"
-									style="height: 22px !important;"></textarea>
-								<button type="submit" value="게시">게시</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 고양이 포토7번-->
-			<div class="pr_enter_photo enter_photo007">
-
-				<img src="./images/photo_cat007.jpg" alt="cat007 Image">
-				<div class="pr_enph enph007">
-
-					<div class="pr_en1-1 enph007-01">
-						<button type="button" value="window_close" class="closeBt" onclick="clearInput()">
-							<i class="fas fa-times"></i>
-						</button>
-						<i class="fas fa-crown"></i><span>Vela</span>
-					</div>
-					<div class="pr_en1-2 enph007-02">
-						<ul class="pr_en1-ul1 enph007_ul01">
-							<div class="pr_en1-com1 enph007_com01">글쓴이 내용1</div>
-							<ul class="pr_en1-ul2 enph007_ul02">
-								<div class="pr_en1-com2 enph007_com2">답글 1</div>
-							</ul>
-							<ul class="pr_en1-ul2 enph007_ul02">
-								<div class="pr_en1-com2 enph007_com2">답글 2</div>
-							</ul>
-						</ul>
-
-						<div class="pr_eniconbox enph007_iconbox">
-							<span class="iconbox">
-								<button type="button" name="likeButton">
-									<i class="fas fa-heart fa-heart007"></i>
-								</button>
-							</span> 
-							<span class="iconbox"> 
-								<button type="button" name="comment-button" onclick="focusEvent()">
-									<i class="fas fa-comment fa-flip-horizontal"></i>
-								</button>
-							</span> 
-							<span class="likecnt">좋아요 ${likeButton}개</span>
-						</div>
-
-						<div class="textbox">
-							<form class="textform" method="post" action="#">
-								<i class="far fa-keyboard"></i>
-								<textarea placeholder="댓글 달기..." class="tx"
-									style="height: 22px !important;"></textarea>
-								<button type="submit" value="게시">게시</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 고양이 포토8번-->
-			<div class="pr_enter_photo enter_photo008">
-
-				<img src="./images/photo_cat008.jpg" alt="cat008 Image">
-				<div class="pr_enph enph008">
-
-					<div class="pr_en1-1 enph008-01">
-						<button type="button" value="window_close" class="closeBt" onclick="clearInput()">
-							<i class="fas fa-times"></i>
-						</button>
-						<i class="fas fa-crown"></i><span>Aroma</span>
-					</div>
-					<div class="pr_en1-2 enph008-02">
-						<ul class="pr_en1-ul1 enph008_ul01">
-							<div class="pr_en1-com1 enph008_com01">글쓴이 내용1</div>
-							<ul class="pr_en1-ul2 enph008_ul02">
-								<div class="pr_en1-com2 enph008_com2">답글 1</div>
-							</ul>
-							<ul class="pr_en1-ul2 enph008_ul02">
-								<div class="pr_en1-com2 enph008_com2">답글 2</div>
-							</ul>
-						</ul>
-
-						<div class="pr_eniconbox enph008_iconbox">
-							<span class="iconbox">
-								<button type="button" name="likeButton">
-									<i class="fas fa-heart fa-heart008"></i>
-								</button>
-							</span> 
-							<span class="iconbox"> 
-								<button type="button" name="comment-button" onclick="focusEvent()">
-									<i class="fas fa-comment fa-flip-horizontal"></i>
-								</button>
-							</span>
-							 <span class="likecnt">좋아요 ${likeButton}개</span>
-						</div>
-
-						<div class="textbox">
-							<form class="textform" method="post" action="#">
-								<i class="far fa-keyboard"></i>
-								<textarea placeholder="댓글 달기..." class="tx"
-									style="height: 22px !important;"></textarea>
-								<button type="submit" value="게시">게시</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 고양이 포토9번-->
-			<div class="pr_enter_photo enter_photo009">
-
-				<img src="./images/photo_cat009.png" alt="cat009 Image">
-				<div class="pr_enph enph009">
-
-					<div class="pr_en1-1 enph009-01">
-						<button type="button" value="window_close" class="closeBt" onclick="clearInput()">
-							<i class="fas fa-times"></i>
-						</button>
-						<i class="fas fa-crown"></i><span>Aroma</span>
-					</div>
-					<div class="pr_en1-2 enph009-02">
-						<ul class="pr_en1-ul1 enph009_ul01">
-							<div class="pr_en1-com1 enph009_com01">글쓴이 내용1</div>
-							<ul class="pr_en1-ul2 enph009_ul02">
-								<div class="pr_en1-com2 enph009_com2">답글 1</div>
-							</ul>
-							<ul class="pr_en1-ul2 enph009_ul02">
-								<div class="pr_en1-com2 enph009_com2">답글 2</div>
-							</ul>
-						</ul>
-
-						<div class="pr_eniconbox enph009_iconbox">
-							<span class="iconbox">
-								<button type="button" name="likeButton">
-									<i class="fas fa-heart fa-heart009"></i>
-								</button>
-							</span> 
-							<span class="iconbox"> 
-								<button type="button" name="comment-button" onclick="focusEvent()">
-									<i class="fas fa-comment fa-flip-horizontal"></i>
-								</button> 
-							</span>
-							 <span class="likecnt">좋아요 ${likeButton}개</span>
-						</div>
-
-						<div class="textbox">
-							<form class="textform" method="post" action="#">
-								<i class="far fa-keyboard"></i>
-								<textarea placeholder="댓글 달기..." class="tx"
-									style="height: 22px !important;"></textarea>
-								<button type="submit" value="게시">게시</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-
-
-			<!-- 친구들 포토1번 -->
-			<div class="pr_enter_photo enter_photo0001">
-
-				<img src="./images/photo_friend0001.jpg" alt="friends0001 Image">
-				<div class="pr_enph enph0001">
-
-					<div class="pr_en1-1 enph0001-01">
-						<button type="button" value="window_close" class="closeBt" onclick="clearInput()">
-							<i class="fas fa-times"></i>
-						</button>
-						<i class="fas fa-crown"></i><span>Aroma</span>
-					</div>
-					<div class="pr_en1-2 enph0001-02">
-						<ul class="pr_en1-ul1 enph0001_ul01">
-							<div class="pr_en1-com1 enph0001_com01">글쓴이 내용1</div>
-							<ul class="pr_en1-ul2 enph0001_ul02">
-								<div class="pr_en1-com2 enph0001_com2">답글 1</div>
-							</ul>
-							<ul class="pr_en1-ul2 enph0001_ul02">
-								<div class="pr_en1-com2 enph0001_com2">답글 2</div>
-							</ul>
-						</ul>
-
-						<div class="pr_eniconbox enph0001_iconbox">
-							<span class="iconbox">
-								<button type="button" name="likeButton">
-									<i class="fas fa-heart fa-heart0001"></i>
-								</button>
-							</span> 
-							<span class="iconbox"> 
-								<button type="button" name="comment-button" onclick="focusEvent()">
-									<i class="fas fa-comment fa-flip-horizontal"></i>
-								</button>
-							</span> 
-							<span class="likecnt">좋아요 ${likeButton}개</span>
-						</div>
-
-						<div class="textbox">
-							<form class="textform" method="post" action="#">
-								<i class="far fa-keyboard"></i>
-								<textarea placeholder="댓글 달기..." class="tx"
-									style="height: 22px !important;"></textarea>
-								<button type="submit" value="게시">게시</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 친구들 포토2번 -->
-			<div class="pr_enter_photo enter_photo0002">
-
-				<img src="./images/photo_friend0002.jpg" alt="friends0002 Image">
-				<div class="pr_enph enph0002">
-
-					<div class="pr_en1-1 enph0002-01">
-						<button type="button" value="window_close" class="closeBt" onclick="clearInput()">
-							<i class="fas fa-times"></i>
-						</button>
-						<i class="fas fa-crown"></i><span>Im._.Rabbit</span>
-					</div>
-					<div class="pr_en1-2 enph0002-02">
-						<ul class="pr_en1-ul1 enph0002_ul01">
-							<div class="pr_en1-com1 enph0002_com01">글쓴이 내용1</div>
-							<ul class="pr_en1-ul2 enph0002_ul02">
-								<div class="pr_en1-com2 enph0002_com2">답글 1</div>
-							</ul>
-							<ul class="pr_en1-ul2 enph0002_ul02">
-								<div class="pr_en1-com2 enph0002_com2">답글 2</div>
-							</ul>
-						</ul>
-
-						<div class="pr_eniconbox enph0002_iconbox">
-							<span class="iconbox">
-								<button type="button" name="likeButton">
-									<i class="fas fa-heart fa-heart0002"></i>
-								</button>
-							</span> 
-							<span class="iconbox"> 
-								<button type="button" name="comment-button" onclick="focusEvent()">
-									<i class="fas fa-comment fa-flip-horizontal"></i>
-								</button>
-							</span> 
-							<span class="likecnt">좋아요 ${likeButton}개</span>
-						</div>
-
-						<div class="textbox">
-							<form class="textform" method="post" action="#">
-								<i class="far fa-keyboard"></i>
-								<textarea placeholder="댓글 달기..." class="tx"
-									style="height: 22px !important;"></textarea>
-								<button type="submit" value="게시">게시</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 친구들 포토3번 -->
-			<div class="pr_enter_photo enter_photo0003">
-
-				<img src="./images/photo_friend0003.jpg" alt="friends0003 Image">
-				<div class="pr_enph enph0003">
-
-					<div class="pr_en1-1 enph0003-01">
-						<button type="button" value="window_close" class="closeBt" onclick="clearInput()">
-							<i class="fas fa-times"></i>
-						</button>
-						<i class="fas fa-crown"></i><span>Aroma</span>
-					</div>
-					<div class="pr_en1-2 enph0003-02">
-						<ul class="pr_en1-ul1 enph0003_ul01">
-							<div class="pr_en1-com1 enph0003_com01">글쓴이 내용1</div>
-							<ul class="pr_en1-ul2 enph0003_ul02">
-								<div class="pr_en1-com2 enph0003_com2">답글 1</div>
-							</ul>
-							<ul class="pr_en1-ul2 enph0003_ul02">
-								<div class="pr_en1-com2 enph0003_com2">답글 2</div>
-							</ul>
-						</ul>
-
-						<div class="pr_eniconbox enph0003_iconbox">
-							<span class="iconbox">
-								<button type="button" name="likeButton">
-									<i class="fas fa-heart fa-heart0003"></i>
-								</button>
-							</span> 
-							<span class="iconbox">
-								<button type="button" name="comment-button" onclick="focusEvent()">
-									<i class="fas fa-comment fa-flip-horizontal"></i>
-								</button>
-							</span> 
-							<span class="likecnt">좋아요 ${likeButton}개</span>
-						</div>
-
-						<div class="textbox">
-							<form class="textform" method="post" action="#">
-								<i class="far fa-keyboard"></i>
-								<textarea placeholder="댓글 달기..." class="tx"
-									style="height: 22px !important;"></textarea>
-								<button type="submit" value="게시">게시</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 친구들 포토4번 -->
-			<div class="pr_enter_photo enter_photo0004">
-
-				<img src="./images/photo_friend0004.jpg" alt="friends0004 Image">
-				<div class="pr_enph enph0004">
-
-					<div class="pr_en1-1 enph0004-01">
-						<button type="button" value="window_close" class="closeBt" onclick="clearInput()">
-							<i class="fas fa-times"></i>
-						</button>
-						<i class="fas fa-crown"></i><span>Aroma</span>
-					</div>
-					<div class="pr_en1-2 enph0004-02">
-						<ul class="pr_en1-ul1 enph0004_ul01">
-							<div class="pr_en1-com1 enph0004_com01">글쓴이 내용1</div>
-							<ul class="pr_en1-ul2 enph0004_ul02">
-								<div class="pr_en1-com2 enph0004_com2">답글 1</div>
-							</ul>
-							<ul class="pr_en1-ul2 enph0004_ul02">
-								<div class="pr_en1-com2 enph0004_com2">답글 2</div>
-							</ul>
-						</ul>
-
-						<div class="pr_eniconbox enph0004_iconbox">
-							<span class="iconbox">
-								<button type="button" name="likeButton">
-									<i class="fas fa-heart fa-heart0004"></i>
-								</button>
-							</span> 
-							<span class="iconbox"> 
-								<button type="button" name="comment-button" onclick="focusEvent()">
-									<i class="fas fa-comment fa-flip-horizontal"></i>
-								</button>
-							</span> 
-							<span class="likecnt">좋아요 ${likeButton}개</span>
-						</div>
-
-						<div class="textbox">
-							<form class="textform" method="post" action="#">
-								<i class="far fa-keyboard"></i>
-								<textarea placeholder="댓글 달기..." class="tx"
-									style="height: 22px !important;"></textarea>
-								<button type="submit" value="게시">게시</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 친구들 포토5번 -->
-			<div class="pr_enter_photo enter_photo0005">
-
-				<img src="./images/photo_friend0005.jpg" alt="friends0005 Image">
-				<div class="pr_enph enph0005">
-
-					<div class="pr_en1-1 enph0005-01">
-						<button type="button" value="window_close" class="closeBt" onclick="clearInput()">
-							<i class="fas fa-times"></i>
-						</button>
-						<i class="fas fa-crown"></i><span>Aroma</span>
-					</div>
-					<div class="pr_en1-2 enph0005-02">
-						<ul class="pr_en1-ul1 enph0005_ul01">
-							<div class="pr_en1-com1 enph0005_com01">글쓴이 내용1</div>
-							<ul class="pr_en1-ul2 enph0005_ul02">
-								<div class="pr_en1-com2 enph0005_com2">답글 1</div>
-							</ul>
-							<ul class="pr_en1-ul2 enph0005_ul02">
-								<div class="pr_en1-com2 enph0005_com2">답글 2</div>
-							</ul>
-						</ul>
-
-						<div class="pr_eniconbox enph0005_iconbox">
-							<span class="iconbox">
-								<button type="button" name="likeButton">
-									<i class="fas fa-heart fa-heart0005"></i>
-								</button>
-							</span> 
-							<span class="iconbox"> 
-								<button type="button" name="comment-button" onclick="focusEvent()">
-									<i class="fas fa-comment fa-flip-horizontal"></i>
-								</button>
-							</span> 
-							<span class="likecnt">좋아요 ${likeButton}개</span>
-						</div>
-
-						<div class="textbox">
-							<form class="textform" method="post" action="#">
-								<i class="far fa-keyboard"></i>
-								<textarea placeholder="댓글 달기..." class="tx"
-									style="height: 22px !important;"></textarea>
-								<button type="submit" value="게시">게시</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 친구들 포토6번 -->
-			<div class="pr_enter_photo enter_photo0006">
-
-				<img src="./images/photo_friend0006.JPG" alt="friends0006 Image">
-				<div class="pr_enph enph0006">
-
-					<div class="pr_en1-1 enph0006-01">
-						<button type="button" value="window_close" class="closeBt" onclick="clearInput()">
-							<i class="fas fa-times"></i>
-						</button>
-						<i class="fas fa-crown"></i><span>Aroma</span>
-					</div>
-					<div class="pr_en1-2 enph0006-02">
-						<ul class="pr_en1-ul1 enph0006_ul01">
-							<div class="pr_en1-com1 enph0006_com01">글쓴이 내용1</div>
-							<ul class="pr_en1-ul2 enph0006_ul02">
-								<div class="pr_en1-com2 enph0006_com2">답글 1</div>
-							</ul>
-							<ul class="pr_en1-ul2 enph0006_ul02">
-								<div class="pr_en1-com2 enph0006_com2">답글 2</div>
-							</ul>
-						</ul>
-
-						<div class="pr_eniconbox enph0006_iconbox">
-							<span class="iconbox">
-								<button type="button" name="likeButton">
-									<i class="fas fa-heart fa-heart0006"></i>
-								</button>
-							</span> 
-							<span class="iconbox">
-								<button type="button" name="comment-button" onclick="focusEvent()">
-									<i class="fas fa-comment fa-flip-horizontal"></i>
-								</button> </a>
-							</span> 
-							<span class="likecnt">좋아요 ${likeButton}개</span>
-						</div>
-
-						<div class="textbox">
-							<form class="textform" method="post" action="#">
-								<i class="far fa-keyboard"></i>
-								<textarea placeholder="댓글 달기..." class="tx"
-									style="height: 22px !important;"></textarea>
-								<button type="submit" value="게시">게시</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-
+				
+	
 		</div>
 	</div>
 </body>
