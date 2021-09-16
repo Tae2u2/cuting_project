@@ -45,5 +45,17 @@ public class User_InfoDAOImpl implements User_InfoDAO {
 		return this.sqlSession.selectOne("ui_id_check", ui);
 	}
 
+	@Override
+	public String get_id(String email) {
+		// TODO Auto-generated method stub
+		return this.sqlSession.selectOne("ui_getid", email);
+	}
+
+	@Override
+	public String get_email(String email) {
+		// TODO Auto-generated method stub
+		return this.sqlSession.selectOne("ui_getemail",email);
+	}
+
 	
 }

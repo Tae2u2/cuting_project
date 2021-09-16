@@ -1,6 +1,7 @@
 package net.daum.controller;
 
 import java.io.BufferedReader;
+
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,6 +24,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
@@ -42,6 +44,7 @@ import net.daum.service.PayedService;
 import net.daum.service.User_InfoService;
 import net.daum.vo.PayVO;
 import net.daum.vo.PayedVO;
+import net.daum.vo.PaymentVO;
 import net.daum.vo.User_InfoVO;
 
 @Controller
@@ -410,7 +413,10 @@ public class MainController {
 	public Map<String, String> mailSending(String email) throws IOException {
 		Map<String, String> rmap = new HashMap<String, String>();
 		
-
+		  String echeck = this.user_infoService.getEmail(email);
+		  System.out.println(echeck);
+		  if(echeck == null) {
+		
 		  Random r = new Random();
 		  int dice = r.nextInt(4589362) + 49311; //이메일로 받는 인증코드 부분 (난수)
         
@@ -463,6 +469,115 @@ public class MainController {
           rmap.put("result", "이메일이 발송되었습니다. 인증번호를 입력해주세요.");
           rmap.put("dice", String.valueOf(dice));
           return rmap;
+          
+		  }
+		  
+		  else {
+			  rmap.put("result","이미 존재하는 계정의 이메일 입니다.");
+			  return rmap;
+		  }
         
     }
+	
+	@RequestMapping(value="findId")
+	@ResponseBody
+	public Map<String, String> findId(String email) {
+		Map<String, String> rmap = new HashMap<String, String>();
+		System.out.println(email);
+		String id = this.user_infoService.getId(email);
+		System.out.println(id);
+		if(id==null) {
+			System.out.println("아이디가 널이야");
+			rmap.put("result","등록되지 않은 이메일 입니다.");
+			return rmap;
+		}
+		else {
+			  String setfrom = "khb2870@gamil.com";
+	          String tomail = email; // 받는 사람 이메일
+	          System.out.println(email);
+	          String title = "큐팅 아이디 찾기 이메일 입니다."; // 제목
+	          String content =
+	          
+	          System.getProperty("line.separator")+ //한줄씩 줄간격을 두기위해 작성
+	          
+	          System.getProperty("line.separator")+
+	                  
+	          " 등록된 아이디는 " +id+ " 입니다. "
+	          
+	          +System.getProperty("line.separator")+
+	          
+	          System.getProperty("line.separator");
+	          
+	          try {
+	              MimeMessage message = mailSender.createMimeMessage();
+	              MimeMessageHelper messageHelper = new MimeMessageHelper(message,
+	                      true, "UTF-8");
+	  
+	              messageHelper.setFrom(setfrom); // 보내는사람 생략하면 정상작동을 안함
+	              System.out.println("보낸사람: "+setfrom);
+	              messageHelper.setTo(tomail); // 받는사람 이메일
+	              System.out.println("받는사람: "+tomail);
+	              messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
+	              System.out.println("제목: "+title);
+	              messageHelper.setText(content); // 메일 내용
+	              System.out.println(content);
+	              
+	              mailSender.send(message);
+	              System.out.println("메시지: "+message);
+	          } catch (Exception e) {
+	              System.out.println(e);
+	          }
+	          
+			rmap.put("result", "이메일에서 아이디를 확인하세요");
+			return rmap;
+		}
+	}
+	
+	@RequestMapping(value="findpw")
+	public Map<String,String> findPw(){
+		System.out.println("비번찾기");
+		return null;
+		
+	}
+	
+	
+	@RequestMapping(value="payment")
+	public String payment(@RequestParam("id") String id,@RequestParam("filename")String filename,@RequestParam("postnb") String postnb,PaymentVO pm,HttpServletRequest request, RedirectAttributes rttr) {
+		System.out.println(id+"  "+filename+"  "+postnb);
+		id=id.replace('/', ' ').trim();
+		filename=filename.replace('/', ' ').trim();
+		postnb= postnb.replace('/', ' ').trim();
+		System.out.println(postnb);
+		int i;
+		if((String) request.getSession().getAttribute("id")==null) {
+			return "redirect:/login";
+		}
+		else {
+		i = this.payedService.getBalance((String) request.getSession().getAttribute("id"));
+		}
+		System.out.println(i);
+		
+		if(i>=500) {
+			System.out.println("돈있어");
+			pm.setBy_sid(id);
+			pm.setBy_post_nb(Integer.parseInt(postnb));
+			pm.setBy_purchase(500);
+			pm.setBy_filename(filename);
+			pm.setBy_id((String) request.getSession().getAttribute("id"));
+			this.payService.insertPayment(pm);
+			this.payedService.mupdatePayed((String) request.getSession().getAttribute("id"));
+			rttr.addFlashAttribute("result", "구매에 성공했습니다.");
+			return "redirect:enter_nr";
+		}
+		
+		else {
+			System.out.println("돈없어");
+			rttr.addFlashAttribute("result", "잔액이 부족합니다.");
+			return "redirect:enter_nr";
+		}
+	}
+	
+	
+	
+	
 }

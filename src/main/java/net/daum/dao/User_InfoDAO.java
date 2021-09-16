@@ -11,4 +11,6 @@ public interface User_InfoDAO {
 	List<User_InfoVO> getUser_InfoList(User_InfoVO ui);
 	void editUser_info(User_InfoVO ui);
 	int check_id(User_InfoVO ui);
+	String get_id(String email);
+	String get_email(String email);
 }

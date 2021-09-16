@@ -15,4 +15,13 @@
   update payed set payed_total=payed_total+#{payed_purchase},  payed_balance=payed_balance+#{payed_purchase}
   where payed_id=#{payed_id}
   </update>
+  
+  <select id="pd_getBalance" resultType="int">
+  select payed_balance from payed where payed_id=#{id}
+  </select>
+  
+  <update id="pd_mupdate">
+  update payed set payed_balance=payed_balance-500 where payed_id = #{id}
+  </update>
+  
   </mapper>

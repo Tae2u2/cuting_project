@@ -25,4 +25,12 @@
  <select id="ui_id_check" parameterType="ui" resultType="int">
  	select count(*) from user_info where info_id = #{info_id}
  </select>
+ 
+ <select id="ui_getid" resultType="String">
+ 	select info_id from user_info where info_email=#{email}
+ </select>
+ 
+ <select id="ui_getemail" resultType="String">
+ 	select info_email from user_info where info_email=#{email}
+ </select>
  </mapper>

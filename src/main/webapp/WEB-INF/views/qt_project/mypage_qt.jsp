@@ -57,7 +57,8 @@
  		<div class="payment tabShow">
  		<h1 class="aboutH1">결제정보</h1>
  		
- 		<c:set var="purchase" value="${pa.pay_purchase}"/>
+ 		
+ 		
  		<c:if test="${!empty plist}">
  		<c:forEach var="p" items="${plist}">
  		<h2>현재 잔액</h2>
@@ -80,10 +81,13 @@
  		</c:forEach>
  		</c:if>
  		
+<<<<<<< HEAD
+=======
  		<c:if test="${purchase eq null}" >
  		<h2>결제 내역이 없습니다123</h2>
  		</c:if>
  		
+>>>>>>> branch 'master' of https://github.com/Tae2u2/cuting_project.git
  		</c:if>
  		
  		<button class="aboutBtn" id="charge" name="charge">충전하러 가기</button>

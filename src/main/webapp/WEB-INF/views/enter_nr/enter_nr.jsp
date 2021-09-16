@@ -290,4 +290,11 @@
 		</div>
 	</div>
 </body>
+<script>
+var msg='${result}';
+
+if(msg!=''){
+	alert(msg);
+}
+</script>
 <%@ include file="../qt_project/bottom_qt.jsp"%>

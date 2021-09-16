@@ -13,4 +13,9 @@
   select * from pay where pay_id=#{info_id}
   </select>
   
+  <insert id="pm_insert">
+  insert into payment values(#{by_id},#{by_filename},#{by_post_nb},#{by_purchase},#{by_sid},sysdate)
+  </insert>
+  
+  
   </mapper>
