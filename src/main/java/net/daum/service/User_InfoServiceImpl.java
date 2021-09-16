@@ -46,5 +46,17 @@ public class User_InfoServiceImpl implements User_InfoService {
 		return this.user_infoDao.check_id(ui);
 	}
 
+	@Override
+	public String getId(String email) {
+		// TODO Auto-generated method stub
+		return this.user_infoDao.get_id(email);
+	}
+
+	@Override
+	public String getEmail(String email) {
+		// TODO Auto-generated method stub
+		return this.user_infoDao.get_email(email);
+	}
+
 
 }

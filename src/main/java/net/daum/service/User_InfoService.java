@@ -11,5 +11,7 @@ public interface User_InfoService {
 	List<User_InfoVO> getUser_InfoList(User_InfoVO ui);
 	void editUser_Info(User_InfoVO ui);
 	int check_id(User_InfoVO ui);
+	String getId(String email);
+	String getEmail(String email);
 	
 }

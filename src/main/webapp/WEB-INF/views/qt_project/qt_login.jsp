@@ -8,7 +8,9 @@
 <meta charset="UTF-8">
 <title>큐팅: 환영합니다!</title>
 <link rel="stylesheet" type="text/css" href="${path}/resources/css/qt_login_style.css">
+<script src="${path}/resources/js/jquery.js"></script>
 <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+<script type="text/javascript" src="${path}/resources/js/qt_login.js"></script>
 </head>
 <body>
 	<div class="loginContainer">
@@ -37,7 +39,7 @@
 						<input class="inputLog" id="info_pw" name="info_pw" type="password">
 					</div>
 				</div>
-				<a href="#">아이디 찾기</a><a href="#">비밀번호 찾기</a> 
+				<a href="#" onclick="findid()">아이디 찾기</a><a href="#" onclick="findpw()">비밀번호 찾기</a> 
 				<input type="submit" class="loginBtn" value="Login"> 
 			</form>
 		</div>

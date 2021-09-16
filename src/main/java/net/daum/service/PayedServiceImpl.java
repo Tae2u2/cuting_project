@@ -33,4 +33,16 @@ public class PayedServiceImpl implements PayedService {
 		this.payedDao.updatePayed(pd);
 	}
 
+	@Override
+	public int getBalance(String id) {
+		// TODO Auto-generated method stub
+		return this.payedDao.getBalance(id);
+	}
+
+	@Override
+	public void mupdatePayed(String id) {
+		// TODO Auto-generated method stub
+		this.payedDao.mupdatePayed(id);
+	}
+
 }

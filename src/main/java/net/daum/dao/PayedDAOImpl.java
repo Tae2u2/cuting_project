@@ -32,4 +32,16 @@ public class PayedDAOImpl implements PayedDAO {
 		this.sqlSession.update("pd_update", pd);
 	}
 
+	@Override
+	public int getBalance(String id) {
+		// TODO Auto-generated method stub
+		return this.sqlSession.selectOne("pd_getBalance", id);
+	}
+
+	@Override
+	public void mupdatePayed(String id) {
+		// TODO Auto-generated method stub
+		this.sqlSession.update("pd_mupdate",id);
+	}
+
 }

@@ -123,8 +123,7 @@
 	  </div>
 	  
 	  <div class="poster">
-				<ul>
-				
+				<ul>				
 					<c:forEach items="${gblist}" var="gb">
 					<c:if test="${en.gb_id == 'gb.gb_id'}">
 					<li>
@@ -135,10 +134,7 @@
 						</div>
 					</li>
 					</c:if>
-					</c:forEach>
-									
-					
-					
+					</c:forEach>								
 				</ul>
 				
 			</div>

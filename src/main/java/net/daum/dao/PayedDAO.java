@@ -11,5 +11,9 @@ public interface PayedDAO {
 
 	void insertPayed(String id);
 
-	void updatePayed(PayedVO pd); 
+	void updatePayed(PayedVO pd);
+
+	int getBalance(String id);
+
+	void mupdatePayed(String id); 
 }

@@ -16,7 +16,7 @@ var getEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z]
 	}
 	
 	else{
-	alert("이메일이 전송되었습니다");
+	
 	var email=$('#info_email').val();
 		console.log(email);
 	

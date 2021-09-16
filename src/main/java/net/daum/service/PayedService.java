@@ -10,4 +10,6 @@ public interface PayedService {
 	List<PayedVO> getPayed(PayedVO pd);
 	void insertPayed(String ui);
 	void updatePayed(PayedVO pd);
+	int getBalance(String id);
+	void mupdatePayed(String id);
 }
