@@ -19,32 +19,11 @@ public class ComunityServiceImpl implements ComunityService {
 	private ComunityDAO comunityDao;
 
 	@Override
-	public ComunityVO getBoardCont(int cm_postnb) {
-		return this.comunityDao.getBoardCont(cm_postnb);
-	}
-	
-	@Transactional
-	@Override
-	public void addComunity(ComunityVO pt) {
-		this.comunityDao.addComunity(pt);
+	public List<ComunityVO> getComunityList(ComunityVO pt) {
+		// TODO Auto-generated method stub
+		return this.comunityDao.getComunityList(pt);
 	}
 
-	@Override
-	public List<ComunityVO> listComunity(int cm_postnb) {
-		return this.comunityDao.listComunity(cm_postnb);
-	}
-
-	@Transactional
-	@Override
-	public void remove(int pt_postnb) {
-		this.comunityDao.delComunity(pt_postnb);
-	}
-
-	
-	@Override
-	public void updateComunity(ComunityVO pt) {
-		this.comunityDao.updateComunity(pt);
-	}
 
 
 
