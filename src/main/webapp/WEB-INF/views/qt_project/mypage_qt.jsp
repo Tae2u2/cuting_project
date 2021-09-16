@@ -57,7 +57,8 @@
  		<div class="payment tabShow">
  		<h1 class="aboutH1">결제정보</h1>
  		
- 		<c:set var="purchase" value="${pa.pay_purchase}"/>
+ 		
+ 		
  		<c:if test="${!empty plist}">
  		<c:forEach var="p" items="${plist}">
  		<h2>현재 잔액</h2>
@@ -77,11 +78,6 @@
  		</tr>
  		</table>
  		</c:forEach>
- 		</c:if>
- 		
- 		<c:if test="${purchase eq null}" >
- 		<h2>결제 내역이 없습니다123</h2>
-
  		</c:if>
  		
  		</c:if>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,9 +10,25 @@
 <%@ include file="../qt_project/header.jsp"%>
 <link rel="stylesheet" href="${path}/resources/css/nr_cont_style.css">
 <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<script type="text/javascript" src="${path}/resources/js/buy_qt.js"></script>
 </head>
-<body>
+<script>
+var msg='${result}';
 
+if(msg.contains("잔액")){
+	  alert('잔액이 부족합니다!');
+}
+</script>
+<body>
+	<c:set var="id" value='${en.gb_id}'/>
+	<c:set var="filename" value='${en.gb_filename}'/>
+	<c:set var="postnb" value='${en.gb_postnb}'/>
+	<%
+		String id = (String)pageContext.getAttribute("id");
+		String filename = (String)pageContext.getAttribute("filename");
+		String postnb = pageContext.getAttribute("postnb").toString();
+	%>
+	
 	<div class="container">
 		<div class="sec1">
 			<img src="./resources/upload${en.gb_filename}" alt="cont_image">
@@ -32,8 +49,12 @@
 			<div class="likecnt">좋아요 ${en.gb_viewcnt}개</div>
 			<div class="price">상품 가격 : 50 마일리지</div>
 			<div class="buttonarea">
-				<a href="#"><button type="button" class="ggim">장바구니</button></a> <a
-					href="#"><button type="button" class="buy">구매하기</button></a>
+				<a href="#"><button type="button" class="ggim">장바구니</button></a>
+				<form method="post" action="payment"><button type="submit" class="buy">구매하기</button>
+				<input type='hidden' name="id" value=<%=id %>/>
+				<input type='hidden' name="filename" value=<%=filename %>/>
+				<input type='hidden' name="postnb" value=<%=postnb %>/>
+				</form>
 			</div>
 		</div>
 	</div>

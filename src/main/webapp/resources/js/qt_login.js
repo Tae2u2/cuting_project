@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 
 const inputs = document.querySelectorAll('.inputLog');
 
@@ -23,3 +21,37 @@ inputs.forEach(inputLog => {
 	inputLog.addEventListener('focus', focusFunc);
 	inputLog.addEventListener('blur', blurFunc);
 });
+
+function findid(){
+	var email = prompt("아이디를 입력하세요");
+	
+	if(email==null || email==''){
+		alert("입력취소");
+	}else{
+		if(email.indexOf("@") == -1 || email.indexOf(".") == -1){
+			alert("올바른 형식으로 입력해주세요");
+		}
+		else{
+			alert("아작스 왜안됨?");
+			$.ajax({
+				type:'POST',
+				url:'findId',
+				data:{"email":email},
+				dataType:'json',
+				success:function(data){
+					alert(data.result);
+				},
+				error:function(e){
+					alert(e);
+				}
+				});
+		}
+	}
+}
+
+
+function findpw(){
+
+}
+
+

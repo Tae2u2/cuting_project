@@ -18,14 +18,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.oreilly.servlet.MultipartRequest;
 
 import net.daum.service.Enter_nrService;
 import net.daum.service.HeartService;
+import net.daum.service.PayService;
 import net.daum.vo.Enter_nrVO;
-import net.daum.vo.HeartVO;
+import net.daum.vo.PaymentVO;
 
 @Controller
 public class Enter_nrController {
@@ -35,6 +37,9 @@ public class Enter_nrController {
 	
 	@Autowired
 	private HeartService heartService;
+	
+	@Autowired
+	private PayService payService;
 	
 	
 	//자료실 글쓰기 폼
@@ -315,4 +320,18 @@ public class Enter_nrController {
 		return null;
 	}//modify_ok  게시글 변경
 	
+	/*	@RequestMapping(value="payment")
+		@ResponseBody
+		public String payment(String id,String filename, String postnb,PaymentVO pm,HttpServletRequest request) {
+			System.out.println(id+filename+postnb);
+			pm.setBy_sid(id);
+			pm.setBy_post_nb(Integer.parseInt(postnb));
+			pm.setBy_purchase(500);
+			pm.setBy_filename(filename);
+			pm.setBy_id((String) request.getSession().getAttribute("id"));
+			this.payService.insertPayment(pm);
+			
+			return "redirect:/enter_nr";
+		}	
+	*/
 }
