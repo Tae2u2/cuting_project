@@ -9,5 +9,7 @@ public interface ComunityDAO {
 
 	List<ComunityVO> getComunityList(ComunityVO pt);
 
+	void insertPt(ComunityVO pt);
+
 
 }

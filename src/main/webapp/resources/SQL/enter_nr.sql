@@ -19,39 +19,3 @@ create sequence gb_postnb_seq
 start with 1 -- 1부터 시작
 increment by 1 -- 1씩 증가
 nocache; --임시 메모리를 사용안함.
-
-select * from gamble order by gb_postnb desc;
-
-update gamble set gb_likecnt=0 where gb_postnb = 21 or gb_postnb = 20 or gb_postnb = 19;
-update gamble set gb_likecnt=1 where gb_postnb = 21;
-
-
-
---생성된 시퀀스로 부터 다음번호 값 확인
-select gb_postnb_seq.nextval from dual;
-
-select constraint_name, constraint_type, table_name from user_constraints where table_name='gameble';
-
-select * from gamble where gb_postnb= '1';
- 
-delete from gamble;
-
-drop table gamble;
-drop sequence gb_postnb_seq;
-drop table user_info;
-select *from GAMBLE;
-select * from USER_INFO;
-select * from gamble where gb_category='1';
-select * from gamble where gb_category='2';
-select * from gamble where gb_category='3';
-
-select * from gamble where gb_delflag='1';
-
-
-
-select * from gamble where gb_id='qwer';
-select * from gamble where gb_id='aaa';
-
-
-select table_name,constraint_name,constraint_type,r_constraint_name 
-from user_constraints where table_name='QNA';

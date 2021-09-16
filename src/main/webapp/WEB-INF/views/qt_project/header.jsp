@@ -32,7 +32,7 @@
 						<li><a href='enter_nr'>노름판입장</a></li>
 					</ul>
 				</div></li>
-			<li><a href="/controller/comunity?cm_postnb=1">COMUNITY</a></li>
+			<li><a href="comunity">COMUNITY</a></li>
 			<li><a href="board_qt">공지사항</a>
 				<div class="sub-menu-1">
 					<ul>
@@ -59,7 +59,7 @@
 			</div>
 			<ul class="memberNavi">
 				<li><a href='myinfo'><i class="fas fa-user"></i>회원정보</a></li>
-				<li><a href="checklist"><i class="fas fa-heart"></i>찜목록</a></li>
+				<li><a href="${path}/list.do"><i class="fas fa-heart"></i>찜목록</a></li>
 				<li><a href="#"><i class="far fa-credit-card"></i>결제페이지</a></li>
 				<li><a href="#"><i class="far fa-list-alt"></i>나의노름관리</a></li>
 				<li><a href='logout'><i class="fas fa-sign-out-alt"></i>로그아웃</a></li>

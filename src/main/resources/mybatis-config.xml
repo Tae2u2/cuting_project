@@ -5,21 +5,20 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 
 <configuration>
-   <typeAliases>
-     
-     <typeAlias type="net.daum.vo.Enter_nrVO" alias="nr" /><!-- Enter_nrVO 빈클래스 객체 별칭명 nr설정 -->
+	<typeAliases>
 
-     <typeAlias type="net.daum.vo.EventVO" alias="e" />     
+		<typeAlias type="net.daum.vo.Enter_nrVO" alias="nr" /><!-- Enter_nrVO 
+			빈클래스 객체 별칭명 nr설정 -->
 
-     <typeAlias type="net.daum.vo.User_InfoVO" alias="ui"/>
+		<typeAlias type="net.daum.vo.EventVO" alias="e" />
 
-     <typeAlias type="net.daum.vo.NoticeVO" alias="n" />
+		<typeAlias type="net.daum.vo.User_InfoVO" alias="ui" />
 
-      <typeAlias type="net.daum.vo.QnAVO" alias="qna" />
-      
+		<typeAlias type="net.daum.vo.NoticeVO" alias="n" />
 
-      <typeAlias type="net.daum.vo.ComunityVO" alias="cp" />
+		<typeAlias type="net.daum.vo.QnAVO" alias="qna" />
 
+<<<<<<< HEAD
       <typeAlias type="net.daum.vo.PayedVO" alias="pd"/>
       
       <typeAlias type="net.daum.vo.PayVO" alias="pa"/>
@@ -33,6 +32,21 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
      <typeAlias type="net.daum.vo.ChecklistVO" alias="cl"/>
      
      <typeAlias type="net.daum.vo.BuyedVO" alias="by"/>
+=======
+		<typeAlias type="net.daum.vo.ComunityVO" alias="pt" />
+>>>>>>> branch 'master' of https://github.com/Tae2u2/cuting_project.git
 
-   </typeAliases>
+		<typeAlias type="net.daum.vo.PayedVO" alias="pd" />
+
+		<typeAlias type="net.daum.vo.PayVO" alias="pa" />
+		
+		<typeAlias type="net.daum.vo.ReplyVO" alias="rp" />
+
+		<typeAlias type="net.daum.vo.Nr_ReplyVO" alias="n_rp" />
+
+		<typeAlias type="net.daum.vo.HeartVO" alias="h" />
+
+		<typeAlias type="net.daum.vo.ChecklistVO" alias="cl" />
+
+	</typeAliases>
 </configuration>

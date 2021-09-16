@@ -17,6 +17,10 @@ public class HeaderController {
 		return "qt_project/FAQ_qt";
 	}
 	
-
+	@GetMapping("checklist")
+	public String checklist(){
+		return "qt_project/checklist";
+	}
+	
 
 }

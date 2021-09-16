@@ -14,9 +14,3 @@ nocache;
 alter table checklist add constraint FK_checklist_cl_id foreign key (cl_id) references user_info(info_id) on delete cascade;
 alter table checklist add constraint FK_checklist_gb_postnb foreign key (gb_postnb) references gamble(gb_postnb) on delete cascade;
 
-
-drop table checklist;
-drop sequence clno_seq;
-select * from checklist order by clno;
-
-delete from CHECKLIST;
