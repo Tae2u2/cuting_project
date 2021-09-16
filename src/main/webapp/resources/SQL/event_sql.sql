@@ -8,7 +8,7 @@ create table EVENT(
 	
 	,ev_title	varchar2(1000)	
 	,ev_content	varchar2(2000)
-);
+); 
 
 COMMENT ON COLUMN EVENT.ev_postnb IS '�씪�젴 踰덊샇';
 
