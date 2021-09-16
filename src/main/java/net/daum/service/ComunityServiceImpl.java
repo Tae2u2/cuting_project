@@ -1,10 +1,13 @@
 package net.daum.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
 import net.daum.dao.ComunityDAO;
+import net.daum.vo.ComunityVO;
 
 @Service
 public class ComunityServiceImpl implements ComunityService {
@@ -13,9 +16,10 @@ public class ComunityServiceImpl implements ComunityService {
 
 	@Override
 	public List<ComunityVO> getComunityList(ComunityVO pt) {
-		// TODO Auto-generated method stub
+
 		return this.comunityDao.getComunityList(pt);
 	}
+
 
 
 }

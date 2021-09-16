@@ -56,18 +56,6 @@ public class ComunityController {
 	}//리스트() end
 
 
-	@RequestMapping(value="/comunity/comunity",method = RequestMethod.GET)
-	public String comunity(Model m) {
-		return "comunity/comunity";
-	}
-	
-	@GetMapping("comunity")
-	public String comunityPosting(HttpServletRequest request, Model model , HttpSession session, @ModelAttribute ComunityVO cp) {
-		cp.setPt_id((String) request.getSession().getAttribute("id"));
-		model.addAttribute("pt_id",cp.getPt_id());
-		System.out.println(cp.getPt_id());
-		return "comunity/comunity";
-	}
 	
 	
 

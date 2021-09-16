@@ -1,8 +1,12 @@
 package net.daum.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import net.daum.vo.ComunityVO;
 
 @Repository
 public class ComunityDAOImpl implements ComunityDAO {
