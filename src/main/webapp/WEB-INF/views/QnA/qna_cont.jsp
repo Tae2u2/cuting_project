@@ -35,29 +35,33 @@
 </c:if>
   	
  
- 	 <table class="qt-table2" border="1">
+ 	 <table class="qt-table2" >
 <c:choose>
  <c:when test="${empty rlist}">
  <tr><th colspan="5">댓글이 없습니다.</tr>
  </c:when>
+
  <c:when test="${!empty rlist}">
-  			 <tr>
- 	 		   <td colspan="5">댓글목록</td>
- 	 		 </tr>
+		<div class="rp_list">
+		<span class="rp_write2">댓글 LIST</span> <img src="${path}/resources/images/like.png" width="35" height="35"> 
+		</div>
+  			
  	<c:forEach var="rp" items="${rlist}" > <%--  begin="0" end="8"--%>
  	 		
- 	 		 <tr>
-   				<td colspan="3">id: <%=(String)header %> &nbsp;&nbsp;&nbsp; ${rp.rp_update}</td>
-   			 <td colspan="2">
- 			 	<input type="button" value="수정" class="BtnforCss2" onclick="location='/controller/reply_edit?rp_postnb=${rp.rp_postnb}';" />
- 			 	<input type="button" value="삭제" class="BtnforCss2" onclick="location='/controller/reply_del?rp_postnb=${rp.rp_postnb}';"/>
- 			</td>		
-   			</tr>
-   			<tr>
- 	 			<td colspan="5">${rp.rp_content}</td>
- 			
+ 	 	 <tr>
+   			<th class="reply_250"><span class="reply_left">${rp.rp_update}<br/> id: <%=(String)header %>  </span>
+   			<%-- ${rp.rp_content} --%></th>
+
+ 	 		<td colspan="10" class="rp_content">${rp.rp_content}</td>
+ 	 		
+ 	 		
+ 	 		
+ 			<th class="reply_250">
+ 			 <input type="button" value="수정" class="BtnforCss2" onclick="location='/controller/reply_edit?rp_postnb=${rp.rp_postnb}';" />
+ 			 <input type="button" value="삭제" class="BtnforCss2" onclick="location='/controller/reply_del?rp_postnb=${rp.rp_postnb}';"/>
+ 			</th>	
  							
- 			</tr>
+ 		</tr>
  	</c:forEach>
  </c:when>
 </c:choose>
