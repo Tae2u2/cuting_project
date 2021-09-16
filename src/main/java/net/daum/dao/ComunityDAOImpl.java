@@ -18,6 +18,12 @@ public class ComunityDAOImpl implements ComunityDAO {
 		return this.sqlSession.selectList("pt_list",pt);
 	}
 
+	@Override
+	public void insertPt(ComunityVO pt) {
+		this.sqlSession.insert("pt_in",pt);
+		
+	}
+
 
 
 }

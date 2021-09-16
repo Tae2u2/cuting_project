@@ -12,8 +12,12 @@
     order by pt_postnb desc) where pt_delflag = 0)
     </select>
     
+    <insert id="pt_in"  parameterType="pt">
     
+         insert into POSTING(pt_postnb,pt_category,pt_id,pt_pw,pt_update,pt_title,pt_content,pt_filename)
+      values(pt_postnb_seq.nextval,#{pt_category, jdbcType=VARCHAR},#{pt_id},#{pt_pw},sysdate,#{pt_title},#{pt_content},#{pt_filename})
     
+    </insert>
    </mapper>
 
   

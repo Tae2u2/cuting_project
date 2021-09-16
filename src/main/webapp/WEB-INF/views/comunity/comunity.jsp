@@ -7,89 +7,98 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.css">
 </head>
 <body>
-	<div class="qt_aside">
-	<ul>
-		<li><a href="#">#자유게시판</a></li>
-		<li><a href="#">#자랑자랑</a></li>
-		<li><a href="#">#헬프미아임초보</a></li>
-		<li><a href="#">#댕댕이#산책조아</a></li>
-		<li><a href="#">#집사#캔따개</a></li>
-	</ul>
+        <h1>COMUNITY</h1>
+        <div class="forLine">
+        <div class="postAside">
+            <ul class="hashtagList">
+                <li><a href="#">#자유게시판</a></li>
+                <li><a href="#">#자랑자랑</a></li>
+                <li><a href="#">#헬프미아임초보</a></li>
+                <li><a href="#">#댕댕이#말랑콩떡</a></li>
+                <li><a href="#">#집사#고영희</a></li>
+            </ul>
+        </div> 
+	        <div class="postContainer">
+
+<!--수정모달 -->
+    <div id="editBox" style="display: none;">
+        <div class="editTitle"></div>
+        <div class="editPostBox">
+        <textarea required id="pt_content" name="pt_content" rows="9"></textarea>
+        </div>
+        <div class="forbtnLine">
+        <button type="button" id="ptEditBtn" class="forBtnCss">수정</button>
+        <button type="button" id="ptDelBtn" class="forBtnCss">삭제</button>
+        <button type="button" id="ptCloseBtn" class="forBtnCss" onclick="editBoxClose();">닫기</button>
+        </div>
+    </div>
+ 
+<!--글쓰는 박스-->
+<%if(header!=null){ %>
+<form method="post" action="comunity_write"  enctype="multipart/form-data">
+    <div class="postBox">
+        <div class="postProfile">
+            <input type="hidden" name="pt_id" id="pt_id" value="<%=header%>"/>
+            <input type="hidden" name="pt_pw" id="pt_pw" value="<%=header%>"/>
+            <input type="hidden" name="pt_title" id="pt_title" value="<%=header%>"/>
+            <h4><i class="fas fa-paw"></i><%=header%>님! 큐팅에서 소통하세요!</h4>
+        </div>
+        <div class="postCategoryBox">
+        <select name="pt_category" id="pt_category">
+            <option value="77">자유게시판</option>
+            <option value="66">자랑자랑</option>
+            <option value="55">헬프미아임초보</option>
+            <option value="44">댕댕이</option>
+            <option value="33">고영희</option>
+        </select>
+        </div>
+        <div class="postContentBox">
+        <textarea required name="pt_content" id="pt_content" placeholder="당신의 귀여운 이야기를 나눠주세요!"></textarea>
+        </div>
+        <input type="file" id="pt_filename" name="pt_filename">
+        <input type="submit" value="글쓰기" id="postAddBtn">
+    </div>
+    </form>
+    <%} else{%>
+        <div class="postBox">
+        	<h4>큐팅의 가족이 되어 커뮤니티에 참여하세요!</h4>
+        	<input type="button" id="goJoinBtn" value="회원가입하러가기" onclick="location='join'">
+        </div>
+        <%} %>
 </div>
-	<div class="forLineUp">
-	<h1>COMUNITY</h1>
-	<!-- 사이드바 추가예정 -->
-	<div class="write-post-container">
-		<div class="user-profile">
-			<i class="fas fa-paw"></i>
-			<div>
-				<p>[닉네임]</p>
-				<small><select name="chooseComunity" id="comunity-select">
-					<option value="freeCm">자유게시판</option>
-					<option value="proudCm">자랑자랑</option>
-				</select></small>
-			</div>		
-		</div>
-		<!-- 글쓰는 폼 -->
-		<div class="post-input-container">
-			<textarea required id="comunityArea" rows="3" placeholder="당신의 귀여운 이야기를 들려주세요!"></textarea>
-			
-			
-			<div class="add-post-links">
-				<a href="#"><i class="far fa-smile-wink"></i>오늘어때요?</a>
-				<a href="#"><i class="fas fa-image"></i>사진첨부</a>
-				<input type="file" id="add-file" accept=".jpg, .jpeg, .png"><!-- input file태그 정확한 사용법 아직 헷갈림 더 공부해서 마무리하겠음 -->
-				<input type="button" name="post-Btn" id="post-Btn" value="글쓰기">
-			</div>
-		</div>
-		
-	</div>
-	
-	<!-- 글내용 보여지는 곳 시작 -->
-	<div class="post-container">
-		<div class="user-profile">
-			<i class="fas fa-paw"></i>
-			<div>
-				<p>[닉네임]</p>
-				<span>[여기 글남긴 날짜랑 시간 들어가게]</span>
-			</div>		
-		</div>
-		<p class="post-text">[글내용 안녕하세요 오늘은 날씨가 덥지만 그래도 입추가 지났다고 밤에는 선선하더라구요 밤에 강아지 산책시키기 좋은 날입니다. 다들 즐거운 산책하세요!]</p>
-		<img src="${path}/resources/images/woong/woong5.jpg" class="post-img">
-		<!-- 여기에 보통 좋아요 버튼이나 댓글 들어가는데  이거 한다고 하면 추가작업 하겠음-->
+</div>
 
-	</div>
-	
-	<div class="post-container">
-		<div class="user-profile">
-			<i class="fas fa-paw"></i>
-			<div>
-				<p>[닉네임]</p>
-				<span>[여기 글남긴 날짜랑 시간 들어가게]</span>
-			</div>		
-		</div>
-		<p class="post-text">[글내용]</p>
-	</div>
-	
-	<div class="post-container">
-		<div class="user-profile">
-			<i class="fas fa-paw"></i>
-			<div>
-				<p>[닉네임]</p>
-				<span>[여기 글남긴 날짜랑 시간 들어가게]</span>
-			</div>		
-		</div>
-		<p class="post-text">[글내용]</p>
-	</div>
+ <!--글목록-->
+	<ul id="comunityZone">
+		<c:if test="${!empty ptlist}">
+			<c:forEach var="pt" items="${ptlist}">
+				<li class="comunityList">
+					<div class="comunityBox">
+						<div class="userProfile">
+							<p>
+								<i class="fas fa-paw"></i>${pt.pt_id}<small>${pt.pt_update}</small>
+							</p>
+							<span> <c:if test="${pt.pt_category eq '77'}">#자유게시판</c:if>
+								<c:if test="${pt.pt_category eq '66'}">#자랑자랑</c:if> <c:if
+									test="${pt.pt_category eq '55'}">#헬프미아임초보</c:if> <c:if
+									test="${pt.pt_category eq '44'}">#댕댕이</c:if> <c:if
+									test="${pt.pt_category eq '33'}">#고영희</c:if>
 
+							</span>
+						</div>
 
-	</div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js"></script>
-<script>
-	$('#comunityArea').emojioneArea({
-		pickerPosition: 'right';
-	});
-</script>
+						<hr>
+						<p id="post-text">${pt.pt_content}</p>
+						<c:if test="${not empty pt.pt_filename}">
+						<div class="comunityImg">
+						<img alt="imagePlease" src="${path}/resources/upload${pt.pt_filename}">
+						</div>
+						</c:if>
+						<button id="postEditBtn" class="forBtnCss">수정</button>
+					</div>
+				</li>
+			</c:forEach>
+		</c:if>
+	</ul>
 </body>
 <%@ include file="../qt_project/bottom_qt.jsp" %>

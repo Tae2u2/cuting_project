@@ -32,7 +32,7 @@
 						<li><a href='enter_nr'>노름판입장</a></li>
 					</ul>
 				</div></li>
-			<li><a href="/controller/comunity?cm_postnb=1">COMUNITY</a></li>
+			<li><a href="comunity">COMUNITY</a></li>
 			<li><a href="board_qt">공지사항</a>
 				<div class="sub-menu-1">
 					<ul>

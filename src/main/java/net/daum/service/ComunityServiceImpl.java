@@ -20,6 +20,12 @@ public class ComunityServiceImpl implements ComunityService {
 		return this.comunityDao.getComunityList(pt);
 	}
 
+	@Override
+	public void insertPt(ComunityVO pt) {
+		this.comunityDao.insertPt(pt);
+		
+	}
+
 
 
 }
