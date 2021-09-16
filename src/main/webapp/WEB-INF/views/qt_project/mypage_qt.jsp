@@ -102,7 +102,8 @@
  		</div>
  		
  		<div class="mylist tabShow">
- 		<h1 class="aboutH1">나의 노름 관리</h1> 		
+ 		<h1 class="aboutH1">나의 노름 관리</h1>
+ 		<a href="buyedlist"><button>구매내역</button></a> 		
  		<h2>딜러, ${u.info_name}의 노름</h2>
  		<!-- 테이블로 넣어야지 -->
  		<h2>${u.info_name}의 참여 노름</h2>

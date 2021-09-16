@@ -51,7 +51,26 @@ function findid(){
 
 
 function findpw(){
-
+	var id = prompt("아이디를 입력하세요");
+	
+	if(id==null || id==''){
+		alert("입력취소");
+	}else{
+			alert("아작스 왜됨?");
+			$.ajax({
+				type:'POST',
+				url:'findpw',
+				data:{"id":id},
+				dataType:'json',
+				success:function(data){
+					alert(data.result);
+				},
+				error:function(e){
+					alert(e);
+				}
+				});
+		
+	}
 }
 
 

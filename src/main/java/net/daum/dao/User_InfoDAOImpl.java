@@ -57,5 +57,11 @@ public class User_InfoDAOImpl implements User_InfoDAO {
 		return this.sqlSession.selectOne("ui_getemail",email);
 	}
 
+	@Override
+	public String get_pw(String id) {
+		// TODO Auto-generated method stub
+		return this.sqlSession.selectOne("ui_getpw", id);
+	}
+
 	
 }

@@ -58,5 +58,11 @@ public class User_InfoServiceImpl implements User_InfoService {
 		return this.user_infoDao.get_email(email);
 	}
 
+	@Override
+	public String getPw(String id) {
+		// TODO Auto-generated method stub
+		return this.user_infoDao.get_pw(id);
+	}
+
 
 }

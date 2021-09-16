@@ -19,7 +19,7 @@ values('asdf','asdf','asdf','970213',123123,'khb2870@naver.com','asdf',sysdate)
 
 update user_info set info_id='zxc', info_name='zxc', info_bday='980817', info_nickname='asdf' where info_id='qwer';
 
-select * from user_info where info_email='khb2870@naver.com'
+select * from user_info;
 
 COMMENT ON COLUMN "USER_INFO"."info_id" IS '�븘�씠�뵒_PK';
 

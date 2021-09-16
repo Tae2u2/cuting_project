@@ -1,7 +1,6 @@
 package net.daum.controller;
 
 import java.io.BufferedReader;
-
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,7 +23,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
@@ -42,6 +40,7 @@ import net.daum.service.KakaoPayService;
 import net.daum.service.PayService;
 import net.daum.service.PayedService;
 import net.daum.service.User_InfoService;
+import net.daum.vo.BuyedVO;
 import net.daum.vo.PayVO;
 import net.daum.vo.PayedVO;
 import net.daum.vo.PaymentVO;
@@ -534,9 +533,74 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="findpw")
-	public Map<String,String> findPw(){
+	@ResponseBody
+	public Map<String,String> findPw(String id,User_InfoVO ui){
+		Map<String, String> rmap = new HashMap<String, String>();
 		System.out.println("비번찾기");
-		return null;
+		System.out.println(id);
+		ui.setInfo_id(id);
+		List<User_InfoVO> ulist = this.user_infoService.getUser_InfoList(ui);
+		
+		String pw = null;
+		String email = null;
+		for(User_InfoVO u : ulist) {
+			System.out.println(u);
+			pw=u.getInfo_pw();
+			email=u.getInfo_email();
+		}
+		
+		
+		
+		System.out.println(email);
+		
+		System.out.println(pw);
+		
+		if(pw==null) {
+			rmap.put("result","등록되지 않은 아이디 입니다.");
+			return rmap;
+		}
+		else {
+			String setfrom = "khb2870@gamil.com";
+	          String tomail = email; // 받는 사람 이메일
+	          System.out.println(email);
+	          String title = "큐팅 비밀번호 찾기 이메일 입니다."; // 제목
+	          String content =
+	          
+	          System.getProperty("line.separator")+ //한줄씩 줄간격을 두기위해 작성
+	          
+	          System.getProperty("line.separator")+
+	                  
+	          " 등록된 비밀번호는 " +pw+ " 입니다. "
+	          
+	          +System.getProperty("line.separator")+
+	          
+	          System.getProperty("line.separator");
+	          
+	          try {
+	              MimeMessage message = mailSender.createMimeMessage();
+	              MimeMessageHelper messageHelper = new MimeMessageHelper(message,
+	                      true, "UTF-8");
+	  
+	              messageHelper.setFrom(setfrom); // 보내는사람 생략하면 정상작동을 안함
+	              System.out.println("보낸사람: "+setfrom);
+	              messageHelper.setTo(tomail); // 받는사람 이메일
+	              System.out.println("받는사람: "+tomail);
+	              messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
+	              System.out.println("제목: "+title);
+	              messageHelper.setText(content); // 메일 내용
+	              System.out.println(content);
+	              
+	              mailSender.send(message);
+	              System.out.println("메시지: "+message);
+	          } catch (Exception e) {
+	              System.out.println(e);
+	          }
+	          
+			rmap.put("result", "이메일에서 비밀번호를 확인하세요");
+			return rmap;
+		}
+		
+		
 		
 	}
 	
@@ -577,6 +641,20 @@ public class MainController {
 		}
 	}
 	
+	@RequestMapping(value="buyedlist")
+	public ModelAndView buyedlist(HttpServletRequest request, BuyedVO by) {
+		ModelAndView listM = null;
+		by.setBy_id((String) request.getSession().getAttribute("id"));
+		List<BuyedVO> bylist = this.payedService.getBuyed(by.getBy_id());
+		for(int i = 0 ; i <bylist.size() ; i++)
+		System.out.println(bylist.get(i));
+		
+		listM.addObject("bylist", bylist);
+		
+		listM=new ModelAndView("/qt_project/mypay");
+		
+		return listM;
+	}
 	
 	
 	

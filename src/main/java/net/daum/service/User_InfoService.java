@@ -13,5 +13,6 @@ public interface User_InfoService {
 	int check_id(User_InfoVO ui);
 	String getId(String email);
 	String getEmail(String email);
+	String getPw(String id);
 	
 }

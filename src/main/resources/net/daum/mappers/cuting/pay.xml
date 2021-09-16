@@ -17,5 +17,8 @@
   insert into payment values(#{by_id},#{by_filename},#{by_post_nb},#{by_purchase},#{by_sid},sysdate)
   </insert>
   
+  <select id="by_getlist" resultType="by">
+  select * from payment where by_id=#{by_id}
+  </select>
   
   </mapper>

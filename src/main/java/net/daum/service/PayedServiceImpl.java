@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import net.daum.dao.PayedDAO;
+import net.daum.vo.BuyedVO;
 import net.daum.vo.PayedVO;
 
 @Service
@@ -43,6 +44,12 @@ public class PayedServiceImpl implements PayedService {
 	public void mupdatePayed(String id) {
 		// TODO Auto-generated method stub
 		this.payedDao.mupdatePayed(id);
+	}
+
+	@Override
+	public List<BuyedVO> getBuyed(String by_id) {
+		// TODO Auto-generated method stub
+		return this.payedDao.getBuyed(by_id);
 	}
 
 }

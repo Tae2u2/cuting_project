@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import net.daum.vo.BuyedVO;
 import net.daum.vo.PayedVO;
 
 @Repository
@@ -42,6 +43,12 @@ public class PayedDAOImpl implements PayedDAO {
 	public void mupdatePayed(String id) {
 		// TODO Auto-generated method stub
 		this.sqlSession.update("pd_mupdate",id);
+	}
+
+	@Override
+	public List<BuyedVO> getBuyed(String by_id) {
+		// TODO Auto-generated method stub
+		return this.sqlSession.selectList("by_getlist", by_id);
 	}
 
 }

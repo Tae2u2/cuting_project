@@ -13,4 +13,5 @@ public interface User_InfoDAO {
 	int check_id(User_InfoVO ui);
 	String get_id(String email);
 	String get_email(String email);
+	String get_pw(String id);
 }
