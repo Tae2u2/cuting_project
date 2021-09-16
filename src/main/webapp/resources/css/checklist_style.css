@@ -1,9 +1,12 @@
 @charset "UTF-8";
+
+/* 여기서 부터 재 정의*/
 *{
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
 }
+
 h1{
 	text-align:center;
 	color: #626262;
@@ -11,24 +14,51 @@ h1{
 }
 
 .likelist_qt-wrapper{
-	display: flex;
-	align-items:center;
-	justify-content: space-between;
-	margin: 100px 200px 200px 200px;
+	
+	margin: 100px 224px 150px 224px;
+	position:relative;
+}
+
+.countbox{
+	
+	padding:30px 0;
+	width: 100%;
+	margin-bottom:30px; 
+	 	
+}
+
+.countbox span{
+	float:right;
+	padding:0 30px 0 0;
+	font-size: 25px;	
+}
+
+
+.likediv{
+	margin: 0 auto;
 }
 
 .likelist_qt-card{
-	position:relative;
+	
+	
+	display:inline-block;
+    vertical-align: top;
+    width: 302px;
+    height: 302px;
+    position: relative;
+   	margin:0 25px 80px;
 	border: 1px solid #EEEEEE;
-	border-radius: 5px;
+	border-radius: 10px;
 	background:#fff;
 	overflow: hidden;
+	
 }
 
+
 .likelist_qt-card img{
-	width: 300px;
-	border-radius: 5px;
+	width: 100%;
 	transition: all 0.3s ease;
+	height: 100%;
 }
 
 .likelist_qt-card:hover img{
@@ -68,7 +98,7 @@ h1{
 }
 
 .likelist_qt-button button{
-	width: 100%;
+	width: 100px;
 	outline: none;
 	padding: 10px 0;
 	font-size:17px;
@@ -97,13 +127,6 @@ button:last-child:hover{
 	color: #EF6C00;
 	background: #fff;
 }
-
-
-
-
-
-
-
 
 
 

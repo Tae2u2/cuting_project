@@ -3,33 +3,18 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
-  <mapper namespace="Pt">
+  <mapper namespace="comunity">
   
-<insert id="pt_in" parameterType="pt"><!-- parameterType 속성은 전달인자 타입으로 생략가능 -->
-     insert into POSTING (pt_postnb,cm_postnb,pt_id,pt_pw,pt_title,pt_update,pt_content,pt_category) 
-     values(pt_postnb_seq.nextval,1,#{pt_id},#{pt_pw},#{pt_title},sysdate,#{pt_content},#{pt_category})
-    </insert>
    
     <select id="pt_list" parameterType="int" resultType="net.daum.vo.ComunityVO"><!-- resultType은 반환 자료형 -->
      select * from 
-    (select rowNum rNum,pt_postnb,pt_id,pt_title,pt_content,pt_update,pt_category from (select * from POSTING where pt_id=#{pt_id,  jdbcType=VARCHAR}
+    (select rowNum rNum,pt_postnb,pt_id,pt_title,pt_content,pt_update,pt_category from (select * from POSTING 
     order by pt_postnb desc) where pt_delflag = 0)
-    </select>
-
-     <!-- 수정-->
-    <update id="pt_edit" parameterType="pt">
-     update POSTING set pt_content=#{pt_content},pt_mddate=sysdate where pt_postnb=#{pt_postnb} 
-    </update>
-    
-    <!-- 댓글 삭제 -->
-    <delete id="pt_del">
-      update POSTING set pt_delflag=1
-    </delete>
-      
-	<select id="cm_cont" parameterType="int" resultType="int"><!-- resultType은 반환 자료형 -->
-     select cm_postnb from POSTING where cm_postnb=#{cm_postnb}
     </select>
     
     
     
    </mapper>
+
+  
+

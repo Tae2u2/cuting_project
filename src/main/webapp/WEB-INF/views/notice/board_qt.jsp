@@ -21,7 +21,7 @@
   <div class="notice_f3_right">
   <select name="find_field" id="notice-select">
   <option value="">--선택하세요--</option>
-    <option value="no_title" <c:if test="${find_field == 'no_title'}">${'selected'}</c:if>>제목</option>
+    <option value="no_title" <c:if test="${find_filed == 'no_title'}">${'selected'}</c:if>>제목</option>
     <option value="no_content" <c:if test="${find_field == 'no_content'}">${'selected'}</c:if>>내용</option>   
   </select>
 

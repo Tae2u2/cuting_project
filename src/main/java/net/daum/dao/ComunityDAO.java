@@ -6,13 +6,8 @@ import net.daum.vo.ComunityVO;
 
 public interface ComunityDAO {
 
-	void addComunity(ComunityVO pt);
-	List<ComunityVO> listComunity(int cm_postnb);
 
-	ComunityVO getBoardCont(int cm_postnb);
+	List<ComunityVO> getComunityList(ComunityVO pt);
 
-	void delComunity(int pt_postnb);
-	void updateComunity(ComunityVO pt);
-	int getPno(int pt_postnb);
 
 }

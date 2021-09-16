@@ -1,6 +1,5 @@
-
 @charset "UTF-8";
-
+@charset "UTF-8";
 h1{
 	text-align: center;
 	padding-top: 100px;
@@ -25,9 +24,10 @@ h1 a:hover{
 	cursor: pointer;
 }
 .qt-table2{
+	border:0.3px solid #c0c0c0;
 	margin: 25px auto;
 	font-size: 0.9em;
-	min-width: 80%;
+	width: 80%;
 	margin-bottom: 70px;
 }
 
@@ -35,7 +35,7 @@ h1 a:hover{
 	background-color: #FFE082;
 	color: #424242;
 	/* width: 80%; */
-	padding: 5px 5px 5px 30px;
+	padding: 10px 5px 10px 30px;
 /* 	text-align: center; */
 	font-weight: bold;
 }
@@ -47,12 +47,16 @@ h1 a:hover{
 td.rp_content{
 	text-align: left;
 	padding-left: 30px;
+	height: 40px;
 }
 
 .qt-table2 th a{
 	text-decoration: none;
 	color: #424242;
 	font-size: 16px;
+}
+th.reply_250{
+	width: 20%;
 }
 
 .qt-table2 tr{
@@ -84,12 +88,29 @@ p.rp_image{
 	width:1150px;
 }
 span.rp_write{
-	vertical-align: middle; 
+/* 	vertical-align: middle;  */
 /* 	text-align:center; */
 	color: gray;
 	font-size: 30px;
 	
 }
+div.rp_list{
+	width:80%;
+	margin:5px auto;
+	margin-bottom: 10px;
+	/* text-align: center; */
+}
+span.rp_write2{
+	color: gray;
+	font-size: 30px;	
+}
+span.reply_left{
+	float:left;
+	text-align: left;
+	padding-left: 20px;
+	/* border-bottom: 1px solid gray; */
+}
+
 table.qt-table3{
 	border:1px solid gray;
 	border-radius:13px;
@@ -106,7 +127,7 @@ table.qt-table3{
 	border: none;
 	background: #F57C00;
 	cursor: pointer;
-	margin-right: 10px;
+	margin-right: 10px; 
 	float:right;
 }
 textarea#rp_content{
@@ -186,5 +207,4 @@ tr{
 .qt-table tr:last-of-type{
 	border-bottom: 2px solid #FFE082;
 }
-
 
