@@ -41,24 +41,23 @@
  <tr><th colspan="5">댓글이 없습니다.</tr>
  </c:when>
  <c:when test="${!empty rlist}">
-  			 <tr class="rp_reply">
- 	 		   <th colspan="13" >댓글목록</th>
+  			 <tr>
+ 	 		   <td colspan="5">댓글목록</td>
  	 		 </tr>
  	<c:forEach var="rp" items="${rlist}" > <%--  begin="0" end="8"--%>
  	 		
- 	 	 <tr>
-   			<th>id: <%=(String)header %></th>
-
- 	 		<td colspan="10" class="rp_content">${rp.rp_content}</td>
- 	 		
- 	 		<th> ${rp.rp_update}</th>
- 	 		
- 			<th>
- 			 <input type="button" value="수정" class="BtnforCss2" onclick="location='/controller/reply_edit?rp_postnb=${rp.rp_postnb}';" />
- 			 <input type="button" value="삭제" class="BtnforCss2" onclick="location='/controller/reply_del?rp_postnb=${rp.rp_postnb}';"/>
- 			</th>	
+ 	 		 <tr>
+   				<td colspan="3">id: <%=(String)header %> &nbsp;&nbsp;&nbsp; ${rp.rp_update}</td>
+   			 <td colspan="2">
+ 			 	<input type="button" value="수정" class="BtnforCss2" onclick="location='/controller/reply_edit?rp_postnb=${rp.rp_postnb}';" />
+ 			 	<input type="button" value="삭제" class="BtnforCss2" onclick="location='/controller/reply_del?rp_postnb=${rp.rp_postnb}';"/>
+ 			</td>		
+   			</tr>
+   			<tr>
+ 	 			<td colspan="5">${rp.rp_content}</td>
+ 			
  							
- 		</tr>
+ 			</tr>
  	</c:forEach>
  </c:when>
 </c:choose>
