@@ -29,11 +29,17 @@
 				<i class="fas fa-crown"></i><span>${en.gb_id}</span>
 			</div>
 			<div class="writterComment">${en.gb_title}<br>${en.gb_content}</div>
-			<div class="likecnt">좋아요 ${en.gb_viewcnt}개</div>
+			<div class="likecnt">조회수 : ${en.gb_viewcnt}</div>
 			<div class="price">상품 가격 : 50 마일리지</div>
 			<div class="buttonarea">
-				<a href="#"><button type="button" class="ggim">장바구니</button></a> <a
-					href="#"><button type="button" class="buy">구매하기</button></a>
+			
+			
+			<form method="post" action="insert.do">
+				<input type="hidden" name="gb_postnb" value="${en.gb_postnb}">
+				<input type="submit" value="장바구니" class="ggim">
+			</form>
+				
+				<a href="#"><button type="button" class="buy">구매하기</button></a>
 			</div>
 		</div>
 	</div>
