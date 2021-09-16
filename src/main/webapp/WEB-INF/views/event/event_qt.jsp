@@ -30,7 +30,7 @@
 			
 		</div>
 	</section>
-	</div>
+ <input type="button" value="글쓰기" onclick="location='event_write?page=${page}';" class="BtnNotice"/>	</div>
 	</c:forEach>
 	</c:if>
 	
