@@ -38,4 +38,28 @@ $(function(){
 	});
 });
 
-	
+function modifyinfo(){
+	alert('수정하기 클릭');
+	$("#info_name").removeAttr("readonly");
+	$("#info_nickname").removeAttr("readonly");
+	$("#info_birth").removeAttr("readonly");
+	$("#info_phonenumber").removeAttr("readonly");
+	$("#info_info_pw").removeAttr("readonly");
+	$("#modib").hide();
+	$("#hidebt").css({
+            display: "inline"
+        });
+
+}
+
+function modicheck(){
+	var bool = confirm('입력한 정보를 저장하시겠습니까?');
+	if(bool==true){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
+

@@ -17,9 +17,10 @@
 </head>
 <div class="menubar">
 		<a href="/controller/"><img src="${path}/resources/images/logo2.png" class="logo"></a>
-
+		
 		<ul>
-			<li class="active"><a href="about_qt">about큐팅<%=header %></a>
+		
+			<li class="active"><a href="about_qt">about큐팅</a>
 				<div class="sub-menu-1">
 					<ul>
 						<li><a href="hot">Hot노름</a></li>
@@ -58,16 +59,23 @@
 				<h2><%=header %>님!<br><span>환영합니다!</span></h2>
 			</div>
 			<ul class="memberNavi">
+			<%if(!header.equals("admin")){ %>
 				<li><a href='myinfo'><i class="fas fa-user"></i>회원정보</a></li>
 				<li><a href="${path}/list.do"><i class="fas fa-heart"></i>찜목록</a></li>
 				<li><a href="#"><i class="far fa-credit-card"></i>결제페이지</a></li>
 				<li><a href="#"><i class="far fa-list-alt"></i>나의노름관리</a></li>
+				<% } %>
 				<li><a href='logout'><i class="fas fa-sign-out-alt"></i>로그아웃</a></li>
 			</ul>
+			
 			<div class="memberToggle">
 				<i class="fas fa-caret-down"></i>
 			</div>
+			
 		</div>
+		<%if(header.equals("admin")){ %>
+			<a href='logout'>로그아웃</a>
+			<%} %>
 		<%}else{ %>
 	 	<div class="welcome">
 			<a href="login">로그인</a> | <a href="join">회원가입</a>
