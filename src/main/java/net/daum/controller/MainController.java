@@ -116,9 +116,23 @@ public class MainController {
 		return "qt_project/qt_login";
 	}
 	
+	@RequestMapping(value="adminPage")
+	public String adminPage() {
+		return "qt_project/adminPage";
+	}
+	
 	@RequestMapping(value="/login_ok",method=RequestMethod.POST)
-	public String login_ok(Model rttr,HttpServletRequest request,HttpSession session,User_InfoVO ui)
+	public String login_ok(Model rttr,HttpServletRequest request,HttpSession session,User_InfoVO ui,String info_id,String info_pw)
 		throws Exception{
+		
+		
+		if(info_id.equals("admin") && info_pw.equals("admin")) {
+			request.getSession().setAttribute("admin", "admin");
+			rttr.addAttribute("result", "admin");			
+			return "redirect:adminPage";
+		}
+		
+		
 		int i  = this.user_infoService.loginUser_Info(ui);
 		if(i==1) {
 			request.getSession().setAttribute("id", ui.getInfo_id());
@@ -606,12 +620,15 @@ public class MainController {
 	
 	
 	@RequestMapping(value="payment")
-	public String payment(@RequestParam("id") String id,@RequestParam("filename")String filename,@RequestParam("postnb") String postnb,PaymentVO pm,HttpServletRequest request, RedirectAttributes rttr) {
+	public String payment(@RequestParam("id") String id,@RequestParam("filename")String filename,@RequestParam("postnb") String postnb,@RequestParam("title") String title,PaymentVO pm,HttpServletRequest request, RedirectAttributes rttr) {
 		System.out.println(id+"  "+filename+"  "+postnb);
 		id=id.replace('/', ' ').trim();
-		filename=filename.replace('/', ' ').trim();
+		filename=filename.substring(0, filename.length()-1);
 		postnb= postnb.replace('/', ' ').trim();
+		title=title.replace('/', ' ').trim();
+		System.out.println(id);
 		System.out.println(postnb);
+		System.out.println(filename);
 		int i;
 		if((String) request.getSession().getAttribute("id")==null) {
 			return "redirect:/login";
@@ -627,6 +644,7 @@ public class MainController {
 			pm.setBy_post_nb(Integer.parseInt(postnb));
 			pm.setBy_purchase(500);
 			pm.setBy_filename(filename);
+			pm.setBy_title(title);
 			pm.setBy_id((String) request.getSession().getAttribute("id"));
 			this.payService.insertPayment(pm);
 			this.payedService.mupdatePayed((String) request.getSession().getAttribute("id"));
@@ -641,19 +659,26 @@ public class MainController {
 		}
 	}
 	
+	
 	@RequestMapping(value="buyedlist")
-	public ModelAndView buyedlist(HttpServletRequest request, BuyedVO by) {
-		ModelAndView listM = null;
+	public ModelAndView buyedlist(HttpServletRequest request,@ModelAttribute BuyedVO by) {
+		ModelAndView listM;
+		
+		if(request.getSession().getAttribute("id")!=null) {
 		by.setBy_id((String) request.getSession().getAttribute("id"));
 		List<BuyedVO> bylist = this.payedService.getBuyed(by.getBy_id());
 		for(int i = 0 ; i <bylist.size() ; i++)
 		System.out.println(bylist.get(i));
+		listM=new ModelAndView("/qt_project/mypay");
+		
 		
 		listM.addObject("bylist", bylist);
 		
-		listM=new ModelAndView("/qt_project/mypay");
-		
 		return listM;
+		}else {
+			listM=new ModelAndView("myinfo");
+		return listM;
+		}
 	}
 	
 	

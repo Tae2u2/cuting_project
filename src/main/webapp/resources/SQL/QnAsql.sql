@@ -11,7 +11,7 @@ CREATE TABLE QNA (
 	qa_content	varchar2(2000)		NULL--내용
 );
 
-
+delete from QNA;
 create sequence qa_postnb_seq
 start with 1
 increment by 1

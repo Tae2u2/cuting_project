@@ -7,8 +7,8 @@
  <mapper namespace="Event">
   
  <insert id="in_e" parameterType="net.daum.vo.EventVO">
- insert into EVENT(ev_postnb,ev_filename,ev_update,ev_exdate,ev_mddate,ev_delflag,ev_title,ev_content)
- values(postnb_seq.nextval,#{ev_filename},sysdate,#{ev_exdate},#{ev_mddate, jdbcType=DATE},0,#{ev_title},#{ev_content})
+ insert into EVENT(ev_postnb,ev_filename,ev_update,ev_delflag,ev_title,ev_content)
+ values(postnb_seq.nextval,#{ev_filename},sysdate,0,#{ev_title},#{ev_content})
  </insert>
  
  <select id="sel_li" resultType="net.daum.vo.EventVO">

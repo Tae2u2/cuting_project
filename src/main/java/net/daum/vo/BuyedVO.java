@@ -9,5 +9,6 @@ public class BuyedVO {
 	int by_post_nb;
 	int by_purchase;
 	String by_sid;
+	String by_title;
 	String by_date;
 }

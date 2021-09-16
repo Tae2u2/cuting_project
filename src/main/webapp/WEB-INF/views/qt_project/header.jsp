@@ -19,7 +19,7 @@
 		<a href="/controller/"><img src="${path}/resources/images/logo2.png" class="logo"></a>
 
 		<ul>
-			<li class="active"><a href="about_qt">about큐팅</a>
+			<li class="active"><a href="about_qt">about큐팅<%=header %></a>
 				<div class="sub-menu-1">
 					<ul>
 						<li><a href="hot">Hot노름</a></li>

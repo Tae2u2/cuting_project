@@ -26,11 +26,11 @@
 				${e.ev_content}
 					</p>
 			<!-- 커뮤니티로 이어지게 -->
-			<a href="#" class="event_qt-cta">참여하기</a>
+			
 			
 		</div>
 	</section>
- <input type="button" value="글쓰기" onclick="location='event_write?page=${page}';" class="BtnNotice"/>	</div>
+ 	</div>
 	</c:forEach>
 	</c:if>
 	
@@ -50,6 +50,9 @@
 		</section>
 		</div>
    </c:if>
+   <%if(header.equals("admin")){ %>
+  <input type="button" value="글쓰기" onclick="location='event_write?page=${page}';" class="BtnNotice"/>
+  <%} %>
    
 
 

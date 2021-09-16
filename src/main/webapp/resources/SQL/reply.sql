@@ -1,13 +1,32 @@
 CREATE TABLE REPLY (
-	rp_postnb	number(20)		NOT NULL,
+	rp_postnb	number(20)		primary key,
 	rp_id	varchar(20)		NOT NULL,
 	rp_update	date		NOT NULL,
 	rp_mddate	date		NULL,
 	rp_deldate	date		NULL,
 	rp_delflag	number(5)	DEFAULT 0	NOT NULL,
 	rp_flag	number(5)	DEFAULT 0	NOT NULL,
-	rp_content	varchar(2000)		NULL
+	rp_content	varchar(2000)		NULL,
+	qa_postnb number(38)
 );
+
+create sequence rp_postnb_seq
+start with 1
+increment by 1
+nocache;
+
+ALTER TABLE REPLY ADD CONSTRAINT FK_qna_to_reply_1 FOREIGN KEY (
+	rp_id
+)
+REFERENCES USER_INFO (
+	info_id
+);
+alter table reply add constraint qna_reply_qapostnb_fk
+foreign key(qa_postnb) references qna(qa_postnb);
+
+
+
+drop table reply;
 create sequence rp_postnb_seq
 start with 1
 increment by 1

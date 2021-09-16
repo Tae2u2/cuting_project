@@ -23,10 +23,12 @@ if(msg.contains("잔액")){
 	<c:set var="id" value='${en.gb_id}'/>
 	<c:set var="filename" value='${en.gb_filename}'/>
 	<c:set var="postnb" value='${en.gb_postnb}'/>
+	<c:set var="title" value='${en.gb_title}'/>
 	<%
 		String id = (String)pageContext.getAttribute("id");
 		String filename = (String)pageContext.getAttribute("filename");
 		String postnb = pageContext.getAttribute("postnb").toString();
+		String title = (String)pageContext.getAttribute("title");
 	%>
 	
 	<div class="container">
@@ -58,9 +60,10 @@ if(msg.contains("잔액")){
 				
 				<form method="post" action="payment">
 					<button type="submit" class="buy">구매하기</button>
-					<input type='hidden' name="id" value=<%=id %>/>
-					<input type='hidden' name="filename" value=<%=filename %>/>
-					<input type='hidden' name="postnb" value=<%=postnb %>/>
+					<input type='hidden' name="id" value=<%=id%>/>
+					<input type='hidden' name="filename" value=<%=filename%>/>
+					<input type='hidden' name="postnb" value=<%=postnb%>/>
+					<input type='hidden' name="title" value=<%=title%>/>
 				</form>
 				
 

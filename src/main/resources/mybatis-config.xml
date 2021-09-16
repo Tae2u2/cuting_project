@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 		<typeAlias type="net.daum.vo.QnAVO" alias="qna" />
 
-<<<<<<< HEAD
+
       <typeAlias type="net.daum.vo.PayedVO" alias="pd"/>
       
       <typeAlias type="net.daum.vo.PayVO" alias="pa"/>
@@ -32,9 +32,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
      <typeAlias type="net.daum.vo.ChecklistVO" alias="cl"/>
      
      <typeAlias type="net.daum.vo.BuyedVO" alias="by"/>
-=======
+
 		<typeAlias type="net.daum.vo.ComunityVO" alias="pt" />
->>>>>>> branch 'master' of https://github.com/Tae2u2/cuting_project.git
+
 
 		<typeAlias type="net.daum.vo.PayedVO" alias="pd" />
 

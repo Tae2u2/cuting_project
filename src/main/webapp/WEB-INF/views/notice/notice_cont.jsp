@@ -18,7 +18,7 @@
 	  <table class="noti-table">
 	  
 	    <tr>
-	      <td class="notice_cont_td1"> 제목 </td>
+	      <td class="notice_cont_td1"> 제목</td>
 	      <td class="notice_cont_td1">${b.no_title }</td>
 	    </tr>
 		
@@ -41,8 +41,10 @@
 	  </table>
 	  
 	  <div class="notice_cont_button">
+	  <%if(header.equals("admin")){%>
 	 <input type="button" value="수정" class="BtnNotice" onclick="location='notice_cont?no_postnb=${b.no_postnb}&page=${page}&state=edit';" />
      <input type="button" value="삭제" class="BtnNotice" onclick="location='notice_cont?no_postnb=${b.no_postnb}&page=${page}&state=del';" />
+     <%} %>
 	 <input type="submit" value="목록" class="BtnNotice" onclick="location='board_qt?page=${page}';" /> 
 	</div>
 	</div>

@@ -23,7 +23,9 @@
   </tr>
   <tr>
    <th colspan="3">
-    <input type="button" value="댓글" class="BtnforCss" onclick="location='/controller/qna_reply?qa_postnb=${qna.qa_postnb}';" />
+   <%if(header.equals("admin")) {%>
+    <input type="button" value="관리자 답글" class="BtnforCss" onclick="location='/controller/qna_reply?qa_postnb=${qna.qa_postnb}';" />
+    <%} %>
     <input type="button" value="수정" class="BtnforCss" onclick="location='/controller/qna_edit?qa_postnb=${qna.qa_postnb}';" />
     <input type="button" value="삭제" class="BtnforCss" onclick="location='/controller/qna_del?qa_postnb=${qna.qa_postnb}';" />
     <input type="button" value="목록" class="BtnforCss" onclick="location='QnA_qt';" />

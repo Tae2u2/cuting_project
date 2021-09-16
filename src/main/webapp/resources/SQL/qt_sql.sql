@@ -1,3 +1,4 @@
+--유저인포테이블
 CREATE TABLE USER_INFO (
 	info_id		varchar2(20)		NOT NULL primary key,
 	info_pw		varchar2(20)		NOT NULL,

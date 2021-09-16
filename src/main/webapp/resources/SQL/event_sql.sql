@@ -2,13 +2,15 @@ create table EVENT(
 	ev_postnb	number(20)	NOT NULL
 	,ev_filename varchar2(100)
 	,ev_update	date	NOT NULL
-	,ev_exdate	date	NOT NULL
+	,ev_exdate	date	
 	,ev_mddate	date
 	,ev_delflag	number(5)	DEFAULT 0
 	
 	,ev_title	varchar2(1000)	
 	,ev_content	varchar2(2000)
 ); 
+
+drop table EVENT;
 
 COMMENT ON COLUMN EVENT.ev_postnb IS '게시글번호';
 

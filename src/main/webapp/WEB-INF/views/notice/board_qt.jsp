@@ -116,7 +116,9 @@
 			
 	<div class="noticeList_menu">
 	<%--검색필드와 검색어가 있는 경우 즉 검색하고 난 이후 실행 --%>
+	<%if(header.equals("admin")){ %>
 	  <input type="button" value="글쓰기" onclick="location='notice_write?page=${page}';" class="BtnNotice"/>
+	  <%} %>
 	  
 	  <c:if test="${(!empty find_field) && (!empty find_name)}">
 	    <input type="button" value="전체목록" onclick="location='board_qt?page=${page}';" class="BtnNotice"/>

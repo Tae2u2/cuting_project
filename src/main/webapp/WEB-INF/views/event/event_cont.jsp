@@ -25,8 +25,10 @@
 					</p>
 
 				<input type="button" value="목록" class="event_qt-cta" onclick="location='event_qt?page=${page}';" />
+				<%if(header.equals("admin")) {%>
 				<input type="button" value="수정" class="event_qt-cta" onclick="location='event_cont?no=${e.ev_postnb}&page=${page}&state=edit';" />
 				<input type="button" value="삭제" class="event_qt-cta" onclick="location='event_del?no=${e.ev_postnb}&page=${page}';" />
+				<%} %>
 																				
 			
 			

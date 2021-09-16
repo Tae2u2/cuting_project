@@ -4,7 +4,16 @@ CREATE TABLE PAYED (
 	payed_balance	number(20)	DEFAULT 0	NOT NULL
 );
 
+ALTER TABLE PAYed ADD CONSTRAINT FK_payed_payed_id FOREIGN KEY (payed_id)
+references user_info(info_id) on delete cascade;
+
+alter table gamble add constraint FK_gamble_gb_id foreign key (gb_id) references user_info(info_id) on delete cascade;
+
 select * from payed;
+
+delete from pay;
+
+update payed set payed_balance=10000 where payed_id='asdf'
 
 create table PAY (
 	pay_id varchar2(20) NOT NULL,
@@ -31,7 +40,7 @@ ALTER TABLE PAYMENT ADD CONSTRAINT PK_PAYMENT PRIMARY KEY (
 	pay_id
 );
 
-ALTER TABLE PAYMENT ADD CONSTRAINT FK_USER_INFO_TO_PAYMENT_1 FOREIGN KEY (
+ALTER TABLE PAY ADD CONSTRAINT FK_pay_pay_id FOREIGN KEY (
 	pay_id
 )
 REFERENCES USER_INFO (

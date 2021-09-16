@@ -38,7 +38,7 @@ public class EventController {
 	private EventService eventService;
 
 	//자료실 글쓰기 폼
-	@GetMapping("/event_write") //get으로 접근하는 매핑주소를 처리,bbs_write 매핑주소 등록
+	@RequestMapping("/event_write") //get으로 접근하는 매핑주소를 처리,bbs_write 매핑주소 등록
 	public String event_write(Model wm, HttpServletResponse response,HttpServletRequest request) throws Exception{
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
@@ -62,7 +62,7 @@ public class EventController {
 	 	wm.addAttribute("page",page);
 	 	return "event/event_write";
 	}//if else
-		return null;
+		return "event/event_write";
 	}
 	
 	
@@ -176,8 +176,9 @@ public class EventController {
 		HttpSession session=request.getSession();
 
 		String info_id = (String)session.getAttribute("id");//세션 관리자 아이디를 구함
+		String admin = (String)session.getAttribute("admin");
 
-		if(info_id == null) {
+		if(info_id == null && admin==null) {
 			out.println("<script>");
 			out.println("alert('로그인 하세요!');");
 			out.println("location='login';");

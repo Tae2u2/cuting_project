@@ -94,6 +94,7 @@ public class NoticeController {
 			//b.setBbs_name(bbs_name); b.setBbs_pwd(bbs_pwd);
 			b.setNo_title(no_title);  b.setNo_content(no_content);
 			
+			
 			this.noticeService.insertNotice(b);//자료실 저장
 			
 			return "redirect:/board_qt";//목록보기 매핑으로 이동		

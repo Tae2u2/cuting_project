@@ -14,7 +14,7 @@
   </select>
   
   <insert id="pm_insert">
-  insert into payment values(#{by_id},#{by_filename},#{by_post_nb},#{by_purchase},#{by_sid},sysdate)
+  insert into payment values(#{by_id},#{by_filename},#{by_post_nb},#{by_purchase},#{by_sid},#{by_title},sysdate)
   </insert>
   
   <select id="by_getlist" resultType="by">

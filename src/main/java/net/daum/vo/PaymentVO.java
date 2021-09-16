@@ -9,4 +9,5 @@ public class PaymentVO {
 	String by_sid;
 	int by_post_nb;
 	int by_purchase;
+	String by_title;
 }
