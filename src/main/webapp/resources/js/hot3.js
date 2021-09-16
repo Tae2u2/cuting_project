@@ -1,4 +1,4 @@
-
+ 
 $(function(){
 
 	 $('.basic_slider').bxSlider({

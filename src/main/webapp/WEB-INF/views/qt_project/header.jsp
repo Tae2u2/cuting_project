@@ -13,32 +13,32 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="${path}/resources/css/header_style.css">
 <script src="https://kit.fontawesome.com/a963872baf.js" crossorigin="anonymous"></script>
-
+<link rel="shortcut icon" href="#">
 </head>
 <div class="menubar">
 		<a href="/controller/"><img src="${path}/resources/images/logo2.png" class="logo"></a>
 
 		<ul>
-			<li class="active"><a href="">about큐팅</a>
+			<li class="active"><a href="about_qt">about큐팅</a>
 				<div class="sub-menu-1">
 					<ul>
-						<li><a href='#'>Hot노름</a></li>
+						<li><a href="hot">Hot노름</a></li>
 					</ul>
 				</div></li>
-			<li><a href="">오늘의노름</a>
+			<li><a href="enter_nr">오늘의노름</a>
 				<div class="sub-menu-1">
 					<ul>
 						<li><a href='#'>How to 노름</a></li>
-						<li><a href='#'>노름판입장</a></li>
+						<li><a href='enter_nr'>노름판입장</a></li>
 					</ul>
 				</div></li>
-			<li><a href="">COMUNITY</a></li>
-			<li><a href="">공지사항</a>
+			<li><a href="/controller/comunity?cm_postnb=1">COMUNITY</a></li>
+			<li><a href="board_qt">공지사항</a>
 				<div class="sub-menu-1">
 					<ul>
-						<li><a href='#'>FAQ</a></li>
-						<li><a href='#'>Q&A/신고</a></li>
-						<li><a href='#'>EVENT</a></li>
+						<li><a href="FAQ_qt">FAQ</a></li>
+						<li><a href="QnA_qt">Q&A/신고</a></li>
+						<li><a href="event_qt">EVENT</a></li>
 					</ul>
 				</div></li>
 			<!-- <li><a href="">마이페이지</a>
@@ -59,7 +59,7 @@
 			</div>
 			<ul class="memberNavi">
 				<li><a href='myinfo'><i class="fas fa-user"></i>회원정보</a></li>
-				<li><a href="#"><i class="fas fa-heart"></i>찜목록</a></li>
+				<li><a href="checklist"><i class="fas fa-heart"></i>찜목록</a></li>
 				<li><a href="#"><i class="far fa-credit-card"></i>결제페이지</a></li>
 				<li><a href="#"><i class="far fa-list-alt"></i>나의노름관리</a></li>
 				<li><a href='logout'><i class="fas fa-sign-out-alt"></i>로그아웃</a></li>

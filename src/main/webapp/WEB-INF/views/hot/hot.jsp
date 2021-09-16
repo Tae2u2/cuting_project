@@ -3,7 +3,7 @@
 
 <%@ include file="../qt_project/header.jsp"%>
 
-
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,26 +68,24 @@
 		</ul>
 	</div>
 	
+
 	
+	 
 
-
-
-
-
-	<section class="layered-card">
-		<div class="image_class">
-			<img class="hot_qt-servimg" src="resources/images/picketcat.png">
-		</div>
-		<div class="text_class">
-			<p class="explain_qt">
-				귀여운 사진을 가지고싶다면 <br> 지금 베팅하세요! 소정의 돈으로 누릴수있는 찬스입니다!
-			</p>
-
-			<a href="#" onclick="location.href='enter_nr'" class="hot_qt-cta">배팅시작</a>
-		</div>
-
-
-	</section>
+<section class="layered-card">
+  			<div class="image_class">
+  			<img class="hot_qt-servimg" src="${path}/resources/images/picketcat.png">
+  			</div>
+  			<div class="text_class">
+  			<p class="explain_qt">귀여운 사진을 가지고싶다면 <br>
+  			지금 베팅하세요! 소정의 돈으로 누릴수있는 찬스입니다! </p>
+  			
+  			<a href="#" class="hot_qt-cta">배팅시작</a>
+  			</div>
+  		
+  			
+		</section>
+		
 
 
 

@@ -5,7 +5,7 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="Nr">
-   
+    
    <select id="hot_li" resultType="net.daum.vo.Enter_nrVO">
 select * from
    ( select gb_filename, gb_title, gb_content, gb_update, rank( ) over ( order by gb_likecnt desc ) as rank_gb_likecnt from gamble  

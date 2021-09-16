@@ -33,15 +33,19 @@ h1{
 }
 
 
+
 .basic_slider  li img{
 		width:100%;
 	
 	height:100%;
+
 }
 
-.best ul{
-	margin-left:20%;
-	
+ .best{
+
+	position:relative;
+	margin-bottom:3%;
+
 	
 }
 
@@ -92,6 +96,7 @@ h1{
     /* Display under the main content */
     z-index: -1;
 }
+
 
 .hot_qt-servimg{
 	width: 100%;
