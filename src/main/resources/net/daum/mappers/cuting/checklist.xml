@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+  <mapper namespace="Cl">
+  
+  <!-- 찜목록 추가 -->
+  <insert id="insertCart" parameterType="cl">
+  	insert into checklist (clno,cl_id,gb_postnb,amount,cldate) values (clno_seq.nextval,#{cl_id},#{gb_postnb},'1',sysdate)
+  </insert>
+  
+  <!-- 찜목록 -->
+  <select id="listCart"  parameterType="cl" resultType="net.daum.vo.ChecklistVO">
+  	select clno, cl_id, amount, cldate, g.gb_postnb, g.gb_filename, g.gb_title, g.gb_id
+  	from checklist c, gamble g, user_info u
+  	where u.info_id = c.cl_id AND g.gb_postnb = c.gb_postnb AND c.cl_id = #{cl_id}
+  	order by clno
+  </select>
+  
+  <!-- <select id="product_check" parameterType="cl" resultType="int">
+  	select count(*) from checklist c, gamble g where g.gb_postnb = c.gb_postnb AND c.gb_postnb = #{gb_postnb}
+  </select>-->
+  
+  
+  <!-- 장바구니 삭제 -->
+  <delete id="deleteCart" parameterType="cl">
+  	delete from checklist where clno = #{clno}
+  </delete>
+  
+     
+   
+   
+   
+   </mapper>
