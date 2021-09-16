@@ -49,23 +49,21 @@ if(msg.contains("잔액")){
 			<div class="likecnt">조회수 : ${en.gb_viewcnt}</div>
 			<div class="price">상품 가격 : 50 마일리지</div>
 			<div class="buttonarea">
-<<<<<<< HEAD
-				<a href="#"><button type="button" class="ggim">장바구니</button></a>
-				<form method="post" action="payment"><button type="submit" class="buy">구매하기</button>
-				<input type='hidden' name="id" value=<%=id %>/>
-				<input type='hidden' name="filename" value=<%=filename %>/>
-				<input type='hidden' name="postnb" value=<%=postnb %>/>
+
+
+				<form method="post" action="insert.do">
+					<input type="hidden" name="gb_postnb" value="${en.gb_postnb}">
+					<input type="submit" value="장바구니" class="ggim">
 				</form>
-=======
-			
-			
-			<form method="post" action="insert.do">
-				<input type="hidden" name="gb_postnb" value="${en.gb_postnb}">
-				<input type="submit" value="장바구니" class="ggim">
-			</form>
 				
-				<a href="#"><button type="button" class="buy">구매하기</button></a>
->>>>>>> branch 'master' of https://github.com/Tae2u2/cuting_project.git
+				<form method="post" action="payment">
+					<button type="submit" class="buy">구매하기</button>
+					<input type='hidden' name="id" value=<%=id %>/>
+					<input type='hidden' name="filename" value=<%=filename %>/>
+					<input type='hidden' name="postnb" value=<%=postnb %>/>
+				</form>
+				
+
 			</div>
 		</div>
 	</div>

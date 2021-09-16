@@ -15,16 +15,3 @@ create sequence rno_seq
 start with 1
 increment by 1
 nocache;
-
-
-drop table nr_reply;
-
-select *from nr_reply order by rno desc;
-
-delete from NR_REPLY;
-
-
-
-
-drop sequence rno_seq;
-select rno_seq.nextval from dual;
